@@ -18,7 +18,8 @@ export const BlogPostTemplate = ({
   helmet,
 }) => {
   const PostContent = contentComponent || Content;
-
+  console.log('youtube', youtube)
+  console.log('useYoutube', useYoutube)
   return (
     <section className="section">
       {helmet || ""}
@@ -26,7 +27,7 @@ export const BlogPostTemplate = ({
         <div className="columns">
           <div className="column is-10 is-offset-1">
             {useYoutube && (
-              <div style={{ height: '500px', }} dangerouslySetInnerHTML={{ __html: youtube }} />
+              <div style={{ height: '750px', }} dangerouslySetInnerHTML={{ __html: youtube }} />
             )}
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}

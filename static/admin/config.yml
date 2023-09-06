@@ -25,16 +25,16 @@ collections:
           widget: "hidden",
           default: "blog-post",
         }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
-      - { label: "Use Youtube Link", name: "useYoutube", widget: "boolean" }
-      - { label: "Youtube Link", name: "youtube", widget: "string" }
-      - { label: "Behind paywall", name: "paywall", widget: "boolean" }
-      - { label: "Featured Image", name: "featuredimage", widget: image }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Title", required: false, name: "title", widget: "string" }
+      - { label: "Publish Date", required: false, name: "date", widget: "datetime" }
+      - { label: "Description", required: false, name: "description", widget: "text" }
+      - { label: "Featured Post", required: false, name: "featuredpost", widget: "boolean" }
+      - { label: "Use Youtube Link", required: false, name: "useYoutube", widget: "boolean" }
+      - { label: "Youtube Link", required: false, name: "youtube", widget: "string" }
+      - { label: "Behind paywall", required: false, name: "paywall", widget: "boolean" }
+      - { label: "Featured Image", required: false, name: "featuredimage", widget: image }
+      - { label: "Body", required: false, name: "body", widget: "markdown" }
+      - { label: "Tags", required: false, name: "tags", widget: "list" }
 
   - name: "pages"
     label: "Pages"
