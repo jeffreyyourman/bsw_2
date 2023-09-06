@@ -9,6 +9,8 @@ import Content, { HTMLContent } from "../components/Content";
 // eslint-disable-next-line
 export const BlogPostTemplate = ({
   content,
+  youtube,
+  useYoutube,
   contentComponent,
   description,
   tags,
@@ -23,6 +25,9 @@ export const BlogPostTemplate = ({
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
+            {useYoutube && (
+              <div style={{ height: '500px', }} dangerouslySetInnerHTML={{ __html: youtube }} />
+            )}
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
@@ -75,6 +80,8 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        youtube={post.frontmatter.youtube}
+        useYoutube={post.frontmatter.useYoutube}
       />
     </Layout>
   );
@@ -98,6 +105,8 @@ export const pageQuery = graphql`
         title
         description
         tags
+        youtube
+        useYoutube
       }
     }
   }

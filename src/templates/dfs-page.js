@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 
-import Layout from "../components2/Layout";
+import Layout from "../components/Layout";
 // import Features from "../components2/Features";
 // import BlogRoll from "../components2/BlogRoll";
 import FullWidthImage from "../components2/FullWidthImage";
 import Table from "../components2/Table";
 // import PreviewCompatibleImage from "../components2/PreviewCompatibleImage";
 import { useTable } from "react-table";
-import LeftSideDrawer from "../components2/drawers/LeftSideDrawer";
+// import LeftSideDrawer from "../components2/drawers/LeftSideDrawer";
 // import BottomDrawer from "../components2/drawers/BottomDrawer";
 // eslint-disable-next-line
 export const DfsPageTemplate = ({
@@ -25,7 +25,7 @@ export const DfsPageTemplate = ({
 }) => {
   const [lineups, setLineups] = useState([]);
   const [lineupsData, setLineupsData] = useState([]);
-  const heroImage = getImage(image) || image; 
+  const heroImage = getImage(image) || image;
   console.log({
     image,
     title,
@@ -123,7 +123,7 @@ export const DfsPageTemplate = ({
                 </h3>
                 <p>{description}</p>
 
-                <Table lineups={lineups} setLineups={setLineups}setLineupsData={setLineupsData} />
+                <Table lineups={lineups} setLineups={setLineups} setLineupsData={setLineupsData} />
                 <div></div>
               </div>
               {/* <div className="column is-10 is-offset-1">
@@ -161,8 +161,8 @@ const DFsPage = ({ data }) => {
 
   return (
     <Layout>
-      <LeftSideDrawer />
-      
+      {/* <LeftSideDrawer /> */}
+
       <DfsPageTemplate
         image={frontmatter.image}
         title={frontmatter.title}
