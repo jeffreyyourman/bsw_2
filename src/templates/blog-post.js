@@ -27,7 +27,7 @@ export const BlogPostTemplate = ({
         <div className="columns">
           <div className="column is-10 is-offset-1">
             {useYoutube && (
-              <div style={{ height: '750px', }} dangerouslySetInnerHTML={{ __html: youtube }} />
+              <div style={{ height: '550px', }} dangerouslySetInnerHTML={{ __html: youtube }} />
             )}
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
