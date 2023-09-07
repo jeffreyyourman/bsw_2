@@ -299,17 +299,17 @@ export default function ExampleTable(props) {
       },
       {
         Header: "First_Name",
-        accessor: "First Name",
+        accessor: "First_Name",
         editable: false,
       },
       {
         Header: "Full_Name",
-        accessor: "Nickname",
+        accessor: "Full_Name",
         editable: false,
       },
       {
         Header: "Last_Name",
-        accessor: "Last Name",
+        accessor: "Last_Name",
         editable: false,
       },
       {

@@ -255,7 +255,7 @@ export default function ExampleTable(props) {
   // const [data, setData] = useState(testPlayerListUpdated);
   const [numLineups, setNumLineups] = useState(3);
   const [site, setSite] = useState("FANDUEL");
-  const [sport, setSport] = useState("BASKETBALL");
+  const [sport, setSport] = useState("FOOTBALL");
   const [totalMinExp, setTotalMinExp] = useState(0);
   const [totalMaxExp, setTotalMaxExp] = useState(100);
   const handleFileUpload = (e) => {
@@ -300,17 +300,17 @@ export default function ExampleTable(props) {
       },
       {
         Header: "First_Name",
-        accessor: "First Name",
+        accessor: "First_Name",
         editable: false,
       },
       {
         Header: "Full_Name",
-        accessor: "Nickname",
+        accessor: "Full_Name",
         editable: false,
       },
       {
         Header: "Last_Name",
-        accessor: "Last Name",
+        accessor: "Last_Name",
         editable: false,
       },
       {
