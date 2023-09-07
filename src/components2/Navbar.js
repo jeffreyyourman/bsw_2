@@ -26,7 +26,7 @@ const Navbar = () => {
           <Link to="/" className="navbar-item" title="Logo">
             <img
               src={"./img/bsw/full_image.png"}
-              alt="Kaldi"
+              alt="BSW"
               style={{ width: "88px" }}
             />
           </Link>
