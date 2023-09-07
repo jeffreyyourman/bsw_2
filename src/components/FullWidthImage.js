@@ -17,7 +17,7 @@ export default function FullWidthImage(props) {
         className="margin-top-0"
         style={{
           display: "grid",
-          alignItems: "center",
+          alignItems: "flex-end",
         }}
       >
         {img?.url ? (
@@ -27,6 +27,7 @@ export default function FullWidthImage(props) {
             objectPosition={imgPosition}
             style={{
               gridArea: "1/1",
+              top: '-50px',
               // You can set a maximum height for the image, if you wish.
               height: height,
               width: "100%",
@@ -41,6 +42,7 @@ export default function FullWidthImage(props) {
             objectPosition={imgPosition}
             style={{
               gridArea: "1/1",
+              top: '-50px',
               // You can set a maximum height for the image, if you wish.
               maxHeight: height,
             }}

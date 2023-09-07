@@ -6,7 +6,7 @@ import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/Layout";
 // import Features from "../components2/Features";
 // import BlogRoll from "../components2/BlogRoll";
-import FullWidthImage from "../components2/FullWidthImage";
+import FullWidthImage from "../components/FullWidthImage";
 import Table from "../components2/Table";
 // import PreviewCompatibleImage from "../components2/PreviewCompatibleImage";
 import { useTable } from "react-table";
