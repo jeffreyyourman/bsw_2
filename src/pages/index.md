@@ -1,8 +1,8 @@
 ---
 templateKey: index-page
-title: Great coffee with a conscience
+title: BetSweatWin
 image: /img/header-bg-sports.png
-heading: Great coffee with a conscience
+heading: BetSweatWin
 subheading: Support sustainable farming while enjoying a cup
 mainpitch:
   title: Why Kaldi

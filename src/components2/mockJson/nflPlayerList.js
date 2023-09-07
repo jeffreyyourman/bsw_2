@@ -1,4 +1,4 @@
-export const testPlayerListUpdated = () => {
+export const nflPlayerList = () => {
   let returnPlayerList = [
     {
       Id: "67474-42669",

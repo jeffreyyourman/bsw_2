@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { useTable, useSortBy, useFilters, usePagination } from "react-table";
 import { CSVLink } from "react-csv";
 import {
-  testPlayerList,
-  testPlayerListUpdated,
-} from "./mockJson/testPlayerList";
+  nflPlayerList,
+} from "./mockJson/nflPlayerList";
 import axios from "axios";
 import { AiFillUnlock, AiFillLock } from "react-icons/fa";
 import { FiUnlock, FiLock } from "react-icons/fi";
@@ -251,7 +250,9 @@ const Table = ({ columns, data, setData }) => {
 };
 
 export default function ExampleTable(props) {
-  const [data, setData] = useState(testPlayerListUpdated);
+  const [data, setData] = useState([]);
+  // const [data, setData] = useState(nflPlayerList);
+  // const [data, setData] = useState(testPlayerListUpdated);
   const [numLineups, setNumLineups] = useState(3);
   const [site, setSite] = useState("FANDUEL");
   const [sport, setSport] = useState("BASKETBALL");
