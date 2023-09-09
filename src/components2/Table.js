@@ -317,7 +317,10 @@ export default function ExampleTable(props) {
         accessor: "FPPG",
         editable: false,
         Cell: ({ value }) => {
-          return Number(value).toFixed(2);
+          console.log('value', value)
+          console.log('value', typeof value)
+          // return Number(value).toFixed(2);
+          return Number(value);
         }
       },
       {

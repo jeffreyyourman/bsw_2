@@ -9,16 +9,25 @@ import { AiFillUnlock, AiFillLock } from "react-icons/fa";
 import { FiUnlock, FiLock } from "react-icons/fi";
 // import LeftSideDrawer from "./drawers/LeftSideDrawer";
 import BottomDrawer from "./drawers/BottomDrawer";
-
 const TextFilter = ({ column }) => {
   const { filterValue, setFilter } = column;
   return (
     <input
       value={filterValue || ""}
       onChange={(e) => setFilter(e.target.value)}
+      onClick={(e) => e.stopPropagation()}
     />
   );
 };
+// const TextFilter = ({ column }) => {
+//   const { filterValue, setFilter } = column;
+//   return (
+//     <input
+//       value={filterValue || ""}
+//       onChange={(e) => setFilter(e.target.value)}
+//     />
+//   );
+// };
 const Table = ({ columns, data, setData }) => {
   const filterTypes = React.useMemo(
     () => ({
@@ -237,48 +246,74 @@ const Table = ({ columns, data, setData }) => {
             setPageSize(Number(e.target.value));
           }}
         >
-          {[10, 20, 30, 40, 50].map((pageSize) => (
+          {[10, 20, 30, 40, 50, 100, 150, 300].map((pageSize) => (
             <option key={pageSize} value={pageSize}>
               Show {pageSize}
             </option>
           ))}
         </select>
       </div>
-      <CSVLink data={data}>Export CSV</CSVLink>
     </>
   );
 };
 
 export default function ExampleTable(props) {
+  const [isDescendingOrder, setIsDescendingOrder] = useState(true);
   const [data, setData] = useState([]);
-  // const [data, setData] = useState(nflPlayerList);
-  // const [data, setData] = useState(testPlayerListUpdated);
-  const [numLineups, setNumLineups] = useState(3);
+  const [exportPlayerLines, setExportPlayerLines] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [numLineups, setNumLineups] = useState(5);
   const [site, setSite] = useState("FANDUEL");
   const [sport, setSport] = useState("FOOTBALL");
   const [totalMinExp, setTotalMinExp] = useState(0);
-  const [totalMaxExp, setTotalMaxExp] = useState(100);
+  const [totalMaxExp, setTotalMaxExp] = useState(50);
+  const [randomStd, setrandomStd] = useState(50);
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = (event) => {
       const csvData = event.target.result;
       const parsedData = csvData.split("\n").map((row) => {
-        return row.split(",");
+        // Trim each cell to remove spaces and control characters
+        return row.split(",").map(cell => cell.trim());
       });
-      const headers = parsedData[0];
+      // Clean up headers (keys for your objects)
+      const headers = parsedData[0].map(header => header.trim().replace(/\r$/, ''));
+
       const rows = parsedData.slice(1);
+      console.log('rows', rows);
       const formattedData = rows.map((row) => {
-        return headers.reduce((acc, header, index) => {
-          acc[header] = row[index];
+        // Convert fantasy points per game to numbers
+        // row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
+        // row[5] = isNaN(row[5]) ? 0 : row[5];
+
+        // // Convert salary to numbers
+        // row[7] = parseFloat(parseFloat(row[7]).toFixed(2));
+        // row[7] = isNaN(row[7]) ? 0 : row[7];
+
+        const formattedRow = headers.reduce((acc, header, index) => {
+          if (header === "Roster Position" && row[index] === "DEF") {
+            acc[header] = "D";
+          } else {
+            acc[header] = row[index];
+          }
           return acc;
         }, {});
-      });
+
+        // Delete property with empty string key
+        if (formattedRow[""] !== undefined) {
+          delete formattedRow[""];
+        }
+
+        return formattedRow;
+      }).filter(obj => obj.Id !== '');  // This line filters out objects with an empty Id
+
+
+      console.log('formattedData', formattedData);
       setData(formattedData);
-    };
+    }
     reader.readAsText(file);
   };
-
   const columns = React.useMemo(
     () => [
       {
@@ -299,13 +334,13 @@ export default function ExampleTable(props) {
         editable: false,
       },
       {
-        Header: "First_Name",
-        accessor: "First_Name",
+        Header: "Roster Position",
+        accessor: "Roster Position",
         editable: false,
       },
       {
-        Header: "Full_Name",
-        accessor: "Full_Name",
+        Header: "First_Name",
+        accessor: "First_Name",
         editable: false,
       },
       {
@@ -314,18 +349,17 @@ export default function ExampleTable(props) {
         editable: false,
       },
       {
-        Header: "FPPG",
-        accessor: "FPPG",
+        Header: "Name",
+        accessor: "Nickname",
         editable: false,
-        Cell: ({ value }) => {
-          return Number(value).toFixed(2);
-        }
       },
+
       {
-        Header: "Played",
-        accessor: "Played",
-        editable: false,
+        Header: "Projections",
+        accessor: "FPPG",
+        editable: true,
       },
+
       {
         Header: "Salary",
         accessor: "Salary",
@@ -347,11 +381,6 @@ export default function ExampleTable(props) {
         editable: false,
       },
       {
-        Header: "projminutes",
-        accessor: "projminutes",
-        editable: true,
-      },
-      {
         Header: "minExposure",
         accessor: "minExposure",
         editable: true,
@@ -361,26 +390,7 @@ export default function ExampleTable(props) {
         accessor: "maxExposure",
         editable: true,
       },
-      {
-        Header: "Projections",
-        accessor: "Projections",
-        editable: true,
-      },
-      {
-        Header: "Injury_Indicator",
-        accessor: "Injury_Indicator",
-        editable: false,
-      },
-      {
-        Header: "Injury_Details",
-        accessor: "Injury_Details",
-        editable: false,
-      },
-      {
-        Header: "Tier",
-        accessor: "Tier",
-        editable: false,
-      },
+
       {
         Header: "StdDev",
         accessor: "StdDev",
@@ -407,28 +417,227 @@ export default function ExampleTable(props) {
         accessor: "BoomPct",
         editable: true,
       },
+
       {
-        Header: "OwnershipPct",
-        accessor: "OwnershipPct",
+        Header: "Pass yards",
+        accessor: "pass_yards",
         editable: true,
+        disableFilters: true
       },
       {
-        Header: "OptimalPct",
-        accessor: "OptimalPct",
+        Header: "Pass tds",
+        accessor: "pass_tds",
         editable: true,
+        disableFilters: true
       },
 
+      {
+        Header: "Pass comp att",
+        accessor: "pass_comp_att",
+        editable: true,
+        disableFilters: true
+      },
+      {
+        Header: "Pass interceptions",
+        accessor: "pass_interceptions",
+        editable: true,
+        disableFilters: true
+      },
+      {
+        Header: "Rush att",
+        accessor: "rush_att",
+        editable: true,
+        disableFilters: true
+      },
+      {
+        Header: "Rush yds",
+        accessor: "rush_yds",
+        editable: true,
+        disableFilters: true
+      },
+      {
+        Header: "Rush tds",
+        accessor: "rush_tds",
+        editable: true,
+        disableFilters: true
+      },
+
+      {
+        Header: "Receptions",
+        accessor: "receptions",
+        editable: true,
+        disableFilters: true
+      },
+      {
+        Header: "Rec tgts",
+        accessor: "rec_tgts",
+        editable: true,
+        disableFilters: true
+      },
+      {
+        Header: "Rec yds",
+        accessor: "rec_yds",
+        editable: true,
+        disableFilters: true
+      },
+      {
+        Header: "Rec tds",
+        accessor: "rec_tds",
+        editable: true,
+        disableFilters: true
+      },
+      {
+        Header: "Value",
+        accessor: "fanduel_value",
+        editable: true,
+        disableFilters: true
+      },
+      {
+        Header: "Injury Indicator",
+        accessor: "Injury_Indicator",
+        editable: false,
+      },
+      {
+        Header: "Injury Details",
+        accessor: "Injury_Details",
+        editable: false,
+      },
+      {
+        Header: "NFLStats Proj",
+        accessor: "nfl_pts_proj",
+        editable: false,
+      },
+      {
+        Header: "NumberFire Proj",
+        accessor: "numberFire_pts_proj",
+        editable: false,
+      },
+
+
+      // {
+      //   Header: "Projection",
+      //   accessor: "FPPG",
+      //   editable: true,
+      // },
+      // {
+      //   Header: "Played",
+      //   accessor: "Played",
+      //   editable: false,
+      // },
+      // {
+      //   Header: "Tier",
+      //   accessor: "Tier",
+      //   editable: false,
+      // },
+      // {
+      //   Header: "OwnershipPct",
+      //   accessor: "OwnershipPct",
+      //   editable: true,
+      // },
+      // {
+      //   Header: "OptimalPct",
+      //   accessor: "OptimalPct",
+      //   editable: true,
+      // },
     ],
     []
   );
   let handleSubmitPlayers = () => {
+    setLoading(true)
+
+
+    const transformedPlayers = data.map(player => {
+      return {
+        FPPG: player.FPPG,
+        First_Name: player.First_Name,
+        Game: player.Game,
+        Id: player.Id,
+        Injury_Details: player.Injury_Details,
+        Injury_Indicator: player.Injury_Indicator,
+        Last_Name: player.Last_Name,
+        Nickname: player.Nickname,
+        Opponent: player.Opponent,
+        Position: player.Position,
+        "Roster Position": player["Roster Position"],
+        Salary: player.Salary,
+        Team: player.Team,
+        Tier: player.Tier,
+        playerStats: {
+          fppg: player.FPPG,
+          fanduel_fp: player.fanduel_fp,
+          fanduel_value: player.fanduel_value,
+          opp_rank: player.opp_rank,
+          opp_team: player.opp_team,
+          ovr_rank: player.ovr_rank,
+          pass_comp_att: player.pass_comp_att,
+          pass_interceptions: player.pass_interceptions,
+          pass_tds: player.pass_tds,
+          pass_yards: player.pass_yards,
+          pos_rank: player.pos_rank,
+          rec_att: player.rec_att,
+          rec_tds: player.rec_tds,
+          rec_tgts: player.rec_tgts,
+          rec_yds: player.rec_yds,
+          receptions: player.receptions,
+          rush_att: player.rush_att,
+          rush_tds: player.rush_tds,
+          rush_yds: player.rush_yds
+        }
+      };
+    });
+
+    console.log('transformedPlayers,', transformedPlayers);
+
+
     let myargs = {
       numLineups: parseInt(numLineups, 10),
       site,
       sport,
       totalMinExp,
       totalMaxExp,
-      players: data,
+      randomStd,
+      players: transformedPlayers,
+      // maxFromPosition: 3,
+      // maxFromPosition: {
+      //   // "TE": 1, 
+      //   // "WR": 2 //if i don't want wr in TE i would set it to 2 because there are 3 max per lineup and the third would be avoided which is the flex spot
+      // },
+      // maxFromSameTeam: {
+      //   "NYG": 2,
+      //   "NYJ": 2,
+      // },
+      maxFromSameTeam:3,
+      rules: [       
+        {
+          stackType: 'position',
+          positions: ['QB', ['WR']],
+        },
+        {
+          stackType: 'position',
+          positions: ['QB', ['TE']],
+        },
+        {
+          // ready locally 
+          stackType: 'restrictOpp',
+          team1Pos: ['D'],
+          team2Pos: ['QB', 'WR', 'RB', 'TE']
+        },
+        {
+          // ready locally 
+          stackType: 'restrictSame',
+          positions: ['RB', 'QB'] //Don't want qb and rb from same team
+        },
+        {
+          // ready locally 
+          stackType: 'restrictSame',
+          positions: ['TE', 'TE'] //Don't want te and te from same team
+        },
+        // {
+        //   // ready locally 
+        //   stackType: 'restrictSame',
+        //   positions: ['TE', 'WR'] //Don't want te and wr from same team
+        // },
+      ]
     };
     const headers = {
       "Content-Type": "application/json",
@@ -443,14 +652,189 @@ export default function ExampleTable(props) {
         { headers }
       )
       .then((response) => {
-        console.log(response.data[0].lineups);
-        props.setLineups(response.data[0].lineups);
-        props.setLineupsData(response.data);
+        // console.log(response.data[0].lineups);
+        const fetchedLineups = response.data[0].lineups;
+        const manipulatedLineups = fetchedLineups.map(lineup => {
+          let totalfppg = 0;
+          // let pass_tds = 0;
+          // let pass_interceptions = 0;
+          // let pass_yards = 0;
+
+          // let totalTds = 0;
+          let totalRushAtt = 0;
+          let totalRushTds = 0;
+          let totalRushYds = 0;
+          let totalReceptions = 0;
+          let totalRecYds = 0;
+          let totalRecTgts = 0;
+          let totalRecTds = 0;
+          let totalPassTds = 0
+          let totalPassInterceptions = 0
+          let totalPassYards = 0
+
+          lineup.players.forEach(player => {
+            const stats = player.playerStats;
+
+            stats.rush_att = Number(stats.rush_att);
+            stats.fppg = Number(stats.fppg);
+            stats.rush_tds = Number(stats.rush_tds);
+            stats.rush_yds = Number(stats.rush_yds);
+            stats.receptions = Number(stats.receptions);
+            stats.rec_yds = Number(stats.rec_yds);
+            stats.rec_tgts = Number(stats.rec_tgts);
+            stats.rec_tds = Number(stats.rec_tds);
+            stats.pass_tds = Number(stats.pass_tds);
+            stats.pass_interceptions = Number(stats.pass_interceptions);
+            stats.pass_yards = Number(stats.pass_yards);
+
+
+            totalPassTds += stats.pass_tds
+            totalPassInterceptions += stats.pass_interceptions
+            totalPassYards += stats.pass_yards
+
+
+            totalfppg += stats.fppg;
+            totalRushAtt += stats.rush_att;
+            totalRushTds += stats.rush_tds;
+            totalRushYds += stats.rush_yds;
+            totalReceptions += stats.receptions;
+            totalRecYds += stats.rec_yds;
+            totalRecTgts += stats.rec_tgts;
+            totalRecTds += stats.rec_tds;
+          });
+
+          console.log('totalPassTds', totalPassTds)
+          console.log('totalPassInterceptions', totalPassInterceptions)
+          console.log('totalPassYards', totalPassYards)
+
+          return {
+            ...lineup,
+            totalfppg,
+            totalPassTds,
+            totalPassInterceptions,
+            totalPassYards,
+            totalRushAtt,
+            totalRushTds,
+            totalRushYds,
+            totalReceptions,
+            totalRecYds,
+            totalRecTgts,
+            totalRecTds,
+            totalTds: totalRushTds + totalRecTds + totalPassTds,
+            totalEverything:
+              totalfppg +
+              totalPassTds -
+              totalPassInterceptions +
+              totalPassYards +
+              totalRushAtt +
+              totalRushTds +
+              totalRushYds +
+              totalReceptions +
+              totalRecYds +
+              totalRecTgts +
+              totalRecTds
+          };
+
+
+        });
+        const sortedLineupsDes = sortByMetricDescending(manipulatedLineups, 'lineup_points')
+        // const sortedLineupsA = sortByMetricAscending(manipulatedLineups, 'lineup_points')
+
+        props.setLineups(sortedLineupsDes);
+
+        setLoading(false)
       })
       .catch((error) => {
+        setLoading(false)
         console.error(error);
       });
   };
+
+  const exportLineupsToUpload = () => {
+    let amtOfLinesToExport = amtOfLinesToExport || 200;
+    const limitedLineups = props.lineups.slice(0, amtOfLinesToExport);
+
+    // Here, we're creating an array for each lineup that starts with lineup.totalEverything 
+    // followed by all the playerIds.
+    const csvData = limitedLineups.map(lineup => {
+      return [
+        lineup.totalfppg.toFixed(2),
+        lineup.totalPassTds.toFixed(2),
+        lineup.totalPassInterceptions.toFixed(2),
+        lineup.totalPassYards.toFixed(2),
+        lineup.totalRushAtt.toFixed(2),
+        lineup.totalRushTds.toFixed(2),
+        lineup.totalRushYds.toFixed(2),
+        lineup.totalReceptions.toFixed(2),
+        lineup.totalRecYds.toFixed(2),
+        lineup.totalRecTgts.toFixed(2),
+        lineup.totalRecTds.toFixed(2),
+        lineup.totalTds.toFixed(2),
+        lineup.totalEverything.toFixed(2),
+        ...lineup.players.map(player => player.playerId)
+      ];
+    });
+
+    const headers = [
+      'totalfppg',
+      'totalPassTds',
+      'totalPassInterceptions',
+      'totalPassYards',
+      'totalRushAtt',
+      'totalRushTds',
+      'totalRushYds',
+      'totalReceptions',
+      'totalRecYds',
+      'totalRecTgts',
+      'totalRecTds',
+      'totalTds',
+      'totalEverything',
+      "QB",
+      "RB",
+      "RB",
+      "WR",
+      "WR",
+      "WR",
+      "TE",
+      "FLEX",
+      "DEF"];
+
+    // Since csvData already contains arrays structured the way we want, 
+    // we can just spread it into the return array after the headers.
+    return [headers, ...csvData];
+  };
+
+  const toggleAndSortData = (lineupData, metric) => {
+    // Toggle the sorting direction
+    setIsDescendingOrder(!isDescendingOrder);
+
+    if (isDescendingOrder) {
+      sortDataByDec(lineupData, metric);
+    } else {
+      sortDataByAsc(lineupData, metric);
+    }
+  }
+
+
+  // Ascending Order = lowest to highest
+  const sortByMetricAscending = (lineups, metric) => {
+    return [...lineups].sort((a, b) => a[metric] - b[metric]);
+  }
+
+  // Descending Order = highest to lowest
+  const sortByMetricDescending = (lineups, metric) => {
+    return [...lineups].sort((a, b) => b[metric] - a[metric]);
+  }
+
+  const sortDataByAsc = (orderData, key) => {
+    const sortedLineupsAsc = sortByMetricAscending(orderData, key)
+    props.setLineups(sortedLineupsAsc);
+  }
+  const sortDataByDec = (orderData, key) => {
+    const sortedLineupsDes = sortByMetricDescending(orderData, key)
+    props.setLineups(sortedLineupsDes);
+  }
+
   return (
     <>
       <input type="file" onChange={handleFileUpload} />
@@ -492,33 +876,60 @@ export default function ExampleTable(props) {
           <div style={{ display: "flex" }}>
             <label>totalMinExp</label>
             <input
-              type="text"
+              type="number"
               defaultValue={totalMinExp}
               onChange={(e) => {
-                setTotalMinExp(e.target.value);
+                console.log('e.target.value', e.target.value)
+                console.log('typeof e.target.value', typeof e.target.value)
+                setTotalMinExp(Number(e.target.value));
               }}
               style={{ width: "100px" }}
+              min={100}  // Maximum value allowed
+              max={totalMaxExp.length}
             />
           </div>
           <div style={{ display: "flex" }}>
             <label>totalMaxExp</label>
             <input
-              type="text"
+              type="number"
               defaultValue={totalMaxExp}
               onChange={(e) => {
-                setTotalMaxExp(e.target.value);
+                setTotalMaxExp(Number(e.target.value));
+              }}
+              style={{ width: "100px" }}
+              max={100}  // Maximum value allowed
+              min={totalMinExp.length}
+            />
+          </div>
+          <div style={{ display: "flex" }}>
+            <label>randomize lines</label>
+            <input
+              type="number"
+              defaultValue={randomStd}
+              onChange={(e) => {
+                setrandomStd(Number(e.target.value));
               }}
               style={{ width: "100px" }}
             />
           </div>
-          <button onClick={handleSubmitPlayers}>Submit</button>
+          <button
+            disabled={loading}
+            onClick={handleSubmitPlayers}
+          >
+            Submit
+          </button>
           <div style={{ overflow: "auto" }}>
             <Table columns={columns} data={data} setData={setData} />
-
             {props.lineups.length !== 0 && (
               <div style={{ marginTop: "64px" }}>
                 <p>total lines: {props.lineups.length}</p>
-                <BottomDrawer lineups={props.lineups} />
+                <BottomDrawer
+                  exportLineupsToUpload={exportLineupsToUpload}
+                  toggleAndSortData={toggleAndSortData}
+                  sortDataByAsc={sortDataByAsc}
+                  sortDataByDec={sortDataByDec}
+                  exportPlayerLines={exportPlayerLines}
+                  lineups={props.lineups} />
               </div>
             )}
           </div>
