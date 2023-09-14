@@ -65,12 +65,12 @@ export default function TemporaryDrawer(props) {
           <CSVLink
             asyncOnClick={true}
             data={props.exportLineupsToUpload()}
-            // onClick={(event, done) => {
-            //   props.exportLineupsToUpload(done)
-            //   // axios.post("/spy/user").then(() => {
-            //   //   done(); // REQUIRED to invoke the logic of component
-            //   // });
-            // }}
+          // onClick={(event, done) => {
+          //   props.exportLineupsToUpload(done)
+          //   // axios.post("/spy/user").then(() => {
+          //   //   done(); // REQUIRED to invoke the logic of component
+          //   // });
+          // }}
           >
             Export lineups
           </CSVLink>
@@ -177,7 +177,8 @@ export default function TemporaryDrawer(props) {
                             <p>Projected: {player.playerProjected}</p>
                             <p>totalTds: {player.playerStats.rec_tds + player.playerStats.rush_tds}</p>
                             {/* <p>Salary: {player.playerSalary}</p> */}
-                            <p>player Id: {player.playerId}</p>
+                            <p>player Id: <strong>{player.playerId}</strong></p>
+                            <p>player Team: <strong>{player.playerTeam} vs {player.playerOpp}</strong></p>
                           </div>
                         );
                       })}

@@ -266,8 +266,8 @@ export default function ExampleTable(props) {
   const [site, setSite] = useState("FANDUEL");
   const [sport, setSport] = useState("FOOTBALL");
   const [totalMinExp, setTotalMinExp] = useState(0);
-  const [totalMaxExp, setTotalMaxExp] = useState(50);
-  const [randomStd, setrandomStd] = useState(50);
+  const [totalMaxExp, setTotalMaxExp] = useState(30);
+  const [randomStd, setrandomStd] = useState(10);
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -284,8 +284,9 @@ export default function ExampleTable(props) {
       console.log('rows', rows);
       const formattedData = rows.map((row) => {
         // Convert fantasy points per game to numbers
-        // row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
-        // row[5] = isNaN(row[5]) ? 0 : row[5];
+        console.log('row[5]', row[5])
+        row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
+        row[5] = isNaN(row[5]) ? 0 : row[5];
 
         // // Convert salary to numbers
         // row[7] = parseFloat(parseFloat(row[7]).toFixed(2));
@@ -358,6 +359,14 @@ export default function ExampleTable(props) {
         Header: "Projections",
         accessor: "FPPG",
         editable: true,
+        Cell: ({ value }) => {
+          console.log('value', value)
+          console.log('typeof value', typeof value)
+          console.log('Number(value)', Number(value))
+          console.log('parseFloat(value)', parseFloat(value))
+          // return Number(value).toFixed(2);
+          return Number(value).toFixed(2);
+        }
       },
 
       {
@@ -545,8 +554,18 @@ export default function ExampleTable(props) {
   let handleSubmitPlayers = () => {
     setLoading(true)
 
+    let zeroCount = 0;
 
-    const transformedPlayers = data.map(player => {
+    const filteredData = data.filter(player => {
+      // console.log('player.FPPG', player.FPPG);
+      if (player.FPPG < 2) {
+        zeroCount++;
+        return false;
+      }
+      return true;
+    });
+
+    const transformedPlayers = filteredData.map(player => {
       return {
         FPPG: player.FPPG,
         First_Name: player.First_Name,
@@ -586,6 +605,46 @@ export default function ExampleTable(props) {
       };
     });
 
+    // const transformedPlayers = data.map(player => {
+    //   return {
+    //     FPPG: player.FPPG,
+    //     First_Name: player.First_Name,
+    //     Game: player.Game,
+    //     Id: player.Id,
+    //     Injury_Details: player.Injury_Details,
+    //     Injury_Indicator: player.Injury_Indicator,
+    //     Last_Name: player.Last_Name,
+    //     Nickname: player.Nickname,
+    //     Opponent: player.Opponent,
+    //     Position: player.Position,
+    //     "Roster Position": player["Roster Position"],
+    //     Salary: player.Salary,
+    //     Team: player.Team,
+    //     Tier: player.Tier,
+    //     playerStats: {
+    //       fppg: player.FPPG,
+    //       fanduel_fp: player.fanduel_fp,
+    //       fanduel_value: player.fanduel_value,
+    //       opp_rank: player.opp_rank,
+    //       opp_team: player.opp_team,
+    //       ovr_rank: player.ovr_rank,
+    //       pass_comp_att: player.pass_comp_att,
+    //       pass_interceptions: player.pass_interceptions,
+    //       pass_tds: player.pass_tds,
+    //       pass_yards: player.pass_yards,
+    //       pos_rank: player.pos_rank,
+    //       rec_att: player.rec_att,
+    //       rec_tds: player.rec_tds,
+    //       rec_tgts: player.rec_tgts,
+    //       rec_yds: player.rec_yds,
+    //       receptions: player.receptions,
+    //       rush_att: player.rush_att,
+    //       rush_tds: player.rush_tds,
+    //       rush_yds: player.rush_yds
+    //     }
+    //   };
+    // });
+
     console.log('transformedPlayers,', transformedPlayers);
 
 
@@ -606,34 +665,27 @@ export default function ExampleTable(props) {
       //   "NYG": 2,
       //   "NYJ": 2,
       // },
-      maxFromSameTeam:3,
-      rules: [       
+      maxFromSameTeam: 3,
+      rules: [
         {
           stackType: 'position',
-          positions: ['QB', ['WR']],
+          positions: ['QB', ['WR', 'TE']],
+          // positions: [ 'QB' , [ 'WR' , 'TE' ] ]
         },
         {
-          stackType: 'position',
-          positions: ['QB', ['TE']],
-        },
-        {
-          // ready locally 
           stackType: 'restrictOpp',
           team1Pos: ['D'],
           team2Pos: ['QB', 'WR', 'RB', 'TE']
         },
+        // {
+        //   stackType: 'restrictSame',
+        //   positions: ['RB', 'QB'] //Don't want qb and rb from same team
+        // },
         {
-          // ready locally 
-          stackType: 'restrictSame',
-          positions: ['RB', 'QB'] //Don't want qb and rb from same team
-        },
-        {
-          // ready locally 
           stackType: 'restrictSame',
           positions: ['TE', 'TE'] //Don't want te and te from same team
         },
         // {
-        //   // ready locally 
         //   stackType: 'restrictSame',
         //   positions: ['TE', 'WR'] //Don't want te and wr from same team
         // },
@@ -649,7 +701,10 @@ export default function ExampleTable(props) {
         "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         { data: myargs },
         // { data: JSON.stringify(myargs) },
-        { headers }
+        {
+          headers,
+          timeout: 600000  // 10 minutes in milliseconds
+        }
       )
       .then((response) => {
         // console.log(response.data[0].lineups);
@@ -703,9 +758,9 @@ export default function ExampleTable(props) {
             totalRecTds += stats.rec_tds;
           });
 
-          console.log('totalPassTds', totalPassTds)
-          console.log('totalPassInterceptions', totalPassInterceptions)
-          console.log('totalPassYards', totalPassYards)
+          // console.log('totalPassTds', totalPassTds)
+          // console.log('totalPassInterceptions', totalPassInterceptions)
+          // console.log('totalPassYards', totalPassYards)
 
           return {
             ...lineup,
@@ -751,7 +806,7 @@ export default function ExampleTable(props) {
   };
 
   const exportLineupsToUpload = () => {
-    let amtOfLinesToExport = amtOfLinesToExport || 200;
+    let amtOfLinesToExport = amtOfLinesToExport || 350;
     const limitedLineups = props.lineups.slice(0, amtOfLinesToExport);
 
     // Here, we're creating an array for each lineup that starts with lineup.totalEverything 
