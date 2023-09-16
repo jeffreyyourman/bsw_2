@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTable, useSortBy, useFilters, usePagination } from "react-table";
 import { CSVLink } from "react-csv";
-import {
-  nflPlayerList,
-} from "./mockJson/nflPlayerList";
+// import columns from "./NflDfsTableColumns";
+import { useColumns } from "./NflDfsTableColumns";
+import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
+
 import axios from "axios";
 import { AiFillUnlock, AiFillLock } from "react-icons/fa";
 import { FiUnlock, FiLock } from "react-icons/fi";
 // import LeftSideDrawer from "./drawers/LeftSideDrawer";
-import BottomDrawer from "./drawers/BottomDrawer";
+import BottomDrawer from "../../../drawers/BottomDrawer";
 const TextFilter = ({ column }) => {
   const { filterValue, setFilter } = column;
   return (
@@ -19,15 +20,7 @@ const TextFilter = ({ column }) => {
     />
   );
 };
-// const TextFilter = ({ column }) => {
-//   const { filterValue, setFilter } = column;
-//   return (
-//     <input
-//       value={filterValue || ""}
-//       onChange={(e) => setFilter(e.target.value)}
-//     />
-//   );
-// };
+
 const Table = ({ columns, data, setData }) => {
   const filterTypes = React.useMemo(
     () => ({
@@ -77,7 +70,7 @@ const Table = ({ columns, data, setData }) => {
       initialState: { pageIndex: 0, pageSize: 10 },
       // getRowID: (row) => row.name,
     },
-    useFilters,
+    // useFilters,
     useSortBy,
     usePagination
   );
@@ -132,7 +125,7 @@ const Table = ({ columns, data, setData }) => {
 
   return (
     <>
-      <table {...getTableProps()}>
+      <table className="nfl-table-optimizer" {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -257,7 +250,11 @@ const Table = ({ columns, data, setData }) => {
   );
 };
 
-export default function ExampleTable(props) {
+export default function NFLTable(props) {
+  const columns = useColumns();
+  const nflPlayerList = NflPlayerList();
+  const [lineups, setLineups] = useState([]);
+  const [excludedLineups, setExcludedLineups] = useState([]);
   const [isDescendingOrder, setIsDescendingOrder] = useState(true);
   const [data, setData] = useState([]);
   const [exportPlayerLines, setExportPlayerLines] = useState([]);
@@ -268,6 +265,11 @@ export default function ExampleTable(props) {
   const [totalMinExp, setTotalMinExp] = useState(0);
   const [totalMaxExp, setTotalMaxExp] = useState(30);
   const [randomStd, setrandomStd] = useState(10);
+
+  useEffect(() => {
+    setData(nflPlayerList)
+  }, [])
+
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -281,10 +283,10 @@ export default function ExampleTable(props) {
       const headers = parsedData[0].map(header => header.trim().replace(/\r$/, ''));
 
       const rows = parsedData.slice(1);
-      console.log('rows', rows);
+      // console.log('rows', rows);
       const formattedData = rows.map((row) => {
         // Convert fantasy points per game to numbers
-        console.log('row[5]', row[5])
+        // console.log('row[5]', row[5])
         row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
         row[5] = isNaN(row[5]) ? 0 : row[5];
 
@@ -315,242 +317,7 @@ export default function ExampleTable(props) {
     }
     reader.readAsText(file);
   };
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Lock",
-        accessor: "isLocked",
-        disableFilters: true,
-        disableSortBy: true,
-        editable: true,
-      },
-      {
-        Header: "Id",
-        accessor: "Id",
-        editable: false,
-      },
-      {
-        Header: "Position",
-        accessor: "Position",
-        editable: false,
-      },
-      {
-        Header: "Roster Position",
-        accessor: "Roster Position",
-        editable: false,
-      },
-      {
-        Header: "First_Name",
-        accessor: "First_Name",
-        editable: false,
-      },
-      {
-        Header: "Last_Name",
-        accessor: "Last_Name",
-        editable: false,
-      },
-      {
-        Header: "Name",
-        accessor: "Nickname",
-        editable: false,
-      },
 
-      {
-        Header: "Projections",
-        accessor: "FPPG",
-        editable: true,
-        Cell: ({ value }) => {
-          console.log('value', value)
-          console.log('typeof value', typeof value)
-          console.log('Number(value)', Number(value))
-          console.log('parseFloat(value)', parseFloat(value))
-          // return Number(value).toFixed(2);
-          return Number(value).toFixed(2);
-        }
-      },
-
-      {
-        Header: "Salary",
-        accessor: "Salary",
-        editable: false,
-      },
-      {
-        Header: "Game",
-        accessor: "Game",
-        editable: false,
-      },
-      {
-        Header: "Team",
-        accessor: "Team",
-        editable: false,
-      },
-      {
-        Header: "Opponent",
-        accessor: "Opponent",
-        editable: false,
-      },
-      {
-        Header: "minExposure",
-        accessor: "minExposure",
-        editable: true,
-      },
-      {
-        Header: "maxExposure",
-        accessor: "maxExposure",
-        editable: true,
-      },
-
-      {
-        Header: "StdDev",
-        accessor: "StdDev",
-        editable: true,
-      },
-
-      {
-        Header: "Ceiling",
-        accessor: "Ceiling",
-        editable: true,
-      },
-      {
-        Header: "Floor",
-        accessor: "Floor",
-        editable: true,
-      },
-      {
-        Header: "BustPct",
-        accessor: "BustPct",
-        editable: true,
-      },
-      {
-        Header: "BoomPct",
-        accessor: "BoomPct",
-        editable: true,
-      },
-
-      {
-        Header: "Pass yards",
-        accessor: "pass_yards",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Pass tds",
-        accessor: "pass_tds",
-        editable: true,
-        disableFilters: true
-      },
-
-      {
-        Header: "Pass comp att",
-        accessor: "pass_comp_att",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Pass interceptions",
-        accessor: "pass_interceptions",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Rush att",
-        accessor: "rush_att",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Rush yds",
-        accessor: "rush_yds",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Rush tds",
-        accessor: "rush_tds",
-        editable: true,
-        disableFilters: true
-      },
-
-      {
-        Header: "Receptions",
-        accessor: "receptions",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Rec tgts",
-        accessor: "rec_tgts",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Rec yds",
-        accessor: "rec_yds",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Rec tds",
-        accessor: "rec_tds",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Value",
-        accessor: "fanduel_value",
-        editable: true,
-        disableFilters: true
-      },
-      {
-        Header: "Injury Indicator",
-        accessor: "Injury_Indicator",
-        editable: false,
-      },
-      {
-        Header: "Injury Details",
-        accessor: "Injury_Details",
-        editable: false,
-      },
-      {
-        Header: "NFLStats Proj",
-        accessor: "nfl_pts_proj",
-        editable: false,
-      },
-      {
-        Header: "NumberFire Proj",
-        accessor: "numberFire_pts_proj",
-        editable: false,
-      },
-
-
-      // {
-      //   Header: "Projection",
-      //   accessor: "FPPG",
-      //   editable: true,
-      // },
-      // {
-      //   Header: "Played",
-      //   accessor: "Played",
-      //   editable: false,
-      // },
-      // {
-      //   Header: "Tier",
-      //   accessor: "Tier",
-      //   editable: false,
-      // },
-      // {
-      //   Header: "OwnershipPct",
-      //   accessor: "OwnershipPct",
-      //   editable: true,
-      // },
-      // {
-      //   Header: "OptimalPct",
-      //   accessor: "OptimalPct",
-      //   editable: true,
-      // },
-    ],
-    []
-  );
   let handleSubmitPlayers = () => {
     setLoading(true)
 
@@ -605,46 +372,6 @@ export default function ExampleTable(props) {
       };
     });
 
-    // const transformedPlayers = data.map(player => {
-    //   return {
-    //     FPPG: player.FPPG,
-    //     First_Name: player.First_Name,
-    //     Game: player.Game,
-    //     Id: player.Id,
-    //     Injury_Details: player.Injury_Details,
-    //     Injury_Indicator: player.Injury_Indicator,
-    //     Last_Name: player.Last_Name,
-    //     Nickname: player.Nickname,
-    //     Opponent: player.Opponent,
-    //     Position: player.Position,
-    //     "Roster Position": player["Roster Position"],
-    //     Salary: player.Salary,
-    //     Team: player.Team,
-    //     Tier: player.Tier,
-    //     playerStats: {
-    //       fppg: player.FPPG,
-    //       fanduel_fp: player.fanduel_fp,
-    //       fanduel_value: player.fanduel_value,
-    //       opp_rank: player.opp_rank,
-    //       opp_team: player.opp_team,
-    //       ovr_rank: player.ovr_rank,
-    //       pass_comp_att: player.pass_comp_att,
-    //       pass_interceptions: player.pass_interceptions,
-    //       pass_tds: player.pass_tds,
-    //       pass_yards: player.pass_yards,
-    //       pos_rank: player.pos_rank,
-    //       rec_att: player.rec_att,
-    //       rec_tds: player.rec_tds,
-    //       rec_tgts: player.rec_tgts,
-    //       rec_yds: player.rec_yds,
-    //       receptions: player.receptions,
-    //       rush_att: player.rush_att,
-    //       rush_tds: player.rush_tds,
-    //       rush_yds: player.rush_yds
-    //     }
-    //   };
-    // });
-
     console.log('transformedPlayers,', transformedPlayers);
 
 
@@ -698,12 +425,13 @@ export default function ExampleTable(props) {
 
     axios
       .post(
-        "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
+        "https://bsw-be-api.onrender.com/optimizer",
+        // "https://anxious-teal-gilet.cyclic.cloud/optimizer",
+        // "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         { data: myargs },
-        // { data: JSON.stringify(myargs) },
         {
-          headers,
-          timeout: 600000  // 10 minutes in milliseconds
+          // headers,
+          // timeout: 600000  // 10 minutes in milliseconds
         }
       )
       .then((response) => {
@@ -795,7 +523,7 @@ export default function ExampleTable(props) {
         const sortedLineupsDes = sortByMetricDescending(manipulatedLineups, 'lineup_points')
         // const sortedLineupsA = sortByMetricAscending(manipulatedLineups, 'lineup_points')
 
-        props.setLineups(sortedLineupsDes);
+        setLineups(sortedLineupsDes);
 
         setLoading(false)
       })
@@ -807,7 +535,7 @@ export default function ExampleTable(props) {
 
   const exportLineupsToUpload = () => {
     let amtOfLinesToExport = amtOfLinesToExport || 350;
-    const limitedLineups = props.lineups.slice(0, amtOfLinesToExport);
+    const limitedLineups = lineups.slice(0, amtOfLinesToExport);
 
     // Here, we're creating an array for each lineup that starts with lineup.totalEverything 
     // followed by all the playerIds.
@@ -883,11 +611,11 @@ export default function ExampleTable(props) {
 
   const sortDataByAsc = (orderData, key) => {
     const sortedLineupsAsc = sortByMetricAscending(orderData, key)
-    props.setLineups(sortedLineupsAsc);
+    setLineups(sortedLineupsAsc);
   }
   const sortDataByDec = (orderData, key) => {
     const sortedLineupsDes = sortByMetricDescending(orderData, key)
-    props.setLineups(sortedLineupsDes);
+    setLineups(sortedLineupsDes);
   }
 
   return (
@@ -975,16 +703,16 @@ export default function ExampleTable(props) {
           </button>
           <div style={{ overflow: "auto" }}>
             <Table columns={columns} data={data} setData={setData} />
-            {props.lineups.length !== 0 && (
+            {lineups.length !== 0 && (
               <div style={{ marginTop: "64px" }}>
-                <p>total lines: {props.lineups.length}</p>
+                <p>total lines: {lineups.length}</p>
                 <BottomDrawer
                   exportLineupsToUpload={exportLineupsToUpload}
                   toggleAndSortData={toggleAndSortData}
                   sortDataByAsc={sortDataByAsc}
                   sortDataByDec={sortDataByDec}
                   exportPlayerLines={exportPlayerLines}
-                  lineups={props.lineups} />
+                  lineups={lineups} />
               </div>
             )}
           </div>

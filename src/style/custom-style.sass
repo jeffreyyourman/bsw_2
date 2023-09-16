@@ -1,9 +1,34 @@
 @import ./variables.sass
 
+html, body
+  background-color: #eff3fc
+
+.nfl-table-optimizer
+  width: auto !important
+  white-space: nowrap !important
+  border-spacing: 10px !important
+  border-collapse: separate !important
+
+
+.nfl-table-optimizer thead th 
+  text-align: center !important
+  // margin: 10px !important
+  vertical-align: middle !important
+
+
+.nfl-table-optimizer td, .nfl-table-optimizer th
+  padding: 8px !important
+
+/* For the cells */
+.nfl-table-optimizer tbody td 
+  text-align: center !important
+  vertical-align: middle !important
+
+
 .navbar .navbar-menu
   box-shadow: none !important
   background-color: rgb(0, 32, 61) !important
-.navbar-item 
+.navbar-item
   color: white
 
 .navbar-burger
@@ -39,30 +64,30 @@
   align-items: center
 
 .full-width-image
-    width: 100vw
-    height: 400px
-    background-size: cover
-    background-position: bottom
-    display: flex
-    justify-content: center
-    align-items: center
+  width: 100vw
+  height: 400px
+  background-size: cover
+  background-position: bottom
+  display: flex
+  justify-content: center
+  align-items: center
 
 .btn
-    display: inline-block
-    padding: 12px 16px 10px
-    font-size: 18px
-    font-size: 1rem
-    line-height: 1.25
-    background-color: #fff
-    border-radius: .25rem
-    text-decoration: none
-    font-weight: 700
-    color: #CC3700
-    text-align: center
-    -webkit-box-shadow: inset 0 0 0 2px #CC3700
-    box-shadow: inset 0 0 0 2px #f40
-    -webkit-transition: all .15s ease
-    transition: all .15s ease
+  display: inline-block
+  padding: 12px 16px 10px
+  font-size: 18px
+  font-size: 1rem
+  line-height: 1.25
+  background-color: #fff
+  border-radius: .25rem
+  text-decoration: none
+  font-weight: 700
+  color: #CC3700
+  text-align: center
+  -webkit-box-shadow: inset 0 0 0 2px #CC3700
+  box-shadow: inset 0 0 0 2px #f40
+  -webkit-transition: all .15s ease
+  transition: all .15s ease
 
 .margin-top-0
   margin-top: 0 !important
@@ -80,7 +105,6 @@ footer.footer
   padding: 3rem 0rem 0rem
   background-color: rgb(0, 32, 61) !important
 
-
 .menu-label
   font-size: 1em !important
   text-align: left
@@ -90,14 +114,14 @@ footer.footer
 .social
   padding: 2em
 .social a
-    padding: .5em .5em .3em .5em
-    border-radius: 1em
-    background-color: $white-ter
-    margin: .5em
-    width: 1em
-    height: 1em
-    vertical-align: middle
-    display: inline
+  padding: .5em .5em .3em .5em
+  border-radius: 1em
+  background-color: $white-ter
+  margin: .5em
+  width: 1em
+  height: 1em
+  vertical-align: middle
+  display: inline
 
 // blog roll
 .blog-list-item.is-featured

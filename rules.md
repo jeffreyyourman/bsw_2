@@ -10,7 +10,7 @@
       // maxFromPosition: 3,
       maxFromPosition: {
         // "TE": 1, 
-        // "WR": 2 //if i don't want wr in TE i would set it to 2 because there are 3 max per lineup and the third would be avoided which is the flex spot
+        // "WR": 2 //if i don't want wr in flex i would set it to 2 because there are 3 max per lineup and the third would be avoided which is the flex spot
       },
       // maxFromSameTeam:3,
       // maxFromSameTeam: {

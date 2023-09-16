@@ -1,0 +1,944 @@
+[
+    {
+        "abbr": "AFC",
+        "cityState": "AFC Pro Bowl",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "AFC Pro Bowl Team",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/APR",
+        "nick": "AFC Pro Bowl",
+        "season": 2023,
+        "smartId": "10408600-77a1-8b0f-8f54-99b7e0a7d1b2",
+        "stadiumName": "Allegiant Stadium",
+        "teamId": "8600",
+        "teamSiteTicketUrl": null,
+        "teamSiteUrl": null,
+        "teamType": "PRO",
+        "ticketPhoneNumber": null,
+        "yearFound": 2020,
+        "division": {}
+    },
+    {
+        "abbr": "ARI",
+        "cityState": "Arizona",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Arizona Cardinals",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/ARI",
+        "nick": "Cardinals",
+        "season": 2023,
+        "smartId": "10403800-517c-7b8c-65a3-c61b95d86123",
+        "stadiumName": "State Farm Stadium",
+        "teamId": "3800",
+        "teamSiteTicketUrl": "http://www.azcardinals.com/tickets/",
+        "teamSiteUrl": "http://www.azcardinals.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "602-379-0102",
+        "yearFound": 1920,
+        "division": {
+            "id": "0018",
+            "abbr": "NCW",
+            "fullName": "NFC West Division"
+        },
+        "divisionAbbr": "NCW"
+    },
+    {
+        "abbr": "ATL",
+        "cityState": "Atlanta",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Atlanta Falcons",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/ATL",
+        "nick": "Falcons",
+        "season": 2023,
+        "smartId": "10400200-f401-4e53-5175-0974e4f16cf7",
+        "stadiumName": "Mercedes-Benz Stadium",
+        "teamId": "0200",
+        "teamSiteTicketUrl": "http://www.atlantafalcons.com/tickets/",
+        "teamSiteUrl": "http://www.atlantafalcons.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "470-341-4500",
+        "yearFound": 1966,
+        "division": {
+            "id": "0020",
+            "abbr": "NCS",
+            "fullName": "NFC South Division"
+        },
+        "divisionAbbr": "NCS"
+    },
+    {
+        "abbr": "BAL",
+        "cityState": "Baltimore",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Baltimore Ravens",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/BAL",
+        "nick": "Ravens",
+        "season": 2023,
+        "smartId": "10400325-48de-3d6a-be29-8f829437f4c8",
+        "stadiumName": "M&T Bank Stadium",
+        "teamId": "0325",
+        "teamSiteTicketUrl": "http://www.baltimoreravens.com/tickets/",
+        "teamSiteUrl": "http://www.baltimoreravens.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "410-261-RAVE (7283)",
+        "yearFound": 1996,
+        "division": {
+            "id": "0013",
+            "abbr": "ACN",
+            "fullName": "AFC North Division"
+        },
+        "divisionAbbr": "ACN"
+    },
+    {
+        "abbr": "BUF",
+        "cityState": "Buffalo",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Buffalo Bills",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/BUF",
+        "nick": "Bills",
+        "season": 2023,
+        "smartId": "10400610-c40e-a673-1743-2ce2a5d5d731",
+        "stadiumName": "Highmark Stadium",
+        "teamId": "0610",
+        "teamSiteTicketUrl": "http://www.buffalobills.com/tickets/",
+        "teamSiteUrl": "http://www.buffalobills.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "877-BB-TICKS",
+        "yearFound": 1960,
+        "division": {
+            "id": "0012",
+            "abbr": "ACE",
+            "fullName": "AFC East Division"
+        },
+        "divisionAbbr": "ACE"
+    },
+    {
+        "abbr": "CAR",
+        "cityState": "Carolina",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Carolina Panthers",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/CAR",
+        "nick": "Panthers",
+        "season": 2023,
+        "smartId": "10400750-259b-33ac-eee3-a3852e83cd1f",
+        "stadiumName": "Bank of America Stadium",
+        "teamId": "0750",
+        "teamSiteTicketUrl": "http://www.panthers.com/tickets/",
+        "teamSiteUrl": "http://www.panthers.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "800-745-3000",
+        "yearFound": 1995,
+        "division": {
+            "id": "0020",
+            "abbr": "NCS",
+            "fullName": "NFC South Division"
+        },
+        "divisionAbbr": "NCS"
+    },
+    {
+        "abbr": "CHI",
+        "cityState": "Chicago",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Chicago Bears",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/CHI",
+        "nick": "Bears",
+        "season": 2023,
+        "smartId": "10400810-db30-43d6-221c-620006f3ca19",
+        "stadiumName": "Soldier Field",
+        "teamId": "0810",
+        "teamSiteTicketUrl": "http://www.chicagobears.com/tickets/",
+        "teamSiteUrl": "http://www.chicagobears.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "888-79-BEARS",
+        "yearFound": 1920,
+        "division": {
+            "id": "0017",
+            "abbr": "NCN",
+            "fullName": "NFC North Division"
+        },
+        "divisionAbbr": "NCN"
+    },
+    {
+        "abbr": "CIN",
+        "cityState": "Cincinnati",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Cincinnati Bengals",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/CIN",
+        "nick": "Bengals",
+        "season": 2023,
+        "smartId": "10400920-57c1-7656-e77e-1af3d900483e",
+        "stadiumName": "Paycor Stadium",
+        "teamId": "0920",
+        "teamSiteTicketUrl": "http://www.bengals.com/tickets/",
+        "teamSiteUrl": "http://www.bengals.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "866-621-TDTD (8383)",
+        "yearFound": 1968,
+        "division": {
+            "id": "0013",
+            "abbr": "ACN",
+            "fullName": "AFC North Division"
+        },
+        "divisionAbbr": "ACN"
+    },
+    {
+        "abbr": "CLE",
+        "cityState": "Cleveland",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Cleveland Browns",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/CLE",
+        "nick": "Browns",
+        "season": 2023,
+        "smartId": "10401050-5e38-b907-1be1-55b91b19c057",
+        "stadiumName": "Cleveland Browns Stadium",
+        "teamId": "1050",
+        "teamSiteTicketUrl": "http://www.clevelandbrowns.com/tickets/",
+        "teamSiteUrl": "http://www.clevelandbrowns.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "440-824-3434",
+        "yearFound": 1946,
+        "division": {
+            "id": "0013",
+            "abbr": "ACN",
+            "fullName": "AFC North Division"
+        },
+        "divisionAbbr": "ACN"
+    },
+    {
+        "abbr": "DAL",
+        "cityState": "Dallas",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Dallas Cowboys",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/DAL",
+        "nick": "Cowboys",
+        "season": 2023,
+        "smartId": "10401200-a308-98ca-ad5f-95df2fefea68",
+        "stadiumName": "AT&T Stadium",
+        "teamId": "1200",
+        "teamSiteTicketUrl": "http://www.dallascowboys.com/tickets/index.html",
+        "teamSiteUrl": "http://www.dallascowboys.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "817-892-5000",
+        "yearFound": 1960,
+        "division": {
+            "id": "0016",
+            "abbr": "NCE",
+            "fullName": "NFC East Division"
+        },
+        "divisionAbbr": "NCE"
+    },
+    {
+        "abbr": "DEN",
+        "cityState": "Denver",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Denver Broncos",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/DEN",
+        "nick": "Broncos",
+        "season": 2023,
+        "smartId": "10401400-b89b-96e5-55d1-caa7e18de3d8",
+        "stadiumName": "Empower Field at Mile High",
+        "teamId": "1400",
+        "teamSiteTicketUrl": "http://www.denverbroncos.com/ticketOffice",
+        "teamSiteUrl": "http://www.denverbroncos.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "720-258-3333",
+        "yearFound": 1960,
+        "division": {
+            "id": "0014",
+            "abbr": "ACW",
+            "fullName": "AFC West Division"
+        },
+        "divisionAbbr": "ACW"
+    },
+    {
+        "abbr": "DET",
+        "cityState": "Detroit",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Detroit Lions",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/DET",
+        "nick": "Lions",
+        "season": 2023,
+        "smartId": "10401540-f97c-2d19-6fcd-fac6490a48b7",
+        "stadiumName": "Ford Field",
+        "teamId": "1540",
+        "teamSiteTicketUrl": "http://www.detroitlions.com/tickets/index.html",
+        "teamSiteUrl": "http://www.detroitlions.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "313-262-2011",
+        "yearFound": 1930,
+        "division": {
+            "id": "0017",
+            "abbr": "NCN",
+            "fullName": "NFC North Division"
+        },
+        "divisionAbbr": "NCN"
+    },
+    {
+        "abbr": "GB",
+        "cityState": "Green Bay",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Green Bay Packers",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/GB",
+        "nick": "Packers",
+        "season": 2023,
+        "smartId": "10401800-ab22-323d-721a-cee4713c4c2d",
+        "stadiumName": "Lambeau Field",
+        "teamId": "1800",
+        "teamSiteTicketUrl": "http://www.packers.com/tickets/",
+        "teamSiteUrl": "http://www.packers.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "920-569-7501",
+        "yearFound": 1921,
+        "division": {
+            "id": "0017",
+            "abbr": "NCN",
+            "fullName": "NFC North Division"
+        },
+        "divisionAbbr": "NCN"
+    },
+    {
+        "abbr": "HOU",
+        "cityState": "Houston",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Houston Texans",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/HOU",
+        "nick": "Texans",
+        "season": 2023,
+        "smartId": "10402120-b0bc-693d-098a-803014096eb0",
+        "stadiumName": "NRG Stadium",
+        "teamId": "2120",
+        "teamSiteTicketUrl": "http://www.houstontexans.com/tickets/",
+        "teamSiteUrl": "http://www.houstontexans.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "832-667-2390",
+        "yearFound": 2002,
+        "division": {
+            "id": "0019",
+            "abbr": "ACS",
+            "fullName": "AFC South Division"
+        },
+        "divisionAbbr": "ACS"
+    },
+    {
+        "abbr": "IND",
+        "cityState": "Indianapolis",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Indianapolis Colts",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/IND",
+        "nick": "Colts",
+        "season": 2023,
+        "smartId": "10402200-2ea3-84c3-e627-6a6b3b39d56d",
+        "stadiumName": "Lucas Oil Stadium",
+        "teamId": "2200",
+        "teamSiteTicketUrl": "http://www.colts.com/tickets-and-stadium/index.html",
+        "teamSiteUrl": "http://www.colts.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "800-745-3000",
+        "yearFound": 1944,
+        "division": {
+            "id": "0019",
+            "abbr": "ACS",
+            "fullName": "AFC South Division"
+        },
+        "divisionAbbr": "ACS"
+    },
+    {
+        "abbr": "JAX",
+        "cityState": "Jacksonville",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Jacksonville Jaguars",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/JAX",
+        "nick": "Jaguars",
+        "season": 2023,
+        "smartId": "10402250-89fe-7b86-ef98-9062cd354256",
+        "stadiumName": "TIAA Bank Field",
+        "teamId": "2250",
+        "teamSiteTicketUrl": "http://prod.www.jaguars.clubs.nfl.com/tickets/index.html",
+        "teamSiteUrl": "http://www.jaguars.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "904-633-2000",
+        "yearFound": 1995,
+        "division": {
+            "id": "0019",
+            "abbr": "ACS",
+            "fullName": "AFC South Division"
+        },
+        "divisionAbbr": "ACS"
+    },
+    {
+        "abbr": "KC",
+        "cityState": "Kansas City",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Kansas City Chiefs",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/KC",
+        "nick": "Chiefs",
+        "season": 2023,
+        "smartId": "10402310-a47e-10ea-7442-16b633633637",
+        "stadiumName": "GEHA Field at Arrowhead Stadium",
+        "teamId": "2310",
+        "teamSiteTicketUrl": "http://www.kcchiefs.com/tickets/",
+        "teamSiteUrl": "http://www.kcchiefs.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "816-920-9300",
+        "yearFound": 1960,
+        "division": {
+            "id": "0014",
+            "abbr": "ACW",
+            "fullName": "AFC West Division"
+        },
+        "divisionAbbr": "ACW"
+    },
+    {
+        "abbr": "LV",
+        "cityState": "Las Vegas",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Las Vegas Raiders",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/LV",
+        "nick": "Raiders",
+        "season": 2023,
+        "smartId": "10402520-96bf-e9f2-4f68-8521ca896060",
+        "stadiumName": "Allegiant Stadium",
+        "teamId": "2520",
+        "teamSiteTicketUrl": "http://www.raiders.com/Tickets/",
+        "teamSiteUrl": "http://www.raiders.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "800-724-3377",
+        "yearFound": 1960,
+        "division": {
+            "id": "0014",
+            "abbr": "ACW",
+            "fullName": "AFC West Division"
+        },
+        "divisionAbbr": "ACW"
+    },
+    {
+        "abbr": "LA",
+        "cityState": "Los Angeles",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Los Angeles Rams",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/LA",
+        "nick": "Rams",
+        "season": 2023,
+        "smartId": "10402510-8931-0d5f-9815-79bb79649a65",
+        "stadiumName": "SoFi Stadium",
+        "teamId": "2510",
+        "teamSiteTicketUrl": "http://welcomehomerams.com/",
+        "teamSiteUrl": "http://www.therams.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "314-425-8830",
+        "yearFound": 1937,
+        "division": {
+            "id": "0018",
+            "abbr": "NCW",
+            "fullName": "NFC West Division"
+        },
+        "divisionAbbr": "NCW"
+    },
+    {
+        "abbr": "LAC",
+        "cityState": "Los Angeles",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Los Angeles Chargers",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/LAC",
+        "nick": "Chargers",
+        "season": 2023,
+        "smartId": "10404400-3b35-073f-197e-194bb8240723",
+        "stadiumName": "SoFi Stadium",
+        "teamId": "4400",
+        "teamSiteTicketUrl": "http://www.chargers.com/tickets/",
+        "teamSiteUrl": "http://www.chargers.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "1-800-745-3000",
+        "yearFound": 1960,
+        "division": {
+            "id": "0014",
+            "abbr": "ACW",
+            "fullName": "AFC West Division"
+        },
+        "divisionAbbr": "ACW"
+    },
+    {
+        "abbr": "MIA",
+        "cityState": "Miami",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Miami Dolphins",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/MIA",
+        "nick": "Dolphins",
+        "season": 2023,
+        "smartId": "10402700-1662-d8ad-f45c-0b0ea460d045",
+        "stadiumName": "Hard Rock Stadium",
+        "teamId": "2700",
+        "teamSiteTicketUrl": "http://www.miamidolphins.com/tickets-and-stadium/index.html",
+        "teamSiteUrl": "http://www.miamidolphins.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "888-FINS-TIX",
+        "yearFound": 1966,
+        "division": {
+            "id": "0012",
+            "abbr": "ACE",
+            "fullName": "AFC East Division"
+        },
+        "divisionAbbr": "ACE"
+    },
+    {
+        "abbr": "MIN",
+        "cityState": "Minnesota",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Minnesota Vikings",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/MIN",
+        "nick": "Vikings",
+        "season": 2023,
+        "smartId": "10403000-5851-f9d5-da45-78365a05b6b0",
+        "stadiumName": "U.S. Bank Stadium",
+        "teamId": "3000",
+        "teamSiteTicketUrl": "http://www.vikings.com/tickets/index.html",
+        "teamSiteUrl": "http://www.vikings.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "612-33-VIKES (84537)",
+        "yearFound": 1961,
+        "division": {
+            "id": "0017",
+            "abbr": "NCN",
+            "fullName": "NFC North Division"
+        },
+        "divisionAbbr": "NCN"
+    },
+    {
+        "abbr": "NFC",
+        "cityState": "NFC Pro Bowl",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "NFC Pro Bowl Team",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/NPR",
+        "nick": "NFC Pro Bowl",
+        "season": 2023,
+        "smartId": "10408700-5035-ce5c-b3dd-20413011bc6a",
+        "stadiumName": "Allegiant Stadium",
+        "teamId": "8700",
+        "teamSiteTicketUrl": null,
+        "teamSiteUrl": null,
+        "teamType": "PRO",
+        "ticketPhoneNumber": null,
+        "yearFound": 2020,
+        "division": {}
+    },
+    {
+        "abbr": "NE",
+        "cityState": "New England",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "New England Patriots",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/NE",
+        "nick": "Patriots",
+        "season": 2023,
+        "smartId": "10403200-69ab-9ea6-5af5-e240fbc08bea",
+        "stadiumName": "Gillette Stadium",
+        "teamId": "3200",
+        "teamSiteTicketUrl": "http://www.patriots.com/stadium/index.cfm?ac=TicketSales",
+        "teamSiteUrl": "http://www.patriots.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "800-543-1776",
+        "yearFound": 1960,
+        "division": {
+            "id": "0012",
+            "abbr": "ACE",
+            "fullName": "AFC East Division"
+        },
+        "divisionAbbr": "ACE"
+    },
+    {
+        "abbr": "NO",
+        "cityState": "New Orleans",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "New Orleans Saints",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/NO",
+        "nick": "Saints",
+        "season": 2023,
+        "smartId": "10403300-f235-cf9b-6d3a-2f182be48dd1",
+        "stadiumName": "Caesars Superdome",
+        "teamId": "3300",
+        "teamSiteTicketUrl": "http://www.neworleanssaints.com/tickets-and-stadium/index.html",
+        "teamSiteUrl": "http://www.neworleanssaints.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "504-731-1700",
+        "yearFound": 1967,
+        "division": {
+            "id": "0020",
+            "abbr": "NCS",
+            "fullName": "NFC South Division"
+        },
+        "divisionAbbr": "NCS"
+    },
+    {
+        "abbr": "NYG",
+        "cityState": "New York",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "New York Giants",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/NYG",
+        "nick": "Giants",
+        "season": 2023,
+        "smartId": "10403410-997c-9c75-256b-3b012f468bd0",
+        "stadiumName": "MetLife Stadium",
+        "teamId": "3410",
+        "teamSiteTicketUrl": "http://www.giants.com/tickets/",
+        "teamSiteUrl": "http://www.giants.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "201-935-8111",
+        "yearFound": 1925,
+        "division": {
+            "id": "0016",
+            "abbr": "NCE",
+            "fullName": "NFC East Division"
+        },
+        "divisionAbbr": "NCE"
+    },
+    {
+        "abbr": "NYJ",
+        "cityState": "New York",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "New York Jets",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/NYJ",
+        "nick": "Jets",
+        "season": 2023,
+        "smartId": "10403430-1bc3-42c4-c7d8-39f38aed5f12",
+        "stadiumName": "MetLife Stadium",
+        "teamId": "3430",
+        "teamSiteTicketUrl": "http://www.newyorkjets.com/tickets-and-stadium/index.html",
+        "teamSiteUrl": "http://www.newyorkjets.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "800-469-JETS (5387)",
+        "yearFound": 1960,
+        "division": {
+            "id": "0012",
+            "abbr": "ACE",
+            "fullName": "AFC East Division"
+        },
+        "divisionAbbr": "ACE"
+    },
+    {
+        "abbr": "PHI",
+        "cityState": "Philadelphia",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Philadelphia Eagles",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/PHI",
+        "nick": "Eagles",
+        "season": 2023,
+        "smartId": "10403700-b939-3cbd-3d16-24d4d6742fa2",
+        "stadiumName": "Lincoln Financial Field",
+        "teamId": "3700",
+        "teamSiteTicketUrl": "http://www.philadelphiaeagles.com/tickets/index.html",
+        "teamSiteUrl": "http://www.philadelphiaeagles.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "215-463-5500",
+        "yearFound": 1933,
+        "division": {
+            "id": "0016",
+            "abbr": "NCE",
+            "fullName": "NFC East Division"
+        },
+        "divisionAbbr": "NCE"
+    },
+    {
+        "abbr": "PIT",
+        "cityState": "Pittsburgh",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Pittsburgh Steelers",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/PIT",
+        "nick": "Steelers",
+        "season": 2023,
+        "smartId": "10403900-8251-6892-d81c-4348525c2d47",
+        "stadiumName": "Acrisure Stadium",
+        "teamId": "3900",
+        "teamSiteTicketUrl": "http://www.steelers.com/tickets/",
+        "teamSiteUrl": "http://www.steelers.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "412-323-1200",
+        "yearFound": 1933,
+        "division": {
+            "id": "0013",
+            "abbr": "ACN",
+            "fullName": "AFC North Division"
+        },
+        "divisionAbbr": "ACN"
+    },
+    {
+        "abbr": "SF",
+        "cityState": "San Francisco",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "San Francisco 49ers",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/SF",
+        "nick": "49ers",
+        "season": 2023,
+        "smartId": "10404500-e7cb-7fce-3f10-4eeb269bd179",
+        "stadiumName": "Levi's Stadium",
+        "teamId": "4500",
+        "teamSiteTicketUrl": "http://www.sf49ers.com/tickets/single.php?section=TI%20Single",
+        "teamSiteUrl": "http://www.sf49ers.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "415-GO-49ERS",
+        "yearFound": 1946,
+        "division": {
+            "id": "0018",
+            "abbr": "NCW",
+            "fullName": "NFC West Division"
+        },
+        "divisionAbbr": "NCW"
+    },
+    {
+        "abbr": "SEA",
+        "cityState": "Seattle",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Seattle Seahawks",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/SEA",
+        "nick": "Seahawks",
+        "season": 2023,
+        "smartId": "10404600-adcd-28ac-5826-b4d95ec2a228",
+        "stadiumName": "Lumen Field",
+        "teamId": "4600",
+        "teamSiteTicketUrl": "http://www.seahawks.com/Tickets/Tickets.aspx?id=49670",
+        "teamSiteUrl": "http://www.seahawks.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "888-NFL-HAWK",
+        "yearFound": 1976,
+        "division": {
+            "id": "0018",
+            "abbr": "NCW",
+            "fullName": "NFC West Division"
+        },
+        "divisionAbbr": "NCW"
+    },
+    {
+        "abbr": "TB",
+        "cityState": "Tampa Bay",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Tampa Bay Buccaneers",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/TB",
+        "nick": "Buccaneers",
+        "season": 2023,
+        "smartId": "10404900-d59e-b449-ef75-961e09ca027e",
+        "stadiumName": "Raymond James Stadium",
+        "teamId": "4900",
+        "teamSiteTicketUrl": "http://www.buccaneers.com/tickets/gametickets.aspx",
+        "teamSiteUrl": "http://www.buccaneers.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "813-879-2827",
+        "yearFound": 1976,
+        "division": {
+            "id": "0020",
+            "abbr": "NCS",
+            "fullName": "NFC South Division"
+        },
+        "divisionAbbr": "NCS"
+    },
+    {
+        "abbr": "TEN",
+        "cityState": "Tennessee",
+        "conference": {
+            "id": "0011",
+            "abbr": "AFC",
+            "fullName": "American Football Conference"
+        },
+        "conferenceAbbr": "AFC",
+        "fullName": "Tennessee Titans",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/TEN",
+        "nick": "Titans",
+        "season": 2023,
+        "smartId": "10402100-447f-396e-8149-0a434ffb2f23",
+        "stadiumName": "Nissan Stadium",
+        "teamId": "2100",
+        "teamSiteTicketUrl": "http://www.titansonline.com/stadium/tickets/index.php",
+        "teamSiteUrl": "http://www.titansonline.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "615-565-4200",
+        "yearFound": 1960,
+        "division": {
+            "id": "0019",
+            "abbr": "ACS",
+            "fullName": "AFC South Division"
+        },
+        "divisionAbbr": "ACS"
+    },
+    {
+        "abbr": "WAS",
+        "cityState": "Washington",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Washington Commanders",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/WAS",
+        "nick": "Commanders",
+        "season": 2023,
+        "smartId": "10405110-ec3c-669e-2614-db3dc1736e95",
+        "stadiumName": "FedExField",
+        "teamId": "5110",
+        "teamSiteTicketUrl": "https://commanders.com/tickets",
+        "teamSiteUrl": "https://commanders.com",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "301-276-6800",
+        "yearFound": 1932,
+        "division": {
+            "id": "0016",
+            "abbr": "NCE",
+            "fullName": "NFC East Division"
+        },
+        "divisionAbbr": "NCE"
+    }
+]
