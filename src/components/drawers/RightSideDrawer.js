@@ -5,7 +5,7 @@ import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import PlayerNewsList from "../PlayerNewsList";
+// import PlayerNewsList from "../../components2/PlayerNewsList";
 // https://www.nbcsportsedge.com/api/player_news?page%5Blimit%5D=10&sort=-initial_published_date&include=team,league,league.sport&filter%5Bsport_headline%5D=1&filter%5Bleague.meta.drupal_internal__id%5D=11
 const drawerWidth = 240;
 
