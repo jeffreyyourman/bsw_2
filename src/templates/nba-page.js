@@ -7,7 +7,7 @@ import Layout from "../components/Layout";
 // import Features from "../components2/Features";
 // import BlogRoll from "../components2/BlogRoll";
 import FullWidthImage from "../components/FullWidthImage";
-import Table from "../components2/Table";
+import Table from "../components/tables/dfs/nfl/NFLTable";
 // import PreviewCompatibleImage from "../components2/PreviewCompatibleImage";
 import { useTable } from "react-table";
 // import LeftSideDrawer from "../components2/drawers/LeftSideDrawer";

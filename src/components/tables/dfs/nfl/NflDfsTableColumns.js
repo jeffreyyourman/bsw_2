@@ -54,10 +54,6 @@ export function useColumns() {
                 accessor: "FPPG",
                 editable: true,
                 Cell: ({ value }) => {
-                    console.log('value', value)
-                    console.log('typeof value', typeof value)
-                    console.log('Number(value)', Number(value))
-                    console.log('parseFloat(value)', parseFloat(value))
                     // return Number(value).toFixed(2);
                     return Number(value).toFixed(2);
                 }

@@ -11,7 +11,7 @@ import { FiUnlock, FiLock } from "react-icons/fi";
 // import LeftSideDrawer from "./drawers/LeftSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
 import GameMatchups from '../../../../mockJson/nfl/week-2-2023-games-nextgenstats.json'
-import GameMatchupsCarousel from '../../../../components/carousels/GameMatchupCarousel'
+import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NflPlayerPosFilter from "./NflPlayerPosFilters";
 import NFLPlayerSearch from "./NflPlayerSearch";
 
@@ -281,10 +281,11 @@ export default function NFLTable(props) {
   }, [])
 
   const handleSearchOnChange = (text) => {
-    console.log('e', text)
+    // console.log('e', text)
+    if (position !== 'All') setPosition('All')
+
     let searchTextLowerCase = text.toLowerCase();
-    setPosition('All')
-    console.log('searchTextLowerCase', searchTextLowerCase);
+    // console.log('searchTextLowerCase', searchTextLowerCase);
     const filterName = data.filter((player) => {
       let newPlayerName = player.Nickname.toLowerCase();
       if (newPlayerName.includes(searchTextLowerCase)) {
@@ -669,10 +670,10 @@ export default function NFLTable(props) {
             players={data}
             selectedPosition={position}
             filterPlayersByPosition={filterPlayersByPosition}
-            onPositionChange={setPosition} 
+            onPositionChange={setPosition}
 
-            // onPositionChange={filterPlayersByPosition} 
-            />
+          // onPositionChange={filterPlayersByPosition} 
+          />
           <NFLPlayerSearch data={data} onSearch={handleSearchOnChange} />
 
           <div style={{ display: "flex" }}>
