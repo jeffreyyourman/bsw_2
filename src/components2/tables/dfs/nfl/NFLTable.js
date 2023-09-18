@@ -10,6 +10,11 @@ import { AiFillUnlock, AiFillLock } from "react-icons/fa";
 import { FiUnlock, FiLock } from "react-icons/fi";
 // import LeftSideDrawer from "./drawers/LeftSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
+import GameMatchups from '../../../../mockJson/nfl/week-2-2023-games-nextgenstats.json'
+import GameMatchupsCarousel from '../../../../components/carousels/GameMatchupCarousel'
+import NflPlayerPosFilter from "./NflPlayerPosFilters";
+import NFLPlayerSearch from "./NflPlayerSearch";
+
 const TextFilter = ({ column }) => {
   const { filterValue, setFilter } = column;
   return (
@@ -126,9 +131,9 @@ const Table = ({ columns, data, setData }) => {
   return (
     <>
       <table className="nfl-table-optimizer" {...getTableProps()}>
-        <thead>
+        <thead className="nfl-table-header">
           {headerGroups.map((headerGroup) => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
+            <tr className="nfl-table-header2"{...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
@@ -150,7 +155,7 @@ const Table = ({ columns, data, setData }) => {
             prepareRow(row);
 
             return (
-              <tr {...row.getRowProps()}>
+              <tr  {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   const isEditable = cell.column.editable;
                   const cellProps = cell.getCellProps();
@@ -257,18 +262,54 @@ export default function NFLTable(props) {
   const [excludedLineups, setExcludedLineups] = useState([]);
   const [isDescendingOrder, setIsDescendingOrder] = useState(true);
   const [data, setData] = useState([]);
+  const [filteredPlayers, setFilteredPlayers] = useState([]);
   const [exportPlayerLines, setExportPlayerLines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [numLineups, setNumLineups] = useState(5);
   const [site, setSite] = useState("FANDUEL");
   const [sport, setSport] = useState("FOOTBALL");
   const [totalMinExp, setTotalMinExp] = useState(0);
-  const [totalMaxExp, setTotalMaxExp] = useState(30);
-  const [randomStd, setrandomStd] = useState(10);
+  const [totalMaxExp, setTotalMaxExp] = useState(50);
+  const [randomStd, setrandomStd] = useState(15);
+  const [position, setPosition] = useState('All');
+  // const [searchFilter, setSearchFilter] = useState('');
 
   useEffect(() => {
     setData(nflPlayerList)
+    setFilteredPlayers(nflPlayerList);
+
   }, [])
+
+  const handleSearchOnChange = (text) => {
+    console.log('e', text)
+    let searchTextLowerCase = text.toLowerCase();
+    setPosition('All')
+    console.log('searchTextLowerCase', searchTextLowerCase);
+    const filterName = data.filter((player) => {
+      let newPlayerName = player.Nickname.toLowerCase();
+      if (newPlayerName.includes(searchTextLowerCase)) {
+        return player;
+      }
+    });
+    console.log('filtername;, fil', filterName)
+    if (filterName.length !== 0) {
+      setFilteredPlayers(filterName);
+    } else {
+      setFilteredPlayers(data);
+    }
+  };
+
+  const filterPlayersByPosition = (position) => {
+    console.log('position', position);
+    if (position === "All") {
+      console.log('all mfer', data)
+      setFilteredPlayers(data);
+    } else {
+
+      setFilteredPlayers(data.filter(player => player.Position === position));
+    }
+  };
+
 
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
@@ -399,11 +440,11 @@ export default function NFLTable(props) {
           positions: ['QB', ['WR', 'TE']],
           // positions: [ 'QB' , [ 'WR' , 'TE' ] ]
         },
-        {
-          stackType: 'restrictOpp',
-          team1Pos: ['D'],
-          team2Pos: ['QB', 'WR', 'RB', 'TE']
-        },
+        // {
+        //   stackType: 'restrictOpp',
+        //   team1Pos: ['D'],
+        //   team2Pos: ['QB', 'WR', 'RB', 'TE']
+        // },
         // {
         //   stackType: 'restrictSame',
         //   positions: ['RB', 'QB'] //Don't want qb and rb from same team
@@ -623,6 +664,17 @@ export default function NFLTable(props) {
       <input type="file" onChange={handleFileUpload} />
       {data.length > 0 ? (
         <div>
+          <GameMatchupsCarousel games={GameMatchups} />
+          <NflPlayerPosFilter
+            players={data}
+            selectedPosition={position}
+            filterPlayersByPosition={filterPlayersByPosition}
+            onPositionChange={setPosition} 
+
+            // onPositionChange={filterPlayersByPosition} 
+            />
+          <NFLPlayerSearch data={data} onSearch={handleSearchOnChange} />
+
           <div style={{ display: "flex" }}>
             <label>numLineups</label>
             <input
@@ -702,7 +754,9 @@ export default function NFLTable(props) {
             Submit
           </button>
           <div style={{ overflow: "auto" }}>
-            <Table columns={columns} data={data} setData={setData} />
+            {/* <Table columns={columns} data={data} setData={setData} /> */}
+            <Table columns={columns} data={filteredPlayers} setData={setData} />
+            {/* <Table columns={columns} data={position === 'All' ? data : filteredPlayers} setData={setData} /> */}
             {lineups.length !== 0 && (
               <div style={{ marginTop: "64px" }}>
                 <p>total lines: {lineups.length}</p>

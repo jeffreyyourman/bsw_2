@@ -6,17 +6,40 @@ html, body
 .nfl-table-optimizer
   width: auto !important
   white-space: nowrap !important
-  border-spacing: 10px !important
-  border-collapse: separate !important
+  // border: 10px solid !important
+  // border-collapse: separate !important
+  border-collapse: collapse !important
 
+
+.nfl-table-header 
+  background-color: #00203d !important
+  color: white !important
+
+.nfl-table-header2, .nfl-table-optimizer tbody tr 
+  border: 1px solid #ccc
+
+.nfl-table-header2 th, .nfl-table-optimizer tbody td
+  border: 1px solid #ccc
+  padding: 8px
+
+
+// .nfl-table-header2 
+//   background-color: green !important
 
 .nfl-table-optimizer thead th 
   text-align: center !important
+  color: white !important
+
   // margin: 10px !important
+  // background-color: purple !important
   vertical-align: middle !important
 
 
-.nfl-table-optimizer td, .nfl-table-optimizer th
+.nfl-table-optimizer td
+  padding: 8px !important
+
+.nfl-table-optimizer th
+  // background-color: purple !important
   padding: 8px !important
 
 /* For the cells */

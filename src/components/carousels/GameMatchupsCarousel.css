@@ -1,0 +1,8 @@
+/* Assuming you want each card to be 250px wide */
+.carousel-item {
+    width: 250px;
+}
+
+.carousel-container {
+    width: 100%; 
+}

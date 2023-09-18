@@ -10,7 +10,8 @@ import { AiFillUnlock, AiFillLock } from "react-icons/fa";
 import { FiUnlock, FiLock } from "react-icons/fi";
 // import LeftSideDrawer from "./drawers/LeftSideDrawer";
 import BottomDrawer from "./drawers/BottomDrawer";
-
+import GameMatchups from '../mockJson/nfl/week-2-2023-games-nextgenstats.json'
+import GameMatchupsCarousel from '../components/carousels/GameMatchupCarousel'
 const TextFilter = ({ column }) => {
   const { filterValue, setFilter } = column;
   return (
@@ -250,7 +251,7 @@ const Table = ({ columns, data, setData }) => {
   );
 };
 
-export default function ExampleTable(props) {
+export default function NFLDfsOptomizer(props) {
   const [data, setData] = useState(testPlayerListUpdated);
   const [numLineups, setNumLineups] = useState(3);
   const [site, setSite] = useState("FANDUEL");
@@ -455,11 +456,15 @@ export default function ExampleTable(props) {
   };
   return (
     <>
+      <div>
+
+      </div>
       <input type="file" onChange={handleFileUpload} />
       {data.length > 0 ? (
         <div>
           <div style={{ display: "flex" }}>
-            <label>numLineups</label>
+          <GameMatchupsCarousel games={GameMatchups} />
+            <label>numLinefdsaups</label>
             <input
               type="number"
               defaultValue={numLineups}
