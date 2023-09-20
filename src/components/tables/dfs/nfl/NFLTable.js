@@ -16,7 +16,7 @@ import GameMatchups from '../../../../mockJson/nfl/week-2-2023-games-nextgenstat
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NflPlayerPosFilter from "./NflPlayerPosFilters";
 import NFLPlayerSearch from "./NflPlayerSearch";
-import { createTheme, ThemeProvider,makeStyles } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
