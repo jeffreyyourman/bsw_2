@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
-import NflDfsLayout from "../components/NflDfsLayout";
+import NflDfsLayout from "../components/layouts/NflDfsLayout";
 import FullWidthImage from "../components/FullWidthImage";
 import NFLTable from "../components/tables/dfs/nfl/NFLTable";
 import NFLDfsSiteTabs from '../components/tabs/NFLDfsSiteTabs';

@@ -1,5 +1,5 @@
 import * as React from "react";
-import NflDfsLayout from "../../../../../components/NflDfsLayout";
+import NflDfsLayout from "../../../../../components/layouts/NflDfsLayout";
 
 const OptimizerPage = () => (
   <NflDfsLayout>
