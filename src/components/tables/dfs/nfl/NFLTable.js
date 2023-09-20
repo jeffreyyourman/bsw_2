@@ -9,14 +9,23 @@ import axios from "axios";
 import { AiFillUnlock, AiFillLock } from "react-icons/fa";
 import { FiUnlock, FiLock } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
-import { TextField, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { TextField, FormHelperText, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
 import GameMatchups from '../../../../mockJson/nfl/week-2-2023-games-nextgenstats.json'
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NflPlayerPosFilter from "./NflPlayerPosFilters";
 import NFLPlayerSearch from "./NflPlayerSearch";
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider,makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+  helperText: {
+    whiteSpace: "normal",
+    wordWrap: "break-word",
+  }
+}));
+
 
 const theme = createTheme({
   palette: {
@@ -384,6 +393,7 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
 };
 
 export default function NFLTable(props) {
+  const classes = useStyles();
   const columns = useColumns();
   const excludeColumns = useExcludeColumns();
   const nflPlayerList = NflPlayerList();
@@ -412,6 +422,7 @@ export default function NFLTable(props) {
   const [pairQbWithWrOrTe, setPairQbWithWrOrTe] = useState(false);
   const [excludeQbANdRb, setExcludeQbANdRb] = useState(false);
   const [restrict2TEsSameTeam, setRestrict2TEsSameTeam] = useState(false);
+  const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
   // const [anotherCheckbox, setAnotherCheckbox] = useState(false);
 
   const handleCheckboxChange = (setter) => (event) => {
@@ -624,11 +635,11 @@ export default function NFLTable(props) {
       //   // "TE": 1, 
       //   // "WR": 2 //if i don't want wr in TE i would set it to 2 because there are 3 max per lineup and the third would be avoided which is the flex spot
       // },
+      maxFromSameTeam: maxFromSameTeam > 4 || maxFromSameTeam < 1 ? 3 : maxFromSameTeam,
       // maxFromSameTeam: {
       //   "NYG": 2,
       //   "NYJ": 2,
       // },
-      maxFromSameTeam: 3,
       rules: [
         restrict2TEsSameTeam && {
           stackType: 'restrictSame',
@@ -896,6 +907,7 @@ export default function NFLTable(props) {
                 setTotalMinExp(Number(e.target.value));
               }}
               fullWidth
+              helperText="Values are from 0 to 100"
             />
           </FormControl>
 
@@ -906,7 +918,7 @@ export default function NFLTable(props) {
               defaultValue={totalMaxExp}
               InputProps={{
                 inputProps: {
-                  min: totalMinExp.length,
+                  min: 0,
                   max: 100
                 }
               }}
@@ -914,6 +926,25 @@ export default function NFLTable(props) {
                 setTotalMaxExp(Number(e.target.value));
               }}
               fullWidth
+              helperText="Values are from 0 to 100"
+            />
+          </FormControl>
+          <FormControl margin="normal" fullWidth>
+            <TextField
+              label="Max Players From Same team"
+              type="number"
+              defaultValue={maxFromSameTeam}
+              InputProps={{
+                inputProps: {
+                  min: 1,
+                  max: 4
+                }
+              }}
+              onChange={(e) => {
+                setMaxFromSameTeam(Number(e.target.value));
+              }}
+              fullWidth
+              helperText="Values are from 0 to 100"
             />
           </FormControl>
 
@@ -926,6 +957,7 @@ export default function NFLTable(props) {
                 setrandomStd(Number(e.target.value));
               }}
               fullWidth
+              helperText="Values are from 0 to 100"
             />
           </FormControl>
 
@@ -937,6 +969,7 @@ export default function NFLTable(props) {
               onChange={(e) => setNumLineups(e.target.value)}
               label="Optimize Lineups"
               fullWidth
+            // helperText={Variable && `Values are from 0 to 100`}
             >
               <MenuItem value={1}>1</MenuItem>
               <MenuItem value={5}>5</MenuItem>
@@ -947,8 +980,11 @@ export default function NFLTable(props) {
               <MenuItem value={150}>150</MenuItem>
               <MenuItem value={300}>300</MenuItem>
               <MenuItem value={500}>500</MenuItem>
-              <MenuItem value={1000}>1000</MenuItem>
+              <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={1000}>1000 - Upgrade to use</MenuItem>
             </Select>
+            <FormHelperText className={classes.helperText}>
+              {!false && `Not Paid account - sign up for the ability to optimize more lines like a shark`}
+            </FormHelperText>
           </FormControl>
 
           <FormControlLabel
