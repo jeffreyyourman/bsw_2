@@ -2,21 +2,29 @@ import React, { useState, useEffect } from "react";
 import { useTable, useSortBy, useFilters, usePagination } from "react-table";
 import { CSVLink } from "react-csv";
 // import columns from "./NflDfsTableColumns";
-import { useColumns } from "./NflDfsTableColumns";
+import { useColumns, useExcludeColumns } from "./NflDfsTableColumns";
 import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
 
 import axios from "axios";
 import { AiFillUnlock, AiFillLock } from "react-icons/fa";
 import { FiUnlock, FiLock } from "react-icons/fi";
-import { IoMdClose } from "react-icons/io";
-import Button from "@mui/material/Button";
-
+import { IoMdClose, IoMdAdd } from "react-icons/io";
+import { TextField, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
 import GameMatchups from '../../../../mockJson/nfl/week-2-2023-games-nextgenstats.json'
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NflPlayerPosFilter from "./NflPlayerPosFilters";
 import NFLPlayerSearch from "./NflPlayerSearch";
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#001F3F',  // Replace this hex code with your exact $primary-navy-blue color.
+    },
+  },
+});
 
 const TextFilter = ({ column }) => {
   const { filterValue, setFilter } = column;
@@ -29,7 +37,7 @@ const TextFilter = ({ column }) => {
   );
 };
 
-const Table = ({ columns, data, setData, setFilteredPlayers, excludePlayerLines, setExcludePlayerLines }) => {
+const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, excludePlayerLines, setExcludePlayerLines }) => {
   const filterTypes = React.useMemo(
     () => ({
       text: (rows, id, filterValue) => {
@@ -153,6 +161,25 @@ const Table = ({ columns, data, setData, setFilteredPlayers, excludePlayerLines,
     );
   };
 
+  function handleInclude(rowIndex) {
+    // Copy the excluded players to not directly mutate the state
+    let excludedCopy = [...excludePlayerLines];
+    const originalPlayers = [...data];
+    let playersFilteredCopy = [...filteredPlayers];
+
+    // Get the player to be included
+    const includedPlayer = excludedCopy.splice(rowIndex, 1)[0];
+
+    // Add that player back to its original position in the main list
+    const originalIndex = originalPlayers.findIndex(player => player.id === includedPlayer.id); // assuming each player has a unique id
+    playersFilteredCopy.splice(originalIndex, 0, includedPlayer);
+
+    // Update the state
+    setFilteredPlayers(playersFilteredCopy);
+    setExcludePlayerLines(excludedCopy);
+  }
+
+
   function handleExclude(rowIndex) {
     // Assuming data/filteredPlayers is a state variable and you have
     // a setter called setData or setFilteredPlayers, and setExcludePlayers for excludePlayers.
@@ -168,7 +195,7 @@ const Table = ({ columns, data, setData, setFilteredPlayers, excludePlayerLines,
     console.log('excludedCopy,excludedCopy);', excludedCopy)
 
     // Update the state
-    setData(playersCopy); // or setFilteredPlayers(playersCopy)
+
     setFilteredPlayers(playersCopy)
     setExcludePlayerLines(excludedCopy);
   }
@@ -250,13 +277,22 @@ const Table = ({ columns, data, setData, setFilteredPlayers, excludePlayerLines,
                                   }}
                                 >
                                   <IoMdClose style={{ color: 'red' }} />
-                                  {/* <FiLock style={{ color: 'red' }} /> */}
-
-                                  {/* {cell.value ? (
-                                    <FiLock style={{ color: 'red' }} />
-                                  ) : (
-                                    <FiUnlock style={{ color: 'green' }} />
-                                  )} */}
+                                </button>
+                              );
+                            }
+                            if (cell.column.Header === "Include") {
+                              return (
+                                <button
+                                  style={{
+                                    cursor: "pointer",
+                                    backgroundColor: "transparent",
+                                    border: "none",
+                                  }}
+                                  onClick={(e) => {
+                                    handleInclude(row.index);
+                                  }}
+                                >
+                                  <IoMdAdd style={{ color: 'green' }} />  {/* <-- This is a placeholder, replace with the appropriate icon */}
                                 </button>
                               );
                             }
@@ -335,37 +371,72 @@ const Table = ({ columns, data, setData, setFilteredPlayers, excludePlayerLines,
 
 export default function NFLTable(props) {
   const columns = useColumns();
+  const excludeColumns = useExcludeColumns();
   const nflPlayerList = NflPlayerList();
   const [lineups, setLineups] = useState([]);
   const [excludedLineups, setExcludedLineups] = useState([]);
   const [isDescendingOrder, setIsDescendingOrder] = useState(true);
   const [data, setData] = useState([]);
   const [filteredPlayers, setFilteredPlayers] = useState([]);
+  const [ogfilteredPlayers, setOgFilteredPlayers] = useState([]);
   const [exportPlayerLines, setExportPlayerLines] = useState([]);
   const [excludePlayerLines, setExcludePlayerLines] = useState([]);
+  const [ogExcludePlayerLines, setOgExcludePlayerLines] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [numLineups, setNumLineups] = useState(5);
-  const [site, setSite] = useState("FANDUEL");
-  const [sport, setSport] = useState("FOOTBALL");
+  const [open, setOpen] = React.useState(false);
+
+  const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
+  const [numLineups, setNumLineups] = useState(1);
+  // const [site, setSite] = useState("FANDUEL");
+  // const [sport, setSport] = useState("FOOTBALL");
   const [totalMinExp, setTotalMinExp] = useState(0);
   const [totalMaxExp, setTotalMaxExp] = useState(50);
   const [randomStd, setrandomStd] = useState(15);
   const [position, setPosition] = useState('All');
   // const [searchFilter, setSearchFilter] = useState('');
+  const [excludeOpposingDefense, setExcludeOpposingDefense] = useState(false);
+  const [pairQbWithWrOrTe, setPairQbWithWrOrTe] = useState(false);
+  const [excludeQbANdRb, setExcludeQbANdRb] = useState(false);
+  const [restrict2TEsSameTeam, setRestrict2TEsSameTeam] = useState(false);
+  // const [anotherCheckbox, setAnotherCheckbox] = useState(false);
+
+  const handleCheckboxChange = (setter) => (event) => {
+    setter(event.target.checked);
+  };
+  // useEffect(() => {
+  //   const filteredData = filteredPlayers.filter(player => {
+  //     // console.log('player.FPPG', player.FPPG);
+  //     if (player.FPPG === 0) {
+
+  //     }
+
+  //   });
+  // setData(nflPlayerList)
+  //   setExcludePlayerLines(nflPlayerList)
+  //   setFilteredPlayers(nflPlayerList);
+  // }, [])
 
   useEffect(() => {
-    setData(nflPlayerList)
-    setFilteredPlayers(nflPlayerList);
+    // Players with FPPG equal to 0
+    const excludedPlayers = nflPlayerList.filter(player => player.FPPG == 0);
+    // console.log('excludedPlayers', excludedPlayers);
 
-  }, [])
+    // Players with FPPG not equal to 0
+    const remainingPlayers = nflPlayerList.filter(player => player.FPPG != 0);
+    // console.log('remainingPlayers', remainingPlayers);
+    setData(nflPlayerList)
+    setExcludePlayerLines(excludedPlayers);
+    setOgExcludePlayerLines(excludedPlayers);
+    setFilteredPlayers(remainingPlayers);
+    setOgFilteredPlayers(remainingPlayers);
+  }, []);
 
   const handleSearchOnChange = (text) => {
     // console.log('e', text)
     if (position !== 'All') setPosition('All')
 
     let searchTextLowerCase = text.toLowerCase();
-    // console.log('searchTextLowerCase', searchTextLowerCase);
-    const filterName = data.filter((player) => {
+    const filterName = ogfilteredPlayers.filter((player) => {
       let newPlayerName = player.Nickname.toLowerCase();
       if (newPlayerName.includes(searchTextLowerCase)) {
         return player;
@@ -375,7 +446,24 @@ export default function NFLTable(props) {
     if (filterName.length !== 0) {
       setFilteredPlayers(filterName);
     } else {
-      setFilteredPlayers(data);
+      setFilteredPlayers(ogfilteredPlayers);
+    }
+  };
+  const handleSearchExcludedPlayersOnChange = (text) => {
+    if (position !== 'All') setPosition('All')
+
+    let searchTextLowerCase = text.toLowerCase();
+    const filterName = ogExcludePlayerLines.filter((player) => {
+      let newPlayerName = player.Nickname.toLowerCase();
+      if (newPlayerName.includes(searchTextLowerCase)) {
+        return player;
+      }
+    });
+    console.log('filtername;, fil', filterName)
+    if (filterName.length !== 0) {
+      setExcludePlayerLines(filterName);
+    } else {
+      setExcludePlayerLines(ogExcludePlayerLines);
     }
   };
 
@@ -386,7 +474,7 @@ export default function NFLTable(props) {
       setFilteredPlayers(data);
     } else {
 
-      setFilteredPlayers(data.filter(player => player.Position === position));
+      setFilteredPlayers(filteredPlayers.filter(player => player.Position === position));
     }
   };
 
@@ -434,8 +522,22 @@ export default function NFLTable(props) {
 
 
       console.log('formattedData', formattedData);
-      setData(formattedData);
-      setFilteredPlayers(formattedData)
+
+      const excludedPlayers = formattedData.filter(player => player.FPPG == 0);
+
+      // Players with FPPG not equal to 0
+      const remainingPlayers = formattedData.filter(player => player.FPPG != 0);
+      console.log('excludedPlayers', excludedPlayers);
+      console.log('remainingPlayers', remainingPlayers);
+      setData(formattedData)
+      setFilteredPlayers(remainingPlayers);
+      setOgFilteredPlayers(remainingPlayers);
+      setExcludePlayerLines(excludedPlayers);
+      setOgExcludePlayerLines(excludedPlayers);
+
+
+      // setData(formattedData);
+      // setFilteredPlayers(formattedData)
     }
     reader.readAsText(file);
   };
@@ -445,7 +547,7 @@ export default function NFLTable(props) {
 
     let zeroCount = 0;
 
-    const filteredData = data.filter(player => {
+    const filteredData = filteredPlayers.filter(player => {
       // console.log('player.FPPG', player.FPPG);
       if (player.FPPG < 2) {
         zeroCount++;
@@ -494,13 +596,11 @@ export default function NFLTable(props) {
       };
     });
 
-    console.log('transformedPlayers,', transformedPlayers);
-
-
+    
     let myargs = {
       numLineups: parseInt(numLineups, 10),
-      site,
-      sport,
+      site: 'FANDUEL',
+      sport: 'FOOTBALL',
       totalMinExp,
       totalMaxExp,
       randomStd,
@@ -516,29 +616,24 @@ export default function NFLTable(props) {
       // },
       maxFromSameTeam: 3,
       rules: [
-        {
-          stackType: 'position',
-          positions: ['QB', ['WR', 'TE']],
-          // positions: [ 'QB' , [ 'WR' , 'TE' ] ]
-        },
-        // {
-        //   stackType: 'restrictOpp',
-        //   team1Pos: ['D'],
-        //   team2Pos: ['QB', 'WR', 'RB', 'TE']
-        // },
-        // {
-        //   stackType: 'restrictSame',
-        //   positions: ['RB', 'QB'] //Don't want qb and rb from same team
-        // },
-        {
+        restrict2TEsSameTeam && {
           stackType: 'restrictSame',
           positions: ['TE', 'TE'] //Don't want te and te from same team
         },
-        // {
-        //   stackType: 'restrictSame',
-        //   positions: ['TE', 'WR'] //Don't want te and wr from same team
-        // },
-      ]
+        excludeQbANdRb && {
+          stackType: 'restrictSame',
+          positions: ['RB', 'QB'] //Don't want te and te from same team
+        },
+        pairQbWithWrOrTe && {
+          stackType: 'position',
+          positions: ['QB', ['WR', 'TE']]
+        },
+        excludeOpposingDefense && {
+          stackType: 'restrictOpp',
+          team1Pos: ['D'],
+          team2Pos: ['QB', 'WR', 'RB', 'TE']
+        },
+      ].filter(Boolean)
     };
     const headers = {
       "Content-Type": "application/json",
@@ -709,6 +804,16 @@ export default function NFLTable(props) {
     return [headers, ...csvData];
   };
 
+  const toggleAllAndExcludedPlayers = () => {
+    setIsShowingExcludePlayers(!isShowingExcludePlayers);
+  }
+
+  const toggleOptimizerBuildStackPropertiesDrawer = () => {
+    setOpen(!open);
+  }
+
+
+
   const toggleAndSortData = (lineupData, metric) => {
     // Toggle the sorting direction
     setIsDescendingOrder(!isDescendingOrder);
@@ -730,7 +835,6 @@ export default function NFLTable(props) {
   const sortByMetricDescending = (lineups, metric) => {
     return [...lineups].sort((a, b) => b[metric] - a[metric]);
   }
-
   const sortDataByAsc = (orderData, key) => {
     const sortedLineupsAsc = sortByMetricAscending(orderData, key)
     setLineups(sortedLineupsAsc);
@@ -740,23 +844,225 @@ export default function NFLTable(props) {
     setLineups(sortedLineupsDes);
   }
 
+
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <>
-      <input type="file" onChange={handleFileUpload} />
-      {data.length > 0 ? (
+    <ThemeProvider theme={theme}>
+      <LeftSideDrawer
+        open={open}
+        anchor={'right'}
+        handleDrawerOpen={handleDrawerOpen}
+        handleDrawerClose={handleDrawerClose}
+      >
+        <Box p={3} display="flex" flexDirection="column" alignItems="stretch">
+          <Typography variant="h4" gutterBottom>Optimizer Settings</Typography>
+
+          <input type="file" onChange={handleFileUpload} />
+
+          <FormControl margin="normal" fullWidth>
+            <TextField
+              label="Total Player Minimum Exposure"
+              type="number"
+              defaultValue={totalMinExp}
+              InputProps={{
+                inputProps: {
+                  max: totalMaxExp.length,
+                  min: 100
+                }
+              }}
+              onChange={(e) => {
+                setTotalMinExp(Number(e.target.value));
+              }}
+              fullWidth
+            />
+          </FormControl>
+
+          <FormControl margin="normal" fullWidth>
+            <TextField
+              label="Total Player Maximum Exposure"
+              type="number"
+              defaultValue={totalMaxExp}
+              InputProps={{
+                inputProps: {
+                  min: totalMinExp.length,
+                  max: 100
+                }
+              }}
+              onChange={(e) => {
+                setTotalMaxExp(Number(e.target.value));
+              }}
+              fullWidth
+            />
+          </FormControl>
+
+          <FormControl margin="normal" fullWidth>
+            <TextField
+              label="Random Standard Deviation"
+              type="number"
+              defaultValue={randomStd}
+              onChange={(e) => {
+                setrandomStd(Number(e.target.value));
+              }}
+              fullWidth
+            />
+          </FormControl>
+
+          <FormControl margin="normal" fullWidth variant="outlined">
+            <InputLabel id="numLineups-label">Optimize Lineups</InputLabel>
+            <Select
+              labelId="numLineups-label"
+              value={numLineups}
+              onChange={(e) => setNumLineups(e.target.value)}
+              label="Optimize Lineups"
+              fullWidth
+            >
+              <MenuItem value={1}>1</MenuItem>
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={10}>10</MenuItem>
+              <MenuItem value={25}>25</MenuItem>
+              <MenuItem value={50}>50</MenuItem>
+              <MenuItem value={100}>100</MenuItem>
+              <MenuItem value={150}>150</MenuItem>
+              <MenuItem value={300}>300</MenuItem>
+              <MenuItem value={500}>500</MenuItem>
+              <MenuItem value={1000}>1000</MenuItem>
+            </Select>
+          </FormControl>
+
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={excludeOpposingDefense}
+                onChange={handleCheckboxChange(setExcludeOpposingDefense)}
+                color="primary"
+              />
+            }
+            label="Exclude Opposing Defense"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={pairQbWithWrOrTe}
+                onChange={handleCheckboxChange(setPairQbWithWrOrTe)}
+                color="primary"
+
+              />
+            }
+            label="pair QB with WR and/or a TE "
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={excludeQbANdRb}
+                onChange={handleCheckboxChange(setExcludeQbANdRb)}
+                color="primary"
+              />
+            }
+            label="Exclude QB and RBs"
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={restrict2TEsSameTeam}
+                onChange={handleCheckboxChange(setRestrict2TEsSameTeam)}
+                color="primary"
+              />
+            }
+            label="Restrict 2 TEs from same team"
+          />
+
+          <Box mt={2}> {/* Added for a bit of margin-top for the button */}
+            <Button
+              disabled={loading}
+              onClick={handleSubmitPlayers}
+              className="bsw-primary-btns"
+              variant="contained"
+              fullWidth
+            >
+              Submit
+            </Button>
+          </Box>
+        </Box>
+      </LeftSideDrawer>
+
+
+      {filteredPlayers.length > 0 ? (
         <div>
           <GameMatchupsCarousel games={GameMatchups} />
-          <NflPlayerPosFilter
-            players={data}
-            selectedPosition={position}
-            filterPlayersByPosition={filterPlayersByPosition}
-            onPositionChange={setPosition}
 
-          // onPositionChange={filterPlayersByPosition} 
-          />
-          <NFLPlayerSearch data={data} onSearch={handleSearchOnChange} />
-          {/* <Button onClick={props.toggleAllAndExcludedPlayers}>{props.isShowingExcludePlayers ? 'Back to all' : 'exclude players' }</Button> */}
-          <div style={{ display: "flex" }}>
+          <div>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'flex-start',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              width: '100%'  // Ensure it takes full width
+            }}>
+              <div className="dfs-optimizer-filter-wrapper">
+                <NflPlayerPosFilter
+                  players={data}
+                  selectedPosition={position}
+                  filterPlayersByPosition={filterPlayersByPosition}
+                  onPositionChange={setPosition}
+                />
+              </div>
+              <div className="dfs-optimizer-filter-wrapper">
+                {isShowingExcludePlayers ?
+                  <NFLPlayerSearch
+                    data={excludePlayerLines}
+                    onSearch={handleSearchExcludedPlayersOnChange}
+                    isShowingExcludePlayers={isShowingExcludePlayers}
+                  />
+                  :
+                  <NFLPlayerSearch
+                    data={filteredPlayers}
+                    onSearch={handleSearchOnChange}
+                    isShowingExcludePlayers={isShowingExcludePlayers}
+                  />
+
+                }
+                {/* <NFLPlayerSearch
+                  data={isShowingExcludePlayers ?
+                    excludePlayerLines :
+                    filteredPlayers
+                  }
+                  onSearch={isShowingExcludePlayers ?
+                    handleSearchExcludedPlayersOnChange :
+                    handleSearchOnChange}
+                  isShowingExcludePlayers={isShowingExcludePlayers}
+                /> */}
+              </div>
+              <div className="dfs-optimizer-filter-wrapper">
+                <Button
+                  onClick={toggleAllAndExcludedPlayers}
+                  className="bsw-primary-btns"
+                  variant="contained"
+                >
+                  {isShowingExcludePlayers ? 'Back to all' : `View ${excludePlayerLines.length} excluded player(s)`}
+                </Button>
+              </div>
+              <div className="dfs-optimizer-filter-wrapper">
+                <Button
+                  onClick={toggleOptimizerBuildStackPropertiesDrawer}
+                  className="bsw-primary-btns"
+                  variant="contained"
+                >
+                  Filter Players
+                </Button>
+              </div>
+
+            </div>
+          </div>
+
+          {/* <div style={{ display: "flex" }}>
             <label>numLineups</label>
             <input
               type="number"
@@ -766,85 +1072,34 @@ export default function NFLTable(props) {
               }}
               style={{ width: "100px" }}
             />
-          </div>
-          <div style={{ display: "flex" }}>
-            <label>site</label>
-            <input
-              type="text"
-              defaultValue={site}
-              onChange={(e) => {
-                setSite(e.target.value);
-              }}
-              style={{ width: "100px" }}
-            />
-          </div>
-          <div style={{ display: "flex" }}>
-            <label>sport</label>
-            <input
-              type="text"
-              defaultValue={sport}
-              onChange={(e) => {
-                setSport(e.target.value);
-              }}
-              style={{ width: "100px" }}
-            />
-          </div>
-          <div style={{ display: "flex" }}>
-            <label>totalMinExp</label>
-            <input
-              type="number"
-              defaultValue={totalMinExp}
-              onChange={(e) => {
-                console.log('e.target.value', e.target.value)
-                console.log('typeof e.target.value', typeof e.target.value)
-                setTotalMinExp(Number(e.target.value));
-              }}
-              style={{ width: "100px" }}
-              min={100}  // Maximum value allowed
-              max={totalMaxExp.length}
-            />
-          </div>
-          <div style={{ display: "flex" }}>
-            <label>totalMaxExp</label>
-            <input
-              type="number"
-              defaultValue={totalMaxExp}
-              onChange={(e) => {
-                setTotalMaxExp(Number(e.target.value));
-              }}
-              style={{ width: "100px" }}
-              max={100}  // Maximum value allowed
-              min={totalMinExp.length}
-            />
-          </div>
-          <div style={{ display: "flex" }}>
-            <label>randomize lines</label>
-            <input
-              type="number"
-              defaultValue={randomStd}
-              onChange={(e) => {
-                setrandomStd(Number(e.target.value));
-              }}
-              style={{ width: "100px" }}
-            />
-          </div>
-          <button
-            disabled={loading}
-            onClick={handleSubmitPlayers}
-          >
-            Submit
-          </button>
+          </div> */}
+
+
+
           <div style={{ overflow: "auto" }}>
-            {/* <Table columns={columns} data={data} setData={setData} /> */}
-            <Table
-              columns={columns}
-              data={filteredPlayers}
+            {isShowingExcludePlayers ? <Table
+              columns={excludeColumns}
+              data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
               setData={setData}
               setFilteredPlayers={setFilteredPlayers}
+              filteredPlayers={filteredPlayers}
               excludePlayerLines={excludePlayerLines}
 
               setExcludePlayerLines={setExcludePlayerLines} />
-            {/* <Table columns={columns} data={position === 'All' ? data : filteredPlayers} setData={setData} /> */}
+              :
+
+              <Table
+                columns={columns}
+                data={filteredPlayers}
+                setData={setData}
+                setFilteredPlayers={setFilteredPlayers}
+                filteredPlayers={filteredPlayers}
+                excludePlayerLines={excludePlayerLines}
+
+                setExcludePlayerLines={setExcludePlayerLines} />
+
+            }
+
             {lineups.length !== 0 && (
               <div style={{ marginTop: "64px" }}>
                 <p>total lines: {lineups.length}</p>
@@ -860,6 +1115,6 @@ export default function NFLTable(props) {
           </div>
         </div>
       ) : null}
-    </>
+    </ThemeProvider>
   );
 }

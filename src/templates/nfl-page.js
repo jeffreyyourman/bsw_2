@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import NflDfsLayout from "../components/layouts/NflDfsLayout";
-import FullWidthImage from "../components/FullWidthImage";
-import NFLTable from "../components/tables/dfs/nfl/NFLTable";
 import NFLDfsSiteTabs from '../components/tabs/NFLDfsSiteTabs';
 import LeftSideDrawer from "../components/drawers/LeftSideDrawer";
 
@@ -18,16 +16,7 @@ export const DfsPageTemplate = ({
   intro,
   main,
 }) => {
-  const [lineups, setLineups] = useState([]);
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+ 
   // const heroImage = getImage(image) || image;
   // console.log({
   //   image,
@@ -43,15 +32,7 @@ export const DfsPageTemplate = ({
   // console.log("lineups", lineups);
   return (
     <div>
-      <button onClick={handleDrawerOpen}>open left drawer</button>
-      <LeftSideDrawer
-        open={open}
-        anchor={'left'}
-        handleDrawerOpen={handleDrawerOpen}
-        handleDrawerClose={handleDrawerClose}
-      >
-        <h1>left side drawer homieeee</h1>
-      </LeftSideDrawer>
+   
       <NFLDfsSiteTabs heading={heading} title={title} />
     </div>
   );
@@ -70,7 +51,6 @@ const DFsPage = ({ data }) => {
 
   return (
     <NflDfsLayout>
-      {/* <LeftSideDrawer /> */}
 
       <DfsPageTemplate
         image={frontmatter.image}

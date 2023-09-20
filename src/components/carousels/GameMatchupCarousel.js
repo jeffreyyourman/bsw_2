@@ -31,11 +31,12 @@ function GameMatchupsCarousel({ games }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Typography variant="h4">{'Week ' + (games.games[0].week || '')}</Typography>
-      <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', width:'100%' }}>
+      {/* <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}> */}
         <IconButton onClick={handlePrev}>
           <ChevronLeft />
         </IconButton>
-        <div ref={carouselRef} style={{ overflow: 'hidden', display: 'flex', width: '1000px' }}>
+        <div ref={carouselRef} style={{ overflow: 'hidden', display: 'flex', width: '100%' }}>
           <div style={{ display: 'flex', transform: `translateX(-${currentIndex * 260}px)` }}>
             {games.games.map(game => (
               <div key={game.gameKey} style={{ width: '250px', margin: '0 5px' }}>

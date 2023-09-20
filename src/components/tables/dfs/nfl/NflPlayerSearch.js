@@ -1,23 +1,35 @@
 import React, { useState } from 'react';
-import { TextField } from '@mui/material';
+import { TextField, InputAdornment } from '@mui/material';
+import {
+    IoMdSearch,
+    IoIosSearch,
+} from "react-icons/io";
 
-function NFLPlayerSearch({ onSearch }) {
+
+function NFLPlayerSearch(props) {
     const [searchText, setSearchText] = useState('');
 
     const handleSearch = (event) => {
         const searchTerm = event.target.value;
         setSearchText(searchTerm);
-        onSearch(searchTerm);  // Notify the parent component
+        props.onSearch(searchTerm);  // Notify the parent component
     };
 
     return (
         <div style={{ marginBottom: '20px' }}>
-            <TextField 
-                label="Search Player/Team" 
-                variant="outlined" 
-                fullWidth 
+            <TextField
+                label={props.isShowingExcludePlayers ? 'Search Exluded Players/Teams' : "Search Player/Team"}
+                variant="outlined"
+                fullWidth
                 value={searchText}
-                onChange={handleSearch} 
+                onChange={handleSearch}
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start">
+                            <IoIosSearch />
+                        </InputAdornment>
+                    ),
+                }}
             />
         </div>
     );
