@@ -310,7 +310,10 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
                             else {
                               return (
                                 <input
-                                  type="text"
+                                  type="number"
+                                  min={0}
+                                  max={cell.column.Header === "Projections" ? 200 : 100}
+                                  style={{ minWidth: "75px", width: "75px", textAlign: "center" }}
                                   value={cell.value}
                                   onChange={(e) => {
                                     handleInputChange(e, row.index, cell.column.id);
@@ -607,7 +610,7 @@ export default function NFLTable(props) {
       };
     });
 
-    
+
     let myargs = {
       numLineups: parseInt(numLineups, 10),
       site: 'FANDUEL',
@@ -1018,14 +1021,14 @@ export default function NFLTable(props) {
               width: '100%'  // Ensure it takes full width
             }}>
               {!isShowingExcludePlayers &&
-              <div className="dfs-optimizer-filter-wrapper">
-                <NflPlayerPosFilter
-                  players={data}
-                  selectedPosition={position}
-                  filterPlayersByPosition={filterPlayersByPosition}
-                  onPositionChange={setPosition}
-                />
-              </div>}
+                <div className="dfs-optimizer-filter-wrapper">
+                  <NflPlayerPosFilter
+                    players={data}
+                    selectedPosition={position}
+                    filterPlayersByPosition={filterPlayersByPosition}
+                    onPositionChange={setPosition}
+                  />
+                </div>}
               <div className="dfs-optimizer-filter-wrapper">
                 {isShowingExcludePlayers ?
                   <NFLPlayerSearch
@@ -1052,15 +1055,15 @@ export default function NFLTable(props) {
                 </Button>
               </div>
               {!isShowingExcludePlayers &&
-              <div className="dfs-optimizer-filter-wrapper">
-                <Button
-                  onClick={toggleOptimizerBuildStackPropertiesDrawer}
-                  className="bsw-primary-btns"
-                  variant="contained"
-                >
-                  Filter Players
-                </Button>
-              </div>}
+                <div className="dfs-optimizer-filter-wrapper">
+                  <Button
+                    onClick={toggleOptimizerBuildStackPropertiesDrawer}
+                    className="bsw-primary-btns"
+                    variant="contained"
+                  >
+                    Filter Players
+                  </Button>
+                </div>}
 
             </div>
           </div>

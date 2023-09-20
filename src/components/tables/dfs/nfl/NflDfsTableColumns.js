@@ -512,7 +512,7 @@ export function useExcludeColumns() {
                 editable: true,
                 disableFilters: true
             },
-         
+
 
         ],
         []
