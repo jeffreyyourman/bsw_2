@@ -69,7 +69,15 @@ function NflDfsSiteTabs(props) {
                         <div className="section">
                             <div className="columns">
                                 <div className="column is-12">
+
+                                    {/* 
+                                    - need to show here, when showExcludedTable is true show NFLExcludeTable and when false show real table
+                                    this should be set to false. SHowing real table. 
+                                    - need to add a button to show/hide the exclude table
+                                    - This will be all players projected 0 will start in the exclude table.
+                                    */}
                                     <NFLTable />
+                                    {/* <NFLTable /> */}
                                 </div>
 
                             </div>

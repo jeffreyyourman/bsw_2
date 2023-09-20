@@ -8,7 +8,10 @@ import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
 import axios from "axios";
 import { AiFillUnlock, AiFillLock } from "react-icons/fa";
 import { FiUnlock, FiLock } from "react-icons/fi";
-// import LeftSideDrawer from "./drawers/LeftSideDrawer";
+import { IoMdClose } from "react-icons/io";
+import Button from "@mui/material/Button";
+
+import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
 import GameMatchups from '../../../../mockJson/nfl/week-2-2023-games-nextgenstats.json'
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
@@ -26,7 +29,7 @@ const TextFilter = ({ column }) => {
   );
 };
 
-const Table = ({ columns, data, setData }) => {
+const Table = ({ columns, data, setData, setFilteredPlayers, excludePlayerLines, setExcludePlayerLines }) => {
   const filterTypes = React.useMemo(
     () => ({
       text: (rows, id, filterValue) => {
@@ -108,6 +111,17 @@ const Table = ({ columns, data, setData }) => {
         return row;
       })
     );
+    setFilteredPlayers((prevData) =>
+      prevData.map((row, index) => {
+        if (index === rowIndex) {
+          return {
+            ...row,
+            [columnId]: value,
+          };
+        }
+        return row;
+      })
+    );
   };
   const handleLock = (value, rowIndex, columnId) => {
     // const { value } = e.target;
@@ -126,7 +140,40 @@ const Table = ({ columns, data, setData }) => {
         return row;
       })
     );
+    setFilteredPlayers((prevData) =>
+      prevData.map((row, index) => {
+        if (index === rowIndex) {
+          return {
+            ...row,
+            [columnId]: value,
+          };
+        }
+        return row;
+      })
+    );
   };
+
+  function handleExclude(rowIndex) {
+    // Assuming data/filteredPlayers is a state variable and you have
+    // a setter called setData or setFilteredPlayers, and setExcludePlayers for excludePlayers.
+
+    // Copy the data to not directly mutate the state
+    let playersCopy = [...data]; // or [...filteredPlayers]
+    let excludedCopy = [...excludePlayerLines];
+    // Get the player to be excluded
+    const excludedPlayer = playersCopy.splice(rowIndex, 1)[0]; // This will remove the player from playersCopy
+
+    // Add that player to the excludedCopy
+    excludedCopy.push(excludedPlayer);
+    console.log('excludedCopy,excludedCopy);', excludedCopy)
+
+    // Update the state
+    setData(playersCopy); // or setFilteredPlayers(playersCopy)
+    setFilteredPlayers(playersCopy)
+    setExcludePlayerLines(excludedCopy);
+  }
+
+
 
   return (
     <>
@@ -168,39 +215,70 @@ const Table = ({ columns, data, setData }) => {
                   return (
                     <td {...cellProps}>
                       {isEditable ? (
-                        cell.column.Header === "Lock" ? (
-                          <button
-                            style={{
-                              backgroundColor: "transparent",
-                              border: "none",
-                            }}
-                            onClick={(e) => {
-                              handleLock(
-                                !cell.value,
-                                row.index,
-                                cell.column.id
+                        <>
+                          {(() => {
+                            if (cell.column.Header === "Lock") {
+                              return (
+                                <button
+                                  style={{
+                                    backgroundColor: "transparent",
+                                    border: "none",
+                                    cursor: "pointer",
+                                  }}
+                                  onClick={(e) => {
+                                    handleLock(!cell.value, row.index, cell.column.id);
+                                  }}
+                                >
+                                  {cell.value ? (
+                                    <FiLock style={{ color: 'red' }} />
+                                  ) : (
+                                    <FiUnlock style={{ color: 'green' }} />
+                                  )}
+                                </button>
                               );
-                            }}
-                          >
-                            {cell.value ? <FiLock style={{ color: 'red' }} /> : <FiUnlock style={{ color: 'green' }} />}
-                            {/* {isSubmitted ? "Remove" : "Toggle"} */}
-                          </button>
-                        ) : (
-                          <input
-                            type="text"
-                            value={cell.value}
-                            onChange={(e) => {
-                              // const newValue = e.target.value;
-                              // row.cells[cell.column.id].value = newValue;
-                              handleInputChange(e, row.index, cell.column.id);
-                            }}
-                          />
-                        )
+                            }
+                            if (cell.column.Header === "Exclude") {
+                              return (
+                                <button
+                                  style={{
+                                    cursor: "pointer",
+                                    backgroundColor: "transparent",
+                                    border: "none",
+                                  }}
+                                  onClick={(e) => {
+                                    handleExclude(row.index);
+                                  }}
+                                >
+                                  <IoMdClose style={{ color: 'red' }} />
+                                  {/* <FiLock style={{ color: 'red' }} /> */}
+
+                                  {/* {cell.value ? (
+                                    <FiLock style={{ color: 'red' }} />
+                                  ) : (
+                                    <FiUnlock style={{ color: 'green' }} />
+                                  )} */}
+                                </button>
+                              );
+                            }
+                            else {
+                              return (
+                                <input
+                                  type="text"
+                                  value={cell.value}
+                                  onChange={(e) => {
+                                    handleInputChange(e, row.index, cell.column.id);
+                                  }}
+                                />
+                              );
+                            }
+                          })()}
+                        </>
                       ) : (
                         cell.render("Cell")
                       )}
                     </td>
                   );
+
                 })}
               </tr>
             );
@@ -264,6 +342,7 @@ export default function NFLTable(props) {
   const [data, setData] = useState([]);
   const [filteredPlayers, setFilteredPlayers] = useState([]);
   const [exportPlayerLines, setExportPlayerLines] = useState([]);
+  const [excludePlayerLines, setExcludePlayerLines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [numLineups, setNumLineups] = useState(5);
   const [site, setSite] = useState("FANDUEL");
@@ -356,6 +435,7 @@ export default function NFLTable(props) {
 
       console.log('formattedData', formattedData);
       setData(formattedData);
+      setFilteredPlayers(formattedData)
     }
     reader.readAsText(file);
   };
@@ -467,9 +547,9 @@ export default function NFLTable(props) {
 
     axios
       .post(
-        "https://bsw-be-api.onrender.com/optimizer",
+        // "https://bsw-be-api.onrender.com/optimizer",
         // "https://anxious-teal-gilet.cyclic.cloud/optimizer",
-        // "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
+        "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         { data: myargs },
         {
           // headers,
@@ -675,7 +755,7 @@ export default function NFLTable(props) {
           // onPositionChange={filterPlayersByPosition} 
           />
           <NFLPlayerSearch data={data} onSearch={handleSearchOnChange} />
-
+          {/* <Button onClick={props.toggleAllAndExcludedPlayers}>{props.isShowingExcludePlayers ? 'Back to all' : 'exclude players' }</Button> */}
           <div style={{ display: "flex" }}>
             <label>numLineups</label>
             <input
@@ -756,7 +836,14 @@ export default function NFLTable(props) {
           </button>
           <div style={{ overflow: "auto" }}>
             {/* <Table columns={columns} data={data} setData={setData} /> */}
-            <Table columns={columns} data={filteredPlayers} setData={setData} />
+            <Table
+              columns={columns}
+              data={filteredPlayers}
+              setData={setData}
+              setFilteredPlayers={setFilteredPlayers}
+              excludePlayerLines={excludePlayerLines}
+
+              setExcludePlayerLines={setExcludePlayerLines} />
             {/* <Table columns={columns} data={position === 'All' ? data : filteredPlayers} setData={setData} /> */}
             {lineups.length !== 0 && (
               <div style={{ marginTop: "64px" }}>
