@@ -12,6 +12,14 @@ export function useColumns() {
                 editable: true,
             },
             {
+                Header: "Exclude",
+                minWidth:1000,
+                accessor: "excludePlayer",
+                disableFilters: true,
+                disableSortBy: true,
+                editable: true,
+            },
+            {
                 Header: "Id",
                 minWidth:1000,
                 accessor: "Id",

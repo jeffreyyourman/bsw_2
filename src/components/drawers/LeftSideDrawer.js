@@ -6,8 +6,7 @@ import MuiAppBar from "@mui/material/AppBar";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 // import PlayerNewsList from "../../components/PlayerNewsList";
-// https://www.nbcsportsedge.com/api/player_news?page%5Blimit%5D=10&sort=-initial_published_date&include=team,league,league.sport&filter%5Bsport_headline%5D=1&filter%5Bleague.meta.drupal_internal__id%5D=11
-const drawerWidth = 240;
+const drawerWidth = 350;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -18,16 +17,14 @@ const openedMixin = (theme) => ({
   overflowX: "hidden",
 });
 
+
 const closedMixin = (theme) => ({
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
+  width: 0, // Set width to 0 so that the drawer doesn't show when closed
 });
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -74,82 +71,61 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
+export default function LeftSideDrawer(props) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+  // const handleDrawerOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  // const handleDrawerClose = () => {
+  //   setOpen(false);
+  // };
+
+
+  // {!open ? (
+  //   <IconButton
+  //     // color="inherit"
+  //     // aria-label="open drawer"
+  //     onClick={handleDrawerOpen}
+  //     // edge="start"
+  //     // sx={{
+  //     // //   marginRight: 5,
+  //     //   ...(open && { display: "none" }),
+  //     // }}
+  //   >
+  //     <span>O</span>
+  //   </IconButton>
+  // ) : (
+  // {open ? (
+  //   <>
+  //     <h1>{"Player News"}</h1>
+
+  //   </>
+  // ) : (
+  //   <>
+  //     <p>Open</p>
+  //     <p>for</p>
+  //     <p>News</p>
+  //   </>
+  // )}
 
   return (
-    <Drawer variant="permanent" open={open}>
+    <Drawer variant="permanent"  anchor={props.anchor} open={props.open}>
       <DrawerHeader>
-        {!open ? (
-          <IconButton
-            // color="inherit"
-            // aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            // edge="start"
-            // sx={{
-            // //   marginRight: 5,
-            //   ...(open && { display: "none" }),
-            // }}
-          >
-            <span>O</span>
-          </IconButton>
-        ) : (
-          <IconButton onClick={handleDrawerClose}>
-            <span>X</span>
-            {/* {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />} */}
-          </IconButton>
-        )}
+
+        <IconButton onClick={props.handleDrawerClose}>
+          <span>X</span>
+          {/* {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />} */}
+        </IconButton>
       </DrawerHeader>
 
       <Divider />
       <div>
-        {open ? (
-          <>
-            <h1>{"Player News"}</h1>
-
-            {/* <PlayerNewsList /> */}
-          </>
-        ) : (
-          <>
-            <p>Open</p>
-            <p>for</p>
-            <p>News</p>
-          </>
-        )}
+        {props.children}
       </div>
-      {/* <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List> */}
+
     </Drawer>
   );
 }
