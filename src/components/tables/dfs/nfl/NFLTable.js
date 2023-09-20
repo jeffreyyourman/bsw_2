@@ -21,7 +21,18 @@ import { createTheme, ThemeProvider } from '@material-ui/core/styles';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#001F3F',  // Replace this hex code with your exact $primary-navy-blue color.
+      main: '#0a3d62',  // primary-navy-blue
+    },
+  },
+  components: {
+    MuiCheckbox: {
+      styleOverrides: {
+        colorPrimary: {
+          '&.Mui-checked': {
+            color: '#0a3d62',  // primary-navy-blue
+          },
+        },
+      },
     },
   },
 });
@@ -1006,6 +1017,7 @@ export default function NFLTable(props) {
               flexWrap: 'wrap',
               width: '100%'  // Ensure it takes full width
             }}>
+              {!isShowingExcludePlayers &&
               <div className="dfs-optimizer-filter-wrapper">
                 <NflPlayerPosFilter
                   players={data}
@@ -1013,7 +1025,7 @@ export default function NFLTable(props) {
                   filterPlayersByPosition={filterPlayersByPosition}
                   onPositionChange={setPosition}
                 />
-              </div>
+              </div>}
               <div className="dfs-optimizer-filter-wrapper">
                 {isShowingExcludePlayers ?
                   <NFLPlayerSearch
@@ -1029,16 +1041,6 @@ export default function NFLTable(props) {
                   />
 
                 }
-                {/* <NFLPlayerSearch
-                  data={isShowingExcludePlayers ?
-                    excludePlayerLines :
-                    filteredPlayers
-                  }
-                  onSearch={isShowingExcludePlayers ?
-                    handleSearchExcludedPlayersOnChange :
-                    handleSearchOnChange}
-                  isShowingExcludePlayers={isShowingExcludePlayers}
-                /> */}
               </div>
               <div className="dfs-optimizer-filter-wrapper">
                 <Button
@@ -1049,6 +1051,7 @@ export default function NFLTable(props) {
                   {isShowingExcludePlayers ? 'Back to all' : `View ${excludePlayerLines.length} excluded player(s)`}
                 </Button>
               </div>
+              {!isShowingExcludePlayers &&
               <div className="dfs-optimizer-filter-wrapper">
                 <Button
                   onClick={toggleOptimizerBuildStackPropertiesDrawer}
@@ -1057,7 +1060,7 @@ export default function NFLTable(props) {
                 >
                   Filter Players
                 </Button>
-              </div>
+              </div>}
 
             </div>
           </div>
