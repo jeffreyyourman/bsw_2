@@ -14,11 +14,17 @@ function GameMatchupsCarousel({ games }) {
     setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, games.games.length - 4));
   };
 
+  // const formatDate = (dateStr) => {
+  //   const dateObj = new Date(dateStr);
+  //   return dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  // };
+
   const formatDate = (dateStr) => {
     const dateObj = new Date(dateStr);
-    return dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    return dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' });
   };
 
+  
   const formatTime = (timeStr) => {
     let [hours, minutes] = timeStr.split(':');
     hours = parseInt(hours, 10);

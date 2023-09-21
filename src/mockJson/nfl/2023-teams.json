@@ -499,34 +499,6 @@
         "divisionAbbr": "ACW"
     },
     {
-        "abbr": "LA",
-        "cityState": "Los Angeles",
-        "conference": {
-            "id": "0015",
-            "abbr": "NFC",
-            "fullName": "National Football Conference"
-        },
-        "conferenceAbbr": "NFC",
-        "fullName": "Los Angeles Rams",
-        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/LA",
-        "nick": "Rams",
-        "season": 2023,
-        "smartId": "10402510-8931-0d5f-9815-79bb79649a65",
-        "stadiumName": "SoFi Stadium",
-        "teamId": "2510",
-        "teamSiteTicketUrl": "http://welcomehomerams.com/",
-        "teamSiteUrl": "http://www.therams.com/",
-        "teamType": "TEAM",
-        "ticketPhoneNumber": "314-425-8830",
-        "yearFound": 1937,
-        "division": {
-            "id": "0018",
-            "abbr": "NCW",
-            "fullName": "NFC West Division"
-        },
-        "divisionAbbr": "NCW"
-    },
-    {
         "abbr": "LAC",
         "cityState": "Los Angeles",
         "conference": {
@@ -553,6 +525,34 @@
             "fullName": "AFC West Division"
         },
         "divisionAbbr": "ACW"
+    },
+    {
+        "abbr": "LA",
+        "cityState": "Los Angeles",
+        "conference": {
+            "id": "0015",
+            "abbr": "NFC",
+            "fullName": "National Football Conference"
+        },
+        "conferenceAbbr": "NFC",
+        "fullName": "Los Angeles Rams",
+        "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/LA",
+        "nick": "Rams",
+        "season": 2023,
+        "smartId": "10402510-8931-0d5f-9815-79bb79649a65",
+        "stadiumName": "SoFi Stadium",
+        "teamId": "2510",
+        "teamSiteTicketUrl": "http://welcomehomerams.com/",
+        "teamSiteUrl": "http://www.therams.com/",
+        "teamType": "TEAM",
+        "ticketPhoneNumber": "314-425-8830",
+        "yearFound": 1937,
+        "division": {
+            "id": "0018",
+            "abbr": "NCW",
+            "fullName": "NFC West Division"
+        },
+        "divisionAbbr": "NCW"
     },
     {
         "abbr": "MIA",

@@ -12,7 +12,7 @@ import { IoMdClose, IoMdAdd } from "react-icons/io";
 import { TextField, FormHelperText, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
-import GameMatchups from '../../../../mockJson/nfl/week-2-2023-games-nextgenstats.json'
+import GameMatchups from '../../../../mockJson/nfl/nfl-current-games-nextgenstats.json'
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NflPlayerPosFilter from "./NflPlayerPosFilters";
 import NFLPlayerSearch from "./NflPlayerSearch";

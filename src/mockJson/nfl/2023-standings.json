@@ -3,7 +3,7 @@
     "seasonType": "REG",
     "weeks": [
         {
-            "week": 2,
+            "week": 3,
             "standings": [
                 {
                     "team": {
@@ -21,18 +21,18 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
-                        "rank": 12,
+                        "rank": 15,
                         "points": {
-                            "for": 16,
-                            "against": 20
+                            "for": 44,
+                            "against": 51
                         }
                     },
                     "division": {
@@ -40,7 +40,7 @@
                         "winPct": 0.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 3,
+                        "rank": 4,
                         "points": {
                             "for": 0,
                             "against": 0
@@ -49,36 +49,36 @@
                     "home": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 28,
+                            "against": 31
                         }
                     },
                     "last5": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 16,
-                            "against": 20
+                            "for": 44,
+                            "against": 51
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 16,
-                            "against": 20
+                            "for": 44,
+                            "against": 51
                         },
                         "streak": {
                             "type": "L",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
@@ -107,19 +107,19 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 0,
+                        "wins": 1,
                         "losses": 0,
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "rank": 3,
                         "points": {
-                            "for": 24,
-                            "against": 10
+                            "for": 49,
+                            "against": 34
                         }
                     },
                     "division": {
@@ -134,38 +134,38 @@
                         }
                     },
                     "home": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 24,
-                            "against": 10
+                            "for": 49,
+                            "against": 34
                         }
                     },
                     "last5": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 24,
-                            "against": 10
+                            "for": 49,
+                            "against": 34
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 1,
+                        "games": 2,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 24,
-                            "against": 10
+                            "for": 49,
+                            "against": 34
                         },
                         "streak": {
                             "type": "W",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
@@ -194,30 +194,30 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 0,
+                        "wins": 1,
                         "losses": 0,
                         "ties": 0
                     },
                     "conference": {
+                        "wins": 2,
+                        "winPct": 1.0,
+                        "losses": 0,
+                        "ties": 0,
+                        "rank": 1,
+                        "points": {
+                            "for": 52,
+                            "against": 33
+                        }
+                    },
+                    "division": {
                         "wins": 1,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 5,
+                        "rank": 1,
                         "points": {
-                            "for": 25,
-                            "against": 9
-                        }
-                    },
-                    "division": {
-                        "wins": 0,
-                        "winPct": 0.0,
-                        "losses": 0,
-                        "ties": 0,
-                        "rank": 2,
-                        "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 27,
+                            "against": 24
                         }
                     },
                     "home": {
@@ -231,38 +231,38 @@
                         }
                     },
                     "last5": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 25,
-                            "against": 9
+                            "for": 52,
+                            "against": 33
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
+                        "wins": 2,
+                        "winPct": 1.0,
+                        "losses": 0,
+                        "ties": 0,
+                        "points": {
+                            "for": 52,
+                            "against": 33
+                        },
+                        "streak": {
+                            "type": "W",
+                            "length": 2
+                        }
+                    },
+                    "road": {
                         "wins": 1,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 25,
-                            "against": 9
-                        },
-                        "streak": {
-                            "type": "W",
-                            "length": 1
-                        }
-                    },
-                    "road": {
-                        "wins": 0,
-                        "winPct": 0.0,
-                        "losses": 0,
-                        "ties": 0,
-                        "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 27,
+                            "against": 24
                         }
                     }
                 },
@@ -286,14 +286,14 @@
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
-                        "rank": 10,
+                        "rank": 8,
                         "points": {
-                            "for": 16,
-                            "against": 22
+                            "for": 54,
+                            "against": 32
                         }
                     },
                     "division": {
@@ -301,44 +301,44 @@
                         "winPct": 0.0,
                         "losses": 1,
                         "ties": 0,
-                        "rank": 4,
+                        "rank": 3,
                         "points": {
                             "for": 16,
                             "against": 22
                         }
                     },
                     "home": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 38,
+                            "against": 10
                         }
                     },
                     "last5": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 16,
-                            "against": 22
+                            "for": 54,
+                            "against": 32
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "games": 2,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 16,
-                            "against": 22
+                            "for": 54,
+                            "against": 32
                         },
                         "streak": {
-                            "type": "L",
+                            "type": "W",
                             "length": 1
                         }
                     },
@@ -369,64 +369,64 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
-                        "rank": 14,
+                        "rank": 16,
                         "points": {
-                            "for": 10,
-                            "against": 24
+                            "for": 27,
+                            "against": 44
                         }
                     },
                     "division": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "rank": 4,
                         "points": {
-                            "for": 10,
-                            "against": 24
+                            "for": 27,
+                            "against": 44
                         }
                     },
                     "home": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 17,
+                            "against": 20
                         }
                     },
                     "last5": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 10,
-                            "against": 24
+                            "for": 27,
+                            "against": 44
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 10,
-                            "against": 24
+                            "for": 27,
+                            "against": 44
                         },
                         "streak": {
                             "type": "L",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
@@ -462,12 +462,12 @@
                     "conference": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "rank": 13,
                         "points": {
-                            "for": 20,
-                            "against": 38
+                            "for": 37,
+                            "against": 65
                         }
                     },
                     "division": {
@@ -475,7 +475,7 @@
                         "winPct": 0.0,
                         "losses": 1,
                         "ties": 0,
-                        "rank": 3,
+                        "rank": 4,
                         "points": {
                             "for": 20,
                             "against": 38
@@ -494,36 +494,36 @@
                     "last5": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 38
+                            "for": 37,
+                            "against": 65
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 38
+                            "for": 37,
+                            "against": 65
                         },
                         "streak": {
                             "type": "L",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 17,
+                            "against": 27
                         }
                     }
                 },
@@ -543,64 +543,64 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "rank": 16,
                         "points": {
-                            "for": 3,
-                            "against": 24
+                            "for": 27,
+                            "against": 51
                         }
                     },
                     "division": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
-                        "rank": 3,
+                        "rank": 4,
                         "points": {
-                            "for": 3,
-                            "against": 24
+                            "for": 27,
+                            "against": 51
                         }
                     },
                     "home": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 24,
+                            "against": 27
                         }
                     },
                     "last5": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 3,
-                            "against": 24
+                            "for": 27,
+                            "against": 51
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 3,
-                            "against": 24
+                            "for": 27,
+                            "against": 51
                         },
                         "streak": {
                             "type": "L",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
@@ -630,29 +630,29 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
-                        "rank": 1,
+                        "rank": 9,
                         "points": {
-                            "for": 24,
-                            "against": 3
+                            "for": 46,
+                            "against": 29
                         }
                     },
                     "division": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
-                        "rank": 1,
+                        "rank": 3,
                         "points": {
-                            "for": 24,
-                            "against": 3
+                            "for": 46,
+                            "against": 29
                         }
                     },
                     "home": {
@@ -667,37 +667,37 @@
                     },
                     "last5": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 24,
-                            "against": 3
+                            "for": 46,
+                            "against": 29
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 24,
-                            "against": 3
+                            "for": 46,
+                            "against": 29
                         },
                         "streak": {
-                            "type": "W",
+                            "type": "L",
                             "length": 1
                         }
                     },
                     "road": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 22,
+                            "against": 26
                         }
                     }
                 },
@@ -725,7 +725,7 @@
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 5,
+                        "rank": 1,
                         "points": {
                             "for": 40,
                             "against": 0
@@ -736,45 +736,45 @@
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 2,
+                        "rank": 1,
                         "points": {
                             "for": 40,
                             "against": 0
                         }
                     },
                     "home": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 30,
+                            "against": 10
                         }
                     },
                     "last5": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 40,
-                            "against": 0
+                            "for": 70,
+                            "against": 10
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 1,
+                        "games": 2,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 40,
-                            "against": 0
+                            "for": 70,
+                            "against": 10
                         },
                         "streak": {
                             "type": "W",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
@@ -804,7 +804,7 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0
                     },
                     "conference": {
@@ -812,7 +812,7 @@
                         "winPct": 0.0,
                         "losses": 1,
                         "ties": 0,
-                        "rank": 9,
+                        "rank": 13,
                         "points": {
                             "for": 16,
                             "against": 17
@@ -832,36 +832,36 @@
                     "home": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 16,
-                            "against": 17
+                            "for": 49,
+                            "against": 52
                         }
                     },
                     "last5": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 16,
-                            "against": 17
+                            "for": 49,
+                            "against": 52
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 16,
-                            "against": 17
+                            "for": 49,
+                            "against": 52
                         },
                         "streak": {
                             "type": "L",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
@@ -891,18 +891,18 @@
                     },
                     "closeGames": {
                         "wins": 1,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
-                        "rank": 9,
+                        "rank": 12,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 31,
+                            "against": 37
                         }
                     },
                     "division": {
@@ -919,35 +919,35 @@
                     "home": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 31,
+                            "against": 37
                         }
                     },
                     "last5": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 21,
-                            "against": 20
+                            "for": 52,
+                            "against": 57
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 21,
-                            "against": 20
+                            "for": 52,
+                            "against": 57
                         },
                         "streak": {
-                            "type": "W",
+                            "type": "L",
                             "length": 1
                         }
                     },
@@ -978,18 +978,18 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "rank": 4,
                         "points": {
-                            "for": 38,
-                            "against": 20
+                            "for": 62,
+                            "against": 45
                         }
                     },
                     "division": {
@@ -1015,37 +1015,37 @@
                     },
                     "last5": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 38,
-                            "against": 20
+                            "for": 62,
+                            "against": 45
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 38,
-                            "against": 20
+                            "for": 62,
+                            "against": 45
                         },
                         "streak": {
-                            "type": "W",
+                            "type": "L",
                             "length": 1
                         }
                     },
                     "road": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 38,
-                            "against": 20
+                            "for": 62,
+                            "against": 45
                         }
                     }
                 },
@@ -1071,58 +1071,58 @@
                     "conference": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
-                        "rank": 8,
+                        "rank": 15,
                         "points": {
-                            "for": 9,
-                            "against": 25
+                            "for": 29,
+                            "against": 56
                         }
                     },
                     "division": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "rank": 4,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 20,
+                            "against": 31
                         }
                     },
                     "home": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 20,
+                            "against": 31
                         }
                     },
                     "last5": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 9,
-                            "against": 25
+                            "for": 29,
+                            "against": 56
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 9,
-                            "against": 25
+                            "for": 29,
+                            "against": 56
                         },
                         "streak": {
                             "type": "L",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
@@ -1156,25 +1156,25 @@
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
-                        "rank": 11,
+                        "rank": 10,
                         "points": {
-                            "for": 21,
-                            "against": 31
+                            "for": 52,
+                            "against": 51
                         }
                     },
                     "division": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
-                        "rank": 3,
+                        "rank": 2,
                         "points": {
-                            "for": 21,
-                            "against": 31
+                            "for": 52,
+                            "against": 51
                         }
                     },
                     "home": {
@@ -1188,38 +1188,38 @@
                         }
                     },
                     "last5": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 21,
-                            "against": 31
+                            "for": 52,
+                            "against": 51
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "games": 2,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 21,
-                            "against": 31
+                            "for": 52,
+                            "against": 51
                         },
                         "streak": {
-                            "type": "L",
+                            "type": "W",
                             "length": 1
                         }
                     },
                     "road": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 31,
+                            "against": 20
                         }
                     }
                 },
@@ -1239,18 +1239,18 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "rank": 3,
                         "points": {
-                            "for": 31,
-                            "against": 21
+                            "for": 40,
+                            "against": 38
                         }
                     },
                     "division": {
@@ -1267,35 +1267,35 @@
                     "home": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 9,
+                            "against": 17
                         }
                     },
                     "last5": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 31,
-                            "against": 21
+                            "for": 40,
+                            "against": 38
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 31,
-                            "against": 21
+                            "for": 40,
+                            "against": 38
                         },
                         "streak": {
-                            "type": "W",
+                            "type": "L",
                             "length": 1
                         }
                     },
@@ -1325,19 +1325,19 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 0,
+                        "wins": 1,
                         "losses": 1,
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 13,
+                        "rank": 7,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 17,
+                            "against": 9
                         }
                     },
                     "division": {
@@ -1362,38 +1362,38 @@
                         }
                     },
                     "last5": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 21
+                            "for": 37,
+                            "against": 30
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "games": 2,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 21
+                            "for": 37,
+                            "against": 30
                         },
                         "streak": {
-                            "type": "L",
+                            "type": "W",
                             "length": 1
                         }
                     },
                     "road": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 17,
+                            "against": 9
                         }
                     }
                 },
@@ -1418,13 +1418,13 @@
                     },
                     "conference": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "rank": 4,
                         "points": {
-                            "for": 17,
-                            "against": 16
+                            "for": 27,
+                            "against": 54
                         }
                     },
                     "division": {
@@ -1450,37 +1450,37 @@
                     },
                     "last5": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 17,
-                            "against": 16
+                            "for": 27,
+                            "against": 54
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 17,
-                            "against": 16
+                            "for": 27,
+                            "against": 54
                         },
                         "streak": {
-                            "type": "W",
+                            "type": "L",
                             "length": 1
                         }
                     },
                     "road": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 17,
-                            "against": 16
+                            "for": 27,
+                            "against": 54
                         }
                     }
                 },
@@ -1500,18 +1500,18 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
-                        "rank": 7,
+                        "rank": 12,
                         "points": {
-                            "for": 34,
-                            "against": 36
+                            "for": 58,
+                            "against": 63
                         }
                     },
                     "division": {
@@ -1538,36 +1538,36 @@
                     "last5": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 34,
-                            "against": 36
+                            "for": 58,
+                            "against": 63
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 34,
-                            "against": 36
+                            "for": 58,
+                            "against": 63
                         },
                         "streak": {
                             "type": "L",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 24,
+                            "against": 27
                         }
                     }
                 },
@@ -1587,63 +1587,63 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
-                        "rank": 2,
+                        "rank": 9,
                         "points": {
-                            "for": 30,
-                            "against": 13
+                            "for": 53,
+                            "against": 43
                         }
                     },
                     "division": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
-                        "rank": 1,
+                        "rank": 2,
                         "points": {
-                            "for": 30,
-                            "against": 13
+                            "for": 53,
+                            "against": 43
                         }
                     },
                     "home": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 23,
+                            "against": 30
                         }
                     },
                     "last5": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 30,
-                            "against": 13
+                            "for": 53,
+                            "against": 43
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 30,
-                            "against": 13
+                            "for": 53,
+                            "against": 43
                         },
                         "streak": {
-                            "type": "W",
+                            "type": "L",
                             "length": 1
                         }
                     },
@@ -1673,30 +1673,30 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 1,
+                        "wins": 2,
                         "losses": 0,
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
-                        "losses": 0,
-                        "ties": 0,
-                        "rank": 6,
-                        "points": {
-                            "for": 36,
-                            "against": 34
-                        }
-                    },
-                    "division": {
-                        "wins": 0,
-                        "winPct": 0.0,
                         "losses": 0,
                         "ties": 0,
                         "rank": 2,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 60,
+                            "against": 51
+                        }
+                    },
+                    "division": {
+                        "wins": 1,
+                        "winPct": 1.0,
+                        "losses": 0,
+                        "ties": 0,
+                        "rank": 1,
+                        "points": {
+                            "for": 24,
+                            "against": 17
                         }
                     },
                     "home": {
@@ -1710,38 +1710,38 @@
                         }
                     },
                     "last5": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 36,
-                            "against": 34
+                            "for": 60,
+                            "against": 51
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 1,
+                        "games": 2,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 36,
-                            "against": 34
+                            "for": 60,
+                            "against": 51
                         },
                         "streak": {
                             "type": "W",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 36,
-                            "against": 34
+                            "for": 60,
+                            "against": 51
                         }
                     }
                 },
@@ -1769,7 +1769,7 @@
                         "winPct": 0.0,
                         "losses": 2,
                         "ties": 0,
-                        "rank": 16,
+                        "rank": 14,
                         "points": {
                             "for": 45,
                             "against": 54
@@ -1780,7 +1780,7 @@
                         "winPct": 0.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 4,
+                        "rank": 3,
                         "points": {
                             "for": 0,
                             "against": 0
@@ -1848,64 +1848,64 @@
                     },
                     "closeGames": {
                         "wins": 0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0
                     },
                     "conference": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
-                        "rank": 15,
+                        "rank": 14,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 17,
+                            "against": 24
                         }
                     },
                     "division": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
-                        "rank": 3,
+                        "rank": 4,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 17,
+                            "against": 24
                         }
                     },
                     "home": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 25
+                            "for": 37,
+                            "against": 49
                         }
                     },
                     "last5": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 25
+                            "for": 37,
+                            "against": 49
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 1,
+                        "losses": 2,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 25
+                            "for": 37,
+                            "against": 49
                         },
                         "streak": {
                             "type": "L",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
@@ -1934,30 +1934,30 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 1,
+                        "wins": 2,
                         "losses": 0,
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 10,
+                        "rank": 5,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 20,
+                            "against": 17
                         }
                     },
                     "division": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 3,
+                        "rank": 2,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 20,
+                            "against": 17
                         }
                     },
                     "home": {
@@ -1971,38 +1971,38 @@
                         }
                     },
                     "last5": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 16,
-                            "against": 15
+                            "for": 36,
+                            "against": 32
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
+                        "wins": 2,
+                        "winPct": 1.0,
+                        "losses": 0,
+                        "ties": 0,
+                        "points": {
+                            "for": 36,
+                            "against": 32
+                        },
+                        "streak": {
+                            "type": "W",
+                            "length": 2
+                        }
+                    },
+                    "road": {
                         "wins": 1,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 16,
-                            "against": 15
-                        },
-                        "streak": {
-                            "type": "W",
-                            "length": 1
-                        }
-                    },
-                    "road": {
-                        "wins": 0,
-                        "winPct": 0.0,
-                        "losses": 0,
-                        "ties": 0,
-                        "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 20,
+                            "against": 17
                         }
                     }
                 },
@@ -2021,19 +2021,19 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 0,
+                        "wins": 1,
                         "losses": 0,
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
-                        "rank": 15,
+                        "rank": 10,
                         "points": {
-                            "for": 0,
-                            "against": 40
+                            "for": 31,
+                            "against": 68
                         }
                     },
                     "division": {
@@ -2058,38 +2058,38 @@
                         }
                     },
                     "last5": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 40
+                            "for": 31,
+                            "against": 68
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "games": 2,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 40
+                            "for": 31,
+                            "against": 68
                         },
                         "streak": {
-                            "type": "L",
+                            "type": "W",
                             "length": 1
                         }
                     },
                     "road": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 31,
+                            "against": 28
                         }
                     }
                 },
@@ -2117,7 +2117,7 @@
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 2,
+                        "rank": 5,
                         "points": {
                             "for": 22,
                             "against": 16
@@ -2128,7 +2128,7 @@
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 1,
+                        "rank": 2,
                         "points": {
                             "for": 22,
                             "against": 16
@@ -2146,37 +2146,37 @@
                     },
                     "last5": {
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 22,
-                            "against": 16
+                            "for": 32,
+                            "against": 46
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
                         "wins": 1,
-                        "winPct": 1.0,
-                        "losses": 0,
+                        "winPct": 0.5,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 22,
-                            "against": 16
+                            "for": 32,
+                            "against": 46
                         },
                         "streak": {
-                            "type": "W",
+                            "type": "L",
                             "length": 1
                         }
                     },
                     "road": {
                         "wins": 0,
                         "winPct": 0.0,
-                        "losses": 0,
+                        "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 10,
+                            "against": 30
                         }
                     }
                 },
@@ -2204,7 +2204,7 @@
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 1,
+                        "rank": 6,
                         "points": {
                             "for": 34,
                             "against": 28
@@ -2215,7 +2215,7 @@
                         "winPct": 0.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 1,
+                        "rank": 2,
                         "points": {
                             "for": 0,
                             "against": 0
@@ -2282,64 +2282,64 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 0,
+                        "wins": 1,
                         "losses": 0,
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 12,
+                        "rank": 6,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 26,
+                            "against": 22
                         }
                     },
                     "division": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 4,
+                        "rank": 2,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 26,
+                            "against": 22
                         }
                     },
                     "home": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 7,
-                            "against": 30
+                            "for": 33,
+                            "against": 52
                         }
                     },
                     "last5": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 7,
-                            "against": 30
+                            "for": 33,
+                            "against": 52
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "games": 2,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 7,
-                            "against": 30
+                            "for": 33,
+                            "against": 52
                         },
                         "streak": {
-                            "type": "L",
+                            "type": "W",
                             "length": 1
                         }
                     },
@@ -2369,30 +2369,30 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 0,
+                        "wins": 1,
                         "losses": 0,
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 0,
-                        "winPct": 0.0,
-                        "losses": 0,
-                        "ties": 0,
-                        "rank": 8,
-                        "points": {
-                            "for": 0,
-                            "against": 0
-                        }
-                    },
-                    "division": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "rank": 2,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 30,
+                            "against": 23
+                        }
+                    },
+                    "division": {
+                        "wins": 1,
+                        "winPct": 1.0,
+                        "losses": 0,
+                        "ties": 0,
+                        "rank": 1,
+                        "points": {
+                            "for": 30,
+                            "against": 23
                         }
                     },
                     "home": {
@@ -2406,38 +2406,38 @@
                         }
                     },
                     "last5": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 30,
-                            "against": 7
+                            "for": 60,
+                            "against": 30
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 1,
+                        "games": 2,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 30,
-                            "against": 7
+                            "for": 60,
+                            "against": 30
                         },
                         "streak": {
                             "type": "W",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 30,
-                            "against": 7
+                            "for": 60,
+                            "against": 30
                         }
                     }
                 },
@@ -2456,19 +2456,19 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 0,
+                        "wins": 1,
                         "losses": 0,
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "rank": 11,
                         "points": {
-                            "for": 13,
-                            "against": 30
+                            "for": 50,
+                            "against": 61
                         }
                     },
                     "division": {
@@ -2476,7 +2476,7 @@
                         "winPct": 0.0,
                         "losses": 1,
                         "ties": 0,
-                        "rank": 4,
+                        "rank": 3,
                         "points": {
                             "for": 13,
                             "against": 30
@@ -2493,38 +2493,38 @@
                         }
                     },
                     "last5": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 13,
-                            "against": 30
+                            "for": 50,
+                            "against": 61
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "games": 2,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 13,
-                            "against": 30
+                            "for": 50,
+                            "against": 61
                         },
                         "streak": {
-                            "type": "L",
+                            "type": "W",
                             "length": 1
                         }
                     },
                     "road": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 37,
+                            "against": 31
                         }
                     }
                 },
@@ -2548,14 +2548,14 @@
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 6,
+                        "rank": 8,
                         "points": {
-                            "for": 20,
-                            "against": 17
+                            "for": 47,
+                            "against": 34
                         }
                     },
                     "division": {
@@ -2563,45 +2563,45 @@
                         "winPct": 0.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 2,
+                        "rank": 3,
                         "points": {
                             "for": 0,
                             "against": 0
                         }
                     },
                     "home": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 27,
+                            "against": 17
                         }
                     },
                     "last5": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 17
+                            "for": 47,
+                            "against": 34
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 1,
+                        "games": 2,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 17
+                            "for": 47,
+                            "against": 34
                         },
                         "streak": {
                             "type": "W",
-                            "length": 1
+                            "length": 2
                         }
                     },
                     "road": {
@@ -2630,19 +2630,19 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 0,
+                        "wins": 1,
                         "losses": 1,
                         "ties": 0
                     },
                     "conference": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 14,
+                        "rank": 11,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 27,
+                            "against": 24
                         }
                     },
                     "division": {
@@ -2650,44 +2650,44 @@
                         "winPct": 0.0,
                         "losses": 0,
                         "ties": 0,
-                        "rank": 2,
+                        "rank": 3,
                         "points": {
                             "for": 0,
                             "against": 0
                         }
                     },
                     "home": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 27,
+                            "against": 24
                         }
                     },
                     "last5": {
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 15,
-                            "against": 16
+                            "for": 42,
+                            "against": 40
                         }
                     },
                     "overall": {
-                        "games": 1,
-                        "wins": 0,
-                        "winPct": 0.0,
+                        "games": 2,
+                        "wins": 1,
+                        "winPct": 0.5,
                         "losses": 1,
                         "ties": 0,
                         "points": {
-                            "for": 15,
-                            "against": 16
+                            "for": 42,
+                            "against": 40
                         },
                         "streak": {
-                            "type": "L",
+                            "type": "W",
                             "length": 1
                         }
                     },
@@ -2717,7 +2717,7 @@
                         "wildCard": false
                     },
                     "closeGames": {
-                        "wins": 1,
+                        "wins": 2,
                         "losses": 0,
                         "ties": 0
                     },
@@ -2754,38 +2754,38 @@
                         }
                     },
                     "last5": {
-                        "wins": 1,
+                        "wins": 2,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 16
+                            "for": 55,
+                            "against": 49
                         }
                     },
                     "overall": {
-                        "games": 1,
+                        "games": 2,
+                        "wins": 2,
+                        "winPct": 1.0,
+                        "losses": 0,
+                        "ties": 0,
+                        "points": {
+                            "for": 55,
+                            "against": 49
+                        },
+                        "streak": {
+                            "type": "W",
+                            "length": 2
+                        }
+                    },
+                    "road": {
                         "wins": 1,
                         "winPct": 1.0,
                         "losses": 0,
                         "ties": 0,
                         "points": {
-                            "for": 20,
-                            "against": 16
-                        },
-                        "streak": {
-                            "type": "W",
-                            "length": 1
-                        }
-                    },
-                    "road": {
-                        "wins": 0,
-                        "winPct": 0.0,
-                        "losses": 0,
-                        "ties": 0,
-                        "points": {
-                            "for": 0,
-                            "against": 0
+                            "for": 35,
+                            "against": 33
                         }
                     }
                 }
