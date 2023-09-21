@@ -1,21 +1,23 @@
 ---
 templateKey: index-page
-title: BetSweatWin
+title: BetSweatWin Analytics
 image: /img/header-bg-sports.png
 heading: BetSweatWin
 subheading: Support sustainable farming while enjoying a cup
 mainpitch:
-  title: Why Kaldi
-  description: >
-    Kaldi is the coffee store for everyone who believes that great coffee
-    shouldn't just taste good, it should do good too. We source all of our beans
-    directly from small scale sustainable farmers and make sure part of the
-    profits are reinvested in their communities.
-description: >-
-  Kaldi is the ultimate spot for coffee lovers who want to learn about their
-  java’s origin and support the farmers that grew it. We take coffee production,
-  roasting and brewing seriously and we’re glad to pass that knowledge to
-  anyone.
+  title: Why BetSweatWin Analytics
+  description: Welcome to BetSweatWin Analytics, where passion for sports meets
+    cutting-edge analytics. Dive deep into our journey and discover why we're
+    rapidly becoming a favorite among sports enthusiasts and professionals
+    alike.
+description: "At the core of BetSweatWin, we blend engaging sports talk through
+  insightful podcasts on Baseball, Basketball, Football, Hockey, and beyond,
+  ensuring you're always updated. Our focus extends to offering specialized
+  tools for daily fantasy sports, particularly in NBA and NFL, highlighted by
+  our industry-leading lineup optimizer. As we progress, we're preparing to
+  unveil unmatched sports betting insights backed by expertise and data.
+  Throughout, our commitment remains unwavering: to deliver premier sports
+  analytics at the industry's most affordable rates."
 intro:
   blurbs:
     - image: /img/coffee.png
@@ -45,7 +47,7 @@ intro:
         space where you can hang out with fellow coffee lovers and learn about
         coffee making techniques. All of the artwork on display there is for
         sale. The full price you pay goes to the artist.
-  heading: What we offer
+  heading: What BSW offers
   description: >
     Kaldi is the ultimate spot for coffee lovers who want to learn about their
     java’s origin and support the farmers that grew it. We take coffee
