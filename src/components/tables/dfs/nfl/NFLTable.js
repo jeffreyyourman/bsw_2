@@ -496,10 +496,10 @@ export default function NFLTable(props) {
     console.log('position', position);
     if (position === "All") {
       console.log('all mfer', data)
-      setFilteredPlayers(data);
+      setFilteredPlayers(ogfilteredPlayers);
     } else {
 
-      setFilteredPlayers(filteredPlayers.filter(player => player.Position === position));
+      setFilteredPlayers(ogfilteredPlayers.filter(player => player.Position === position));
     }
   };
 
