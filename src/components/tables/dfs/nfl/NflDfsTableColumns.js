@@ -234,18 +234,18 @@ export function useColumns() {
                 accessor: "Injury_Details",
                 editable: false,
             },
-            {
-                Header: "NFLStats Proj",
-                minWidth: 1000,
-                accessor: "nfl_pts_proj",
-                editable: false,
-            },
-            {
-                Header: "NumberFire Proj",
-                minWidth: 1000,
-                accessor: "numberFire_pts_proj",
-                editable: false,
-            },
+            // {
+            //     Header: "NFLStats Proj",
+            //     minWidth: 1000,
+            //     accessor: "nfl_pts_proj",
+            //     editable: false,
+            // },
+            // {
+            //     Header: "NumberFire Proj",
+            //     minWidth: 1000,
+            //     accessor: "numberFire_pts_proj",
+            //     editable: false,
+            // },
 
 
             // {
