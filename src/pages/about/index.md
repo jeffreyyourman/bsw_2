@@ -4,8 +4,8 @@ path: /about
 title: "About BetSweatWin: Your Ultimate Sports Analytics Companion"
 image: /img/header-bg-sports.png
 heading: About BetSweatWin
-subheading: this is the sub heading for the dfs page
-description: this is the mfing description for the dfs page
+# subheading: this is the sub heading for the dfs page
+# description: this is the mfing description for the dfs page
 ---
 <p>Welcome to <strong>BetSweatWin</strong>, where passion for sports meets cutting-edge analytics. Dive deep into our journey and discover why we're rapidly becoming a favorite among sports enthusiasts and professionals alike.</p>
 

@@ -14,7 +14,7 @@ export const AboutPageTemplate = ({ title, content, contentComponent, image, sub
 
   return (
     <div>
-      <FullWidthImage img={heroImage} title={title} subheading={subheading} />
+  <FullWidthImage img={heroImage} title={title.split(":")[1]} subheading={subheading} />
       <section className="section section--gradient">
         <div className="container">
           <div className="columns">
