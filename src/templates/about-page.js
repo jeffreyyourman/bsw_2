@@ -14,14 +14,14 @@ export const AboutPageTemplate = ({ title, content, contentComponent, image, sub
 
   return (
     <div>
-      <FullWidthImage img={heroImage} title={title} subheading={subheading} />
+  <FullWidthImage img={heroImage} title={title.split("|")[1]} subheading={subheading} />
       <section className="section section--gradient">
         <div className="container">
           <div className="columns">
             <div className="column is-10 is-offset-1">
               <div className="section">
                 <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
-                  {title}
+                  {title.split("|")[0]}
                 </h2>
                 <PageContent className="content" content={content} />
               </div>

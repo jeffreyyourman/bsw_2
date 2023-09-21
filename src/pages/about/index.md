@@ -5,8 +5,8 @@ title: "Welcome to BetSweatWin: Sports Analytics Made Personal | Your Ultimate
   Sports Analytics Companion"
 image: /img/header-bg-sports.png
 heading: About BetSweatWin
-subheading: this is the sub heading for the dfs page
-description: this is the mfing description for the dfs page
+# subheading: this is the sub heading for the dfs page
+# description: this is the mfing description for the dfs page
 ---
 Welcome to **BetSweatWin**, where passion for sports meets cutting-edge analytics. Dive deep into our journey and discover why we're rapidly becoming a favorite among sports enthusiasts and professionals alike.
 
