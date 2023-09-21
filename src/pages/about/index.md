@@ -1,7 +1,8 @@
 ---
 templateKey: about-page
 path: /about
-title: "About BetSweatWin: Your Ultimate Sports Analytics Companion"
+title: "Welcome to BetSweatWin: Sports Analytics Made Personal | Your Ultimate
+  Sports Analytics Companion"
 image: /img/header-bg-sports.png
 heading: About BetSweatWin
 subheading: this is the sub heading for the dfs page
