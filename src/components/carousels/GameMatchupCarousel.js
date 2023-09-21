@@ -3,8 +3,17 @@ import { Card, CardContent, Typography, IconButton } from '@mui/material';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 
 function GameMatchupsCarousel({ games }) {
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
+
+   // Sorting function
+   const sortedGames = games.games.sort((a, b) => {
+    const dateA = new Date(a.gameTime);
+    const dateB = new Date(b.gameTime);
+    return dateA - dateB;
+});
+
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
@@ -13,11 +22,6 @@ function GameMatchupsCarousel({ games }) {
   const handleNext = () => {
     setCurrentIndex((prevIndex) => Math.min(prevIndex + 1, games.games.length - 4));
   };
-
-  // const formatDate = (dateStr) => {
-  //   const dateObj = new Date(dateStr);
-  //   return dateObj.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-  // };
 
   const formatDate = (dateStr) => {
     const dateObj = new Date(dateStr);
@@ -38,13 +42,12 @@ function GameMatchupsCarousel({ games }) {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Typography variant="h4">{'Week ' + (games.games[0].week || '')}</Typography>
       <div style={{ display: 'flex', alignItems: 'center', width:'100%' }}>
-      {/* <div style={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}> */}
         <IconButton onClick={handlePrev}>
           <ChevronLeft />
         </IconButton>
         <div ref={carouselRef} style={{ overflow: 'hidden', display: 'flex', width: '100%' }}>
           <div style={{ display: 'flex', transform: `translateX(-${currentIndex * 260}px)` }}>
-            {games.games.map(game => (
+            {sortedGames.map(game => (
               <div key={game.gameKey} style={{ width: '250px', margin: '0 5px' }}>
                 <Card style={{ display: 'flex', flexDirection: 'column' }}>
                   <CardContent style={{ flexGrow: 1 }}>
