@@ -118,13 +118,13 @@ export const DfsPageTemplate = ({
           <div className="section">
             <div className="columns">
               <div className="column is-12">
-                <h3 className="has-text-weight-semibold is-size-2">
-                  {heading}
+                {/* <h3 className="has-text-weight-semibold is-size-2">
+                  {'NBA DFS'}
                 </h3>
-                <p>{description}</p>
+                <p>{'Coming soon'}</p> */}
 
-                <Table lineups={lineups} setLineups={setLineups} setLineupsData={setLineupsData} />
-                <div></div>
+                {/* <Table lineups={lineups} setLineups={setLineups} setLineupsData={setLineupsData} /> */}
+                {/* <div></div> */}
               </div>
               {/* <div className="column is-10 is-offset-1">
                 <div className="content">

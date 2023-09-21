@@ -17,6 +17,7 @@ import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NflPlayerPosFilter from "./NflPlayerPosFilters";
 import NFLPlayerSearch from "./NflPlayerSearch";
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
+import { useAuth } from '../../../../context/AuthContext';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -395,6 +396,8 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
 export default function NFLTable(props) {
   const classes = useStyles();
   const columns = useColumns();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  console.log('isAuthenticated', isAuthenticated);
   const excludeColumns = useExcludeColumns();
   const nflPlayerList = NflPlayerList();
   const [lineups, setLineups] = useState([]);

@@ -1,10 +1,10 @@
 import * as React from "react";
 import NflDfsLayout from "../../../../../components/layouts/NflDfsLayout";
 
-const OptimizerPage = () => (
+const MatchupsPage = () => (
   <NflDfsLayout>
-    <h1>Optimizer Page - Coming soon</h1>
+    <h1>Matchups Page - Coming soon</h1>
   </NflDfsLayout>
 );
 
-export default OptimizerPage;
+export default MatchupsPage;

@@ -34,27 +34,27 @@ const NflSubNavbar = () => {
             </Link>
           </li>
           <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/dfs/sport/nfl/optimizer">
+        <Link className="navbar-item" to="/dfs/sport/nfl/projections">
               Projections
             </Link>
           </li>
           <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/dfs/sport/nfl/optimizer">
+            <Link className="navbar-item" to="/dfs/sport/nfl/matchups">
               Matchups
             </Link>
           </li>
           <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/dfs/sport/nfl/optimizer">
+            <Link className="navbar-item" to="/dfs/sport/nfl/odds">
               Odds
             </Link>
           </li>
           <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/dfs/sport/nfl/optimizer">
+            <Link className="navbar-item" to="/dfs/sport/nfl/injuries">
               Injuries
             </Link>
           </li>
           <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/dfs/sport/nfl/optimizer">
+            <Link className="navbar-item" to="/dfs/sport/nfl/standings">
               Standings
             </Link>
           </li>
