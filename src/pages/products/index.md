@@ -19,10 +19,10 @@ intro:
         availability.
     - image: /img/coffee-gear.png
       text: >
-        KobeeeWe offer a small, but carefully curated selection of brewing gear
-        and tools for every taste and experience level. No matter if you roast
-        your own beans or just bought your first french press, you’ll find a
-        gadget to fall in love with in our shop.
+        Kobeee is the fucking man . We offer a small, but carefully curated
+        selection of brewing gear and tools for every taste and experience
+        level. No matter if you roast your own beans or just bought your first
+        french press, you’ll find a gadget to fall in love with in our shop.
     - image: /img/tutorials.png
       text: >
         BynumLove a great cup of coffee, but never knew how to make one? Bought
