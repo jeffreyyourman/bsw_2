@@ -65,10 +65,10 @@ function NflDfsSiteTabs(props) {
             </Tabs>
             <TabPanel style={{ backgroundColor: 'white' }} value={value} index={0}>
                 <section className="section section--gradient">
-                    <div className="container">
-                        <div className="section">
-                            <div className="columns">
-                                <div className="column is-12">
+                    <div className="">
+                        <div className="">
+                            <div className="">
+                                <div className="">
 
                                     {/* 
                                     - need to show here, when showExcludedTable is true show NFLExcludeTable and when false show real table

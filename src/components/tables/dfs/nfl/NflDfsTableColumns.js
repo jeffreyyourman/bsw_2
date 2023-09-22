@@ -49,12 +49,12 @@ export function useColumns() {
                 accessor: "Last_Name",
                 editable: false,
             },
-            {
-                Header: "Name",
-                minWidth: 1000,
-                accessor: "Nickname",
-                editable: false,
-            },
+            // {
+            //     Header: "Name",
+            //     minWidth: 1000,
+            //     accessor: "Nickname",
+            //     editable: false,
+            // },
 
             {
                 Header: "Projections",
@@ -79,18 +79,18 @@ export function useColumns() {
                 accessor: "Game",
                 editable: false,
             },
-            {
-                Header: "Team",
-                minWidth: 1000,
-                accessor: "Team",
-                editable: false,
-            },
-            {
-                Header: "Opponent",
-                minWidth: 1000,
-                accessor: "Opponent",
-                editable: false,
-            },
+            // {
+            //     Header: "Team",
+            //     minWidth: 1000,
+            //     accessor: "Team",
+            //     editable: false,
+            // },
+            // {
+            //     Header: "Opponent",
+            //     minWidth: 1000,
+            //     accessor: "Opponent",
+            //     editable: false,
+            // },
             {
                 Header: "minExposure",
                 minWidth: 1000,
