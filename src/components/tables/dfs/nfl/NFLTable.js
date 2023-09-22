@@ -431,18 +431,6 @@ export default function NFLTable(props) {
   const handleCheckboxChange = (setter) => (event) => {
     setter(event.target.checked);
   };
-  // useEffect(() => {
-  //   const filteredData = filteredPlayers.filter(player => {
-  //     // console.log('player.FPPG', player.FPPG);
-  //     if (player.FPPG === 0) {
-
-  //     }
-
-  //   });
-  // setData(nflPlayerList)
-  //   setExcludePlayerLines(nflPlayerList)
-  //   setFilteredPlayers(nflPlayerList);
-  // }, [])
 
   useEffect(() => {
     // Players with FPPG equal to 0
@@ -702,10 +690,6 @@ export default function NFLTable(props) {
 
           lineup.players.forEach(player => {
             const stats = player.playerStats;
-            console.log('player.playerName', player.playerName)
-            console.log('stats', stats)
-            console.log('stats.receptions', stats.receptions)
-            console.log('Number(stats.receptions)', Number(stats.receptions))
             stats.rush_att = Number(stats.rush_att);
             stats.fppg = Number(stats.fppg);
             stats.rush_tds = Number(stats.rush_tds);
@@ -734,13 +718,6 @@ export default function NFLTable(props) {
             totalRecTds += stats.rec_tds;
           });
 
-          console.log('totalReceptions', totalReceptions)
-
-
-
-          // console.log('totalPassTds', totalPassTds)
-          // console.log('totalPassInterceptions', totalPassInterceptions)
-          // console.log('totalPassYards', totalPassYards)
 
           return {
             ...lineup,
@@ -989,8 +966,10 @@ export default function NFLTable(props) {
               <MenuItem value={50}>50</MenuItem>
               <MenuItem value={100}>100</MenuItem>
               <MenuItem value={150}>150</MenuItem>
-              <MenuItem value={300}>300</MenuItem>
-              <MenuItem value={500}>500</MenuItem>
+              {/* <MenuItem value={300}>300</MenuItem> */}
+              {/* <MenuItem value={500}>500</MenuItem> */}
+              <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={300}>300 - Upgrade to use</MenuItem>
+              <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={500}>500 - Upgrade to use</MenuItem>
               <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={1000}>1000 - Upgrade to use</MenuItem>
             </Select>
             <FormHelperText className={classes.helperText}>
