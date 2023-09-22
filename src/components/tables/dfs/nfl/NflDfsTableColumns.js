@@ -104,37 +104,37 @@ export function useColumns() {
                 editable: true,
             },
 
-            {
-                Header: "StdDev",
-                minWidth: 1000,
-                accessor: "StdDev",
-                editable: true,
-            },
+            // {
+            //     Header: "StdDev",
+            //     minWidth: 1000,
+            //     accessor: "StdDev",
+            //     editable: true,
+            // },
 
-            {
-                Header: "Ceiling",
-                minWidth: 1000,
-                accessor: "Ceiling",
-                editable: true,
-            },
-            {
-                Header: "Floor",
-                minWidth: 1000,
-                accessor: "Floor",
-                editable: true,
-            },
-            {
-                Header: "BustPct",
-                minWidth: 1000,
-                accessor: "BustPct",
-                editable: true,
-            },
-            {
-                Header: "BoomPct",
-                minWidth: 1000,
-                accessor: "BoomPct",
-                editable: true,
-            },
+            // {
+            //     Header: "Ceiling",
+            //     minWidth: 1000,
+            //     accessor: "Ceiling",
+            //     editable: true,
+            // },
+            // {
+            //     Header: "Floor",
+            //     minWidth: 1000,
+            //     accessor: "Floor",
+            //     editable: true,
+            // },
+            // {
+            //     Header: "BustPct",
+            //     minWidth: 1000,
+            //     accessor: "BustPct",
+            //     editable: true,
+            // },
+            // {
+            //     Header: "BoomPct",
+            //     minWidth: 1000,
+            //     accessor: "BoomPct",
+            //     editable: true,
+            // },
 
             {
                 Header: "Pass yards",
@@ -155,7 +155,7 @@ export function useColumns() {
                 Header: "Pass comp att",
                 minWidth: 1000,
                 accessor: "pass_comp_att",
-                editable: true,
+                // editable: true,
                 disableFilters: true
             },
             {
@@ -326,12 +326,6 @@ export function useExcludeColumns() {
                 accessor: "Last_Name",
                 editable: false,
             },
-            {
-                Header: "Name",
-                minWidth: 1000,
-                accessor: "Nickname",
-                editable: false,
-            },
 
             {
                 Header: "Projections",
@@ -369,18 +363,18 @@ export function useExcludeColumns() {
                 accessor: "Game",
                 editable: false,
             },
-            {
-                Header: "Team",
-                minWidth: 1000,
-                accessor: "Team",
-                editable: false,
-            },
-            {
-                Header: "Opponent",
-                minWidth: 1000,
-                accessor: "Opponent",
-                editable: false,
-            },
+            // {
+            //     Header: "Team",
+            //     minWidth: 1000,
+            //     accessor: "Team",
+            //     editable: false,
+            // },
+            // {
+            //     Header: "Opponent",
+            //     minWidth: 1000,
+            //     accessor: "Opponent",
+            //     editable: false,
+            // },
             // {
             //     Header: "minExposure",
             //     minWidth:1000,
@@ -394,37 +388,37 @@ export function useExcludeColumns() {
             //     editable: true,
             // },
 
-            {
-                Header: "StdDev",
-                minWidth: 1000,
-                accessor: "StdDev",
-                editable: true,
-            },
+            // {
+            //     Header: "StdDev",
+            //     minWidth: 1000,
+            //     accessor: "StdDev",
+            //     editable: true,
+            // },
 
-            {
-                Header: "Ceiling",
-                minWidth: 1000,
-                accessor: "Ceiling",
-                editable: true,
-            },
-            {
-                Header: "Floor",
-                minWidth: 1000,
-                accessor: "Floor",
-                editable: true,
-            },
-            {
-                Header: "BustPct",
-                minWidth: 1000,
-                accessor: "BustPct",
-                editable: true,
-            },
-            {
-                Header: "BoomPct",
-                minWidth: 1000,
-                accessor: "BoomPct",
-                editable: true,
-            },
+            // {
+            //     Header: "Ceiling",
+            //     minWidth: 1000,
+            //     accessor: "Ceiling",
+            //     editable: true,
+            // },
+            // {
+            //     Header: "Floor",
+            //     minWidth: 1000,
+            //     accessor: "Floor",
+            //     editable: true,
+            // },
+            // {
+            //     Header: "BustPct",
+            //     minWidth: 1000,
+            //     accessor: "BustPct",
+            //     editable: true,
+            // },
+            // {
+            //     Header: "BoomPct",
+            //     minWidth: 1000,
+            //     accessor: "BoomPct",
+            //     editable: true,
+            // },
 
             {
                 Header: "Pass yards",
