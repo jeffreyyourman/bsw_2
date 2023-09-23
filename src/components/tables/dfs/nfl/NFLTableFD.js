@@ -16,6 +16,7 @@ import NFLPlayerSearch from "./NflPlayerSearch";
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { useAuth } from '../../../../context/AuthContext';
 
+import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
 
 const useStyles = makeStyles((theme) => ({
   helperText: {
@@ -379,6 +380,8 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
 export default function NFLTable(props) {
   const classes = useStyles();
   const columns = useColumns();
+  const clerk = useClerk();
+
   const { isAuthenticated, setIsAuthenticated } = useAuth();
   console.log('isAuthenticated', isAuthenticated);
   const excludeColumns = useExcludeColumns();
@@ -853,6 +856,10 @@ export default function NFLTable(props) {
 
   return (
     <ThemeProvider theme={theme}>
+      {/* <SignIn /> */}
+      {/* <button className="sign-up-btn" onClick={() => clerk.openSignUp({})}>
+        Sign up
+      </button> */}
       <LeftSideDrawer
         open={open}
         anchor={'right'}
