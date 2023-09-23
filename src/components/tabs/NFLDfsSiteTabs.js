@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import NFLTable from "../tables/dfs/nfl/NFLTable";
+import NFLTableFD from "../tables/dfs/nfl/NFLTableFD";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -60,8 +60,6 @@ function NflDfsSiteTabs(props) {
 
                     }}
                 />
-                {/* <Tab label="Fanduel" /> */}
-                {/* <Tab label="DraftKings" /> */}
             </Tabs>
             <TabPanel style={{ backgroundColor: 'white' }} value={value} index={0}>
                 <section className="section section--gradient">
@@ -69,15 +67,7 @@ function NflDfsSiteTabs(props) {
                         <div className="">
                             <div className="">
                                 <div className="">
-
-                                    {/* 
-                                    - need to show here, when showExcludedTable is true show NFLExcludeTable and when false show real table
-                                    this should be set to false. SHowing real table. 
-                                    - need to add a button to show/hide the exclude table
-                                    - This will be all players projected 0 will start in the exclude table.
-                                    */}
-                                    <NFLTable />
-                                    {/* <NFLTable /> */}
+                                    <NFLTableFD />
                                 </div>
 
                             </div>
@@ -86,7 +76,10 @@ function NflDfsSiteTabs(props) {
                 </section>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                DraftKings
+                <div>
+
+                    <h1>DraftKings - Coming soon</h1>
+                </div>
             </TabPanel>
 
         </div>

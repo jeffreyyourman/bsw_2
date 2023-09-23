@@ -1,6 +1,10 @@
 import React from "react";
 
 export function useColumns() {
+    const getTeamLogo = (abbr) => `/img/teams/nfl/${abbr}.gif`;
+
+
+
     const columns = React.useMemo(
         () => [
             {
@@ -73,12 +77,12 @@ export function useColumns() {
                 accessor: "Salary",
                 editable: false,
             },
-            {
-                Header: "Game",
-                minWidth: 1000,
-                accessor: "Game",
-                editable: false,
-            },
+            // {
+            //     Header: "Game",
+            //     minWidth: 1000,
+            //     accessor: "Game",
+            //     editable: false,
+            // },
             // {
             //     Header: "Team",
             //     minWidth: 1000,
@@ -91,6 +95,38 @@ export function useColumns() {
             //     accessor: "Opponent",
             //     editable: false,
             // },
+            {
+                Header: "Team",
+                minWidth: 1000,
+                accessor: "Team",
+                editable: false,
+                Cell: ({ value }) => (
+                    <div style={{ width: 'max-content', display: 'flex', alignItems: 'center' }}>
+                        <img
+                            src={getTeamLogo(value)}
+                            alt={`${value} logo`}
+                            style={{ width: '50px', marginRight: '8px' }}
+                        />
+                        {value}
+                    </div>
+                )
+            },
+            {
+                Header: "Opponent",
+                minWidth: 1000,
+                accessor: "Opponent",
+                editable: false,
+                Cell: ({ value }) => (
+                    <div style={{ width: 'max-content', display: 'flex', alignItems: 'center' }}>
+                        <img
+                            src={getTeamLogo(value)}
+                            alt={`${value} logo`}
+                            style={{ width: '50px', marginRight: '8px' }}
+                        />
+                        {value}
+                    </div>
+                )
+            },
             {
                 Header: "minExposure",
                 minWidth: 1000,

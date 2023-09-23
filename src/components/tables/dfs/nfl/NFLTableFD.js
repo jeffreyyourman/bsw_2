@@ -153,6 +153,7 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
     );
   };
   const handleLock = (value, rowIndex, columnId) => {
+    console.log('value, rowIndex, columnId', value, rowIndex, columnId)
     // const { value } = e.target;
     const column = columns.find((col) => col.accessor === columnId);
     if (!column.editable) {
@@ -222,7 +223,7 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
   }
 
 
-
+  console.log('filteredPlayers,filteredPlayers);', filteredPlayers)
   return (
     <>
       <table className="nfl-table-optimizer" {...getTableProps()}>
@@ -408,16 +409,14 @@ export default function NFLTable(props) {
   const [ogfilteredPlayers, setOgFilteredPlayers] = useState([]);
   const [exportPlayerLines, setExportPlayerLines] = useState([]);
   const [excludePlayerLines, setExcludePlayerLines] = useState([]);
+  const [excludedTeams, setExcludedTeams] = useState([]);
   const [ogExcludePlayerLines, setOgExcludePlayerLines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = React.useState(false);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
   const [numLineups, setNumLineups] = useState(1);
-  // const [site, setSite] = useState("FANDUEL");
-  // const [sport, setSport] = useState("FOOTBALL");
-  const [totalMinExp, setTotalMinExp] = useState(0);
-  const [totalMaxExp, setTotalMaxExp] = useState(50);
+  const [totalMaxExp, setTotalMaxExp] = useState(100);
   const [randomStd, setrandomStd] = useState(15);
   const [position, setPosition] = useState('All');
   // const [searchFilter, setSearchFilter] = useState('');
@@ -448,8 +447,8 @@ export default function NFLTable(props) {
   }, []);
 
   const handleSearchOnChange = (text) => {
-    // console.log('e', text)
     if (position !== 'All') setPosition('All')
+    if (excludedTeams.length !== 0) setExcludedTeams([])
 
     let searchTextLowerCase = text.toLowerCase();
     const filterName = ogfilteredPlayers.filter((player) => {
@@ -467,6 +466,7 @@ export default function NFLTable(props) {
   };
   const handleSearchExcludedPlayersOnChange = (text) => {
     if (position !== 'All') setPosition('All')
+    if (excludedTeams.length !== 0) setExcludedTeams([])
 
     let searchTextLowerCase = text.toLowerCase();
     const filterName = ogExcludePlayerLines.filter((player) => {
@@ -491,6 +491,23 @@ export default function NFLTable(props) {
     } else {
 
       setFilteredPlayers(ogfilteredPlayers.filter(player => player.Position === position));
+    }
+  };
+
+  const handleExcludeTeams = (teamAbbr) => {
+    if (excludedTeams.includes(teamAbbr)) {
+      // If the team is already excluded, remove it from the exclusion list
+      setExcludedTeams(prevTeams => prevTeams.filter(abbr => abbr !== teamAbbr));
+
+      // Include players from this team back into the filtered list
+      setFilteredPlayers(ogfilteredPlayers);
+
+    } else {
+      // If the team isn't excluded yet, add it to the exclusion list
+      setExcludedTeams(prevTeams => [...prevTeams, teamAbbr]);
+
+      // Exclude players from this team
+      setFilteredPlayers(prevPlayers => prevPlayers.filter(player => player.Team !== teamAbbr));
     }
   };
 
@@ -561,18 +578,19 @@ export default function NFLTable(props) {
   let handleSubmitPlayers = () => {
     setLoading(true)
 
-    let zeroCount = 0;
+    // let zeroCount = 0;
 
-    const filteredData = filteredPlayers.filter(player => {
-      // console.log('player.FPPG', player.FPPG);
-      if (player.FPPG < 2) {
-        zeroCount++;
-        return false;
-      }
-      return true;
-    });
+    // const filteredData = filteredPlayers.filter(player => {
+    //   // console.log('player.FPPG', player.FPPG);
+    //   if (player.FPPG < 2) {
+    //     zeroCount++;
+    //     return false;
+    //   }
+    //   return true;
+    // });
 
-    const transformedPlayers = filteredData.map(player => {
+    // console.log('player',filteredData[0]);
+    const transformedPlayers = filteredPlayers.map(player => {
       return {
         FPPG: player.FPPG,
         First_Name: player.First_Name,
@@ -580,6 +598,7 @@ export default function NFLTable(props) {
         Id: player.Id,
         Injury_Details: player.Injury_Details,
         Injury_Indicator: player.Injury_Indicator,
+        isLocked: player.isLocked,
         Last_Name: player.Last_Name,
         Nickname: player.Nickname,
         Opponent: player.Opponent,
@@ -617,7 +636,6 @@ export default function NFLTable(props) {
       numLineups: parseInt(numLineups, 10),
       site: 'FANDUEL',
       sport: 'FOOTBALL',
-      totalMinExp,
       totalMaxExp,
       randomStd,
       players: transformedPlayers,
@@ -631,23 +649,33 @@ export default function NFLTable(props) {
       //   "NYG": 2,
       //   "NYJ": 2,
       // },
+      //     rules:  
+      // [
+      // 	{'stackType': 'position', 'positions': ['QB', ['WR', 'TE’]], ‘maxExposure’: 50}, 
+      // 	{'stackType': 'restrictOpp', 'team1Pos': ['D'], 'team2Pos': ['QB', 'WR', 'RB', 'TE’], ‘maxExposure’: 10}
+      // ]}
       rules: [
         restrict2TEsSameTeam && {
           stackType: 'restrictSame',
-          positions: ['TE', 'TE'] //Don't want te and te from same team
+          positions: ['TE', 'TE'], //Don't want te and te from same team,
+          maxExposure: 50
         },
         excludeQbANdRb && {
           stackType: 'restrictSame',
-          positions: ['RB', 'QB'] //Don't want te and te from same team
+          positions: ['RB', 'QB'], //Don't want te and te from same team,
+          maxExposure: 50
         },
         pairQbWithWrOrTe && {
           stackType: 'position',
-          positions: ['QB', ['WR', 'TE']]
+          positions: ['QB', ['WR', 'TE']],
+          maxExposure: 50
         },
         excludeOpposingDefense && {
           stackType: 'restrictOpp',
           team1Pos: ['D'],
-          team2Pos: ['QB', 'WR', 'RB', 'TE']
+          team2Pos: ['QB', 'WR', 'RB', 'TE'],
+          // team2Pos: ['QB', 'WR', 'RB', 'TE'], add checkboxes for all of these. 
+          maxExposure: 50
         },
       ].filter(Boolean)
     };
@@ -880,24 +908,6 @@ export default function NFLTable(props) {
 
           <input type="file" onChange={handleFileUpload} />
 
-          <FormControl margin="normal" fullWidth>
-            <TextField
-              label="Total Player Minimum Exposure"
-              type="number"
-              defaultValue={totalMinExp}
-              InputProps={{
-                inputProps: {
-                  max: totalMaxExp.length,
-                  min: 100
-                }
-              }}
-              onChange={(e) => {
-                setTotalMinExp(Number(e.target.value));
-              }}
-              fullWidth
-              helperText="Values are from 0 to 100"
-            />
-          </FormControl>
 
           <FormControl margin="normal" fullWidth>
             <TextField
@@ -985,7 +995,7 @@ export default function NFLTable(props) {
                 color="primary"
               />
             }
-            label="Exclude Opposing Defense"
+            label="Exclude Opposing Defense - add positions below it to exclude."
           />
           <FormControlLabel
             control={
@@ -1036,7 +1046,12 @@ export default function NFLTable(props) {
 
       {filteredPlayers.length > 0 ? (
         <div>
-          <GameMatchupsCarousel games={GameMatchups} />
+          <GameMatchupsCarousel
+            games={GameMatchups}
+            handleExcludeTeams={handleExcludeTeams}
+            excludedTeams={excludedTeams}
+            setExcludedTeams={setExcludedTeams}
+          />
 
           <div>
             <div style={{
@@ -1087,7 +1102,7 @@ export default function NFLTable(props) {
                     className="bsw-primary-btns"
                     variant="contained"
                   >
-                    Filter Players
+                    Optimizer Options
                   </Button>
                 </div>}
 

@@ -1,18 +1,26 @@
 import React, { useState, useRef } from 'react';
 import { Card, CardContent, Typography, IconButton } from '@mui/material';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+// import teamLogoPath from '.';  // Adjust the path accordingly
 
-function GameMatchupsCarousel({ games }) {
+function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExcludedTeams }) {
+
+
+  // const getTeamLogo = (abbr) => `../../img/teams/nfl/${teamLogoPath}/${abbr}.gif`;
+  // const getTeamLogo = (abbr) => `../../img/teams/nfl/${teamLogoPath}/${abbr}.gif`;
+  const getTeamLogo = (abbr) => `/img/teams/nfl/${abbr}.gif`;
+
+  console.log('getTeamLogo', getTeamLogo);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
 
-   // Sorting function
-   const sortedGames = games.games.sort((a, b) => {
+  // Sorting function
+  const sortedGames = games.games.sort((a, b) => {
     const dateA = new Date(a.gameTime);
     const dateB = new Date(b.gameTime);
     return dateA - dateB;
-});
+  });
 
 
   const handlePrev = () => {
@@ -28,7 +36,7 @@ function GameMatchupsCarousel({ games }) {
     return dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' });
   };
 
-  
+
   const formatTime = (timeStr) => {
     let [hours, minutes] = timeStr.split(':');
     hours = parseInt(hours, 10);
@@ -37,11 +45,12 @@ function GameMatchupsCarousel({ games }) {
     hours = hours || 12; // if hours is 0, set it to 12
     return `${hours}:${minutes} ${amOrPm}`;
   };
+  console.log('excludedTeams,excludedTeams);', excludedTeams)
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Typography variant="h4">{'Week ' + (games.games[0].week || '')}</Typography>
-      <div style={{ display: 'flex', alignItems: 'center', width:'100%' }}>
+      <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
         <IconButton onClick={handlePrev}>
           <ChevronLeft />
         </IconButton>
@@ -51,10 +60,62 @@ function GameMatchupsCarousel({ games }) {
               <div key={game.gameKey} style={{ width: '250px', margin: '0 5px' }}>
                 <Card style={{ display: 'flex', flexDirection: 'column' }}>
                   <CardContent style={{ flexGrow: 1 }}>
-                    <Typography variant="h6">{game.visitorTeam.fullName}</Typography>
-                    <Typography color="textSecondary">{game.visitorTeam.abbr}</Typography>
-                    <Typography variant="h6">{game.homeTeam.fullName}</Typography>
-                    <Typography color="textSecondary">{game.homeTeam.abbr}</Typography>
+
+                    <div
+                      onClick={() => { handleExcludeTeams(game.visitorTeam.abbr) }}
+                      style={{
+                        cursor: 'pointer',
+                        opacity: excludedTeams.includes(game.visitorTeam.abbr) ? 0.5 : 1,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        marginBottom: '12px'
+                      }}
+                    >
+                      <img
+                        src={getTeamLogo(game.visitorTeam.abbr)}
+                        alt={`${game.visitorTeam.abbr} logo`}
+                        style={{ width: '50px', marginRight: '8px' }}
+                      />
+                      {/* <Typography variant="h6">{game.visitorTeam.fullName}</Typography> */}
+                      <Typography
+                        color="textSecondary"
+                        style={{
+                          fontSize: '24px'
+                        }}
+                      >
+
+                        {game.visitorTeam.abbr}
+                      </Typography>
+                    </div>
+
+                    <div
+                      onClick={() => { handleExcludeTeams(game.homeTeam.abbr) }}
+                      style={{
+                        cursor: 'pointer',
+                        opacity: excludedTeams.includes(game.homeTeam.abbr) ? 0.5 : 1,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <img
+                        src={getTeamLogo(game.homeTeam.abbr)}
+                        alt={`${game.homeTeam.abbr} logo`}
+                        style={{ width: '50px', marginRight: '8px' }}
+                      />
+                      {/* <Typography variant="h6">{game.homeTeam.fullName}</Typography> */}
+                      <Typography
+                        color="textSecondary"
+                        style={{
+                          fontSize: '24px'
+                        }}
+                      >
+
+                        {game.homeTeam.abbr}
+                      </Typography>
+                    </div>
+
                     <Typography style={{ marginTop: '10px', textAlign: 'center' }}>
                       {formatDate(game.gameDate)}
                     </Typography>
