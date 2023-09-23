@@ -42,13 +42,13 @@ export function useColumns() {
                 editable: false,
             },
             {
-                Header: "First_Name",
+                Header: "First Name",
                 minWidth: 1000,
                 accessor: "First_Name",
                 editable: false,
             },
             {
-                Header: "Last_Name",
+                Header: "Last Name",
                 minWidth: 1000,
                 accessor: "Last_Name",
                 editable: false,

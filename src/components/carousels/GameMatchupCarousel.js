@@ -1,21 +1,15 @@
 import React, { useState, useRef } from 'react';
 import { Card, CardContent, Typography, IconButton } from '@mui/material';
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
-// import teamLogoPath from '.';  // Adjust the path accordingly
 
 function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExcludedTeams }) {
 
 
-  // const getTeamLogo = (abbr) => `../../img/teams/nfl/${teamLogoPath}/${abbr}.gif`;
-  // const getTeamLogo = (abbr) => `../../img/teams/nfl/${teamLogoPath}/${abbr}.gif`;
   const getTeamLogo = (abbr) => `/img/teams/nfl/${abbr}.gif`;
-
-  console.log('getTeamLogo', getTeamLogo);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const carouselRef = useRef(null);
 
-  // Sorting function
   const sortedGames = games.games.sort((a, b) => {
     const dateA = new Date(a.gameTime);
     const dateB = new Date(b.gameTime);
@@ -45,7 +39,6 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
     hours = hours || 12; // if hours is 0, set it to 12
     return `${hours}:${minutes} ${amOrPm}`;
   };
-  console.log('excludedTeams,excludedTeams);', excludedTeams)
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -58,8 +51,17 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
           <div style={{ display: 'flex', transform: `translateX(-${currentIndex * 260}px)` }}>
             {sortedGames.map(game => (
               <div key={game.gameKey} style={{ width: '250px', margin: '0 5px' }}>
-                <Card style={{ display: 'flex', flexDirection: 'column' }}>
-                  <CardContent style={{ flexGrow: 1 }}>
+                <Card style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  borderRadius: '8px', 
+                  border: '1px solid #ededed',
+                }}>
+                  <CardContent
+                    style={{
+                      flexGrow: 1,
+                      boxShadow: '0 2px 8px rgba(248, 248, 250, 0.06)', 
+                    }}>
 
                     <div
                       onClick={() => { handleExcludeTeams(game.visitorTeam.abbr) }}

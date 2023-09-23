@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useTable, useSortBy, useFilters, usePagination } from "react-table";
 import { CSVLink } from "react-csv";
-// import columns from "./NflDfsTableColumns";
 import { useColumns, useExcludeColumns } from "./NflDfsTableColumns";
 import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
-
 import axios from "axios";
-import { AiFillUnlock, AiFillLock } from "react-icons/fa";
 import { FiUnlock, FiLock } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
 import { TextField, FormHelperText, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
@@ -31,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0a3d62',  // primary-navy-blue
+      main: '#0a3d62', 
     },
   },
   components: {
@@ -39,7 +36,7 @@ const theme = createTheme({
       styleOverrides: {
         colorPrimary: {
           '&.Mui-checked': {
-            color: '#0a3d62',  // primary-navy-blue
+            color: '#0a3d62', 
           },
         },
       },
@@ -112,16 +109,7 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
     usePagination
   );
 
-  // getRowProps: (row) => ({
-  //   isLocked: row.original.isLocked,
-  //   toggleLocked: () =>
-  //     setData((prevData) =>
-  //       prevData.map((d) =>
-  //         d.name === row.original.name ? { ...d, isLocked: !d.isLocked } : d
-  //       )
-  //     ),
-  //   ...row.getRowProps(),
-  // }),
+
 
   const handleInputChange = (e, rowIndex, columnId) => {
     const { value } = e.target;
@@ -153,8 +141,6 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
     );
   };
   const handleLock = (value, rowIndex, columnId) => {
-    console.log('value, rowIndex, columnId', value, rowIndex, columnId)
-    // const { value } = e.target;
     const column = columns.find((col) => col.accessor === columnId);
     if (!column.editable) {
       return;
@@ -214,16 +200,12 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
 
     // Add that player to the excludedCopy
     excludedCopy.push(excludedPlayer);
-    console.log('excludedCopy,excludedCopy);', excludedCopy)
-
     // Update the state
 
     setFilteredPlayers(playersCopy)
     setExcludePlayerLines(excludedCopy);
   }
 
-
-  console.log('filteredPlayers,filteredPlayers);', filteredPlayers)
   return (
     <>
       <table className="nfl-table-optimizer" {...getTableProps()}>
@@ -603,7 +585,7 @@ export default function NFLTable(props) {
         Nickname: player.Nickname,
         Opponent: player.Opponent,
         Position: player.Position,
-        "Roster Position": player["Roster Position"],
+        Roster_Position: player["Roster Position"],
         Salary: player.Salary,
         Team: player.Team,
         Tier: player.Tier,
@@ -649,11 +631,7 @@ export default function NFLTable(props) {
       //   "NYG": 2,
       //   "NYJ": 2,
       // },
-      //     rules:  
-      // [
-      // 	{'stackType': 'position', 'positions': ['QB', ['WR', 'TE’]], ‘maxExposure’: 50}, 
-      // 	{'stackType': 'restrictOpp', 'team1Pos': ['D'], 'team2Pos': ['QB', 'WR', 'RB', 'TE’], ‘maxExposure’: 10}
-      // ]}
+
       rules: [
         restrict2TEsSameTeam && {
           stackType: 'restrictSame',
@@ -674,7 +652,6 @@ export default function NFLTable(props) {
           stackType: 'restrictOpp',
           team1Pos: ['D'],
           team2Pos: ['QB', 'WR', 'RB', 'TE'],
-          // team2Pos: ['QB', 'WR', 'RB', 'TE'], add checkboxes for all of these. 
           maxExposure: 50
         },
       ].filter(Boolean)
@@ -1046,12 +1023,15 @@ export default function NFLTable(props) {
 
       {filteredPlayers.length > 0 ? (
         <div>
-          <GameMatchupsCarousel
+         <div style={{marginBottom:'24px'}}>
+         <GameMatchupsCarousel
             games={GameMatchups}
             handleExcludeTeams={handleExcludeTeams}
             excludedTeams={excludedTeams}
             setExcludedTeams={setExcludedTeams}
           />
+
+         </div>
 
           <div>
             <div style={{
