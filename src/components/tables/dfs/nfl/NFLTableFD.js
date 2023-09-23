@@ -642,9 +642,9 @@ export default function NFLTable(props) {
 
     axios
       .post(
-        // "https://bsw-be-api.onrender.com/optimizer",
+        "https://bsw-be-api.onrender.com/optimizer",
+        // "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         // "https://anxious-teal-gilet.cyclic.cloud/optimizer",
-        "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         { data: myargs },
         {
           // headers,

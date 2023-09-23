@@ -27,19 +27,17 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
 
   const formatDate = (dateStr) => {
     const dateObj = new Date(dateStr);
-    return dateObj.toLocaleDateString('en-US', { weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' });
+    return dateObj.toLocaleDateString('en-US', { weekday: 'short' });
   };
-
 
   const formatTime = (timeStr) => {
     let [hours, minutes] = timeStr.split(':');
     hours = parseInt(hours, 10);
-    const amOrPm = hours >= 12 ? 'PM' : 'AM';
+    const amOrPm = hours >= 12 ? 'pm' : 'am';
     hours = hours % 12;
     hours = hours || 12; // if hours is 0, set it to 12
-    return `${hours}:${minutes} ${amOrPm}`;
+    return `${hours}:${minutes} ${amOrPm} ET`;
   };
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Typography variant="h4">{'Week ' + (games.games[0].week || '')}</Typography>
@@ -54,13 +52,21 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
                 <Card style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  borderRadius: '8px', 
+                  borderRadius: '8px',
                   border: '1px solid #ededed',
                 }}>
+                  <div style={{
+                    backgroundColor: '#f5f5f5', // example gray background, modify as needed
+                    padding: '10px',
+                    textAlign: 'center',
+                    fontWeight: 'bold'
+                  }}>
+                    {formatDate(game.gameDate)} - {formatTime(game.gameTimeEastern)}
+                  </div>
                   <CardContent
                     style={{
                       flexGrow: 1,
-                      boxShadow: '0 2px 8px rgba(248, 248, 250, 0.06)', 
+                      boxShadow: '0 2px 8px rgba(248, 248, 250, 0.06)',
                     }}>
 
                     <div
@@ -117,13 +123,7 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
                         {game.homeTeam.abbr}
                       </Typography>
                     </div>
-
-                    <Typography style={{ marginTop: '10px', textAlign: 'center' }}>
-                      {formatDate(game.gameDate)}
-                    </Typography>
-                    <Typography style={{ marginTop: '10px', textAlign: 'center' }}>
-                      {formatTime(game.gameTimeEastern)}
-                    </Typography>
+                  
                   </CardContent>
                 </Card>
               </div>
