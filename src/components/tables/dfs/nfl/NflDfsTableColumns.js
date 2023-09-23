@@ -66,6 +66,7 @@ export function useColumns() {
                 accessor: "FPPG",
                 editable: true,
                 Cell: ({ value }) => {
+                    console.log('value;m value', value)
                     // return Number(value).toFixed(2);
                     return Number(value).toFixed(2);
                 }

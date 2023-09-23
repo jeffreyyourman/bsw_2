@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0a3d62', 
+      main: '#0a3d62',
     },
   },
   components: {
@@ -36,7 +36,7 @@ const theme = createTheme({
       styleOverrides: {
         colorPrimary: {
           '&.Mui-checked': {
-            color: '#0a3d62', 
+            color: '#0a3d62',
           },
         },
       },
@@ -397,7 +397,7 @@ export default function NFLTable(props) {
   const [open, setOpen] = React.useState(false);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
-  const [numLineups, setNumLineups] = useState(1);
+  const [numLineups, setNumLineups] = useState(10);
   const [totalMaxExp, setTotalMaxExp] = useState(100);
   const [randomStd, setrandomStd] = useState(15);
   const [position, setPosition] = useState('All');
@@ -414,19 +414,23 @@ export default function NFLTable(props) {
   };
 
   useEffect(() => {
+    fetchPlayerDataSet(nflPlayerList)
+  }, []);
+
+  const fetchPlayerDataSet = (dataSet) => {
     // Players with FPPG equal to 0
-    const excludedPlayers = nflPlayerList.filter(player => player.FPPG == 0);
+    const excludedPlayers = dataSet.filter(player => Number(player.FPPG) <= 2);
     // console.log('excludedPlayers', excludedPlayers);
 
     // Players with FPPG not equal to 0
-    const remainingPlayers = nflPlayerList.filter(player => player.FPPG != 0);
+    const remainingPlayers = dataSet.filter(player => Number(player.FPPG) > 2);
     // console.log('remainingPlayers', remainingPlayers);
-    setData(nflPlayerList)
+    setData(dataSet)
     setExcludePlayerLines(excludedPlayers);
     setOgExcludePlayerLines(excludedPlayers);
     setFilteredPlayers(remainingPlayers);
     setOgFilteredPlayers(remainingPlayers);
-  }, []);
+  }
 
   const handleSearchOnChange = (text) => {
     if (position !== 'All') setPosition('All')
@@ -439,7 +443,7 @@ export default function NFLTable(props) {
         return player;
       }
     });
-    console.log('filtername;, fil', filterName)
+    // console.log('filtername;, fil', filterName)
     if (filterName.length !== 0) {
       setFilteredPlayers(filterName);
     } else {
@@ -514,9 +518,6 @@ export default function NFLTable(props) {
         row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
         row[5] = isNaN(row[5]) ? 0 : row[5];
 
-        // // Convert salary to numbers
-        // row[7] = parseFloat(parseFloat(row[7]).toFixed(2));
-        // row[7] = isNaN(row[7]) ? 0 : row[7];
 
         const formattedRow = headers.reduce((acc, header, index) => {
           if (header === "Roster Position" && row[index] === "DEF") {
@@ -536,23 +537,9 @@ export default function NFLTable(props) {
       }).filter(obj => obj.Id !== '');  // This line filters out objects with an empty Id
 
 
-      console.log('formattedData', formattedData);
+      fetchPlayerDataSet(formattedData)
+      setOpen(false);
 
-      const excludedPlayers = formattedData.filter(player => player.FPPG == 0);
-
-      // Players with FPPG not equal to 0
-      const remainingPlayers = formattedData.filter(player => player.FPPG != 0);
-      console.log('excludedPlayers', excludedPlayers);
-      console.log('remainingPlayers', remainingPlayers);
-      setData(formattedData)
-      setFilteredPlayers(remainingPlayers);
-      setOgFilteredPlayers(remainingPlayers);
-      setExcludePlayerLines(excludedPlayers);
-      setOgExcludePlayerLines(excludedPlayers);
-
-
-      // setData(formattedData);
-      // setFilteredPlayers(formattedData)
     }
     reader.readAsText(file);
   };
@@ -560,18 +547,8 @@ export default function NFLTable(props) {
   let handleSubmitPlayers = () => {
     setLoading(true)
 
-    // let zeroCount = 0;
 
-    // const filteredData = filteredPlayers.filter(player => {
-    //   // console.log('player.FPPG', player.FPPG);
-    //   if (player.FPPG < 2) {
-    //     zeroCount++;
-    //     return false;
-    //   }
-    //   return true;
-    // });
-
-    // console.log('player',filteredData[0]);
+    console.log('player', filteredPlayers[0]);
     const transformedPlayers = filteredPlayers.map(player => {
       return {
         FPPG: player.FPPG,
@@ -582,6 +559,8 @@ export default function NFLTable(props) {
         Injury_Indicator: player.Injury_Indicator,
         isLocked: player.isLocked,
         Last_Name: player.Last_Name,
+        minExposure: !player.minExposure ? 0 : Number(player.minExposure),
+        maxExposure: !player.maxExposure || player.maxExposure == 0 ? 100 : Number(player.maxExposure),
         Nickname: player.Nickname,
         Opponent: player.Opponent,
         Position: player.Position,
@@ -1023,15 +1002,15 @@ export default function NFLTable(props) {
 
       {filteredPlayers.length > 0 ? (
         <div>
-         <div style={{marginBottom:'24px'}}>
-         <GameMatchupsCarousel
-            games={GameMatchups}
-            handleExcludeTeams={handleExcludeTeams}
-            excludedTeams={excludedTeams}
-            setExcludedTeams={setExcludedTeams}
-          />
+          <div style={{ marginBottom: '24px' }}>
+            <GameMatchupsCarousel
+              games={GameMatchups}
+              handleExcludeTeams={handleExcludeTeams}
+              excludedTeams={excludedTeams}
+              setExcludedTeams={setExcludedTeams}
+            />
 
-         </div>
+          </div>
 
           <div>
             <div style={{
