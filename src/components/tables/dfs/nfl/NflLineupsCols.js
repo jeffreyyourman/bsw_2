@@ -1,42 +1,6 @@
 import React from "react";
 
 export function NflLineupsColumns() {
-    // const getTeamLogo = (abbr) => `/img/teams/nfl/${abbr}.gif`;
-
-
-     
-   
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-     
-    
-    
     
     const columns = React.useMemo(
         () => [

@@ -14,6 +14,55 @@ module.exports = {
         },
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     // The property ID; the tracking code won't be generated without it
+    //     trackingId: "G-BKCYH3GRZY",
+    //     // Defines where to place the tracking script - `true` in the head and `false` in the body
+    //     head: false,
+    //     // Setting this parameter is optional
+    //     anonymize: true,
+    //     // Setting this parameter is also optional
+    //     respectDNT: true,
+    //     // Avoids sending pageview hits from custom paths
+    //     exclude: ["/preview/**", "/do-not-track/me/too/"],
+    //     // Delays sending pageview hits on route update (in milliseconds)
+    //     pageTransitionDelay: 0,
+    //     // Enables Google Optimize using your container Id
+    //     optimizeId: "G-BKCYH3GRZY",
+    //     // Enables Google Optimize Experiment ID
+    //     experimentId: "G-BKCYH3GRZY",
+    //     // Set Variation ID. 0 for original 1,2,3....
+    //     variationId: "G-BKCYH3GRZY",
+    //     // Defers execution of google analytics script after page load
+    //     defer: false,
+    //     // Any additional optional fields
+    //     sampleRate: 5,
+    //     siteSpeedSampleRate: 10,
+    //     cookieDomain: "https://betsweatwin.netlify.app/",
+    //     // defaults to false
+    //     enableWebVitalsTracking: true,
+    //   },
+    // },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          "G-BKCYH3GRZY", // Google Analytics / GA
+        ],
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+          // Setting this parameter is also optional
+          respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          exclude: ["/preview/**", "/do-not-track/me/too/"],
+        },
+      },
+    },
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: "gatsby-source-filesystem",
