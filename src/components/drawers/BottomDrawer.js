@@ -326,7 +326,7 @@ export default function TemporaryDrawer(props) {
                       <TableCell>WR</TableCell>
                       <TableCell>TE</TableCell>
                       <TableCell>Flex</TableCell>
-                      <TableCell>Defense</TableCell>
+                      <TableCell>Def</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
