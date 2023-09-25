@@ -339,8 +339,8 @@ export default function TemporaryDrawer(props) {
                             onChange={(e) => handleCheckboxChange(lineup, e.target.checked)}
                           />
                         </TableCell>
-                        <TableCell>{lineup.lineup_salary}</TableCell>
                         <TableCell>{lineup.lineup_points}</TableCell>
+                        <TableCell>{lineup.lineup_salary}</TableCell>
                         <TableCell>{lineup.totalTds.toFixed(2)}</TableCell>
                         <TableCell>{lineup.totalEverything.toFixed(2)}</TableCell>
                         <TableCell>{lineup.totalRecTds.toFixed(2)}</TableCell>

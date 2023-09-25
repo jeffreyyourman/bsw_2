@@ -403,7 +403,7 @@ export default function NFLTable(props) {
   const [open, setOpen] = React.useState(false);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
-  const [numLineups, setNumLineups] = useState(2);
+  const [numLineups, setNumLineups] = useState(10);
   const [totalMaxExp, setTotalMaxExp] = useState(40);
   const [randomStd, setrandomStd] = useState(20);
   const [position, setPosition] = useState('All');
