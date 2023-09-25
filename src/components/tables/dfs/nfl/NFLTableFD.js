@@ -6,7 +6,7 @@ import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
 import axios from "axios";
 import { FiUnlock, FiLock } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
-import { TextField, FormHelperText, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import { TextField, FormHelperText, Card, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
 import GameMatchups from '../../../../mockJson/nfl/nfl-current-games-nextgenstats.json'
@@ -401,8 +401,8 @@ export default function NFLTable(props) {
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
   const [numLineups, setNumLineups] = useState(10);
-  const [totalMaxExp, setTotalMaxExp] = useState(100);
-  const [randomStd, setrandomStd] = useState(15);
+  const [totalMaxExp, setTotalMaxExp] = useState(40);
+  const [randomStd, setrandomStd] = useState(20);
   const [position, setPosition] = useState('All');
   // const [searchFilter, setSearchFilter] = useState('');
   const [excludeOpposingDefense, setExcludeOpposingDefense] = useState(false);
@@ -411,6 +411,7 @@ export default function NFLTable(props) {
   const [restrict2TEsSameTeam, setRestrict2TEsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
   // const [anotherCheckbox, setAnotherCheckbox] = useState(false);
+  const [skillPlayersAgainstDef, setSkillPlayersAgainstDef] = useState([]);
 
   const handleCheckboxChange = (setter) => (event) => {
     setter(event.target.checked);
@@ -421,6 +422,7 @@ export default function NFLTable(props) {
   }, []);
 
   const fetchPlayerDataSet = (dataSet) => {
+    console.log('dataSet', dataSet);
     // Players with FPPG equal to 0
     const excludedPlayers = dataSet.filter(player => Number(player.FPPG) <= 2);
     // console.log('excludedPlayers', excludedPlayers);
@@ -434,6 +436,19 @@ export default function NFLTable(props) {
     setFilteredPlayers(remainingPlayers);
     setOgFilteredPlayers(remainingPlayers);
   }
+
+
+  const handleCheckChange = (event) => {
+    const { name, checked } = event.target;
+
+    setSkillPlayersAgainstDef((prevState) => {
+      if (checked && !prevState.includes(name)) {
+        return [...prevState, name];
+      } else {
+        return prevState.filter((item) => item !== name);
+      }
+    });
+  };
 
   const handleSearchOnChange = (text) => {
     if (position !== 'All') setPosition('All')
@@ -617,13 +632,13 @@ export default function NFLTable(props) {
       rules: [
         restrict2TEsSameTeam && {
           stackType: 'restrictSame',
-          positions: ['TE', 'TE'], //Don't want te and te from same team,
-          maxExposure: 50
+          positions: ['TE', 'TE'],
+
         },
         excludeQbANdRb && {
           stackType: 'restrictSame',
-          positions: ['RB', 'QB'], //Don't want te and te from same team,
-          maxExposure: 50
+          positions: ['RB', 'QB'],
+
         },
         pairQbWithWrOrTe && {
           stackType: 'position',
@@ -633,9 +648,15 @@ export default function NFLTable(props) {
         excludeOpposingDefense && {
           stackType: 'restrictOpp',
           team1Pos: ['D'],
-          team2Pos: ['QB', 'WR', 'RB', 'TE'],
-          maxExposure: 50
+          team2Pos: skillPlayersAgainstDef.length === 0 ? ['QB'] : skillPlayersAgainstDef,
         },
+        // {
+        //   stackType: 'playerGroup',
+        //   players: ['Justin	Jefferson', 'Tyreek	Hill'],
+        //   // maxFromGroup: 2,
+        //   minFromGroup: 1,
+        //   maxExposure: 50
+        // }
       ].filter(Boolean)
     };
     const headers = {
@@ -645,8 +666,8 @@ export default function NFLTable(props) {
 
     axios
       .post(
-        "https://bsw-be-api.onrender.com/optimizer",
-        // "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
+        // "https://bsw-be-api.onrender.com/optimizer",
+        "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         // "https://anxious-teal-gilet.cyclic.cloud/optimizer",
         { data: myargs },
         {
@@ -812,8 +833,6 @@ export default function NFLTable(props) {
     setOpen(!open);
   }
 
-
-
   const toggleAndSortData = (lineupData, metric) => {
     // Toggle the sorting direction
     setIsDescendingOrder(!isDescendingOrder);
@@ -864,6 +883,7 @@ export default function NFLTable(props) {
         open={open}
         anchor={'right'}
         handleDrawerOpen={handleDrawerOpen}
+        style={{ backgroundColor: '#fdfdfd' }}
         handleDrawerClose={handleDrawerClose}
       >
         <Box p={3} display="flex" flexDirection="column" alignItems="stretch">
@@ -949,49 +969,99 @@ export default function NFLTable(props) {
               {!false && `Not Paid account - sign up for the ability to optimize more lines like a shark`}
             </FormHelperText>
           </FormControl>
+          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '8px' }}>
+            <FormControlLabel
+              style={{ whiteSpace: 'break-spaces' }}
+              control={
+                <Checkbox
+                  checked={excludeOpposingDefense}
+                  onChange={handleCheckboxChange(setExcludeOpposingDefense)}
+                  color="primary"
+                />
+              }
+              label="Exclude Opposing Defense"
+            />
+            {excludeOpposingDefense &&
+              <>
+                <Typography
+                  variant="caption"
+                  display="block"
+                  gutterBottom
+                  style={{
+                    marginLeft: "8px",
+                    whiteSpace: 'break-spaces'
+                  }}>
+                  After excluding the opposing defense, you can further choose which positions to exclude.
+                  If no positions are chosen, it will only pair QB against the defense.
+                </Typography>
 
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={excludeOpposingDefense}
-                onChange={handleCheckboxChange(setExcludeOpposingDefense)}
-                color="primary"
-              />
+                <Box
+                  display="flex"
+                  flexDirection="row"
+                  flexWrap="wrap"
+                  justifyContent="start"
+                  alignItems="center"
+                  marginLeft="8px"
+                >
+                  <FormControlLabel
+                    control={<Checkbox name="QB" onChange={handleCheckChange} />}
+                    label="QB"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="WR" onChange={handleCheckChange} />}
+                    label="WR"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="RB" onChange={handleCheckChange} />}
+                    label="RB"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox name="TE" onChange={handleCheckChange} />}
+                    label="TE"
+                  />
+                </Box>
+              </>
             }
-            label="Exclude Opposing Defense - add positions below it to exclude."
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={pairQbWithWrOrTe}
-                onChange={handleCheckboxChange(setPairQbWithWrOrTe)}
-                color="primary"
 
-              />
-            }
-            label="pair QB with WR and/or a TE "
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={excludeQbANdRb}
-                onChange={handleCheckboxChange(setExcludeQbANdRb)}
-                color="primary"
-              />
-            }
-            label="Exclude QB and RBs"
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={restrict2TEsSameTeam}
-                onChange={handleCheckboxChange(setRestrict2TEsSameTeam)}
-                color="primary"
-              />
-            }
-            label="Restrict 2 TEs from same team"
-          />
+          </Card>
 
+          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '8px' }}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={pairQbWithWrOrTe}
+                  onChange={handleCheckboxChange(setPairQbWithWrOrTe)}
+                  color="primary"
+
+                />
+              }
+              label="pair QB with WR and/or a TE "
+            />
+          </Card>
+          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '8px' }}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={excludeQbANdRb}
+                  onChange={handleCheckboxChange(setExcludeQbANdRb)}
+                  color="primary"
+                />
+              }
+              label="Exclude QB and RBs"
+            />
+          </Card>
+          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '8px' }}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={restrict2TEsSameTeam}
+                  onChange={handleCheckboxChange(setRestrict2TEsSameTeam)}
+                  color="primary"
+                />
+              }
+              label="Restrict 2 TEs from same team"
+            />
+          </Card>
           <Box mt={2}> {/* Added for a bit of margin-top for the button */}
             <Button
               disabled={loading}
