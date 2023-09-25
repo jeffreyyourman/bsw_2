@@ -70,9 +70,9 @@ const Navbar = () => {
               open={Boolean(anchorEl)}
               onClose={handleMenuClose}
             >
-              <MenuItem onClick={handleMenuClose}>
+              {/* <MenuItem onClick={handleMenuClose}>
                 <Link to="/dfs/sport/nba">NBA</Link>
-              </MenuItem>
+              </MenuItem> */}
               <MenuItem onClick={handleMenuClose}>
                 <Link to="/dfs/sport/nfl">NFL</Link>
               </MenuItem>

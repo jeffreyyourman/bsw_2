@@ -18,6 +18,9 @@ export default class Index extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  componentDidMount() {
+    window.location.href = '/about'
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

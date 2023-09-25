@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
@@ -19,7 +19,9 @@ export const IndexPageTemplate = ({
   intro,
 }) => {
   const heroImage = getImage(image) || image;
-
+  useEffect(() => {
+   window.location.href='/about' 
+  },[])
   return (
     <div>
       <FullWidthImage img={heroImage} title={title} subheading={subheading} />

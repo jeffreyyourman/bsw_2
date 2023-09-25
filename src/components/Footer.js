@@ -38,7 +38,7 @@ const Footer = () => {
                       About
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link className="navbar-item" to="/products">
                       Products
                     </Link>
@@ -47,8 +47,8 @@ const Footer = () => {
                     <Link className="navbar-item" to="/contact/examples">
                       Form Examples
                     </Link>
-                  </li>
-                  <li>
+                  </li> */}
+                  {/* <li>
                     <a
                       className="navbar-item"
                       href="/admin/"
@@ -57,7 +57,7 @@ const Footer = () => {
                     >
                       Admin
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </section>
             </div>
@@ -69,11 +69,11 @@ const Footer = () => {
                       Latest Stories
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link className="navbar-item" to="/contact">
                       Contact
                     </Link>
-                  </li>
+                  </li> */}
                 </ul>
               </section>
             </div>
