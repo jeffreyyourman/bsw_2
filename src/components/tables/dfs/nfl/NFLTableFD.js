@@ -910,25 +910,26 @@ export default function NFLTable(props) {
               helperText="Values are from 0 to 100"
             />
           </FormControl>
-          <FormControl margin="normal" fullWidth>
-            <TextField
-              label="Max Players From Same team"
-              type="number"
-              defaultValue={maxFromSameTeam}
-              InputProps={{
-                inputProps: {
-                  min: 1,
-                  max: 4
-                }
-              }}
-              onChange={(e) => {
-                setMaxFromSameTeam(Number(e.target.value));
-              }}
-              fullWidth
-              helperText="Values are from 0 to 100"
-            />
-          </FormControl>
-
+          {process.env.NODE_ENV !== 'development' &&
+            <FormControl margin="normal" fullWidth>
+              <TextField
+                label="Max Players From Same team"
+                type="number"
+                defaultValue={maxFromSameTeam}
+                InputProps={{
+                  inputProps: {
+                    min: 1,
+                    max: 4
+                  }
+                }}
+                onChange={(e) => {
+                  setMaxFromSameTeam(Number(e.target.value));
+                }}
+                fullWidth
+                helperText="Values are from 0 to 100"
+              />
+            </FormControl>
+          }
           <FormControl margin="normal" fullWidth>
             <TextField
               label="Random Standard Deviation"
@@ -969,7 +970,7 @@ export default function NFLTable(props) {
               {!false && `Not Paid account - sign up for the ability to optimize more lines like a shark`}
             </FormHelperText>
           </FormControl>
-          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '8px' }}>
+          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
             <FormControlLabel
               style={{ whiteSpace: 'break-spaces' }}
               control={
@@ -1025,7 +1026,7 @@ export default function NFLTable(props) {
 
           </Card>
 
-          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '8px' }}>
+          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
             <FormControlLabel
               control={
                 <Checkbox
@@ -1038,7 +1039,7 @@ export default function NFLTable(props) {
               label="pair QB with WR and/or a TE "
             />
           </Card>
-          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '8px' }}>
+          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
             <FormControlLabel
               control={
                 <Checkbox
@@ -1050,7 +1051,7 @@ export default function NFLTable(props) {
               label="Exclude QB and RBs"
             />
           </Card>
-          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '8px' }}>
+          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
             <FormControlLabel
               control={
                 <Checkbox
