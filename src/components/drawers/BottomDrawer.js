@@ -184,9 +184,9 @@ export default function TemporaryDrawer(props) {
                 <p
                   style={{
                     cursor: 'pointer',
-                    borderBottom: selectedTab === 0 ? '2px solid #007BFF' : 'none',
+                    borderBottom: selectedTab === 0 ? '2px solid #00203d' : 'none',
                     // marginRight: 4,
-                    color: selectedTab === 0 ? '#007BFF' : '#888',
+                    color: selectedTab === 0 ? '#00203d' : '#888',
                     fontWeight: selectedTab === 0 ? 'bold' : 'normal'
                   }}
                   onClick={() => {
@@ -196,8 +196,8 @@ export default function TemporaryDrawer(props) {
                 <p
                   style={{
                     cursor: 'pointer',
-                    borderBottom: selectedTab === 1 ? '2px solid #007BFF' : 'none',
-                    color: selectedTab === 1 ? '#007BFF' : '#888',
+                    borderBottom: selectedTab === 1 ? '2px solid #00203d' : 'none',
+                    color: selectedTab === 1 ? '#00203d' : '#888',
                     fontWeight: selectedTab === 1 ? 'bold' : 'normal'
                   }}
                   onClick={() => {
