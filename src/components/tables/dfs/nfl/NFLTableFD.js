@@ -15,7 +15,7 @@ import NflPlayerPosFilter from "./NflPlayerPosFilters";
 import NFLPlayerSearch from "./NflPlayerSearch";
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { useAuth } from '../../../../context/AuthContext';
-
+import { NflOptimizedLineups } from '../../../../mockJson/nfl/lineups'
 import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
 
 const useStyles = makeStyles((theme) => ({
@@ -381,12 +381,15 @@ export default function NFLTable(props) {
   const classes = useStyles();
   const columns = useColumns();
   const clerk = useClerk();
+  // console.log('NflOptimizedLineups',NflOptimizedLineups());
 
   const { isAuthenticated, setIsAuthenticated } = useAuth();
-  console.log('isAuthenticated', isAuthenticated);
+  // console.log('isAuthenticated', isAuthenticated);
   const excludeColumns = useExcludeColumns();
   const nflPlayerList = NflPlayerList();
   const [lineups, setLineups] = useState([]);
+  const [topPlayers, setTopPlayers] = useState([]);
+  const [topTeams, setTopTeams] = useState([]);
   const [excludedLineups, setExcludedLineups] = useState([]);
   const [isDescendingOrder, setIsDescendingOrder] = useState(true);
   const [data, setData] = useState([]);
@@ -400,7 +403,7 @@ export default function NFLTable(props) {
   const [open, setOpen] = React.useState(false);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
-  const [numLineups, setNumLineups] = useState(10);
+  const [numLineups, setNumLineups] = useState(2);
   const [totalMaxExp, setTotalMaxExp] = useState(40);
   const [randomStd, setrandomStd] = useState(20);
   const [position, setPosition] = useState('All');
@@ -410,15 +413,14 @@ export default function NFLTable(props) {
   const [excludeQbANdRb, setExcludeQbANdRb] = useState(false);
   const [restrict2TEsSameTeam, setRestrict2TEsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
-  // const [anotherCheckbox, setAnotherCheckbox] = useState(false);
   const [skillPlayersAgainstDef, setSkillPlayersAgainstDef] = useState([]);
-
   const handleCheckboxChange = (setter) => (event) => {
     setter(event.target.checked);
   };
 
   useEffect(() => {
     fetchPlayerDataSet(nflPlayerList)
+    // setLineups(NflOptimizedLineups());
   }, []);
 
   const fetchPlayerDataSet = (dataSet) => {
@@ -676,7 +678,7 @@ export default function NFLTable(props) {
         }
       )
       .then((response) => {
-        // console.log(response.data[0].lineups);
+        console.log('response.data', response.data);
         const fetchedLineups = response.data[0].lineups;
         const manipulatedLineups = fetchedLineups.map(lineup => {
           let totalfppg = 0;
@@ -759,8 +761,9 @@ export default function NFLTable(props) {
         });
         const sortedLineupsDes = sortByMetricDescending(manipulatedLineups, 'lineup_points')
         // const sortedLineupsA = sortByMetricAscending(manipulatedLineups, 'lineup_points')
-
-        setLineups(sortedLineupsDes);
+        setTopTeams(response.data[1].top_teams)
+        setTopPlayers(response.data[1].top_players)
+        setLineups({ lineups: sortedLineupsDes, topPlayersTeams: response.data[1] });
 
         setLoading(false)
       })
@@ -773,7 +776,8 @@ export default function NFLTable(props) {
   const exportLineupsToUpload = () => {
     let amtOfLinesToExport = 350;
     // let amtOfLinesToExport = amtOfLinesToExport || 350;
-    const limitedLineups = lineups.slice(0, amtOfLinesToExport);
+    console.log('lineups', lineups.lineups);
+    const limitedLineups = lineups.lineups.slice(0, amtOfLinesToExport);
 
     // Here, we're creating an array for each lineup that starts with lineup.totalEverything 
     // followed by all the playerIds.
@@ -1186,14 +1190,19 @@ export default function NFLTable(props) {
 
             {lineups.length !== 0 && (
               <div style={{ marginTop: "64px" }}>
-                <p>total lines: {lineups.length}</p>
+                <p>total lines: {lineups.lineups.length}</p>
                 <BottomDrawer
                   exportLineupsToUpload={exportLineupsToUpload}
                   toggleAndSortData={toggleAndSortData}
                   sortDataByAsc={sortDataByAsc}
                   sortDataByDec={sortDataByDec}
                   exportPlayerLines={exportPlayerLines}
-                  lineups={lineups} />
+                  topPlayers={topPlayers}
+                  topTeams={topTeams}
+                  lineups={lineups} 
+                  
+                  
+                  />
               </div>
             )}
           </div>

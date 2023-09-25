@@ -53,6 +53,18 @@ export function useColumns() {
                 accessor: "Last_Name",
                 editable: false,
             },
+            {
+                Header: "Injury Indicator",
+                minWidth: 1000,
+                accessor: "Injury_Indicator",
+                editable: false,
+            },
+            {
+                Header: "Injury Details",
+                minWidth: 1000,
+                accessor: "Injury_Details",
+                editable: false,
+            },
             // {
             //     Header: "Name",
             //     minWidth: 1000,
@@ -259,18 +271,7 @@ export function useColumns() {
                 editable: true,
                 disableFilters: true
             },
-            {
-                Header: "Injury Indicator",
-                minWidth: 1000,
-                accessor: "Injury_Indicator",
-                editable: false,
-            },
-            {
-                Header: "Injury Details",
-                minWidth: 1000,
-                accessor: "Injury_Details",
-                editable: false,
-            },
+         
             // {
             //     Header: "NFLStats Proj",
             //     minWidth: 1000,
@@ -365,17 +366,6 @@ export function useExcludeColumns() {
             },
 
             {
-                Header: "Projections",
-                minWidth: 1000,
-                accessor: "FPPG",
-                editable: true,
-                Cell: ({ value }) => {
-                    // return Number(value).toFixed(2);
-                    return Number(value).toFixed(2);
-                }
-            },
-
-            {
                 Header: "Injury Indicator",
                 minWidth: 1000,
                 accessor: "Injury_Indicator",
@@ -387,6 +377,20 @@ export function useExcludeColumns() {
                 accessor: "Injury_Details",
                 editable: false,
             },
+
+            
+            {
+                Header: "Projections",
+                minWidth: 1000,
+                accessor: "FPPG",
+                editable: true,
+                Cell: ({ value }) => {
+                    // return Number(value).toFixed(2);
+                    return Number(value).toFixed(2);
+                }
+            },
+
+      
 
             {
                 Header: "Salary",
