@@ -28,7 +28,15 @@ const useStyles = makeStyles((theme) => ({
   helperText: {
     whiteSpace: "normal",
     wordWrap: "break-word",
+  },
+  dialogContent: {
+    height: '80vh', // This will make the content of the Dialog 80% of the viewport height. Adjust as needed.
+  },
+  dialogPaper: {
+    height: '90vh',  // This will make the Dialog itself 90% of the viewport height. Adjust as needed.
+    width: '90vw',   // This will make the Dialog 90% of the viewport width. Adjust as needed.
   }
+
 }));
 
 
@@ -640,7 +648,7 @@ export default function NFLTable(props) {
     }));
 
 
-    console.log('playerGroupRules',playerGroupRules);
+    console.log('playerGroupRules', playerGroupRules);
     let myargs = {
       numLineups: parseInt(numLineups, 10),
       site: 'FANDUEL',
@@ -909,13 +917,15 @@ export default function NFLTable(props) {
         Sign up
       </button> */}
       <Dialog
-        fullScreen={fullScreen}
+        fullScreen={true}  // Always fullscreen
         fullWidth={true}
         maxWidth="xl"
         open={openModal}
-        onClose={handleClose}>
+        onClose={handleClose}
+        classes={{ paper: classes.dialogPaper }}  // Apply the custom style
+      >
         <DialogTitle>My Modal with Tabs</DialogTitle>
-        <DialogContent>
+        <DialogContent className={classes.dialogContent}>
           <Tabs value={tabValue} onChange={handleTabChange}>
             <Tab label="Player Groups" />
             <Tab label="Team Stacks" />
