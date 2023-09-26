@@ -924,7 +924,7 @@ export default function NFLTable(props) {
         onClose={handleClose}
         classes={{ paper: classes.dialogPaper }}  // Apply the custom style
       >
-        <DialogTitle>My Modal with Tabs</DialogTitle>
+        <DialogTitle>Advanced Settings</DialogTitle>
         <DialogContent className={classes.dialogContent}>
           <Tabs value={tabValue} onChange={handleTabChange}>
             <Tab label="Player Groups" />
@@ -1199,7 +1199,7 @@ export default function NFLTable(props) {
                     variant="contained"
                     style={{ marginLeft: '8px' }}
                   >
-                    Open Player/Team Stacks
+                    Advanced Settings
                   </Button>
 
 
