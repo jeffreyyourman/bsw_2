@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
     wordWrap: "break-word",
   },
   dialogContent: {
-    height: '80vh', // This will make the content of the Dialog 80% of the viewport height. Adjust as needed.
+    height: '80vh',
   },
   dialogPaper: {
-    height: '90vh',  // This will make the Dialog itself 90% of the viewport height. Adjust as needed.
-    width: '90vw',   // This will make the Dialog 90% of the viewport width. Adjust as needed.
+    height: '90vh', 
+    width: '90vw',  
   }
 
 }));
@@ -917,31 +917,54 @@ export default function NFLTable(props) {
         Sign up
       </button> */}
       <Dialog
-        fullScreen={true}  // Always fullscreen
-        fullWidth={true}
+        fullScreen
+        fullWidth
         maxWidth="xl"
         open={openModal}
         onClose={handleClose}
-        classes={{ paper: classes.dialogPaper }}  // Apply the custom style
+        PaperProps={{
+          className: classes.dialogPaper
+        }}
       >
-        <DialogTitle>Advanced Settings</DialogTitle>
+
+
+        <DialogTitle>
+          Advanced Settings
+          <div
+            onClick={handleClose}
+            style={{
+              position: 'absolute',
+              right: 8,
+              top: 8,
+              cursor: 'pointer',
+              fontSize: '1.5rem'
+            }}
+          >
+            X
+          </div>
+        </DialogTitle>
         <DialogContent className={classes.dialogContent}>
           <Tabs value={tabValue} onChange={handleTabChange}>
             <Tab label="Player Groups" />
             <Tab label="Team Stacks" />
             <Tab label="Upload Own Projections" />
           </Tabs>
-          {tabValue === 0 && <PlayerGroups
-            groups={groups}
-            setGroups={setGroups}
-            filteredPlayers={filteredPlayers}
-            playerGroups={playerGroups}
-            setPlayerGroups={setPlayerGroups}
-          />}
+
+          {tabValue === 0 && (
+            <PlayerGroups
+              groups={groups}
+              setGroups={setGroups}
+              filteredPlayers={filteredPlayers}
+              playerGroups={playerGroups}
+              setPlayerGroups={setPlayerGroups}
+            />
+          )}
+
           {tabValue === 1 && <div>Team stacks coming soon</div>}
           {tabValue === 2 && <div>Upload own Projections coming soon</div>}
         </DialogContent>
       </Dialog>
+
       <LeftSideDrawer
         open={open}
         anchor={'right'}
@@ -1207,20 +1230,6 @@ export default function NFLTable(props) {
 
             </div>
           </div>
-
-          {/* <div style={{ display: "flex" }}>
-            <label>numLineups</label>
-            <input
-              type="number"
-              defaultValue={numLineups}
-              onChange={(e) => {
-                setNumLineups(e.target.value);
-              }}
-              style={{ width: "100px" }}
-            />
-          </div> */}
-
-
 
           <div style={{ overflow: "auto" }}>
             {isShowingExcludePlayers ? <Table
