@@ -72,36 +72,62 @@ function NFLPlayerGroups(props) {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div style={{ width: '30%', height: "90%", overflowY: 'auto' }}>
+        // <div style={{ display: 'flex',     height: '90%',flexDirection: 'row' }}>
+        //     <div style={{ width: '30%', height: "90%" }}>
+        //         <Button onClick={handleCreateGroup} variant="contained">Create Player Group</Button>
+        //         {props.groups.map((group) => (
+        //             <div
+        //                 key={group.id}
+        //                 style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
+        //                 <div
+        //                     style={{
+        //                         display: 'flex',
+        //                         flexDirection: 'row',
+        //                         alignItems: 'center'
+        //                     }}
+        //                     onClick={() => handleSelectGroup(group.id)}>
+        //                     <h1>{group.name}</h1>
+        //                     <Button
+        //                         size="small"
+        //                         style={{ color: 'red', fontSize: '32px' }}
+        //                         onClick={() => handleDeleteGroup(group.id)}>
+        //                         X
+        //                     </Button>
+        //                 </div>
+        //             </div>
+        //         ))}
+        //     </div>
+
+        <div style={{ display: 'flex', height: '90%', flexDirection: 'row' }}>
+            <div style={{ width: '30%', height: '90%', overflowY: 'hidden' }}>
                 <Button onClick={handleCreateGroup} variant="contained">Create Player Group</Button>
-                {props.groups.map((group) => (
-                    <div
-                        key={group.id}
-                        style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
+                <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
+                    {props.groups.map((group) => (
                         <div
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                alignItems: 'center'
-                            }}
-                            onClick={() => handleSelectGroup(group.id)}>
-                            <h1>{group.name}</h1>
-                            <Button
-                                size="small"
-                                style={{ color: 'red', fontSize: '32px' }}
-                                onClick={() => handleDeleteGroup(group.id)}>
-                                X
-                            </Button>
+                            key={group.id}
+                            style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center'
+                                }}
+                                onClick={() => handleSelectGroup(group.id)}>
+                                <h1>{group.name}</h1>
+                                <Button
+                                    size="small"
+                                    style={{ color: 'red', fontSize: '32px' }}
+                                    onClick={() => handleDeleteGroup(group.id)}>
+                                    X
+                                </Button>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
             {activeGroupId && props.groups[getActiveGroupIndex()] && (
-                <div style={{ width: '70%', height: "500px", overflowY: 'auto' }}>
-                    <h4 style={{
-                        marginBottom: 8
-                    }}>Edit Group Settings</h4>
+                <div style={{ width: '70%', height: "100%", overflowY: 'hidden' }}>
+                    <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
                     <TextField
                         style={{ margin: 4 }}
                         label="Group Name"
@@ -144,56 +170,63 @@ function NFLPlayerGroups(props) {
                         }}
                     />
 
-                    <h4>Current Group Players</h4>
-                    <TableContainer component={Paper} style={{ width: '100%', height: '45%', overflowY: 'auto' }}>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Name</TableCell>
-                                    <TableCell>FPPG</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {props.groups[getActiveGroupIndex()].players.map((playerName, index) => {
-                                    const player = props.filteredPlayers.find(p => p.Nickname === playerName) || { Nickname: 'Unknown', FPPG: 'Unknown' };
-                                    return (
-                                        <TableRow key={index}>
-                                            <TableCell>{player.Nickname}</TableCell>
-                                            <TableCell>{player.FPPG}</TableCell>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <div style={{ width: '48%' }}>
+                            <h4 style={{ marginTop: 24, marginBottom: 8 }}>Add Players to Group</h4>
+                            <TableContainer component={Paper} style={{ width: '100%', height: '45%', overflowY: 'auto' }}>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Use</TableCell>
+                                            <TableCell>Name</TableCell>
+                                            <TableCell>FPPG</TableCell>
                                         </TableRow>
-                                    );
-                                })}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                                    </TableHead>
+                                    <TableBody>
+                                        {props.filteredPlayers.map((player, index) => (
+                                            <TableRow key={index}>
+                                                <TableCell>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={props.groups[getActiveGroupIndex()].players.includes(player.Nickname)}
+                                                        onChange={(e) => handleCheckboxChange(player.Nickname, e.target.checked)}
+                                                    />
+                                                </TableCell>
+                                                <TableCell>{player.Nickname}</TableCell>
+                                                <TableCell>{player.FPPG}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </div>
 
-                    <h4>Add Players to Group</h4>
-                    <TableContainer component={Paper} style={{ width: '100%', height: '45%', overflowY: 'auto' }}>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Use</TableCell>
-                                    <TableCell>Name</TableCell>
-                                    <TableCell>FPPG</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {props.filteredPlayers.map((player, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell>
-                                            <input
-                                                type="checkbox"
-                                                checked={props.groups[getActiveGroupIndex()].players.includes(player.Nickname)}
-                                                onChange={(e) => handleCheckboxChange(player.Nickname, e.target.checked)}
-                                            />
-                                        </TableCell>
-                                        <TableCell>{player.Nickname}</TableCell>
-                                        <TableCell>{player.FPPG}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
+                        <div style={{ width: '48%' }}>
+                            <h4 style={{ marginTop: 24, marginBottom: 8 }}>Current Group Players</h4>
+                            <TableContainer component={Paper} style={{ height: '45%', overflowY: 'auto' }}>
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Name</TableCell>
+                                            <TableCell>FPPG</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {props.groups[getActiveGroupIndex()].players.map((playerName, index) => {
+                                            const player = props.filteredPlayers.find(p => p.Nickname === playerName) || { Nickname: 'Unknown', FPPG: 'Unknown' };
+                                            return (
+                                                <TableRow key={index}>
+                                                    <TableCell>{player.Nickname}</TableCell>
+                                                    <TableCell>{player.FPPG}</TableCell>
+                                                </TableRow>
+                                            );
+                                        })}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </div>
+                    </div>
+
                 </div>
             )}
         </div>
