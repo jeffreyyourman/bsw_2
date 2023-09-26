@@ -68,37 +68,37 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
   const [scoresData, setScoresData] = useState(null);
   const [scoresDataLoading, setScoresDataLoading] = useState(null);
 
-  useEffect(() => {
-    setScoresDataLoading(true)
+  // useEffect(() => {
+  //   setScoresDataLoading(true)
 
-    axios.get('https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=0222b576b967a9d4d4a0ed3e91d70cce&regions=us&markets=h2h,spreads,totals&oddsFormat=american')
-      .then(oddsResp => {
-        // console.log('oddsResp.data', oddsResp.data);
-        axios.get('https://api.the-odds-api.com/v4/sports/americanfootball_nfl/scores/?daysFrom=2&apiKey=0222b576b967a9d4d4a0ed3e91d70cce')
-          .then(scoresResp => {
-            console.log('scoresResp.data', scoresResp.data);
-            // let tempData;
-            // const matchingObjects = games.games.filter(obj1 =>
-            //   scoresResp.data.find(obj2 => obj1.home_team
-            //     === obj2.homeDisplayName)
-            // );
+  //   axios.get('https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=0222b576b967a9d4d4a0ed3e91d70cce&regions=us&markets=h2h,spreads,totals&oddsFormat=american')
+  //     .then(oddsResp => {
+  //       // console.log('oddsResp.data', oddsResp.data);
+  //       axios.get('https://api.the-odds-api.com/v4/sports/americanfootball_nfl/scores/?daysFrom=2&apiKey=0222b576b967a9d4d4a0ed3e91d70cce')
+  //         .then(scoresResp => {
+  //           console.log('scoresResp.data', scoresResp.data);
+  //           // let tempData;
+  //           // const matchingObjects = games.games.filter(obj1 =>
+  //           //   scoresResp.data.find(obj2 => obj1.home_team
+  //           //     === obj2.homeDisplayName)
+  //           // );
 
-            // console.log(matchingObjects);
-            setOddsData(oddsResp.data);
-            setScoresData(scoresResp.data);
-            setScoresDataLoading(false)
-          })
-          .catch(error => {
-            setScoresDataLoading(false)
-            console.error("There was an error fetching the odds data:", error);
-          });
+  //           // console.log(matchingObjects);
+  //           setOddsData(oddsResp.data);
+  //           setScoresData(scoresResp.data);
+  //           setScoresDataLoading(false)
+  //         })
+  //         .catch(error => {
+  //           setScoresDataLoading(false)
+  //           console.error("There was an error fetching the odds data:", error);
+  //         });
 
 
-      })
-      .catch(error => {
-        console.error("There was an error fetching the odds data:", error);
-      });
-  }, []);
+  //     })
+  //     .catch(error => {
+  //       console.error("There was an error fetching the odds data:", error);
+  //     });
+  // }, []);
   const predictedScores = predictScore(spreadsData, totalsData);
   // console.log('predictedScores', predictedScores);
 
@@ -139,9 +139,9 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
   if (scoresDataLoading) {
     return <h1>Loading</h1>
   }
-  if (!scoresData) {
-    return <h1>no scores data</h1>
-  }
+  // if (!scoresData) {
+  //   return <h1>no scores data</h1>
+  // }
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <Typography variant="h4">{'Week ' + (games.games[0].week || '')}</Typography>
@@ -152,13 +152,14 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
         <div ref={carouselRef} style={{ overflow: 'hidden', display: 'flex', width: '100%' }}>
           <div style={{ display: 'flex', transform: `translateX(-${currentIndex * 260}px)` }}>
             {sortedGames.map(game => {
+              let scoreMatchup;
 
-              let scoreMatchup = scoresData.find(score => {
-                if (!game?.score?.phase && score.away_team === game.visitorDisplayName) {
-                  return score
-                }
-              })
-              
+              // let scoreMatchup = scoresData.find(score => {
+              //   if (!game?.score?.phase && score.away_team === game.visitorDisplayName) {
+              //     return score
+              //   }
+              // })
+
               return <div key={game.gameKey} style={{ width: '250px', margin: '0 5px' }}>
                 <Card style={{
                   display: 'flex',
@@ -167,7 +168,7 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
                   border: '1px solid #ededed',
                 }}>
                   <div style={{
-                    backgroundColor: '#f5f5f5', 
+                    backgroundColor: '#f5f5f5',
                     padding: '10px',
                     textAlign: 'center',
                     fontWeight: 'bold'
@@ -212,7 +213,7 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
 
                       <div>
                         {scoreMatchup?.scores ? scoreMatchup.scores[0].score : game?.score?.visitorTeamScore.pointTotal}
-                        
+
                       </div>
                     </div>
 
