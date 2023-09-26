@@ -4,63 +4,6 @@
     "seasonType": "REG",
     "games": [
         {
-            "gameKey": 59206,
-            "gameDate": "09/24/2023",
-            "gameId": 2023092400,
-            "gameTime": "2023-09-24T17:00:00Z",
-            "gameTimeEastern": "13:00:00",
-            "gameType": "REG",
-            "homeDisplayName": "Baltimore Ravens",
-            "homeNickname": "Ravens",
-            "homeTeam": {
-                "teamId": "0325",
-                "smartId": "10400325-48de-3d6a-be29-8f829437f4c8",
-                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/BAL",
-                "abbr": "BAL",
-                "cityState": "Baltimore",
-                "fullName": "Baltimore Ravens",
-                "nick": "Ravens",
-                "teamType": "TEAM",
-                "conferenceAbbr": "AFC",
-                "divisionAbbr": "ACN"
-            },
-            "homeTeamAbbr": "BAL",
-            "homeTeamId": "0325",
-            "isoTime": 1695574800000,
-            "networkChannel": "CBS",
-            "ngsGame": true,
-            "season": 2023,
-            "seasonType": "REG",
-            "site": {
-                "smartId": "00083695-126e-1517-91fe-aab634a526ea",
-                "siteId": 3695,
-                "siteFullName": "M&T Bank Stadium",
-                "siteCity": "Baltimore",
-                "siteState": "MD",
-                "postalCode": "21230",
-                "roofType": "OUTDOOR"
-            },
-            "smartId": "b07cecd0-f053-11ed-b4a7-bab79e4492fa",
-            "visitorDisplayName": "Indianapolis Colts",
-            "visitorNickname": "Colts",
-            "visitorTeam": {
-                "teamId": "2200",
-                "smartId": "10402200-2ea3-84c3-e627-6a6b3b39d56d",
-                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/IND",
-                "abbr": "IND",
-                "cityState": "Indianapolis",
-                "fullName": "Indianapolis Colts",
-                "nick": "Colts",
-                "teamType": "TEAM",
-                "conferenceAbbr": "AFC",
-                "divisionAbbr": "ACS"
-            },
-            "visitorTeamAbbr": "IND",
-            "visitorTeamId": "2200",
-            "week": 3,
-            "weekNameAbbr": "Week 3"
-        },
-        {
             "gameKey": 59205,
             "gameDate": "09/21/2023",
             "gameId": 2023092100,
@@ -116,7 +59,112 @@
             "visitorTeamId": "3410",
             "week": 3,
             "weekNameAbbr": "Week 3",
-            "liveDotsGame": true
+            "liveDotsGame": true,
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 12,
+                    "pointQ1": 3,
+                    "pointQ2": 3,
+                    "pointQ3": 6,
+                    "pointQ4": 0,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                },
+                "homeTeamScore": {
+                    "pointTotal": 30,
+                    "pointQ1": 3,
+                    "pointQ2": 14,
+                    "pointQ3": 3,
+                    "pointQ4": 10,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 2
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
+        },
+        {
+            "gameKey": 59206,
+            "gameDate": "09/24/2023",
+            "gameId": 2023092400,
+            "gameTime": "2023-09-24T17:00:00Z",
+            "gameTimeEastern": "13:00:00",
+            "gameType": "REG",
+            "homeDisplayName": "Baltimore Ravens",
+            "homeNickname": "Ravens",
+            "homeTeam": {
+                "teamId": "0325",
+                "smartId": "10400325-48de-3d6a-be29-8f829437f4c8",
+                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/BAL",
+                "abbr": "BAL",
+                "cityState": "Baltimore",
+                "fullName": "Baltimore Ravens",
+                "nick": "Ravens",
+                "teamType": "TEAM",
+                "conferenceAbbr": "AFC",
+                "divisionAbbr": "ACN"
+            },
+            "homeTeamAbbr": "BAL",
+            "homeTeamId": "0325",
+            "isoTime": 1695574800000,
+            "networkChannel": "CBS",
+            "ngsGame": true,
+            "season": 2023,
+            "seasonType": "REG",
+            "site": {
+                "smartId": "00083695-126e-1517-91fe-aab634a526ea",
+                "siteId": 3695,
+                "siteFullName": "M&T Bank Stadium",
+                "siteCity": "Baltimore",
+                "siteState": "MD",
+                "postalCode": "21230",
+                "roofType": "OUTDOOR"
+            },
+            "smartId": "b07cecd0-f053-11ed-b4a7-bab79e4492fa",
+            "visitorDisplayName": "Indianapolis Colts",
+            "visitorNickname": "Colts",
+            "visitorTeam": {
+                "teamId": "2200",
+                "smartId": "10402200-2ea3-84c3-e627-6a6b3b39d56d",
+                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/IND",
+                "abbr": "IND",
+                "cityState": "Indianapolis",
+                "fullName": "Indianapolis Colts",
+                "nick": "Colts",
+                "teamType": "TEAM",
+                "conferenceAbbr": "AFC",
+                "divisionAbbr": "ACS"
+            },
+            "visitorTeamAbbr": "IND",
+            "visitorTeamId": "2200",
+            "week": 3,
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL OVERTIME",
+                "visitorTeamScore": {
+                    "pointTotal": 22,
+                    "pointQ1": 0,
+                    "pointQ2": 10,
+                    "pointQ3": 3,
+                    "pointQ4": 6,
+                    "pointOT": 3,
+                    "timeoutsRemaining": 2
+                },
+                "homeTeamScore": {
+                    "pointTotal": 19,
+                    "pointQ1": 7,
+                    "pointQ2": 0,
+                    "pointQ3": 7,
+                    "pointQ4": 5,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59207,
@@ -173,7 +221,31 @@
             "visitorTeamAbbr": "TEN",
             "visitorTeamId": "2100",
             "week": 3,
-            "weekNameAbbr": "Week 3"
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 3,
+                    "pointQ1": 0,
+                    "pointQ2": 3,
+                    "pointQ3": 0,
+                    "pointQ4": 0,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 2
+                },
+                "homeTeamScore": {
+                    "pointTotal": 27,
+                    "pointQ1": 3,
+                    "pointQ2": 10,
+                    "pointQ3": 7,
+                    "pointQ4": 7,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 3
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59208,
@@ -230,64 +302,31 @@
             "visitorTeamAbbr": "ATL",
             "visitorTeamId": "0200",
             "week": 3,
-            "weekNameAbbr": "Week 3"
-        },
-        {
-            "gameKey": 59210,
-            "gameDate": "09/24/2023",
-            "gameId": 2023092404,
-            "gameTime": "2023-09-24T17:00:00Z",
-            "gameTimeEastern": "13:00:00",
-            "gameType": "REG",
-            "homeDisplayName": "Jacksonville Jaguars",
-            "homeNickname": "Jaguars",
-            "homeTeam": {
-                "teamId": "2250",
-                "smartId": "10402250-89fe-7b86-ef98-9062cd354256",
-                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/JAX",
-                "abbr": "JAX",
-                "cityState": "Jacksonville",
-                "fullName": "Jacksonville Jaguars",
-                "nick": "Jaguars",
-                "teamType": "TEAM",
-                "conferenceAbbr": "AFC",
-                "divisionAbbr": "ACS"
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 6,
+                    "pointQ1": 0,
+                    "pointQ2": 3,
+                    "pointQ3": 0,
+                    "pointQ4": 3,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                },
+                "homeTeamScore": {
+                    "pointTotal": 20,
+                    "pointQ1": 3,
+                    "pointQ2": 10,
+                    "pointQ3": 0,
+                    "pointQ4": 7,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 1
+                }
             },
-            "homeTeamAbbr": "JAX",
-            "homeTeamId": "2250",
-            "isoTime": 1695574800000,
-            "networkChannel": "FOX",
-            "ngsGame": true,
-            "season": 2023,
-            "seasonType": "REG",
-            "site": {
-                "smartId": "00082049-e1c5-6172-a084-094f2c34a377",
-                "siteId": 2049,
-                "siteFullName": "TIAA Bank Field",
-                "siteCity": "Jacksonville",
-                "siteState": "FL",
-                "postalCode": "32202",
-                "roofType": "OUTDOOR"
-            },
-            "smartId": "b07cff0f-f053-11ed-b4a7-bab79e4492fa",
-            "visitorDisplayName": "Houston Texans",
-            "visitorNickname": "Texans",
-            "visitorTeam": {
-                "teamId": "2120",
-                "smartId": "10402120-b0bc-693d-098a-803014096eb0",
-                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/HOU",
-                "abbr": "HOU",
-                "cityState": "Houston",
-                "fullName": "Houston Texans",
-                "nick": "Texans",
-                "teamType": "TEAM",
-                "conferenceAbbr": "AFC",
-                "divisionAbbr": "ACS"
-            },
-            "visitorTeamAbbr": "HOU",
-            "visitorTeamId": "2120",
-            "week": 3,
-            "weekNameAbbr": "Week 3"
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59209,
@@ -344,7 +383,112 @@
             "visitorTeamAbbr": "NO",
             "visitorTeamId": "3300",
             "week": 3,
-            "weekNameAbbr": "Week 3"
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 17,
+                    "pointQ1": 7,
+                    "pointQ2": 10,
+                    "pointQ3": 0,
+                    "pointQ4": 0,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                },
+                "homeTeamScore": {
+                    "pointTotal": 18,
+                    "pointQ1": 0,
+                    "pointQ2": 0,
+                    "pointQ3": 0,
+                    "pointQ4": 18,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 2
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
+        },
+        {
+            "gameKey": 59210,
+            "gameDate": "09/24/2023",
+            "gameId": 2023092404,
+            "gameTime": "2023-09-24T17:00:00Z",
+            "gameTimeEastern": "13:00:00",
+            "gameType": "REG",
+            "homeDisplayName": "Jacksonville Jaguars",
+            "homeNickname": "Jaguars",
+            "homeTeam": {
+                "teamId": "2250",
+                "smartId": "10402250-89fe-7b86-ef98-9062cd354256",
+                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/JAX",
+                "abbr": "JAX",
+                "cityState": "Jacksonville",
+                "fullName": "Jacksonville Jaguars",
+                "nick": "Jaguars",
+                "teamType": "TEAM",
+                "conferenceAbbr": "AFC",
+                "divisionAbbr": "ACS"
+            },
+            "homeTeamAbbr": "JAX",
+            "homeTeamId": "2250",
+            "isoTime": 1695574800000,
+            "networkChannel": "FOX",
+            "ngsGame": true,
+            "season": 2023,
+            "seasonType": "REG",
+            "site": {
+                "smartId": "00082049-e1c5-6172-a084-094f2c34a377",
+                "siteId": 2049,
+                "siteFullName": "TIAA Bank Field",
+                "siteCity": "Jacksonville",
+                "siteState": "FL",
+                "postalCode": "32202",
+                "roofType": "OUTDOOR"
+            },
+            "smartId": "b07cff0f-f053-11ed-b4a7-bab79e4492fa",
+            "visitorDisplayName": "Houston Texans",
+            "visitorNickname": "Texans",
+            "visitorTeam": {
+                "teamId": "2120",
+                "smartId": "10402120-b0bc-693d-098a-803014096eb0",
+                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/HOU",
+                "abbr": "HOU",
+                "cityState": "Houston",
+                "fullName": "Houston Texans",
+                "nick": "Texans",
+                "teamType": "TEAM",
+                "conferenceAbbr": "AFC",
+                "divisionAbbr": "ACS"
+            },
+            "visitorTeamAbbr": "HOU",
+            "visitorTeamId": "2120",
+            "week": 3,
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 37,
+                    "pointQ1": 7,
+                    "pointQ2": 10,
+                    "pointQ3": 7,
+                    "pointQ4": 13,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 1
+                },
+                "homeTeamScore": {
+                    "pointTotal": 17,
+                    "pointQ1": 0,
+                    "pointQ2": 0,
+                    "pointQ3": 10,
+                    "pointQ4": 7,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 3
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59211,
@@ -401,7 +545,31 @@
             "visitorTeamAbbr": "DEN",
             "visitorTeamId": "1400",
             "week": 3,
-            "weekNameAbbr": "Week 3"
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 20,
+                    "pointQ1": 7,
+                    "pointQ2": 6,
+                    "pointQ3": 0,
+                    "pointQ4": 7,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 3
+                },
+                "homeTeamScore": {
+                    "pointTotal": 70,
+                    "pointQ1": 14,
+                    "pointQ2": 21,
+                    "pointQ3": 14,
+                    "pointQ4": 21,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 3
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59212,
@@ -458,64 +626,31 @@
             "visitorTeamAbbr": "LAC",
             "visitorTeamId": "4400",
             "week": 3,
-            "weekNameAbbr": "Week 3"
-        },
-        {
-            "gameKey": 59213,
-            "gameDate": "09/24/2023",
-            "gameId": 2023092407,
-            "gameTime": "2023-09-24T17:00:00Z",
-            "gameTimeEastern": "13:00:00",
-            "gameType": "REG",
-            "homeDisplayName": "New York Jets",
-            "homeNickname": "Jets",
-            "homeTeam": {
-                "teamId": "3430",
-                "smartId": "10403430-1bc3-42c4-c7d8-39f38aed5f12",
-                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/NYJ",
-                "abbr": "NYJ",
-                "cityState": "New York",
-                "fullName": "New York Jets",
-                "nick": "Jets",
-                "teamType": "TEAM",
-                "conferenceAbbr": "AFC",
-                "divisionAbbr": "ACE"
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 28,
+                    "pointQ1": 7,
+                    "pointQ2": 7,
+                    "pointQ3": 7,
+                    "pointQ4": 7,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 3
+                },
+                "homeTeamScore": {
+                    "pointTotal": 24,
+                    "pointQ1": 0,
+                    "pointQ2": 10,
+                    "pointQ3": 7,
+                    "pointQ4": 7,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                }
             },
-            "homeTeamAbbr": "NYJ",
-            "homeTeamId": "3430",
-            "isoTime": 1695574800000,
-            "networkChannel": "CBS",
-            "ngsGame": true,
-            "season": 2023,
-            "seasonType": "REG",
-            "site": {
-                "smartId": "00083757-62dd-de21-f672-4d0ca5ad5a9e",
-                "siteId": 3757,
-                "siteFullName": "MetLife Stadium",
-                "siteCity": "East Rutherford",
-                "siteState": "NJ",
-                "postalCode": "07073",
-                "roofType": "OUTDOOR"
-            },
-            "smartId": "b07d0eef-f053-11ed-b4a7-bab79e4492fa",
-            "visitorDisplayName": "New England Patriots",
-            "visitorNickname": "Patriots",
-            "visitorTeam": {
-                "teamId": "3200",
-                "smartId": "10403200-69ab-9ea6-5af5-e240fbc08bea",
-                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/NE",
-                "abbr": "NE",
-                "cityState": "New England",
-                "fullName": "New England Patriots",
-                "nick": "Patriots",
-                "teamType": "TEAM",
-                "conferenceAbbr": "AFC",
-                "divisionAbbr": "ACE"
-            },
-            "visitorTeamAbbr": "NE",
-            "visitorTeamId": "3200",
-            "week": 3,
-            "weekNameAbbr": "Week 3"
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59214,
@@ -572,7 +707,112 @@
             "visitorTeamAbbr": "BUF",
             "visitorTeamId": "0610",
             "week": 3,
-            "weekNameAbbr": "Week 3"
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 37,
+                    "pointQ1": 10,
+                    "pointQ2": 6,
+                    "pointQ3": 0,
+                    "pointQ4": 21,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 2
+                },
+                "homeTeamScore": {
+                    "pointTotal": 3,
+                    "pointQ1": 0,
+                    "pointQ2": 0,
+                    "pointQ3": 0,
+                    "pointQ4": 3,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 1
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
+        },
+        {
+            "gameKey": 59213,
+            "gameDate": "09/24/2023",
+            "gameId": 2023092407,
+            "gameTime": "2023-09-24T17:00:00Z",
+            "gameTimeEastern": "13:00:00",
+            "gameType": "REG",
+            "homeDisplayName": "New York Jets",
+            "homeNickname": "Jets",
+            "homeTeam": {
+                "teamId": "3430",
+                "smartId": "10403430-1bc3-42c4-c7d8-39f38aed5f12",
+                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/NYJ",
+                "abbr": "NYJ",
+                "cityState": "New York",
+                "fullName": "New York Jets",
+                "nick": "Jets",
+                "teamType": "TEAM",
+                "conferenceAbbr": "AFC",
+                "divisionAbbr": "ACE"
+            },
+            "homeTeamAbbr": "NYJ",
+            "homeTeamId": "3430",
+            "isoTime": 1695574800000,
+            "networkChannel": "CBS",
+            "ngsGame": true,
+            "season": 2023,
+            "seasonType": "REG",
+            "site": {
+                "smartId": "00083757-62dd-de21-f672-4d0ca5ad5a9e",
+                "siteId": 3757,
+                "siteFullName": "MetLife Stadium",
+                "siteCity": "East Rutherford",
+                "siteState": "NJ",
+                "postalCode": "07073",
+                "roofType": "OUTDOOR"
+            },
+            "smartId": "b07d0eef-f053-11ed-b4a7-bab79e4492fa",
+            "visitorDisplayName": "New England Patriots",
+            "visitorNickname": "Patriots",
+            "visitorTeam": {
+                "teamId": "3200",
+                "smartId": "10403200-69ab-9ea6-5af5-e240fbc08bea",
+                "logo": "https://static.www.nfl.com/{formatInstructions}/league/api/clubs/logos/NE",
+                "abbr": "NE",
+                "cityState": "New England",
+                "fullName": "New England Patriots",
+                "nick": "Patriots",
+                "teamType": "TEAM",
+                "conferenceAbbr": "AFC",
+                "divisionAbbr": "ACE"
+            },
+            "visitorTeamAbbr": "NE",
+            "visitorTeamId": "3200",
+            "week": 3,
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 15,
+                    "pointQ1": 3,
+                    "pointQ2": 7,
+                    "pointQ3": 3,
+                    "pointQ4": 2,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                },
+                "homeTeamScore": {
+                    "pointTotal": 10,
+                    "pointQ1": 0,
+                    "pointQ2": 3,
+                    "pointQ3": 0,
+                    "pointQ4": 7,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59215,
@@ -629,7 +869,31 @@
             "visitorTeamAbbr": "CAR",
             "visitorTeamId": "0750",
             "week": 3,
-            "weekNameAbbr": "Week 3"
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 27,
+                    "pointQ1": 3,
+                    "pointQ2": 10,
+                    "pointQ3": 0,
+                    "pointQ4": 14,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                },
+                "homeTeamScore": {
+                    "pointTotal": 37,
+                    "pointQ1": 3,
+                    "pointQ2": 9,
+                    "pointQ3": 10,
+                    "pointQ4": 15,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 1
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59216,
@@ -686,7 +950,31 @@
             "visitorTeamAbbr": "DAL",
             "visitorTeamId": "1200",
             "week": 3,
-            "weekNameAbbr": "Week 3"
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 16,
+                    "pointQ1": 3,
+                    "pointQ2": 7,
+                    "pointQ3": 3,
+                    "pointQ4": 3,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                },
+                "homeTeamScore": {
+                    "pointTotal": 28,
+                    "pointQ1": 9,
+                    "pointQ2": 12,
+                    "pointQ3": 0,
+                    "pointQ4": 7,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 3
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59217,
@@ -743,7 +1031,31 @@
             "visitorTeamAbbr": "CHI",
             "visitorTeamId": "0810",
             "week": 3,
-            "weekNameAbbr": "Week 3"
+            "weekNameAbbr": "Week 3",
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 10,
+                    "pointQ1": 0,
+                    "pointQ2": 0,
+                    "pointQ3": 0,
+                    "pointQ4": 10,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 3
+                },
+                "homeTeamScore": {
+                    "pointTotal": 41,
+                    "pointQ1": 7,
+                    "pointQ2": 27,
+                    "pointQ3": 7,
+                    "pointQ4": 0,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 3
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59219,
@@ -859,7 +1171,31 @@
             "visitorTeamId": "3900",
             "week": 3,
             "weekNameAbbr": "Week 3",
-            "liveDotsGame": true
+            "liveDotsGame": true,
+            "score": {
+                "time": "00:00",
+                "phase": "FINAL",
+                "visitorTeamScore": {
+                    "pointTotal": 23,
+                    "pointQ1": 7,
+                    "pointQ2": 6,
+                    "pointQ3": 10,
+                    "pointQ4": 0,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 1
+                },
+                "homeTeamScore": {
+                    "pointTotal": 18,
+                    "pointQ1": 7,
+                    "pointQ2": 0,
+                    "pointQ3": 0,
+                    "pointQ4": 11,
+                    "pointOT": 0,
+                    "timeoutsRemaining": 0
+                }
+            },
+            "validated": true,
+            "releasedToClubs": true
         },
         {
             "gameKey": 59220,

@@ -7,6 +7,12 @@ import axios from "axios";
 import { FiUnlock, FiLock } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
 import { TextField, FormHelperText, Card, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import PlayerGroups from './NFLPlayerGroups.js';
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
 import GameMatchups from '../../../../mockJson/nfl/nfl-current-games-nextgenstats.json'
@@ -17,7 +23,7 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 import { useAuth } from '../../../../context/AuthContext';
 import { NflOptimizedLineups } from '../../../../mockJson/nfl/lineups'
 import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
-
+import useMediaQuery from '@mui/material/useMediaQuery';
 const useStyles = makeStyles((theme) => ({
   helperText: {
     whiteSpace: "normal",
@@ -381,7 +387,19 @@ export default function NFLTable(props) {
   const classes = useStyles();
   const columns = useColumns();
   const clerk = useClerk();
+  const [openModal, setOpenModal] = useState(false);
+  const [tabValue, setTabValue] = useState(0);
+  const [playerGroups, setPlayerGroups] = useState([]);
+
   // console.log('NflOptimizedLineups',NflOptimizedLineups());
+  const handleClose = () => {
+    setOpenModal(false);
+  };
+
+  const handleTabChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
+
 
   const { isAuthenticated, setIsAuthenticated } = useAuth();
   // console.log('isAuthenticated', isAuthenticated);
@@ -401,6 +419,7 @@ export default function NFLTable(props) {
   const [ogExcludePlayerLines, setOgExcludePlayerLines] = useState([]);
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = React.useState(false);
+  const [groups, setGroups] = useState([]);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
   const [numLineups, setNumLineups] = useState(10);
@@ -580,7 +599,7 @@ export default function NFLTable(props) {
         isLocked: player.isLocked,
         Last_Name: player.Last_Name,
         minExposure: !player.minExposure ? 0 : Number(player.minExposure),
-        maxExposure: !player.maxExposure || player.maxExposure == 0 ? 100 : Number(player.maxExposure),
+        maxExposure: !player.maxExposure || player.maxExposure == 0 ? totalMaxExp : Number(player.maxExposure),
         Nickname: player.Nickname,
         Opponent: player.Opponent,
         Position: player.Position,
@@ -613,6 +632,15 @@ export default function NFLTable(props) {
     });
 
 
+    const playerGroupRules = groups.map(group => ({
+      stackType: 'playerGroup',
+      players: group,
+      minFromGroup: 1,
+      maxExposure: 50
+    }));
+
+
+    console.log('playerGroupRules',playerGroupRules);
     let myargs = {
       numLineups: parseInt(numLineups, 10),
       site: 'FANDUEL',
@@ -652,13 +680,7 @@ export default function NFLTable(props) {
           team1Pos: ['D'],
           team2Pos: skillPlayersAgainstDef.length === 0 ? ['QB'] : skillPlayersAgainstDef,
         },
-        // {
-        //   stackType: 'playerGroup',
-        //   players: ['Justin	Jefferson', 'Tyreek	Hill'],
-        //   // maxFromGroup: 2,
-        //   minFromGroup: 1,
-        //   maxExposure: 50
-        // }
+        ...playerGroupRules
       ].filter(Boolean)
     };
     const headers = {
@@ -877,12 +899,39 @@ export default function NFLTable(props) {
     setOpen(false);
   };
 
+  const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
+
+
   return (
     <ThemeProvider theme={theme}>
       {/* <SignIn /> */}
       {/* <button className="sign-up-btn" onClick={() => clerk.openSignUp({})}>
         Sign up
       </button> */}
+      <Dialog
+        fullScreen={fullScreen}
+        fullWidth={true}
+        maxWidth="xl"
+        open={openModal}
+        onClose={handleClose}>
+        <DialogTitle>My Modal with Tabs</DialogTitle>
+        <DialogContent>
+          <Tabs value={tabValue} onChange={handleTabChange}>
+            <Tab label="Player Groups" />
+            <Tab label="Team Stacks" />
+            <Tab label="Upload Own Projections" />
+          </Tabs>
+          {tabValue === 0 && <PlayerGroups
+            groups={groups}
+            setGroups={setGroups}
+            filteredPlayers={filteredPlayers}
+            playerGroups={playerGroups}
+            setPlayerGroups={setPlayerGroups}
+          />}
+          {tabValue === 1 && <div>Content for Tab 2</div>}
+          {tabValue === 2 && <div>Content for Tab 3</div>}
+        </DialogContent>
+      </Dialog>
       <LeftSideDrawer
         open={open}
         anchor={'right'}
@@ -1067,17 +1116,6 @@ export default function NFLTable(props) {
               label="Restrict 2 TEs from same team"
             />
           </Card>
-          <Box mt={2}> {/* Added for a bit of margin-top for the button */}
-            <Button
-              disabled={loading}
-              onClick={handleSubmitPlayers}
-              className="bsw-primary-btns"
-              variant="contained"
-              fullWidth
-            >
-              {loading ? "Loading..." : 'Submit'}
-            </Button>
-          </Box>
         </Box>
       </LeftSideDrawer>
 
@@ -1145,6 +1183,16 @@ export default function NFLTable(props) {
                   >
                     Optimizer Options
                   </Button>
+                  <Button
+                    onClick={() => setOpenModal(true)}
+                    className="bsw-primary-btns"
+                    variant="contained"
+                    style={{ marginLeft: '8px' }}
+                  >
+                    Open Player/Team Stacks
+                  </Button>
+
+
                 </div>}
 
             </div>
@@ -1188,6 +1236,21 @@ export default function NFLTable(props) {
 
             }
 
+
+          </div>
+
+          <div style={{ width: '150px', marginTop: '8px' }}>
+
+            <Button
+              disabled={loading}
+              onClick={handleSubmitPlayers}
+              className="bsw-primary-btns"
+              variant="contained"
+              fullWidth
+            >
+              {loading ? "Loading..." : 'Optimize'}
+            </Button>
+
             {lineups.length !== 0 && (
               <div style={{ marginTop: "64px" }}>
                 <p>total lines: {lineups.lineups.length}</p>
@@ -1199,13 +1262,14 @@ export default function NFLTable(props) {
                   exportPlayerLines={exportPlayerLines}
                   topPlayers={topPlayers}
                   topTeams={topTeams}
-                  lineups={lineups} 
-                  
-                  
-                  />
+                  lineups={lineups}
+
+
+                />
               </div>
             )}
           </div>
+
         </div>
       ) : null}
     </ThemeProvider>

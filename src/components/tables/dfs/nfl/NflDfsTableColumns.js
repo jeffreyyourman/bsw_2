@@ -377,8 +377,6 @@ export function useExcludeColumns() {
                 accessor: "Injury_Details",
                 editable: false,
             },
-
-            
             {
                 Header: "Projections",
                 minWidth: 1000,
