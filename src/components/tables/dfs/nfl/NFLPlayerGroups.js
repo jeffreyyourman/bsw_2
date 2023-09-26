@@ -100,7 +100,9 @@ function NFLPlayerGroups(props) {
 
         <div style={{ display: 'flex', height: '90%', flexDirection: 'row' }}>
             <div style={{ width: '30%', height: '90%', overflowY: 'hidden' }}>
-                <Button onClick={handleCreateGroup} variant="contained">Create Player Group</Button>
+                <Button onClick={handleCreateGroup} 
+                style={{backgroundColor:'#00203d'}}
+                 variant="contained">Create Player Group</Button>
                 <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
                     {props.groups.map((group) => (
                         <div

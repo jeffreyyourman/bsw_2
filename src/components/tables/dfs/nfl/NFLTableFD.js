@@ -938,8 +938,8 @@ export default function NFLTable(props) {
             playerGroups={playerGroups}
             setPlayerGroups={setPlayerGroups}
           />}
-          {tabValue === 1 && <div>Content for Tab 2</div>}
-          {tabValue === 2 && <div>Content for Tab 3</div>}
+          {tabValue === 1 && <div>Team stacks coming soon</div>}
+          {tabValue === 2 && <div>Upload own Projections coming soon</div>}
         </DialogContent>
       </Dialog>
       <LeftSideDrawer
