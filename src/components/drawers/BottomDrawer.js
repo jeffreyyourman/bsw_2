@@ -262,7 +262,7 @@ export default function TemporaryDrawer(props) {
                   <TableHead>
                     <TableRow>
                       <TableCell>Use</TableCell>
-              
+
                       <TableCell>
                         <TableSortLabel
                           active={orderBy === 'totalfppg'}
@@ -330,8 +330,9 @@ export default function TemporaryDrawer(props) {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {sortedLineups.map((lineup, index) => (
-                      <TableRow key={index}>
+                    {sortedLineups.map((lineup, index) => {
+                      console.log('lineup', lineup)
+                      return <TableRow key={index}>
                         <TableCell>
                           <input
                             type="checkbox"
@@ -348,7 +349,7 @@ export default function TemporaryDrawer(props) {
                           <TableCell key={playerIndex}>{player.playerName}</TableCell>
                         ))}
                       </TableRow>
-                    ))}
+                    })}
                   </TableBody>
                 </Table>
               </TableContainer>

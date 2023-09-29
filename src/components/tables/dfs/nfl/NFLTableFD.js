@@ -13,9 +13,12 @@ import DialogContent from '@mui/material/DialogContent';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import PlayerGroups from './NFLPlayerGroups.js';
+import NFLTeamStacks from './NFLTeamStacks.js';
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
 import GameMatchups from '../../../../mockJson/nfl/nfl-current-games-nextgenstats.json'
+import fdSlates from '../../../../mockJson/nfl/slates/fd_slates.json'
+// import nflPlayerListTest from '../../../../mockJson/nfl/slates/testSlate/nflPlayerListTest.json'
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NflPlayerPosFilter from "./NflPlayerPosFilters";
 import NFLPlayerSearch from "./NflPlayerSearch";
@@ -24,6 +27,7 @@ import { useAuth } from '../../../../context/AuthContext';
 import { NflOptimizedLineups } from '../../../../mockJson/nfl/lineups'
 import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
 import useMediaQuery from '@mui/material/useMediaQuery';
+
 const useStyles = makeStyles((theme) => ({
   helperText: {
     whiteSpace: "normal",
@@ -33,8 +37,8 @@ const useStyles = makeStyles((theme) => ({
     height: '80vh',
   },
   dialogPaper: {
-    height: '90vh', 
-    width: '90vw',  
+    height: '90vh',
+    width: '90vw',
   }
 
 }));
@@ -86,6 +90,8 @@ const Table = ({ columns, data, setData, filteredPlayers, setFilteredPlayers, ex
     }),
     []
   );
+
+
 
   const defaultColumn = React.useMemo(
     () => ({
@@ -441,14 +447,90 @@ export default function NFLTable(props) {
   const [restrict2TEsSameTeam, setRestrict2TEsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
   const [skillPlayersAgainstDef, setSkillPlayersAgainstDef] = useState([]);
+  const [selectedSlate, setSelectedSlate] = useState('Main');
+  // const [slates, setSlates] = useState([]);
   const handleCheckboxChange = (setter) => (event) => {
     setter(event.target.checked);
   };
 
+  // Asynchronous function to fetch slates
+
+
+
+
+  const handleGameSlateChange = (slateType) => {
+    console.log('slate', slateType)
+    console.log('slateType.split()[0]', slateType.split('-')[0])
+    console.log('.toLowerCase()', slateType.split('-')[0].toLowerCase())
+
+    setSelectedSlate(slateType)
+    // return slateType.toLowerCase().replace(/[^a-z0-9]/g, '-');
+  };
+
+  const slateTypeToDirectory = (slateType) => {
+    return slateType.toLowerCase().replace(/[^a-z0-9]/g, '-');
+  };
+
+
+  const getSlateFullDirectory = (abbr) => `/mockJson/nfl/slates/${abbr}-slate/nflPlayerListTest.json`;
+
+
+
+  const fetchPlayerSlateDataSet = async (slateType) => {
+    const directoryName = slateTypeToDirectory(slateType);
+    const slateData1 = getSlateFullDirectory(directoryName)
+    console.log('slateData1', slateData1);
+    try {
+      const response = await axios.get(slateData1); // Note: You don't need to specify the "public" directory; just use the root path.
+
+      console.log('fetchPlayerSlateDataSet - response - ', response.data);
+      if (Object.keys(response.data).length === 0) {
+        fetchPlayerSlateDataSet('Main')
+      } else {
+
+        fetchPlayerDataSet(response.data);
+      }
+      // setData(response.data);
+    } catch (error) {
+      console.error("Error fetching the JSON data:", error);
+    }
+    // console.log('require', await import(slateData1))
+    // const filePath = `./src/mockJson/nfl/slates/testSlate/nflPlayerListTest.js`;
+    // // const filePath = `../../../../mockJson/nfl/slates/testSlate/nflPlayerListTest.js`;
+    // // const filePath = `../../../../mockJson/nfl/slates/${directoryName}/nflPlayerListTest.js`;
+
+    // try {
+    //   const importedData = await import(filePath);
+    //   console.log('importedData', importedData);
+    //   // fetchPlayerDataSet(importedData);
+    // } catch (error) {
+    //   console.error("Failed to import the JavaScript file:", error);
+    // }
+  };
+
   useEffect(() => {
-    fetchPlayerDataSet(nflPlayerList)
+    // fetchPlayerDataSet(nflPlayerList)
+    fetchPlayerSlateDataSet(selectedSlate)
+    console.log('reset')
+    // fetchSlates()
+    // https://www.dailyfantasyfuel.com/data/slates/next/nfl/fd?x=1
+    // https://www.dailyfantasyfuel.com/data/playerdetails/nfl/fd/16E87?x=1
+    // https://www.dailyfantasyfuel.com/data/slates/next/nfl/dk?x=1
+
     // setLineups(NflOptimizedLineups());
-  }, []);
+  }, [selectedSlate]);
+
+  // https://www.dailyfantasyfuel.com/data/slates/next/nfl/fd
+  //   const fetchSlates = async () => {
+  //     try {
+  //         const fdSlateResponse = await axios.get('');
+  //         console.log('fdSlateResponse.data',fdSlateResponse.data);
+  //         setSlates(fdSlateResponse.data); 
+  //     } catch (error) {
+  //         console.error("Error fetching slates:", error);
+  //     }
+  // };
+
 
   const fetchPlayerDataSet = (dataSet) => {
     console.log('dataSet', dataSet);
@@ -922,13 +1004,16 @@ export default function NFLTable(props) {
         maxWidth="xl"
         open={openModal}
         onClose={handleClose}
+
         PaperProps={{
           className: classes.dialogPaper
         }}
       >
 
 
-        <DialogTitle>
+        <DialogTitle
+
+        >
           Advanced Settings
           <div
             onClick={handleClose}
@@ -943,10 +1028,13 @@ export default function NFLTable(props) {
             X
           </div>
         </DialogTitle>
-        <DialogContent className={classes.dialogContent}>
+        <DialogContent
+          style={{ backgroundColor: '#efefef' }}
+          className={classes.dialogContent}>
           <Tabs value={tabValue} onChange={handleTabChange}>
             <Tab label="Player Groups" />
             <Tab label="Team Stacks" />
+            <Tab label="Game Stacks" />
             <Tab label="Upload Own Projections" />
           </Tabs>
 
@@ -960,8 +1048,11 @@ export default function NFLTable(props) {
             />
           )}
 
-          {tabValue === 1 && <div>Team stacks coming soon</div>}
-          {tabValue === 2 && <div>Upload own Projections coming soon</div>}
+          {tabValue === 1 &&
+            <NFLTeamStacks />
+          }
+          {tabValue === 2 && <div>Game Stacks</div>}
+          {tabValue === 3 && <div>Upload own Projections coming soon</div>}
         </DialogContent>
       </Dialog>
 
@@ -1056,6 +1147,31 @@ export default function NFLTable(props) {
               {!false && `Not Paid account - sign up for the ability to optimize more lines like a shark`}
             </FormHelperText>
           </FormControl>
+
+          <FormControl margin="normal" fullWidth variant="outlined">
+            <InputLabel id="gameSelector-label">Select Game Slate</InputLabel>
+            <Select
+              labelId="gameSelector-label"
+              value={selectedSlate}
+              defaultValue={selectedSlate}
+              onChange={(e) => handleGameSlateChange(e.target.value)}
+              label="Select Game Slate"
+              fullWidth
+            >
+              {fdSlates
+                .filter(game => game.showdown_flag === 0)
+                .map((game, index) => (
+                  <MenuItem key={index} value={game.slate_type}>
+                    {game.slate_type} - {game.start_string}
+                  </MenuItem>
+                ))}
+            </Select>
+            <FormHelperText className="helperText">
+              Some helper text or instructions for the user.
+            </FormHelperText>
+          </FormControl>
+
+
           <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
             <FormControlLabel
               style={{ whiteSpace: 'break-spaces' }}
@@ -1232,6 +1348,9 @@ export default function NFLTable(props) {
           </div>
 
           <div style={{ overflow: "auto" }}>
+            <h2><span style={{ fontWeight: '500', fontSize: 24 }}>{selectedSlate} Slate</span></h2>
+            {/* <h2><span style={{ fontWeight: '500', fontSize: 24 }}>Slate:<span style={{display: 'block'}}> {selectedSlate}</span></span></h2> */}
+
             {isShowingExcludePlayers ? <Table
               columns={excludeColumns}
               data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}

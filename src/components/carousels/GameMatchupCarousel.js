@@ -135,7 +135,6 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
     hours = hours || 12; // if hours is 0, set it to 12
     return `${hours}:${minutes} ${amOrPm} ET`;
   };
-  console.log('sortedGames', sortedGames)
   if (scoresDataLoading) {
     return <h1>Loading</h1>
   }
@@ -160,11 +159,11 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
               //   }
               // })
 
-              return <div key={game.gameKey} style={{ width: '250px', margin: '0 5px' }}>
+              return <div key={game.gameKey} className="nfl-game-matchup-item" style={{ width: '250px', margin: '0 5px' }}>
                 <Card style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  borderRadius: '8px',
+                  borderRadius: '16px',
                   border: '1px solid #ededed',
                 }}>
                   <div style={{

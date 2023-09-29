@@ -72,37 +72,26 @@ function NFLPlayerGroups(props) {
     };
 
     return (
-        // <div style={{ display: 'flex',     height: '90%',flexDirection: 'row' }}>
-        //     <div style={{ width: '30%', height: "90%" }}>
-        //         <Button onClick={handleCreateGroup} variant="contained">Create Player Group</Button>
-        //         {props.groups.map((group) => (
-        //             <div
-        //                 key={group.id}
-        //                 style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
-        //                 <div
-        //                     style={{
-        //                         display: 'flex',
-        //                         flexDirection: 'row',
-        //                         alignItems: 'center'
-        //                     }}
-        //                     onClick={() => handleSelectGroup(group.id)}>
-        //                     <h1>{group.name}</h1>
-        //                     <Button
-        //                         size="small"
-        //                         style={{ color: 'red', fontSize: '32px' }}
-        //                         onClick={() => handleDeleteGroup(group.id)}>
-        //                         X
-        //                     </Button>
-        //                 </div>
-        //             </div>
-        //         ))}
-        //     </div>
+        <div style={{
+            display: 'flex',
+            height: '90%',
+            flexDirection: 'row',
+        }}>
+            <div
+                className="playerGroupLeftSideWrapper"
+                style={{
+                    width: '30%',
+                    backgroundColor: 'white',
+                    marginTop: 16,
+                    padding: 16,
+                    overflowY: 'hidden',
+                    marginRight: 8,
+                    // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
 
-        <div style={{ display: 'flex', height: '90%', flexDirection: 'row' }}>
-            <div style={{ width: '30%', height: '90%', overflowY: 'hidden' }}>
-                <Button onClick={handleCreateGroup} 
-                style={{backgroundColor:'#00203d'}}
-                 variant="contained">Create Player Group</Button>
+                }}>
+                <Button onClick={handleCreateGroup}
+                    style={{ backgroundColor: '#00203d' }}
+                    variant="contained">Create Player Group</Button>
                 <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
                     {props.groups.map((group) => (
                         <div
@@ -128,7 +117,18 @@ function NFLPlayerGroups(props) {
                 </div>
             </div>
             {activeGroupId && props.groups[getActiveGroupIndex()] && (
-                <div style={{ width: '70%', height: "100%", overflowY: 'hidden' }}>
+                <div
+                    className="playerGroupLeftSideWrapper"
+
+                    style={{
+                        width: '70%',
+                        backgroundColor: 'white',
+                        overflowY: 'hidden',
+                        marginTop: 16,
+                        padding: 16,
+                        // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
+
+                    }}>
                     <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
                     <TextField
                         style={{ margin: 4 }}
@@ -172,10 +172,10 @@ function NFLPlayerGroups(props) {
                         }}
                     />
 
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', height:'500px', flexDirection: 'row', justifyContent: 'space-between' }}>
                         <div style={{ width: '48%' }}>
                             <h4 style={{ marginTop: 24, marginBottom: 8 }}>Add Players to Group</h4>
-                            <TableContainer component={Paper} style={{ width: '100%', height: '45%', overflowY: 'auto' }}>
+                            <TableContainer component={Paper} style={{ width: '100%', height: '90%', overflowY: 'auto' }}>
                                 <Table>
                                     <TableHead>
                                         <TableRow>
@@ -205,7 +205,7 @@ function NFLPlayerGroups(props) {
 
                         <div style={{ width: '48%' }}>
                             <h4 style={{ marginTop: 24, marginBottom: 8 }}>Current Group Players</h4>
-                            <TableContainer component={Paper} style={{ height: '45%', overflowY: 'auto' }}>
+                            <TableContainer component={Paper} style={{ height: '90%', overflowY: 'auto' }}>
                                 <Table>
                                     <TableHead>
                                         <TableRow>
