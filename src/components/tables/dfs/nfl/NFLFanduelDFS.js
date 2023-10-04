@@ -267,12 +267,22 @@ export default function NFLFanduelDFS(props) {
       setGameMatchups(updateGameMatchups)
       console.log('updateGameMatchups', updateGameMatchups);
 
+
+      const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
+      // console.log('excludedPlayers', excludedPlayers);
+
+      // Players with FPPG not equal to 0
+      const remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
+
+
       setHeaders(Object.keys(enhancedDataSet[0]));
       setData(enhancedDataSet)
-      setExcludePlayerLines(enhancedDataSet);
-      setOgExcludePlayerLines(enhancedDataSet);
-      setFilteredPlayers(enhancedDataSet);
-      setOgFilteredPlayers(enhancedDataSet);
+
+      setExcludePlayerLines(excludedPlayers);
+      setOgExcludePlayerLines(excludedPlayers);
+
+      setFilteredPlayers(remainingPlayers);
+      setOgFilteredPlayers(remainingPlayers);
     }
   }
 
