@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import {
     Table,
     TableBody,
@@ -89,7 +89,7 @@ function NFLTeamGameStacks(props) {
                     backgroundColor: 'white',
                     marginTop: 16,
                     padding: 16,
-                    overflowY: 'hidden',
+                    overflowY: 'auto',
                     marginRight: 8,
                     // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
 
@@ -124,20 +124,21 @@ function NFLTeamGameStacks(props) {
             {activeGroupId && props.groups[getActiveGroupIndex()] && (
                 <div
                     className="playerGroupLeftSideWrapper"
-
                     style={{
                         width: '70%',
                         backgroundColor: 'white',
-                        overflowY: 'hidden',
+                        overflowY: 'auto',
                         marginTop: 16,
                         padding: 16,
-                        // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
-
-                    }}>
+                    }}
+                >
                     <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
+
                     <TextField
-                        style={{ margin: 4 }}
+                        style={{ margin: '24px 0px' }}
                         label="Group Name"
+                        fullWidth
+                        variant="outlined"
                         value={props.groups[getActiveGroupIndex()]?.name || ''}
                         onChange={e => {
                             const newName = e.target.value;
@@ -148,10 +149,13 @@ function NFLTeamGameStacks(props) {
                             ]);
                         }}
                     />
+
                     <TextField
-                        style={{ margin: 4 }}
+                        style={{ margin: '24px 0px' }}
                         type="number"
                         label="Number of Players"
+                        fullWidth
+                        variant="outlined"
                         value={props.groups[getActiveGroupIndex()]?.numPlayers || ''}
                         onChange={e => {
                             const newNumPlayers = e.target.value;
@@ -162,10 +166,13 @@ function NFLTeamGameStacks(props) {
                             ]);
                         }}
                     />
+
                     <TextField
-                        style={{ margin: 4 }}
+                        style={{ margin: '24px 0px' }}
                         type="number"
                         label="Min From Group"
+                        fullWidth
+                        variant="outlined"
                         value={props.groups[getActiveGroupIndex()]?.minFromGroup || ''}
                         onChange={e => {
                             const newMin = e.target.value;
@@ -176,10 +183,13 @@ function NFLTeamGameStacks(props) {
                             ]);
                         }}
                     />
+
                     <TextField
-                        style={{ margin: 4 }}
+                        style={{ margin: '24px 0px' }}
                         type="number"
                         label="Max Exposure"
+                        fullWidth
+                        variant="outlined"
                         value={props.groups[getActiveGroupIndex()]?.maxExposure || ''}
                         onChange={e => {
                             const newMaxExposure = e.target.value;
@@ -193,31 +203,36 @@ function NFLTeamGameStacks(props) {
 
                     <div style={{ marginTop: 24, marginBottom: 8 }}>
                         <h4>Select Positions for Group</h4>
-                        <select
-                            multiple={true}
-                            value={props.groups[getActiveGroupIndex()]?.forPositions || []}
-                            onChange={e => {
-                                const selectedOptions = [...e.target.options]
-                                    .filter(option => option.selected)
-                                    .map(option => option.value);
-
-                                props.setGroups(prev => [
-                                    ...prev.slice(0, getActiveGroupIndex()),
-                                    { ...prev[getActiveGroupIndex()], forPositions: selectedOptions },
-                                    ...prev.slice(getActiveGroupIndex() + 1),
-                                ]);
-                            }}
-                            style={{ width: '100%', height: '100px' }}
-                        >
-                            {props.positions.map(position => (
-                                <option key={position} value={position}>{position}</option>
-                            ))}
-                        </select>
+                        <FormControl fullWidth variant="outlined" style={{ margin: 4 }}>
+                            <InputLabel>Positions</InputLabel>
+                            <Select
+                                multiple
+                                value={props.groups[getActiveGroupIndex()]?.forPositions || []}
+                                onChange={e => {
+                                    const selectedOptions = e.target.value;
+                                    props.setGroups(prev => [
+                                        ...prev.slice(0, getActiveGroupIndex()),
+                                        { ...prev[getActiveGroupIndex()], forPositions: selectedOptions },
+                                        ...prev.slice(getActiveGroupIndex() + 1),
+                                    ]);
+                                }}
+                                label="Positions"
+                            >
+                                {props.positions.map(position => (
+                                    <MenuItem key={position} value={position}>
+                                        {position}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
                     </div>
 
-                    <div style={{ width: '48%' }}>
-                        <h4 style={{ marginTop: 24, marginBottom: 8 }}>Select Game for Group</h4>
-                        <select
+                    <div style={{ width: '100%', marginTop: 16 }}>
+                        <h4>Select Game for Group</h4>
+                        <TextField
+                            select
+                            fullWidth
+                            variant="outlined"
                             value={props.groups[getActiveGroupIndex()]?.forGame || ''}
                             onChange={e => {
                                 const newGame = e.target.value;
@@ -228,15 +243,21 @@ function NFLTeamGameStacks(props) {
                                 ]);
                             }}
                         >
-                            <option value=''>Select a game</option>
+                            <MenuItem value="">
+                                <em>Select a game</em>
+                            </MenuItem>
                             {props.gameMatchups.map((game, index) => (
-                                <option key={index} value={game.gameMatchup}>{game.gameMatchup}</option>
+                                <MenuItem key={index} value={game.gameMatchup}>
+                                    {game.gameMatchup}
+                                </MenuItem>
                             ))}
-                        </select>
+                        </TextField>
                     </div>
 
                 </div>
             )}
+
+
         </div>
     );
 }
@@ -244,3 +265,128 @@ function NFLTeamGameStacks(props) {
 export default NFLTeamGameStacks;
 
 
+//   {/* {activeGroupId && props.groups[getActiveGroupIndex()] && (
+//                 <div
+//                     className="playerGroupLeftSideWrapper"
+
+//                     style={{
+//                         width: '70%',
+//                         backgroundColor: 'white',
+//                         overflowY: 'auto',
+//                         marginTop: 16,
+//                         padding: 16,
+//                         // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
+
+//                     }}>
+//                     <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
+//                     <TextField
+//                         style={{ margin: 4 }}
+//                         label="Group Name"
+//                         value={props.groups[getActiveGroupIndex()]?.name || ''}
+//                         onChange={e => {
+//                             const newName = e.target.value;
+//                             props.setGroups(prev => [
+//                                 ...prev.slice(0, getActiveGroupIndex()),
+//                                 { ...prev[getActiveGroupIndex()], name: newName },
+//                                 ...prev.slice(getActiveGroupIndex() + 1),
+//                             ]);
+//                         }}
+//                     />
+//                     <TextField
+//                         style={{ margin: 4 }}
+//                         type="number"
+//                         label="Number of Players"
+//                         value={props.groups[getActiveGroupIndex()]?.numPlayers || ''}
+//                         onChange={e => {
+//                             const newNumPlayers = e.target.value;
+//                             props.setGroups(prev => [
+//                                 ...prev.slice(0, getActiveGroupIndex()),
+//                                 { ...prev[getActiveGroupIndex()], numPlayers: parseInt(newNumPlayers) },
+//                                 ...prev.slice(getActiveGroupIndex() + 1),
+//                             ]);
+//                         }}
+//                     />
+//                     <TextField
+//                         style={{ margin: 4 }}
+//                         type="number"
+//                         label="Min From Group"
+//                         value={props.groups[getActiveGroupIndex()]?.minFromGroup || ''}
+//                         onChange={e => {
+//                             const newMin = e.target.value;
+//                             props.setGroups(prev => [
+//                                 ...prev.slice(0, getActiveGroupIndex()),
+//                                 { ...prev[getActiveGroupIndex()], minFromGroup: parseInt(newMin) },
+//                                 ...prev.slice(getActiveGroupIndex() + 1),
+//                             ]);
+//                         }}
+//                     />
+//                     <TextField
+//                         style={{ margin: 4 }}
+//                         type="number"
+//                         label="Max Exposure"
+//                         value={props.groups[getActiveGroupIndex()]?.maxExposure || ''}
+//                         onChange={e => {
+//                             const newMaxExposure = e.target.value;
+//                             props.setGroups(prev => [
+//                                 ...prev.slice(0, getActiveGroupIndex()),
+//                                 { ...prev[getActiveGroupIndex()], maxExposure: parseInt(newMaxExposure) },
+//                                 ...prev.slice(getActiveGroupIndex() + 1),
+//                             ]);
+//                         }}
+//                     />
+
+//                     <div style={{ marginTop: 24, marginBottom: 8 }}>
+//                         <h4>Select Positions for Group</h4>
+//                         <TextField
+//                             select
+//                             fullWidth
+//                             variant="outlined"
+//                             value={props.groups[getActiveGroupIndex()]?.forPositions || []}
+//                             onChange={e => {
+//                                 const selectedOptions = e.target.value;
+//                                 props.setGroups(prev => [
+//                                     ...prev.slice(0, getActiveGroupIndex()),
+//                                     { ...prev[getActiveGroupIndex()], forPositions: selectedOptions },
+//                                     ...prev.slice(getActiveGroupIndex() + 1),
+//                                 ]);
+//                             }}
+//                             multiple
+//                             style={{ width: '100%' }}
+//                         >
+//                             {props.positions.map(position => (
+//                                 <MenuItem key={position} value={position}>
+//                                     {position}
+//                                 </MenuItem>
+//                             ))}
+//                         </TextField>
+//                     </div>
+
+//                     <div style={{ width: '100%', marginTop: 16 }}>
+//                         <h4>Select Game for Group</h4>
+//                         <TextField
+//                             select
+//                             fullWidth
+//                             variant="outlined"
+//                             value={props.groups[getActiveGroupIndex()]?.forGame || ''}
+//                             onChange={e => {
+//                                 const newGame = e.target.value;
+//                                 props.setGroups(prev => [
+//                                     ...prev.slice(0, getActiveGroupIndex()),
+//                                     { ...prev[getActiveGroupIndex()], forGame: newGame },
+//                                     ...prev.slice(getActiveGroupIndex() + 1),
+//                                 ]);
+//                             }}
+//                         >
+//                             <MenuItem value="">
+//                                 <em>Select a game</em>
+//                             </MenuItem>
+//                             {props.gameMatchups.map((game, index) => (
+//                                 <MenuItem key={index} value={game.gameMatchup}>
+//                                     {game.gameMatchup}
+//                                 </MenuItem>
+//                             ))}
+//                         </TextField>
+//                     </div>
+
+//                 </div>
+//             )} */}

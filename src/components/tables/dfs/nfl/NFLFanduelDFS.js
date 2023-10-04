@@ -502,18 +502,7 @@ export default function NFLFanduelDFS(props) {
       minFromGroup: 1,
       maxExposure: 50
     }));
-    // const teamGroupRules = teamGroups.map(group => ({
-    //   stackType: 'teamStack',
-    //   players: group,
-    //   minFromGroup: 1,
-    //   maxExposure: 50
-    // }));
-    // const teamGameGroupRules = teamGameGroups.map(group => ({
-    //   ...group
-    // }));
 
-
-    // console.log('teamGameGroupRules', teamGameGroupRules);
     let myargs = {
       numLineups: parseInt(numLineups, 10),
       site: 'FANDUEL',
@@ -554,25 +543,14 @@ export default function NFLFanduelDFS(props) {
           team2Pos: skillPlayersAgainstDef.length === 0 ? ['QB'] : skillPlayersAgainstDef,
         },
         includeGlobalGameStack && {
-          //           globalNumPlayers
-          // globalMinFromTeam
-          // globalMaxExposure
-
-          // "stackType": "game",
-          // "numPlayers": 4,
-          // "minFromTeam": 1,
-          // "maxExposure": 50
-
           stackType: 'game',
           numPlayers: globalNumPlayers,
           minFromTeam: globalMinFromTeam,
           maxExposure: globalMaxExposure,
         },
         ...playerGroupRules,
-        // ...teamGroupRules,
-        teamGameGroups.map(group => ({
-          ...group
-        }))
+        ...teamGroups,
+        ...teamGameGroups,
       ].filter(Boolean)
     };
     const headers = {
@@ -852,7 +830,9 @@ export default function NFLFanduelDFS(props) {
 
           {tabValue === 1 &&
             <NFLTeamStacks
+              positions={['QB', 'RB', 'WR', 'TE', 'D']}
               groups={teamGroups}
+              gameMatchups={gameMatchups}
               setGroups={setTeamGroups}
               filteredPlayers={filteredPlayers}
               playerGroups={playerGroups}
