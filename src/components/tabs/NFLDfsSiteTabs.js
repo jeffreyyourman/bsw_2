@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import NFLTableFD from "../tables/dfs/nfl/NFLTableFD";
+import NFLFanduelDFS from "../tables/dfs/nfl/NFLFanduelDFS";
+// import NFLTableFD from "../tables/dfs/nfl/NFLTableFD";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -47,7 +48,7 @@ function NflDfsSiteTabs(props) {
                     label="Fanduel"
                     sx={{
                         borderRight: '1px solid #e0e0e0',
-                        backgroundColor: value === 0 ? '#00203d' : 'white',
+                        backgroundColor: value === 0 ? '#00203d !important' : 'white',
                         color: value === 0 ? 'white !important' : '#00203d'
                     }}
                 />
@@ -67,7 +68,8 @@ function NflDfsSiteTabs(props) {
                         <div className="">
                             <div className="">
                                 <div className="">
-                                    <NFLTableFD />
+                                    {/* <NFLTableFD /> */}
+                                    <NFLFanduelDFS />
                                 </div>
 
                             </div>

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import {
@@ -10,7 +11,7 @@ import {
     Paper,
 } from '@material-ui/core';
 
-function NFLPlayerGroups(props) {
+function NFLTeamGameStacks(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
 
     const generateUniqueId = () => {
@@ -20,7 +21,7 @@ function NFLPlayerGroups(props) {
     const handleCreateGroup = () => {
         props.setGroups(prev => [...prev, {
             id: generateUniqueId(),
-            name: "New Player Group",
+            name: "New Game Stack",
             players: [],
             minFromGroup: 1,
             maxExposure: 50,
@@ -91,7 +92,7 @@ function NFLPlayerGroups(props) {
                 }}>
                 <Button onClick={handleCreateGroup}
                     style={{ backgroundColor: '#00203d' }}
-                    variant="contained">Create Player Group</Button>
+                    variant="contained">Create Game Stack</Button>
                 <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
                     {props.groups.map((group) => (
                         <div
@@ -235,5 +236,88 @@ function NFLPlayerGroups(props) {
     );
 }
 
-export default NFLPlayerGroups;
+export default NFLTeamGameStacks;
+
+
+
+// import React, { useState } from 'react';
+
+// const teams = [
+//     { logo: 'DEN_Logo.png', abbreviation: 'DEN' },
+//     //... add other teams similarly
+// ];
+
+// const positions = ['PG', 'SG', 'SF', 'PF', 'C'];
+
+// const NFLTeamGameStacks = () => {
+//     const [selectedTeam, setSelectedTeam] = useState(null);
+//     const [exposurePercentage, setExposurePercentage] = useState(100);
+//     const [selectedPositions, setSelectedPositions] = useState([]);
+//     const [mustIncludeCount, setMustIncludeCount] = useState(1);
+// // properties needed 
+// //     num of players from both teams
+// //     select a game to bring over. One game at a time. 
+// //     which positions from each team
+// //     stack global exposure
+// //     maxExposurePerTeam for both teams. 
+// // once the game was already selected, Can't add another game unless the game was brought back over to original list
+// // 
+
+// // Object to go by
+// // {
+// // 	‘stackType’: 'singleGameStack',
+// // 	‘numPlayers’: 3,
+// // 	‘forGame’: ‘KC@NYJ’,
+// // 	‘forPositions’: [‘QB’, ’WR’, ’TE’],
+// // 	‘minFromGroup’: 2,
+// // 	‘maxFromGroup’: 4,
+// // 	‘maxExposure’: 50
+// // }
+
+//     return (
+//         <div>
+//             {teams.map((team) => (
+//                 <div key={team.abbreviation}>
+//                     <img src={team.logo} alt={`${team.abbreviation} logo`} width={40} />
+//                     <span>{team.abbreviation}</span>
+//                     <input
+//                         type="number"
+//                         value={exposurePercentage}
+//                         onChange={(e) => setExposurePercentage(e.target.value)}
+//                         max={100}
+//                         min={0}
+//                     />
+//                     <select
+//                         multiple={true}
+//                         value={selectedPositions}
+//                         onChange={(e) =>
+//                             setSelectedPositions(
+//                                 Array.from(e.target.selectedOptions, (option) => option.value)
+//                             )
+//                         }
+//                     >
+//                         {positions.map((pos) => (
+//                             <option key={pos} value={pos}>
+//                                 {pos}
+//                             </option>
+//                         ))}
+//                     </select>
+//                     <div>
+//                         Must include at least{' '}
+//                         <input
+//                             type="number"
+//                             value={mustIncludeCount}
+//                             onChange={(e) => setMustIncludeCount(e.target.value)}
+//                             max={positions.length}
+//                             min={1}
+//                         />{' '}
+//                         {selectedPositions.join(', ')}
+//                     </div>
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// };
+
+// export default NFLTeamGameStacks;
 

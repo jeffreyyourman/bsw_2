@@ -25,6 +25,9 @@ export default function TemporaryDrawer(props) {
     bottom: false,
     right: false,
   });
+  const [startLine, setStartLine] = useState(null);
+  const [endLine, setEndLine] = useState(null);
+
 
   // const flattenedLineups = props.lineups.lineups.map(lineup => flattenLineup(lineup));
   // console.log('flattenedLineups',flattenedLineups);
@@ -44,9 +47,9 @@ export default function TemporaryDrawer(props) {
   };
 
   // ... other functions ...
-  console.log('savedLineups', savedLineups);
+  // console.log('savedLineups', savedLineups);
 
-  console.log('deletedLineups', deletedLineups);
+  // console.log('deletedLineups', deletedLineups);
   const handleCheckboxChange = (lineup, isChecked) => {
     if (isChecked) {
       setSaveLineups(prev => [...prev, lineup]);
@@ -56,6 +59,27 @@ export default function TemporaryDrawer(props) {
       setSaveLineups(prev => prev.filter(item => item !== lineup));
     }
   };
+
+  const handleBulkDelete = () => {
+    const start = parseInt(startLine, 10);
+    const end = parseInt(endLine, 10);
+
+    // if (isNaN(start) || isNaN(end)) {
+    //     alert("Please enter valid lineup numbers");
+    //     return;
+    // }
+
+    const newLineups = props.lineups.lineups.filter((_, index) => index < start || index > end);
+
+    // Instead of overwriting the whole props.lineups object, 
+    // spread the existing properties and just modify the lineups property.
+    const updatedLineupsObj = {
+      ...props.lineups,
+      lineups: newLineups
+    };
+
+    props.setLineups(updatedLineupsObj);
+  }
 
   const handleSortRequest = (property) => {
     console.log('property', property);
@@ -149,7 +173,7 @@ export default function TemporaryDrawer(props) {
   };
 
 
-
+  console.log('props.lineups.length', props.lineups);
   return (
     <div>
       <Button onClick={toggleDrawer("bottom", true)}>View lineups</Button>
@@ -257,6 +281,21 @@ export default function TemporaryDrawer(props) {
 
             </div> */}
             <div style={{ width: '85%', height: "90%", overflowY: 'auto' }}>
+              <input
+                type="number"
+                value={startLine || ""}
+                onChange={e => setStartLine(e.target.value)}
+                placeholder="Start Lineup"
+              />
+              <input
+                type="number"
+                value={props.lineups.lineups.length}
+                maxLength={props.lineups.lineups.length}
+                onChange={e => setEndLine(e.target.value)}
+                placeholder="End Lineup"
+              />
+              <button onClick={handleBulkDelete}>Bulk Delete</button>
+
               <TableContainer component={Paper} style={{ width: '100%', height: '90%', overflowY: 'auto' }}>
                 <Table>
                   <TableHead>
@@ -331,7 +370,7 @@ export default function TemporaryDrawer(props) {
                   </TableHead>
                   <TableBody>
                     {sortedLineups.map((lineup, index) => {
-                      console.log('lineup', lineup)
+                      // console.log('lineup', lineup)
                       return <TableRow key={index}>
                         <TableCell>
                           <input
