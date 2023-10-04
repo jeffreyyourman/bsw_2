@@ -21,20 +21,14 @@ import NFLUploadOwnProjections from './NFLUploadOwnProjections.js';
 import TableComponent from './TableComponent.js';
 import NflFdDfsOptimizerSettings from './NflFdDfsOptimizerSettings.js';
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
-// import RightSideDrawer from "../../../drawers/RightSideDrawer";
+
 import BottomDrawer from "../../../drawers/BottomDrawer";
-import GameMatchupsJson from '../../../../mockJson/nfl/nfl-current-games-nextgenstats.json'
-// import fdSlates from '../../../../mockJson/nfl/'
-import fdSlates from '../../../../mockJson/nfl/slates/fd_slates.json'
-// import fdSlates from '/mockJson/nfl/slates/fd_slates.json'
-// const getSlateFullDirectory = (abbr) => `/mockJson/nfl/slates/${abbr}-slate/nflPlayerList.json`;
-// import nflPlayerListTest from '../../../../mockJson/nfl/slates/testSlate/nflPlayerListTest.json'
+
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NflPlayerPosFilter from "./NflPlayerPosFilters";
 import NFLPlayerSearch from "./NflPlayerSearch";
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { useAuth } from '../../../../context/AuthContext';
-import { NflOptimizedLineups } from '../../../../mockJson/nfl/lineups'
 import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
 import useMediaQuery from '@mui/material/useMediaQuery';
 // import TableComponent from "./TableComponent.js";
@@ -135,13 +129,98 @@ export default function NFLFanduelDFS(props) {
 
   const [headers, setHeaders] = useState([]);
   const [gameMatchups, setGameMatchups] = useState([]);
+  const [gameMatchupsJson, setGameMatchupsJson] = useState([]);
+  const [fdSlates, setFdSlates] = useState([]);
+  const [espnScoreboard, setEspnScoreboard] = useState([]);
+  const [espnStandings, setEspnStandings] = useState([]);
+  const getFdSlates = (abbr) => `/mockJson/nfl/slates/fd_slates.json`;
+  const getGameMatchups = (abbr) => `/mockJson/nfl/nfl-current-games-nextgenstats.json`;
+  const getEspnScoreboard = (abbr) => `/mockJson/nfl/2023-espn-scoreboard.json`;
+  const getEspnStandings = (abbr) => `/mockJson/nfl/2023-espn-standings.json`;
+
+
 
   // const [slates, setSlates] = useState([]);
+
+  const fetchFdSlates = async () => {
+    const fdSlateList = getFdSlates()
+    // console.log('fdSlateList', fdSlateList);
+    try {
+      const response = await axios.get(fdSlateList); // Note: You don't need to specify the "public" directory; just use the root path.
+
+      // console.log('fetchfanduel slate lists - response - ', response.data);
+      if (Object.keys(response.data).length === 0) {
+        // fetchPlayerSlateDataSet('Main')
+        setFdSlates([]);
+      } else {
+        setFdSlates(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching the JSON data:", error);
+    }
+  };
+  const fetchGameMatchups = async () => {
+    const getGameMatchupsResponse = getGameMatchups()
+    // console.log('getGameMatchupsResponse', getGameMatchupsResponse);
+    try {
+      const response = await axios.get(getGameMatchupsResponse); // Note: You don't need to specify the "public" directory; just use the root path.
+
+      // console.log('get game matchups slate lists - response - ', response.data);
+      if (Object.keys(response.data).length === 0) {
+        // fetchPlayerSlateDataSet('Main')
+        setGameMatchupsJson([]);
+      } else {
+        setGameMatchupsJson(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching the JSON data:", error);
+    }
+  };
+  const fetchEspnScoreboard = async () => {
+    const getEspnScoreboardRes = getEspnScoreboard()
+    console.log('getEspnScoreboardRes', getEspnScoreboardRes);
+    try {
+      const response = await axios.get(getEspnScoreboardRes); // Note: You don't need to specify the "public" directory; just use the root path.
+
+      console.log('getEspnScoreboardRes ', response.data);
+      if (Object.keys(response.data).length === 0) {
+        // fetchPlayerSlateDataSet('Main')
+        setEspnScoreboard([]);
+      } else {
+        setEspnScoreboard(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching the JSON data:", error);
+    }
+  };
+  const fetchEspnStandings = async () => {
+    const getEspnStandingsRes = getEspnStandings()
+    console.log('getEspnStandingsRes', getEspnStandingsRes);
+    try {
+      const response = await axios.get(getEspnStandingsRes); // Note: You don't need to specify the "public" directory; just use the root path.
+
+      console.log('getEspnStandingsRes ', response.data);
+      if (Object.keys(response.data).length === 0) {
+        // fetchPlayerSlateDataSet('Main')
+        setEspnStandings([]);
+      } else {
+        setEspnStandings(response.data);
+      }
+    } catch (error) {
+      console.error("Error fetching the JSON data:", error);
+    }
+  };
+
+
 
 
   useEffect(() => {
     // fetchPlayerDataSet(nflPlayerList)
+    fetchGameMatchups()
     fetchPlayerSlateDataSet(selectedSlate)
+    fetchFdSlates()
+    fetchEspnScoreboard();
+    fetchEspnStandings();
     // fetchSlates()
     // https://www.dailyfantasyfuel.com/data/slates/next/nfl/fd?x=1
     // https://www.dailyfantasyfuel.com/data/playerdetails/nfl/fd/17042?x=1
@@ -162,52 +241,6 @@ export default function NFLFanduelDFS(props) {
   //     }
   // };
 
-
-  // const gameMatchups = [
-  //   {
-  //     homeTeam: {
-  //       teamAbb: 'ARI',
-  //       players: [
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //       ]
-  //     },
-  //     awayTeam: {
-  //       teamAbb: 'SF',
-  //       players: [
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //       ]
-  //     },
-  //     gameMatchup: 'ARI@SF',
-  //   },
-  //   {
-  //     homeTeam: {
-  //       teamAbb: 'ARI',
-  //       players: [
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //       ]
-  //     },
-  //     awayTeam: {
-  //       teamAbb: 'SF',
-  //       players: [
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //         { playerName: '' },
-  //       ]
-  //     },
-  //     gameMatchup: 'ARI@SF',
-  //   },
-
-  // ]
   const fetchPlayerDataSet = (dataSet) => {
     console.log('dataSet', dataSet);
     if (dataSet[0] === undefined) {
@@ -275,56 +308,8 @@ export default function NFLFanduelDFS(props) {
       const remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
 
 
-      // console.log('excludedPlayers', excludedPlayers)
-      // console.log('excludedPlayers', excludedPlayers.length)
-      // console.log('remainingPlayers', remainingPlayers)
-      // console.log('remainingPlayers', remainingPlayers.length)
-      // console.log('Object.keys(enhancedDataSet[0])', Object.keys(enhancedDataSet[0]))
-
-
       const objectHeaderKeys = Object.keys(enhancedDataSet[0]);
-      // const orderedHeaders = orderedHeaderConfig.sort((a, b) => a.order - b.order).map(item => item.key).filter(key => dataSetHeaders.includes(key));
 
-      // setHeaders(orderedHeaders);
-      // // const overrides = [
-      // //   // { key: 'FPPG', order: 1 },
-      // //   { key: 'maxExposure', order: 1 },
-      // //   { key: 'minExposure', order: 2 },
-
-      // //   // { key: 'Position', order: 2 }
-      // // ];
-
-
-      // const defaultHeadersConfig = objectHeaderKeys.map((header, index) => ({
-      //   key: header,
-      //   label: header.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "), // This transforms 'First_Name' to 'First Name'
-      //   order: index + 1  // This uses the index as the default order
-      // }));
-
-      // function applyOverrides(defaultConfig, overrides) {
-      //   let adjustedConfig = [...defaultConfig];
-
-      //   overrides.forEach(override => {
-      //     let item = adjustedConfig.find(header => header.key === override.key);
-      //     if (item) {
-      //       item.order = override.order;
-      //     }
-      //   });
-
-      //   // Adjust orders for non-overridden items
-      //   const maxOverrideOrder = Math.max(...overrides.map(o => o.order));
-      //   adjustedConfig.forEach(item => {
-      //     if (!overrides.some(override => override.key === item.key)) {
-      //       item.order += maxOverrideOrder;
-      //     }
-      //   });
-
-      //   return adjustedConfig.sort((a, b) => a.order - b.order);
-      // }
-      // const finalHeadersConfig = applyOverrides(defaultHeadersConfig, overrides);
-
-      // console.log('finalHeadersConfig', finalHeadersConfig);
-      // setHeaders(finalHeadersConfig);
       const defaultHeadersConfig = objectHeaderKeys.map((header, index) => ({
         key: header,
         label: header.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "), // This transforms 'First_Name' to 'First Name'
@@ -365,16 +350,14 @@ export default function NFLFanduelDFS(props) {
 
   const getSlateFullDirectory = (abbr) => `/mockJson/nfl/slates/${abbr}-slate/nflPlayerList.json`;
 
-
-
   const fetchPlayerSlateDataSet = async (slateType) => {
     const directoryName = slateTypeToDirectory(slateType);
     const slateData1 = getSlateFullDirectory(directoryName)
-    console.log('slateData1', slateData1);
+    // console.log('slateData1', slateData1);
     try {
       const response = await axios.get(slateData1); // Note: You don't need to specify the "public" directory; just use the root path.
 
-      console.log('fetchPlayerSlateDataSet - response - ', response.data);
+      // console.log('fetchPlayerSlateDataSet - response - ', response.data);
       if (Object.keys(response.data).length === 0) {
         fetchPlayerSlateDataSet('Main')
       } else {
@@ -430,7 +413,7 @@ export default function NFLFanduelDFS(props) {
         return player;
       }
     });
-    console.log('filtername;, fil', filterName)
+    // console.log('filtername;, fil', filterName)
     if (filterName.length !== 0) {
       setExcludePlayerLines(filterName);
     } else {
@@ -439,9 +422,9 @@ export default function NFLFanduelDFS(props) {
   };
 
   const filterPlayersByPosition = (position) => {
-    console.log('position', position);
+    // console.log('position', position);
     if (position === "All") {
-      console.log('all mfer', data)
+      // console.log('all mfer', data)
       setFilteredPlayers(ogfilteredPlayers);
     } else {
 
@@ -972,7 +955,7 @@ export default function NFLFanduelDFS(props) {
         <div>
           <div style={{ marginBottom: '24px' }}>
             <GameMatchupsCarousel
-              games={GameMatchupsJson}
+              games={gameMatchupsJson}
               // games={GameMatchups}
               handleExcludeTeams={handleExcludeTeams}
               excludedTeams={excludedTeams}

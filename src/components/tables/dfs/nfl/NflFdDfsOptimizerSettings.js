@@ -9,32 +9,9 @@ import axios from "axios";
 import { FiUnlock, FiLock } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
 import { TextField, FormHelperText, Card, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import PlayerGroups from './NFLPlayerGroups.js';
-import NFLTeamStacks from './NFLTeamStacks.js';
-import NFLTeamGameStacks from './NFLTeamGameStacks.js';
-import TableComponent from './TableComponent.js';
+
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
-// import RightSideDrawer from "../../../drawers/RightSideDrawer";
-import BottomDrawer from "../../../drawers/BottomDrawer";
-import GameMatchups from '../../../../mockJson/nfl/nfl-current-games-nextgenstats.json'
-// import fdSlates from '../../../../mockJson/nfl/'
-import fdSlates from '../../../../mockJson/nfl/slates/fd_slates.json'
-// import fdSlates from '/mockJson/nfl/slates/fd_slates.json'
-// const getSlateFullDirectory = (abbr) => `/mockJson/nfl/slates/${abbr}-slate/nflPlayerList.json`;
-// import nflPlayerListTest from '../../../../mockJson/nfl/slates/testSlate/nflPlayerListTest.json'
-import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
-import NflPlayerPosFilter from "./NflPlayerPosFilters";
-import NFLPlayerSearch from "./NflPlayerSearch";
-import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import { useAuth } from '../../../../context/AuthContext';
-import { NflOptimizedLineups } from '../../../../mockJson/nfl/lineups'
-import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
-import useMediaQuery from '@mui/material/useMediaQuery';
+
 export default function NflFdDfsOptimizerSettings(props) {
 
   return (

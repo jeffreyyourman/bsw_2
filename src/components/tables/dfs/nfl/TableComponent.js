@@ -106,14 +106,14 @@ export default function TableComponent(props) {
   };
 
   const handleExclude = (playerId) => {
-    console.log('exclude palyerId', playerId);
+    // console.log('exclude palyerId', playerId);
     // Copy the data to not directly mutate the state
     let playersCopy = [...filteredPlayers];
     let excludedCopy = [...excludePlayerLines];
 
     // Find the index of the player to be excluded
     const playerIndex = playersCopy.findIndex(player => player.Id === playerId);
-    console.log('playerIndex', playerIndex);
+    // console.log('playerIndex', playerIndex);
     if (playerIndex === -1) return; // Exit function if player not found
 
     // Get the player to be excluded
@@ -129,7 +129,7 @@ export default function TableComponent(props) {
 
   function handleInclude(playerId) {
 
-    console.log('palyerId', playerId);
+    // console.log('palyerId', playerId);
     // Copy the excluded players to not directly mutate the state
     let excludedCopy = [...excludePlayerLines];
     let playersFilteredCopy = [...filteredPlayers];
@@ -179,7 +179,7 @@ export default function TableComponent(props) {
 
 
   };
-  console.log('headers)', headers);
+  // console.log('headers)', headers);
 
   function mergeConfigWithOverrides(config) {
     let tempConfig = [...config]; // Create a temporary copy of the config
@@ -283,7 +283,7 @@ export default function TableComponent(props) {
 
   columnConfig.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
   const finalColumnConfig = columnConfig.filter(col => !excludedKeys.includes(col.key));
-  console.log('finalColumnConfig', finalColumnConfig);
+  // console.log('finalColumnConfig', finalColumnConfig);
 
   return (
     <div>
