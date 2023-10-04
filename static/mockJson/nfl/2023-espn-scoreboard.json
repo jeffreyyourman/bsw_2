@@ -1,0 +1,2695 @@
+{
+    "sports": [
+        {
+            "id": "20",
+            "uid": "s:20",
+            "guid": "60459870-f8fc-3b3a-a6b9-d8af4bf19223",
+            "name": "Football",
+            "slug": "football",
+            "logos": [
+                {
+                    "href": "https://a.espncdn.com/combiner/i?img=/redesign/assets/img/icons/ESPN-icon-football-college.png",
+                    "alt": "",
+                    "rel": [
+                        "full",
+                        "default"
+                    ],
+                    "width": 500,
+                    "height": 500
+                }
+            ],
+            "leagues": [
+                {
+                    "id": "28",
+                    "uid": "s:20~l:28",
+                    "name": "National Football League",
+                    "abbreviation": "NFL",
+                    "shortName": "NFL",
+                    "slug": "nfl",
+                    "tag": "nfl",
+                    "isTournament": false,
+                    "smartdates": [
+                        {
+                            "label": "Week 4",
+                            "season": 2023,
+                            "seasontype": 2,
+                            "week": 4
+                        },
+                        {
+                            "label": "Week 5",
+                            "season": 2023,
+                            "seasontype": 2,
+                            "week": 5
+                        },
+                        {
+                            "label": "Week 6",
+                            "season": 2023,
+                            "seasontype": 2,
+                            "week": 6
+                        }
+                    ],
+                    "events": [
+                        {
+                            "id": "401547457",
+                            "uid": "s:20~l:28~e:401547457~c:401547457",
+                            "date": "2023-10-06T00:15:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Chicago Bears at Washington Commanders",
+                            "shortName": "CHI @ WSH",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547457",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/washington-commanders-tickets-fedexfield-3-6-2024--sports-nfl-football/production/4311792?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/fedex-field-tickets/venue/549?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547457",
+                            "location": "FedExField",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547457",
+                            "status": "pre",
+                            "summary": "10/5 - 8:15 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 4,
+                                    "priority": 1,
+                                    "type": "Web",
+                                    "isNational": true,
+                                    "broadcasterId": 763,
+                                    "broadcastId": 763,
+                                    "name": "Prime Video",
+                                    "shortName": "PRIME VIDEO",
+                                    "callLetters": "PRIME VIDEO",
+                                    "station": "PRIME VIDEO",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "prime-video"
+                                }
+                            ],
+                            "broadcast": "PRIME VIDEO",
+                            "odds": {
+                                "details": "WSH -6.0",
+                                "overUnder": 44.5,
+                                "spread": -6.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": -260
+                                },
+                                "away": {
+                                    "moneyLine": 210
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 210,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "3",
+                                        "abbreviation": "CHI"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -260,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "28",
+                                        "abbreviation": "WSH"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Thu, October 5th at 8:15 PM EDT",
+                                    "shortDetail": "10/5 - 8:15 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "3",
+                                    "uid": "s:20~l:28~t:3",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Chicago Bears",
+                                    "name": "Bears",
+                                    "abbreviation": "CHI",
+                                    "location": "Chicago",
+                                    "color": "0b1c3a",
+                                    "alternateColor": "e64100",
+                                    "score": "",
+                                    "group": "10",
+                                    "record": "0-4",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/chi.png"
+                                },
+                                {
+                                    "id": "28",
+                                    "uid": "s:20~l:28~t:28",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Washington Commanders",
+                                    "name": "Commanders",
+                                    "abbreviation": "WSH",
+                                    "location": "Washington",
+                                    "color": "5a1414",
+                                    "alternateColor": "ffb612",
+                                    "score": "",
+                                    "group": "1",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/wsh.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547457",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547228",
+                            "uid": "s:20~l:28~e:401547228~c:401547228",
+                            "date": "2023-10-08T13:30:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Jacksonville Jaguars at Buffalo Bills",
+                            "shortName": "JAX vs. BUF",
+                            "notes": [
+                                {
+                                    "text": "International Series",
+                                    "headline": "International Series",
+                                    "type": "event"
+                                }
+                            ],
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547228",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/nfl-international-series-tickets-tottenham-hotspur-new-stadium-10-8-2023--sports-nfl-football/production/4415518?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/tottenham-hotspur-new-stadium-tickets/venue/18936?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547228",
+                            "location": "Tottenham Hotspur Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547228",
+                            "status": "pre",
+                            "summary": "10/8 - 9:30 AM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "note": "International Series",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 398,
+                                    "broadcastId": 398,
+                                    "name": "NFL NET",
+                                    "shortName": "NFL NET",
+                                    "callLetters": "NFL",
+                                    "station": "NFL",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "nfl"
+                                }
+                            ],
+                            "broadcast": "NFL NET",
+                            "odds": {
+                                "details": "BUF -5.5",
+                                "overUnder": 48.5,
+                                "spread": -5.5,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": -250
+                                },
+                                "away": {
+                                    "moneyLine": 205
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 205,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "30",
+                                        "abbreviation": "JAX"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -250,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "2",
+                                        "abbreviation": "BUF"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 9:30 AM EDT",
+                                    "shortDetail": "10/8 - 9:30 AM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "30",
+                                    "uid": "s:20~l:28~t:30",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Jacksonville Jaguars",
+                                    "name": "Jaguars",
+                                    "abbreviation": "JAX",
+                                    "location": "Jacksonville",
+                                    "color": "007487",
+                                    "alternateColor": "d7a22a",
+                                    "score": "",
+                                    "group": "13",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/jax.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/jax.png"
+                                },
+                                {
+                                    "id": "2",
+                                    "uid": "s:20~l:28~t:2",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Buffalo Bills",
+                                    "name": "Bills",
+                                    "abbreviation": "BUF",
+                                    "location": "Buffalo",
+                                    "color": "00338d",
+                                    "alternateColor": "d50a0a",
+                                    "score": "",
+                                    "group": "4",
+                                    "record": "3-1",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/buf.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/buf.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547228",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547458",
+                            "uid": "s:20~l:28~e:401547458~c:401547458",
+                            "date": "2023-10-08T17:00:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Tennessee Titans at Indianapolis Colts",
+                            "shortName": "TEN @ IND",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547458",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/indianapolis-colts-tickets-lucas-oil-stadium-3-3-2024--sports-nfl-football/production/4311818?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/lucas-oil-stadium-tickets/venue/5647?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547458",
+                            "location": "Lucas Oil Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547458",
+                            "status": "pre",
+                            "summary": "10/8 - 1:00 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 44,
+                                    "broadcastId": 44,
+                                    "name": "CBS",
+                                    "shortName": "CBS",
+                                    "callLetters": "CBS",
+                                    "station": "CBS",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "cbs"
+                                }
+                            ],
+                            "broadcast": "CBS",
+                            "odds": {
+                                "details": "TEN -1.0",
+                                "overUnder": 42.5,
+                                "spread": 1.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": 100
+                                },
+                                "away": {
+                                    "moneyLine": -120
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -120,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "10",
+                                        "abbreviation": "TEN"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 100,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "11",
+                                        "abbreviation": "IND"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 1:00 PM EDT",
+                                    "shortDetail": "10/8 - 1:00 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "10",
+                                    "uid": "s:20~l:28~t:10",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Tennessee Titans",
+                                    "name": "Titans",
+                                    "abbreviation": "TEN",
+                                    "location": "Tennessee",
+                                    "color": "4b92db",
+                                    "alternateColor": "002a5c",
+                                    "score": "",
+                                    "group": "13",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ten.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ten.png"
+                                },
+                                {
+                                    "id": "11",
+                                    "uid": "s:20~l:28~t:11",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Indianapolis Colts",
+                                    "name": "Colts",
+                                    "abbreviation": "IND",
+                                    "location": "Indianapolis",
+                                    "color": "003b75",
+                                    "alternateColor": "ffffff",
+                                    "score": "",
+                                    "group": "13",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ind.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ind.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547458",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547459",
+                            "uid": "s:20~l:28~e:401547459~c:401547459",
+                            "date": "2023-10-08T17:00:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "New Orleans Saints at New England Patriots",
+                            "shortName": "NO @ NE",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547459",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/new-england-patriots-tickets-gillette-stadium-3-7-2024--sports-nfl-football/production/4311826?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/gillette-stadium-tickets/venue/2429?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547459",
+                            "location": "Gillette Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547459",
+                            "status": "pre",
+                            "summary": "10/8 - 1:00 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 44,
+                                    "broadcastId": 44,
+                                    "name": "CBS",
+                                    "shortName": "CBS",
+                                    "callLetters": "CBS",
+                                    "station": "CBS",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "cbs"
+                                }
+                            ],
+                            "broadcast": "CBS",
+                            "odds": {
+                                "details": "NE -1.0",
+                                "overUnder": 40.0,
+                                "spread": -1.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": -115
+                                },
+                                "away": {
+                                    "moneyLine": -105
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": -105,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "18",
+                                        "abbreviation": "NO"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -115,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "17",
+                                        "abbreviation": "NE"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 1:00 PM EDT",
+                                    "shortDetail": "10/8 - 1:00 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "18",
+                                    "uid": "s:20~l:28~t:18",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "New Orleans Saints",
+                                    "name": "Saints",
+                                    "abbreviation": "NO",
+                                    "location": "New Orleans",
+                                    "color": "d3bc8d",
+                                    "alternateColor": "000000",
+                                    "score": "",
+                                    "group": "11",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/no.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/no.png"
+                                },
+                                {
+                                    "id": "17",
+                                    "uid": "s:20~l:28~t:17",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "New England Patriots",
+                                    "name": "Patriots",
+                                    "abbreviation": "NE",
+                                    "location": "New England",
+                                    "color": "002a5c",
+                                    "alternateColor": "c60c30",
+                                    "score": "",
+                                    "group": "4",
+                                    "record": "1-3",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ne.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ne.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547459",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547460",
+                            "uid": "s:20~l:28~e:401547460~c:401547460",
+                            "date": "2023-10-08T17:00:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Baltimore Ravens at Pittsburgh Steelers",
+                            "shortName": "BAL @ PIT",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547460",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/pittsburgh-steelers-tickets-acrisure-stadium-3-1-2024--sports-nfl-football/production/4311730?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/heinz-field-tickets/venue/1702?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547460",
+                            "location": "Acrisure Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547460",
+                            "status": "pre",
+                            "summary": "10/8 - 1:00 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 44,
+                                    "broadcastId": 44,
+                                    "name": "CBS",
+                                    "shortName": "CBS",
+                                    "callLetters": "CBS",
+                                    "station": "CBS",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "cbs"
+                                }
+                            ],
+                            "broadcast": "CBS",
+                            "odds": {
+                                "details": "BAL -4.0",
+                                "overUnder": 38.0,
+                                "spread": 4.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": 170
+                                },
+                                "away": {
+                                    "moneyLine": -205
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -205,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "33",
+                                        "abbreviation": "BAL"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 170,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "23",
+                                        "abbreviation": "PIT"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 1:00 PM EDT",
+                                    "shortDetail": "10/8 - 1:00 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "33",
+                                    "uid": "s:20~l:28~t:33",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Baltimore Ravens",
+                                    "name": "Ravens",
+                                    "abbreviation": "BAL",
+                                    "location": "Baltimore",
+                                    "color": "24135f",
+                                    "alternateColor": "9a7611",
+                                    "score": "",
+                                    "group": "12",
+                                    "record": "3-1",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/bal.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/bal.png"
+                                },
+                                {
+                                    "id": "23",
+                                    "uid": "s:20~l:28~t:23",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Pittsburgh Steelers",
+                                    "name": "Steelers",
+                                    "abbreviation": "PIT",
+                                    "location": "Pittsburgh",
+                                    "color": "000000",
+                                    "alternateColor": "ffb612",
+                                    "score": "",
+                                    "group": "12",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/pit.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/pit.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547460",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547463",
+                            "uid": "s:20~l:28~e:401547463~c:401547463",
+                            "date": "2023-10-08T17:00:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Houston Texans at Atlanta Falcons",
+                            "shortName": "HOU @ ATL",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547463",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/atlanta-falcons-tickets-mercedes-benz-stadium-3-5-2024--sports-nfl-football/production/4311884?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/mercedesbenz-stadium-tickets/venue/14188?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547463",
+                            "location": "Mercedes-Benz Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547463",
+                            "status": "pre",
+                            "summary": "10/8 - 1:00 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 148,
+                                    "broadcastId": 148,
+                                    "name": "FOX",
+                                    "shortName": "FOX",
+                                    "callLetters": "FOX",
+                                    "station": "FOX",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "fox"
+                                }
+                            ],
+                            "broadcast": "FOX",
+                            "odds": {
+                                "details": "ATL -2.0",
+                                "overUnder": 41.5,
+                                "spread": -2.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": -125
+                                },
+                                "away": {
+                                    "moneyLine": 105
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 105,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "34",
+                                        "abbreviation": "HOU"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -125,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "1",
+                                        "abbreviation": "ATL"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 1:00 PM EDT",
+                                    "shortDetail": "10/8 - 1:00 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "34",
+                                    "uid": "s:20~l:28~t:34",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Houston Texans",
+                                    "name": "Texans",
+                                    "abbreviation": "HOU",
+                                    "location": "Houston",
+                                    "color": "00143f",
+                                    "alternateColor": "c41230",
+                                    "score": "",
+                                    "group": "13",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/hou.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/hou.png"
+                                },
+                                {
+                                    "id": "1",
+                                    "uid": "s:20~l:28~t:1",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Atlanta Falcons",
+                                    "name": "Falcons",
+                                    "abbreviation": "ATL",
+                                    "location": "Atlanta",
+                                    "color": "a71930",
+                                    "alternateColor": "000000",
+                                    "score": "",
+                                    "group": "11",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/atl.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/atl.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547463",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547464",
+                            "uid": "s:20~l:28~e:401547464~c:401547464",
+                            "date": "2023-10-08T17:00:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Carolina Panthers at Detroit Lions",
+                            "shortName": "CAR @ DET",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547464",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/detroit-lions-tickets-ford-field-3-5-2024--sports-nfl-football/production/4311683?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/ford-field-tickets/venue/2387?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547464",
+                            "location": "Ford Field",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547464",
+                            "status": "pre",
+                            "summary": "10/8 - 1:00 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 148,
+                                    "broadcastId": 148,
+                                    "name": "FOX",
+                                    "shortName": "FOX",
+                                    "callLetters": "FOX",
+                                    "station": "FOX",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "fox"
+                                }
+                            ],
+                            "broadcast": "FOX",
+                            "odds": {
+                                "details": "DET -9.5",
+                                "overUnder": 45.0,
+                                "spread": -9.5,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": -455
+                                },
+                                "away": {
+                                    "moneyLine": 345
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 345,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "29",
+                                        "abbreviation": "CAR"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -455,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "8",
+                                        "abbreviation": "DET"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 1:00 PM EDT",
+                                    "shortDetail": "10/8 - 1:00 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "29",
+                                    "uid": "s:20~l:28~t:29",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Carolina Panthers",
+                                    "name": "Panthers",
+                                    "abbreviation": "CAR",
+                                    "location": "Carolina",
+                                    "color": "0085ca",
+                                    "alternateColor": "000000",
+                                    "score": "",
+                                    "group": "11",
+                                    "record": "0-4",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/car.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/car.png"
+                                },
+                                {
+                                    "id": "8",
+                                    "uid": "s:20~l:28~t:8",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Detroit Lions",
+                                    "name": "Lions",
+                                    "abbreviation": "DET",
+                                    "location": "Detroit",
+                                    "color": "0076b6",
+                                    "alternateColor": "bbbbbb",
+                                    "score": "",
+                                    "group": "10",
+                                    "record": "3-1",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/det.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/det.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547464",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547465",
+                            "uid": "s:20~l:28~e:401547465~c:401547465",
+                            "date": "2023-10-08T17:00:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "New York Giants at Miami Dolphins",
+                            "shortName": "NYG @ MIA",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547465",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/miami-dolphins-tickets-hard-rock-stadium-3-8-2024--sports-nfl-football/production/4311789?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/hard-rock-stadium-tickets/venue/1366?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547465",
+                            "location": "Hard Rock Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547465",
+                            "status": "pre",
+                            "summary": "10/8 - 1:00 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 148,
+                                    "broadcastId": 148,
+                                    "name": "FOX",
+                                    "shortName": "FOX",
+                                    "callLetters": "FOX",
+                                    "station": "FOX",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "fox"
+                                }
+                            ],
+                            "broadcast": "FOX",
+                            "odds": {
+                                "details": "MIA -11.0",
+                                "overUnder": 48.5,
+                                "spread": -11.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": -600
+                                },
+                                "away": {
+                                    "moneyLine": 430
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 430,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "19",
+                                        "abbreviation": "NYG"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -600,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "15",
+                                        "abbreviation": "MIA"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 1:00 PM EDT",
+                                    "shortDetail": "10/8 - 1:00 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "19",
+                                    "uid": "s:20~l:28~t:19",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "New York Giants",
+                                    "name": "Giants",
+                                    "abbreviation": "NYG",
+                                    "location": "New York",
+                                    "color": "003c7f",
+                                    "alternateColor": "c9243f",
+                                    "score": "",
+                                    "group": "1",
+                                    "record": "1-3",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyg.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/nyg.png"
+                                },
+                                {
+                                    "id": "15",
+                                    "uid": "s:20~l:28~t:15",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Miami Dolphins",
+                                    "name": "Dolphins",
+                                    "abbreviation": "MIA",
+                                    "location": "Miami",
+                                    "color": "008e97",
+                                    "alternateColor": "fc4c02",
+                                    "score": "",
+                                    "group": "4",
+                                    "record": "3-1",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/mia.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/mia.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547465",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547466",
+                            "uid": "s:20~l:28~e:401547466~c:401547466",
+                            "date": "2023-10-08T20:05:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Cincinnati Bengals at Arizona Cardinals",
+                            "shortName": "CIN @ ARI",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547466",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/arizona-cardinals-tickets-state-farm-stadium-3-6-2024--sports-nfl-football/production/4311710?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/state-farm-stadium-tickets/venue/4335?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547466",
+                            "location": "State Farm Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547466",
+                            "status": "pre",
+                            "summary": "10/8 - 4:05 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 148,
+                                    "broadcastId": 148,
+                                    "name": "FOX",
+                                    "shortName": "FOX",
+                                    "callLetters": "FOX",
+                                    "station": "FOX",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "fox"
+                                }
+                            ],
+                            "broadcast": "FOX",
+                            "odds": {
+                                "details": "CIN -3.0",
+                                "overUnder": 44.5,
+                                "spread": 3.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": 130
+                                },
+                                "away": {
+                                    "moneyLine": -155
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -155,
+                                    "spreadOdds": -105,
+                                    "team": {
+                                        "id": "4",
+                                        "abbreviation": "CIN"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 130,
+                                    "spreadOdds": -115,
+                                    "team": {
+                                        "id": "22",
+                                        "abbreviation": "ARI"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 4:05 PM EDT",
+                                    "shortDetail": "10/8 - 4:05 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "4",
+                                    "uid": "s:20~l:28~t:4",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Cincinnati Bengals",
+                                    "name": "Bengals",
+                                    "abbreviation": "CIN",
+                                    "location": "Cincinnati",
+                                    "color": "fb4f14",
+                                    "alternateColor": "000000",
+                                    "score": "",
+                                    "group": "12",
+                                    "record": "1-3",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/cin.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/cin.png"
+                                },
+                                {
+                                    "id": "22",
+                                    "uid": "s:20~l:28~t:22",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Arizona Cardinals",
+                                    "name": "Cardinals",
+                                    "abbreviation": "ARI",
+                                    "location": "Arizona",
+                                    "color": "a4113e",
+                                    "alternateColor": "ffffff",
+                                    "score": "",
+                                    "group": "3",
+                                    "record": "1-3",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/ari.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/ari.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547466",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547467",
+                            "uid": "s:20~l:28~e:401547467~c:401547467",
+                            "date": "2023-10-08T20:05:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Philadelphia Eagles at Los Angeles Rams",
+                            "shortName": "PHI @ LAR",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547467",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/los-angeles-rams-tickets-sofi-stadium-3-16-2024--sports-nfl-football/production/4311893?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/sofi-stadium-tickets/venue/21877?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547467",
+                            "location": "SoFi Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547467",
+                            "status": "pre",
+                            "summary": "10/8 - 4:05 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 148,
+                                    "broadcastId": 148,
+                                    "name": "FOX",
+                                    "shortName": "FOX",
+                                    "callLetters": "FOX",
+                                    "station": "FOX",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "fox"
+                                }
+                            ],
+                            "broadcast": "FOX",
+                            "odds": {
+                                "details": "PHI -4.5",
+                                "overUnder": 50.5,
+                                "spread": 4.5,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": 180
+                                },
+                                "away": {
+                                    "moneyLine": -220
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -220,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "21",
+                                        "abbreviation": "PHI"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 180,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "14",
+                                        "abbreviation": "LAR"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 4:05 PM EDT",
+                                    "shortDetail": "10/8 - 4:05 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "21",
+                                    "uid": "s:20~l:28~t:21",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Philadelphia Eagles",
+                                    "name": "Eagles",
+                                    "abbreviation": "PHI",
+                                    "location": "Philadelphia",
+                                    "color": "06424d",
+                                    "alternateColor": "a2aaad",
+                                    "score": "",
+                                    "group": "1",
+                                    "record": "4-0",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/phi.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/phi.png"
+                                },
+                                {
+                                    "id": "14",
+                                    "uid": "s:20~l:28~t:14",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Los Angeles Rams",
+                                    "name": "Rams",
+                                    "abbreviation": "LAR",
+                                    "location": "Los Angeles",
+                                    "color": "003594",
+                                    "alternateColor": "ffd100",
+                                    "score": "",
+                                    "group": "3",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lar.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/lar.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547467",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547461",
+                            "uid": "s:20~l:28~e:401547461~c:401547461",
+                            "date": "2023-10-08T20:25:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "New York Jets at Denver Broncos",
+                            "shortName": "NYJ @ DEN",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547461",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/denver-broncos-tickets-empower-field-at-mile-high-3-8-2023--sports-nfl-football/production/4311776?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/empower-field-at-mile-high-tickets/venue/1092?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547461",
+                            "location": "Empower Field at Mile High",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547461",
+                            "status": "pre",
+                            "summary": "10/8 - 4:25 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 44,
+                                    "broadcastId": 44,
+                                    "name": "CBS",
+                                    "shortName": "CBS",
+                                    "callLetters": "CBS",
+                                    "station": "CBS",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "cbs"
+                                }
+                            ],
+                            "broadcast": "CBS",
+                            "odds": {
+                                "details": "DEN -1.5",
+                                "overUnder": 43.5,
+                                "spread": -1.5,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": -125
+                                },
+                                "away": {
+                                    "moneyLine": 105
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 105,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "20",
+                                        "abbreviation": "NYJ"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -125,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "7",
+                                        "abbreviation": "DEN"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 4:25 PM EDT",
+                                    "shortDetail": "10/8 - 4:25 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "20",
+                                    "uid": "s:20~l:28~t:20",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "New York Jets",
+                                    "name": "Jets",
+                                    "abbreviation": "NYJ",
+                                    "location": "New York",
+                                    "color": "115740",
+                                    "alternateColor": "ffffff",
+                                    "score": "",
+                                    "group": "4",
+                                    "record": "1-3",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/nyj.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/nyj.png"
+                                },
+                                {
+                                    "id": "7",
+                                    "uid": "s:20~l:28~t:7",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Denver Broncos",
+                                    "name": "Broncos",
+                                    "abbreviation": "DEN",
+                                    "location": "Denver",
+                                    "color": "0a2343",
+                                    "alternateColor": "fc4c02",
+                                    "score": "",
+                                    "group": "6",
+                                    "record": "1-3",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/den.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/den.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547461",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547462",
+                            "uid": "s:20~l:28~e:401547462~c:401547462",
+                            "date": "2023-10-08T20:25:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Kansas City Chiefs at Minnesota Vikings",
+                            "shortName": "KC @ MIN",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547462",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/minnesota-vikings-tickets-us-bank-stadium-3-4-2024--sports-nfl-football/production/4311723?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/us-bank-stadium-tickets/venue/14778?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547462",
+                            "location": "U.S. Bank Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547462",
+                            "status": "pre",
+                            "summary": "10/8 - 4:25 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 44,
+                                    "broadcastId": 44,
+                                    "name": "CBS",
+                                    "shortName": "CBS",
+                                    "callLetters": "CBS",
+                                    "station": "CBS",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "cbs"
+                                }
+                            ],
+                            "broadcast": "CBS",
+                            "odds": {
+                                "details": "KC -4.0",
+                                "overUnder": 52.5,
+                                "spread": 4.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": 175
+                                },
+                                "away": {
+                                    "moneyLine": -210
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -210,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "12",
+                                        "abbreviation": "KC"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 175,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "16",
+                                        "abbreviation": "MIN"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 4:25 PM EDT",
+                                    "shortDetail": "10/8 - 4:25 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "12",
+                                    "uid": "s:20~l:28~t:12",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Kansas City Chiefs",
+                                    "name": "Chiefs",
+                                    "abbreviation": "KC",
+                                    "location": "Kansas City",
+                                    "color": "e31837",
+                                    "alternateColor": "ffb612",
+                                    "score": "",
+                                    "group": "6",
+                                    "record": "3-1",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/kc.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/kc.png"
+                                },
+                                {
+                                    "id": "16",
+                                    "uid": "s:20~l:28~t:16",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Minnesota Vikings",
+                                    "name": "Vikings",
+                                    "abbreviation": "MIN",
+                                    "location": "Minnesota",
+                                    "color": "4f2683",
+                                    "alternateColor": "ffc62f",
+                                    "score": "",
+                                    "group": "10",
+                                    "record": "1-3",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/min.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/min.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547462",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547354",
+                            "uid": "s:20~l:28~e:401547354~c:401547354",
+                            "date": "2023-10-09T00:20:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Dallas Cowboys at San Francisco 49ers",
+                            "shortName": "DAL @ SF",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547354",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/san-francisco-49ers-tickets-levis-stadium-3-6-2024--sports-nfl-football/production/4311858?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/levis-stadium-tickets/venue/11464?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": false,
+                            "competitionId": "401547354",
+                            "location": "Levi's Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547354",
+                            "status": "pre",
+                            "summary": "10/8 - 8:20 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 379,
+                                    "broadcastId": 379,
+                                    "name": "NBC",
+                                    "shortName": "NBC",
+                                    "callLetters": "NBC",
+                                    "station": "NBC",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "nbc"
+                                }
+                            ],
+                            "broadcast": "NBC",
+                            "odds": {
+                                "details": "SF -4.0",
+                                "overUnder": 45.0,
+                                "spread": -4.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": -190
+                                },
+                                "away": {
+                                    "moneyLine": 158
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": 158,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "6",
+                                        "abbreviation": "DAL"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -190,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "25",
+                                        "abbreviation": "SF"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Sun, October 8th at 8:20 PM EDT",
+                                    "shortDetail": "10/8 - 8:20 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "6",
+                                    "uid": "s:20~l:28~t:6",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Dallas Cowboys",
+                                    "name": "Cowboys",
+                                    "abbreviation": "DAL",
+                                    "location": "Dallas",
+                                    "color": "002a5c",
+                                    "alternateColor": "b0b7bc",
+                                    "score": "",
+                                    "group": "1",
+                                    "record": "3-1",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/dal.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/dal.png"
+                                },
+                                {
+                                    "id": "25",
+                                    "uid": "s:20~l:28~t:25",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "San Francisco 49ers",
+                                    "name": "49ers",
+                                    "abbreviation": "SF",
+                                    "location": "San Francisco",
+                                    "color": "aa0000",
+                                    "alternateColor": "b3995d",
+                                    "score": "",
+                                    "group": "3",
+                                    "record": "4-0",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/sf.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/sf.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547354",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "401547468",
+                            "uid": "s:20~l:28~e:401547468~c:401547468",
+                            "date": "2023-10-10T00:15:00Z",
+                            "timeValid": true,
+                            "recent": false,
+                            "name": "Green Bay Packers at Las Vegas Raiders",
+                            "shortName": "GB @ LV",
+                            "links": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.espn.com/nfl/game/_/gameId/401547468",
+                                    "text": "Gamecast"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "event"
+                                    ],
+                                    "href": "https://www.vividseats.com/las-vegas-raiders-tickets-allegiant-stadium-3-4-2024--sports-nfl-football/production/4311863?wsUser=717",
+                                    "text": "Tickets"
+                                },
+                                {
+                                    "rel": [
+                                        "tickets",
+                                        "desktop",
+                                        "venue"
+                                    ],
+                                    "href": "https://www.vividseats.com/allegiant-stadium-tickets/venue/25873?wsUser=717",
+                                    "text": "Tickets"
+                                }
+                            ],
+                            "gamecastAvailable": false,
+                            "playByPlayAvailable": false,
+                            "commentaryAvailable": false,
+                            "onWatch": true,
+                            "competitionId": "401547468",
+                            "location": "Allegiant Stadium",
+                            "season": 2023,
+                            "seasonStartDate": "2023-08-01T07:00:00Z",
+                            "seasonEndDate": "2024-01-13T07:59:00Z",
+                            "seasonType": "2",
+                            "seasonTypeHasGroups": false,
+                            "group": {
+                                "groupId": "2",
+                                "name": "Regular Season",
+                                "abbreviation": "reg",
+                                "shortName": "reg"
+                            },
+                            "week": 5,
+                            "weekText": "Week 5",
+                            "link": "https://www.espn.com/nfl/game/_/gameId/401547468",
+                            "status": "pre",
+                            "summary": "10/9 - 8:15 PM EDT",
+                            "period": 0,
+                            "clock": "0:00",
+                            "broadcasts": [
+                                {
+                                    "typeId": 1,
+                                    "priority": 1,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 2,
+                                    "broadcastId": 2,
+                                    "name": "ABC",
+                                    "shortName": "ABC",
+                                    "callLetters": "ABC",
+                                    "station": "ABC",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "abc"
+                                },
+                                {
+                                    "typeId": 1,
+                                    "priority": 2,
+                                    "type": "TV",
+                                    "isNational": true,
+                                    "broadcasterId": 126,
+                                    "broadcastId": 126,
+                                    "name": "ESPN",
+                                    "shortName": "ESPN",
+                                    "callLetters": "ESPN",
+                                    "station": "ESPN",
+                                    "lang": "en",
+                                    "region": "us",
+                                    "slug": "espn"
+                                }
+                            ],
+                            "broadcast": "ABC/ESPN",
+                            "odds": {
+                                "details": "GB -1.0",
+                                "overUnder": 44.5,
+                                "spread": 1.0,
+                                "overOdds": -110,
+                                "underOdds": -110,
+                                "provider": {
+                                    "id": "45",
+                                    "name": "Caesars Sportsbook (New Jersey)",
+                                    "priority": 1
+                                },
+                                "home": {
+                                    "moneyLine": -105
+                                },
+                                "away": {
+                                    "moneyLine": -115
+                                },
+                                "awayTeamOdds": {
+                                    "favorite": true,
+                                    "underdog": false,
+                                    "moneyLine": -115,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "9",
+                                        "abbreviation": "GB"
+                                    }
+                                },
+                                "homeTeamOdds": {
+                                    "favorite": false,
+                                    "underdog": true,
+                                    "moneyLine": -105,
+                                    "spreadOdds": -110,
+                                    "team": {
+                                        "id": "13",
+                                        "abbreviation": "LV"
+                                    }
+                                },
+                                "links": []
+                            },
+                            "fullStatus": {
+                                "clock": 0.0,
+                                "displayClock": "0:00",
+                                "period": 0,
+                                "type": {
+                                    "id": "1",
+                                    "name": "STATUS_SCHEDULED",
+                                    "state": "pre",
+                                    "completed": false,
+                                    "description": "Scheduled",
+                                    "detail": "Mon, October 9th at 8:15 PM EDT",
+                                    "shortDetail": "10/9 - 8:15 PM EDT"
+                                }
+                            },
+                            "competitors": [
+                                {
+                                    "id": "9",
+                                    "uid": "s:20~l:28~t:9",
+                                    "type": "team",
+                                    "order": 1,
+                                    "homeAway": "away",
+                                    "winner": false,
+                                    "displayName": "Green Bay Packers",
+                                    "name": "Packers",
+                                    "abbreviation": "GB",
+                                    "location": "Green Bay",
+                                    "color": "204e32",
+                                    "alternateColor": "ffb612",
+                                    "score": "",
+                                    "group": "10",
+                                    "record": "2-2",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/gb.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/gb.png"
+                                },
+                                {
+                                    "id": "13",
+                                    "uid": "s:20~l:28~t:13",
+                                    "type": "team",
+                                    "order": 0,
+                                    "homeAway": "home",
+                                    "winner": false,
+                                    "displayName": "Las Vegas Raiders",
+                                    "name": "Raiders",
+                                    "abbreviation": "LV",
+                                    "location": "Las Vegas",
+                                    "color": "000000",
+                                    "alternateColor": "a5acaf",
+                                    "score": "",
+                                    "group": "6",
+                                    "record": "1-3",
+                                    "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/lv.png",
+                                    "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/lv.png"
+                                }
+                            ],
+                            "appLinks": [
+                                {
+                                    "rel": [
+                                        "summary",
+                                        "sportscenter",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "sportscenter://x-callback-url/showGame?sportName=football&leagueAbbrev=nfl&gameId=401547468",
+                                    "text": "Gamecast",
+                                    "shortText": "Summary"
+                                },
+                                {
+                                    "rel": [
+                                        "watchespn",
+                                        "app",
+                                        "event"
+                                    ],
+                                    "href": "watchespn://showEvent?gameId=401547468&sourceLang=en",
+                                    "text": "WatchESPN",
+                                    "shortText": "WatchESPN"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "zipcodes": {}
+}
