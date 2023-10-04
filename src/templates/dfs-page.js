@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import NflDfsLayout from "../components/layouts/NflDfsLayout";
 import FullWidthImage from "../components/FullWidthImage";
-import NFLTable from "../components/tables/dfs/nfl/NFLTableFD";
+// import NFLTable from "../components/tables/dfs/nfl/NFLTableFD";
 import NFLDfsSiteTabs from '../components/tabs/NFLDfsSiteTabs';
 export const DfsPageTemplate = ({
   image,

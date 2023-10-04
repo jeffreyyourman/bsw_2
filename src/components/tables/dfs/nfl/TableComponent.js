@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useMemo, useState } from "react";
 import { CSVLink } from "react-csv";
 // import {
 
@@ -70,11 +70,38 @@ export default function TableComponent(props) {
     }
   };
 
-  let sortedPlayers;
-  if (order === 'default') {
-    sortedPlayers = ogFilteredPlayers
-  } else {
-    sortedPlayers = [...filteredPlayers].sort((a, b) => {
+  // let sortedPlayers;
+  // if (order === 'default') {
+  //   sortedPlayers = ogFilteredPlayers
+  // } else {
+  //   sortedPlayers = [...filteredPlayers].sort((a, b) => {
+  //     // If we have a default sort, just return the original order
+  //     if (order === 'default') return 0;
+
+  //     // Handle numeric sorting explicitly for fields like FPPG
+  //     if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
+  //       if (order === 'asc') {
+  //         return parseFloat(a[orderBy]) - parseFloat(b[orderBy]);
+  //       } else {
+  //         return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
+  //       }
+  //     }
+
+  //     // Handle textual sorting (default)
+  //     if (order === 'asc') {
+  //       return a[orderBy] < b[orderBy] ? -1 : 1;
+  //     } else {
+  //       return a[orderBy] > b[orderBy] ? -1 : 1;
+  //     }
+  //   });
+  // }
+
+  const sortedPlayers = useMemo(() => {
+    if (order === 'default') {
+      return ogFilteredPlayers;
+    }
+
+    return [...filteredPlayers].sort((a, b) => {
       // If we have a default sort, just return the original order
       if (order === 'default') return 0;
 
@@ -94,7 +121,8 @@ export default function TableComponent(props) {
         return a[orderBy] > b[orderBy] ? -1 : 1;
       }
     });
-  }
+  }, [filteredPlayers, order, orderBy]);
+  // }, [filteredPlayers, order, orderBy, ogFilteredPlayers]);
 
 
   const handleLock = (isLocked, rowIndex) => {
