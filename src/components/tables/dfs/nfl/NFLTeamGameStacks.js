@@ -13,7 +13,7 @@ import {
 
 function NFLTeamGameStacks(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
-
+    const [selectedGame, setSelectedGame] = useState('');
     const generateUniqueId = () => {
         return new Date().getTime() + "-" + Math.floor(Math.random() * 1000);
     };
@@ -22,9 +22,13 @@ function NFLTeamGameStacks(props) {
         props.setGroups(prev => [...prev, {
             id: generateUniqueId(),
             name: "New Game Stack",
-            players: [],
+            stackType: 'singleGameStack',
+            numPlayers: 3,
+            forGame: '',
+            forPositions: [],
             minFromGroup: 1,
-            maxExposure: 50,
+            maxFromGroup: 4,
+            maxExposure: 100
         }]);
     };
 
@@ -147,6 +151,20 @@ function NFLTeamGameStacks(props) {
                     <TextField
                         style={{ margin: 4 }}
                         type="number"
+                        label="Number of Players"
+                        value={props.groups[getActiveGroupIndex()]?.numPlayers || ''}
+                        onChange={e => {
+                            const newNumPlayers = e.target.value;
+                            props.setGroups(prev => [
+                                ...prev.slice(0, getActiveGroupIndex()),
+                                { ...prev[getActiveGroupIndex()], numPlayers: parseInt(newNumPlayers) },
+                                ...prev.slice(getActiveGroupIndex() + 1),
+                            ]);
+                        }}
+                    />
+                    <TextField
+                        style={{ margin: 4 }}
+                        type="number"
                         label="Min From Group"
                         value={props.groups[getActiveGroupIndex()]?.minFromGroup || ''}
                         onChange={e => {
@@ -173,61 +191,48 @@ function NFLTeamGameStacks(props) {
                         }}
                     />
 
-                    <div style={{ display: 'flex', height:'500px', flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <div style={{ width: '48%' }}>
-                            <h4 style={{ marginTop: 24, marginBottom: 8 }}>Add Players to Group</h4>
-                            <TableContainer component={Paper} style={{ width: '100%', height: '90%', overflowY: 'auto' }}>
-                                <Table>
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>Use</TableCell>
-                                            <TableCell>Name</TableCell>
-                                            <TableCell>FPPG</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {props.filteredPlayers.map((player, index) => (
-                                            <TableRow key={index}>
-                                                <TableCell>
-                                                    <input
-                                                        type="checkbox"
-                                                        checked={props.groups[getActiveGroupIndex()].players.includes(player.Nickname)}
-                                                        onChange={(e) => handleCheckboxChange(player.Nickname, e.target.checked)}
-                                                    />
-                                                </TableCell>
-                                                <TableCell>{player.Nickname}</TableCell>
-                                                <TableCell>{player.FPPG}</TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        </div>
+                    <div style={{ marginTop: 24, marginBottom: 8 }}>
+                        <h4>Select Positions for Group</h4>
+                        <select
+                            multiple={true}
+                            value={props.groups[getActiveGroupIndex()]?.forPositions || []}
+                            onChange={e => {
+                                const selectedOptions = [...e.target.options]
+                                    .filter(option => option.selected)
+                                    .map(option => option.value);
 
-                        <div style={{ width: '48%' }}>
-                            <h4 style={{ marginTop: 24, marginBottom: 8 }}>Current Group Players</h4>
-                            <TableContainer component={Paper} style={{ height: '90%', overflowY: 'auto' }}>
-                                <Table>
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>Name</TableCell>
-                                            <TableCell>FPPG</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {props.groups[getActiveGroupIndex()].players.map((playerName, index) => {
-                                            const player = props.filteredPlayers.find(p => p.Nickname === playerName) || { Nickname: 'Unknown', FPPG: 'Unknown' };
-                                            return (
-                                                <TableRow key={index}>
-                                                    <TableCell>{player.Nickname}</TableCell>
-                                                    <TableCell>{player.FPPG}</TableCell>
-                                                </TableRow>
-                                            );
-                                        })}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        </div>
+                                props.setGroups(prev => [
+                                    ...prev.slice(0, getActiveGroupIndex()),
+                                    { ...prev[getActiveGroupIndex()], forPositions: selectedOptions },
+                                    ...prev.slice(getActiveGroupIndex() + 1),
+                                ]);
+                            }}
+                            style={{ width: '100%', height: '100px' }}
+                        >
+                            {props.positions.map(position => (
+                                <option key={position} value={position}>{position}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div style={{ width: '48%' }}>
+                        <h4 style={{ marginTop: 24, marginBottom: 8 }}>Select Game for Group</h4>
+                        <select
+                            value={props.groups[getActiveGroupIndex()]?.forGame || ''}
+                            onChange={e => {
+                                const newGame = e.target.value;
+                                props.setGroups(prev => [
+                                    ...prev.slice(0, getActiveGroupIndex()),
+                                    { ...prev[getActiveGroupIndex()], forGame: newGame },
+                                    ...prev.slice(getActiveGroupIndex() + 1),
+                                ]);
+                            }}
+                        >
+                            <option value=''>Select a game</option>
+                            {props.gameMatchups.map((game, index) => (
+                                <option key={index} value={game.gameMatchup}>{game.gameMatchup}</option>
+                            ))}
+                        </select>
                     </div>
 
                 </div>
@@ -238,86 +243,4 @@ function NFLTeamGameStacks(props) {
 
 export default NFLTeamGameStacks;
 
-
-
-// import React, { useState } from 'react';
-
-// const teams = [
-//     { logo: 'DEN_Logo.png', abbreviation: 'DEN' },
-//     //... add other teams similarly
-// ];
-
-// const positions = ['PG', 'SG', 'SF', 'PF', 'C'];
-
-// const NFLTeamGameStacks = () => {
-//     const [selectedTeam, setSelectedTeam] = useState(null);
-//     const [exposurePercentage, setExposurePercentage] = useState(100);
-//     const [selectedPositions, setSelectedPositions] = useState([]);
-//     const [mustIncludeCount, setMustIncludeCount] = useState(1);
-// // properties needed 
-// //     num of players from both teams
-// //     select a game to bring over. One game at a time. 
-// //     which positions from each team
-// //     stack global exposure
-// //     maxExposurePerTeam for both teams. 
-// // once the game was already selected, Can't add another game unless the game was brought back over to original list
-// // 
-
-// // Object to go by
-// // {
-// // 	‘stackType’: 'singleGameStack',
-// // 	‘numPlayers’: 3,
-// // 	‘forGame’: ‘KC@NYJ’,
-// // 	‘forPositions’: [‘QB’, ’WR’, ’TE’],
-// // 	‘minFromGroup’: 2,
-// // 	‘maxFromGroup’: 4,
-// // 	‘maxExposure’: 50
-// // }
-
-//     return (
-//         <div>
-//             {teams.map((team) => (
-//                 <div key={team.abbreviation}>
-//                     <img src={team.logo} alt={`${team.abbreviation} logo`} width={40} />
-//                     <span>{team.abbreviation}</span>
-//                     <input
-//                         type="number"
-//                         value={exposurePercentage}
-//                         onChange={(e) => setExposurePercentage(e.target.value)}
-//                         max={100}
-//                         min={0}
-//                     />
-//                     <select
-//                         multiple={true}
-//                         value={selectedPositions}
-//                         onChange={(e) =>
-//                             setSelectedPositions(
-//                                 Array.from(e.target.selectedOptions, (option) => option.value)
-//                             )
-//                         }
-//                     >
-//                         {positions.map((pos) => (
-//                             <option key={pos} value={pos}>
-//                                 {pos}
-//                             </option>
-//                         ))}
-//                     </select>
-//                     <div>
-//                         Must include at least{' '}
-//                         <input
-//                             type="number"
-//                             value={mustIncludeCount}
-//                             onChange={(e) => setMustIncludeCount(e.target.value)}
-//                             max={positions.length}
-//                             min={1}
-//                         />{' '}
-//                         {selectedPositions.join(', ')}
-//                     </div>
-//                 </div>
-//             ))}
-//         </div>
-//     );
-// };
-
-// export default NFLTeamGameStacks;
 

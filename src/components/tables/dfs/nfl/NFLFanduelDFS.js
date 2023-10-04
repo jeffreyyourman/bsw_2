@@ -17,10 +17,13 @@ import Tab from '@mui/material/Tab';
 import PlayerGroups from './NFLPlayerGroups.js';
 import NFLTeamStacks from './NFLTeamStacks.js';
 import NFLTeamGameStacks from './NFLTeamGameStacks.js';
+import NFLUploadOwnProjections from './NFLUploadOwnProjections.js';
 import TableComponent from './TableComponent.js';
+import NflFdDfsOptimizerSettings from './NflFdDfsOptimizerSettings.js';
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
+// import RightSideDrawer from "../../../drawers/RightSideDrawer";
 import BottomDrawer from "../../../drawers/BottomDrawer";
-import GameMatchups from '../../../../mockJson/nfl/nfl-current-games-nextgenstats.json'
+import GameMatchupsJson from '../../../../mockJson/nfl/nfl-current-games-nextgenstats.json'
 // import fdSlates from '../../../../mockJson/nfl/'
 import fdSlates from '../../../../mockJson/nfl/slates/fd_slates.json'
 // import fdSlates from '/mockJson/nfl/slates/fd_slates.json'
@@ -108,6 +111,8 @@ export default function NFLFanduelDFS(props) {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [groups, setGroups] = useState([]);
+  const [teamGameGroups, setTeamGameGroups] = useState([]);
+  const [teamGroups, setTeamGroups] = useState([]);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
   const [numLineups, setNumLineups] = useState(10);
@@ -129,6 +134,7 @@ export default function NFLFanduelDFS(props) {
   const [globalMaxExposure, setGlobalMaxExposure] = useState(50);
 
   const [headers, setHeaders] = useState([]);
+  const [gameMatchups, setGameMatchups] = useState([]);
 
   // const [slates, setSlates] = useState([]);
 
@@ -157,9 +163,53 @@ export default function NFLFanduelDFS(props) {
   // };
 
 
+  // const gameMatchups = [
+  //   {
+  //     homeTeam: {
+  //       teamAbb: 'ARI',
+  //       players: [
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //       ]
+  //     },
+  //     awayTeam: {
+  //       teamAbb: 'SF',
+  //       players: [
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //       ]
+  //     },
+  //     gameMatchup: 'ARI@SF',
+  //   },
+  //   {
+  //     homeTeam: {
+  //       teamAbb: 'ARI',
+  //       players: [
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //       ]
+  //     },
+  //     awayTeam: {
+  //       teamAbb: 'SF',
+  //       players: [
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //         { playerName: '' },
+  //       ]
+  //     },
+  //     gameMatchup: 'ARI@SF',
+  //   },
+
+  // ]
   const fetchPlayerDataSet = (dataSet) => {
     console.log('dataSet', dataSet);
-    const headers = Object.keys(dataSet[0]);
     if (dataSet[0] === undefined) {
       setHeaders([]);
       setData([]);
@@ -176,18 +226,47 @@ export default function NFLFanduelDFS(props) {
         // maxExposure: player.maxExposure || ''  // same as above
       }));
 
+      const games = {};
 
+      enhancedDataSet.forEach(player => {
+        const [away, home] = player.Game.split('@');
 
-      // Players with FPPG equal to 0
-      // const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 4);
-      // const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 4);
-      // console.log('excludedPlayers', excludedPlayers);
+        // Initialize game if not already present
+        if (!games[player.Game]) {
+          games[player.Game] = {
+            homeTeam: {
+              teamAbb: home,
+              players: []
+            },
+            awayTeam: {
+              teamAbb: away,
+              players: []
+            },
+            gameMatchup: player.Game,
+          };
+        }
 
-      console.log('enhancedDataSet', enhancedDataSet);
-      // Players with FPPG not equal to 0
-      // const remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 4);
-      console.log(' setHeaders(Object.keys(enhancedDataSet[0]))', Object.keys(enhancedDataSet[0]));
-      // console.log('remainingPlayers', remainingPlayers);
+        // Construct the player detail object
+        const playerDetail = {
+          playerName: `${player.First_Name} ${player.Last_Name}`,
+          position: player.Position,
+          FPPG: player.FPPG,
+          Team: player.Team
+        };
+
+        // Add player to the appropriate team
+        if (player.Team === home) {
+          games[player.Game].homeTeam.players.push(playerDetail);
+        } else {
+          games[player.Game].awayTeam.players.push(playerDetail);
+        }
+      });
+
+      const updateGameMatchups = Object.values(games);
+
+      setGameMatchups(updateGameMatchups)
+      console.log('updateGameMatchups', updateGameMatchups);
+
       setHeaders(Object.keys(enhancedDataSet[0]));
       setData(enhancedDataSet)
       setExcludePlayerLines(enhancedDataSet);
@@ -202,18 +281,13 @@ export default function NFLFanduelDFS(props) {
     setter(event.target.checked);
   };
 
-  // Asynchronous function to fetch slates
 
 
 
 
   const handleGameSlateChange = (slateType) => {
-    console.log('slate', slateType)
-    console.log('slateType.split()[0]', slateType.split('-')[0])
-    console.log('.toLowerCase()', slateType.split('-')[0].toLowerCase())
 
     setSelectedSlate(slateType)
-    // return slateType.toLowerCase().replace(/[^a-z0-9]/g, '-');
   };
 
   const slateTypeToDirectory = (slateType) => {
@@ -428,9 +502,18 @@ export default function NFLFanduelDFS(props) {
       minFromGroup: 1,
       maxExposure: 50
     }));
+    // const teamGroupRules = teamGroups.map(group => ({
+    //   stackType: 'teamStack',
+    //   players: group,
+    //   minFromGroup: 1,
+    //   maxExposure: 50
+    // }));
+    // const teamGameGroupRules = teamGameGroups.map(group => ({
+    //   ...group
+    // }));
 
 
-    console.log('playerGroupRules', playerGroupRules);
+    // console.log('teamGameGroupRules', teamGameGroupRules);
     let myargs = {
       numLineups: parseInt(numLineups, 10),
       site: 'FANDUEL',
@@ -485,7 +568,11 @@ export default function NFLFanduelDFS(props) {
           minFromTeam: globalMinFromTeam,
           maxExposure: globalMaxExposure,
         },
-        ...playerGroupRules
+        ...playerGroupRules,
+        // ...teamGroupRules,
+        teamGameGroups.map(group => ({
+          ...group
+        }))
       ].filter(Boolean)
     };
     const headers = {
@@ -765,314 +852,80 @@ export default function NFLFanduelDFS(props) {
 
           {tabValue === 1 &&
             <NFLTeamStacks
-              groups={groups}
-              setGroups={setGroups}
+              groups={teamGroups}
+              setGroups={setTeamGroups}
               filteredPlayers={filteredPlayers}
               playerGroups={playerGroups}
               setPlayerGroups={setPlayerGroups}
             />
           }
           {tabValue === 2 && <NFLTeamGameStacks
-            groups={groups}
-            setGroups={setGroups}
+            positions={['QB', 'RB', 'WR', 'TE', 'D']}
+            groups={teamGameGroups}
+            gameMatchups={gameMatchups}
+            setGroups={setTeamGameGroups}
             filteredPlayers={filteredPlayers}
             playerGroups={playerGroups}
             setPlayerGroups={setPlayerGroups}
           />}
-          {tabValue === 3 && <div>Upload own Projections coming soon</div>}
+          {tabValue === 3 && <NFLUploadOwnProjections
+            positions={['QB', 'RB', 'WR', 'TE', 'D']}
+            groups={teamGameGroups}
+            gameMatchups={gameMatchups}
+            setGroups={setTeamGameGroups}
+            filteredPlayers={filteredPlayers}
+            playerGroups={playerGroups}
+            setPlayerGroups={setPlayerGroups}
+          />}
         </DialogContent>
       </Dialog>
-
-      <LeftSideDrawer
+      <NflFdDfsOptimizerSettings
         open={open}
         anchor={'right'}
         handleDrawerOpen={handleDrawerOpen}
-        style={{ backgroundColor: '#fdfdfd' }}
+        // style={{ backgroundColor: '#fdfdfd' }}
         handleDrawerClose={handleDrawerClose}
-      >
-        <Box p={3} display="flex" flexDirection="column" alignItems="stretch">
-          <Typography variant="h4" gutterBottom>Optimizer Settings</Typography>
-
-          <input type="file" onChange={handleFileUpload} />
-
-
-          <FormControl margin="normal" fullWidth>
-            <TextField
-              label="Total Player Maximum Exposure"
-              type="number"
-              defaultValue={totalMaxExp}
-              InputProps={{
-                inputProps: {
-                  min: 0,
-                  max: 100
-                }
-              }}
-              onChange={(e) => {
-                setTotalMaxExp(Number(e.target.value));
-              }}
-              fullWidth
-              helperText="Values are from 0 to 100"
-            />
-          </FormControl>
-          {process.env.NODE_ENV !== 'development' &&
-            <FormControl margin="normal" fullWidth>
-              <TextField
-                label="Max Players From Same team"
-                type="number"
-                defaultValue={maxFromSameTeam}
-                InputProps={{
-                  inputProps: {
-                    min: 1,
-                    max: 4
-                  }
-                }}
-                onChange={(e) => {
-                  setMaxFromSameTeam(Number(e.target.value));
-                }}
-                fullWidth
-                helperText="Values are from 0 to 100"
-              />
-            </FormControl>
-          }
-          <FormControl margin="normal" fullWidth>
-            <TextField
-              label="Random Standard Deviation"
-              type="number"
-              defaultValue={randomStd}
-              onChange={(e) => {
-                setrandomStd(Number(e.target.value));
-              }}
-              fullWidth
-              helperText="Values are from 0 to 100"
-            />
-          </FormControl>
-
-          <FormControl margin="normal" fullWidth variant="outlined">
-            <InputLabel id="numLineups-label">Optimize Lineups</InputLabel>
-            <Select
-              labelId="numLineups-label"
-              value={numLineups}
-              onChange={(e) => setNumLineups(e.target.value)}
-              label="Optimize Lineups"
-              fullWidth
-            // helperText={Variable && `Values are from 0 to 100`}
-            >
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-              <MenuItem value={10}>10</MenuItem>
-              <MenuItem value={25}>25</MenuItem>
-              <MenuItem value={50}>50</MenuItem>
-              <MenuItem value={100}>100</MenuItem>
-              <MenuItem value={150}>150</MenuItem>
-              {/* <MenuItem value={300}>300</MenuItem> */}
-              {/* <MenuItem value={500}>500</MenuItem> */}
-              <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={300}>300 - Upgrade to use</MenuItem>
-              <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={303}>303 - Upgrade to use</MenuItem>
-              <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={500}>500 - Upgrade to use</MenuItem>
-              <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={1000}>1000 - Upgrade to use</MenuItem>
-            </Select>
-            <FormHelperText className={classes.helperText}>
-              {!false && `Not Paid account - sign up for the ability to optimize more lines like a shark`}
-            </FormHelperText>
-          </FormControl>
-
-          <FormControl margin="normal" fullWidth variant="outlined">
-            <InputLabel id="gameSelector-label">Select Game Slate</InputLabel>
-            <Select
-              labelId="gameSelector-label"
-              value={selectedSlate}
-              defaultValue={selectedSlate}
-              onChange={(e) => handleGameSlateChange(e.target.value)}
-              label="Select Game Slate"
-              fullWidth
-            >
-              {fdSlates
-                .filter(game => game.showdown_flag === 0)
-                .map((game, index) => (
-                  <MenuItem key={index} value={game.slate_type}>
-                    {game.slate_type} - {game.start_string}
-                  </MenuItem>
-                ))}
-            </Select>
-            <FormHelperText className="helperText">
-              Some helper text or instructions for the user.
-            </FormHelperText>
-          </FormControl>
+        handleFileUpload={handleFileUpload}
+        totalMaxExp={totalMaxExp}
+        setTotalMaxExp={setTotalMaxExp}
+        maxFromSameTeam={maxFromSameTeam}
+        setMaxFromSameTeam={setMaxFromSameTeam}
+        randomStd={randomStd}
+        setrandomStd={setrandomStd}
+        numLineups={numLineups}
+        setNumLineups={setNumLineups}
+        classes={classes}
+        selectedSlate={selectedSlate}
+        handleGameSlateChange={handleGameSlateChange}
+        fdSlates={fdSlates}
+        excludeOpposingDefense={excludeOpposingDefense}
+        handleCheckboxChange={handleCheckboxChange}
+        setExcludeOpposingDefense={setExcludeOpposingDefense}
+        pairQbWithWrOrTe={pairQbWithWrOrTe}
+        setPairQbWithWrOrTe={setPairQbWithWrOrTe}
+        excludeQbANdRb={excludeQbANdRb}
+        setExcludeQbANdRb={setExcludeQbANdRb}
+        restrict2TEsSameTeam={restrict2TEsSameTeam}
+        setRestrict2TEsSameTeam={setRestrict2TEsSameTeam}
+        includeGlobalGameStack={includeGlobalGameStack}
+        setIncludeGlobalGameStack={setIncludeGlobalGameStack}
+        globalNumPlayers={globalNumPlayers}
+        setGlobalNumPlayers={setGlobalNumPlayers}
+        globalMinFromTeam={globalMinFromTeam}
+        setGlobalMinFromTeam={setGlobalMinFromTeam}
+        globalMaxExposure={globalMaxExposure}
+        setGlobalMaxExposure={setGlobalMaxExposure}
 
 
-          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
-            <FormControlLabel
-              style={{ whiteSpace: 'break-spaces' }}
-              control={
-                <Checkbox
-                  checked={excludeOpposingDefense}
-                  onChange={handleCheckboxChange(setExcludeOpposingDefense)}
-                  color="primary"
-                />
-              }
-              label="Exclude Opposing Defense"
-            />
-            {excludeOpposingDefense &&
-              <>
-                <Typography
-                  variant="caption"
-                  display="block"
-                  gutterBottom
-                  style={{
-                    marginLeft: "8px",
-                    whiteSpace: 'break-spaces'
-                  }}>
-                  After excluding the opposing defense, you can further choose which positions to exclude.
-                  If no positions are chosen, it will only pair QB against the defense.
-                </Typography>
-
-                <Box
-                  display="flex"
-                  flexDirection="row"
-                  flexWrap="wrap"
-                  justifyContent="start"
-                  alignItems="center"
-                  marginLeft="8px"
-                >
-                  <FormControlLabel
-                    control={<Checkbox name="QB" onChange={handleCheckChange} />}
-                    label="QB"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox name="WR" onChange={handleCheckChange} />}
-                    label="WR"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox name="RB" onChange={handleCheckChange} />}
-                    label="RB"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox name="TE" onChange={handleCheckChange} />}
-                    label="TE"
-                  />
-                </Box>
-              </>
-            }
-
-          </Card>
-
-          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={pairQbWithWrOrTe}
-                  onChange={handleCheckboxChange(setPairQbWithWrOrTe)}
-                  color="primary"
-
-                />
-              }
-              label="pair QB with WR and/or a TE "
-            />
-          </Card>
-          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={excludeQbANdRb}
-                  onChange={handleCheckboxChange(setExcludeQbANdRb)}
-                  color="primary"
-                />
-              }
-              label="Exclude QB and RBs"
-            />
-          </Card>
-          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={restrict2TEsSameTeam}
-                  onChange={handleCheckboxChange(setRestrict2TEsSameTeam)}
-                  color="primary"
-                />
-              }
-              label="Restrict 2 TEs from same team"
-            />
-          </Card>
-
-
-
-          <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
-            <FormControlLabel
-              style={{ whiteSpace: 'break-spaces' }}
-              control={
-                <Checkbox
-                  checked={includeGlobalGameStack}
-                  onChange={handleCheckboxChange(setIncludeGlobalGameStack)}
-                  color="primary"
-                />
-              }
-              label="Include Global Game Stack"
-            />
-            {includeGlobalGameStack &&
-              <>
-                <Typography
-                  variant="caption"
-                  display="block"
-                  gutterBottom
-                  style={{
-                    marginLeft: "8px",
-                    whiteSpace: 'break-spaces'
-                  }}>
-                  Input your preferred configurations below.
-                </Typography>
-
-                <Box
-                  display="flex"
-                  flexDirection="column"
-                  flexWrap="wrap"
-                  justifyContent="start"
-                  alignItems="start"
-                  marginLeft="8px"
-                  spacing={2}
-                >
-                  <TextField
-                    style={{ marginBottom: 24, marginTop: 16 }}
-                    label="Number of Players"
-                    type="number"
-                    value={globalNumPlayers}
-                    onChange={(e) => setGlobalNumPlayers(e.target.value)}
-                    variant="outlined"
-                    size="small"
-                  />
-                  <TextField
-                    style={{ marginBottom: 24 }}
-                    label="Min From Team"
-                    type="number"
-                    value={globalMinFromTeam}
-                    onChange={(e) => setGlobalMinFromTeam(e.target.value)}
-                    variant="outlined"
-                    size="small"
-                  />
-                  <TextField
-                    style={{ marginBottom: 24 }}
-                    label="Max Exposure"
-                    type="number"
-                    value={globalMaxExposure}
-                    onChange={(e) => setGlobalMaxExposure(e.target.value)}
-                    variant="outlined"
-                    size="small"
-                  />
-                </Box>
-              </>
-            }
-
-          </Card>
-
-
-        </Box>
-      </LeftSideDrawer>
+      />
 
 
       {filteredPlayers.length > 0 ? (
         <div>
           <div style={{ marginBottom: '24px' }}>
             <GameMatchupsCarousel
-              games={GameMatchups}
+              games={GameMatchupsJson}
+              // games={GameMatchups}
               handleExcludeTeams={handleExcludeTeams}
               excludedTeams={excludedTeams}
               setExcludedTeams={setExcludedTeams}
