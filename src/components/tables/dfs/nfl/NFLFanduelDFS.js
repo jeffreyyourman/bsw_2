@@ -265,7 +265,7 @@ export default function NFLFanduelDFS(props) {
       const updateGameMatchups = Object.values(games);
 
       setGameMatchups(updateGameMatchups)
-      console.log('updateGameMatchups', updateGameMatchups);
+      // console.log('updateGameMatchups', updateGameMatchups);
 
 
       const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
@@ -275,7 +275,65 @@ export default function NFLFanduelDFS(props) {
       const remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
 
 
-      setHeaders(Object.keys(enhancedDataSet[0]));
+      // console.log('excludedPlayers', excludedPlayers)
+      // console.log('excludedPlayers', excludedPlayers.length)
+      // console.log('remainingPlayers', remainingPlayers)
+      // console.log('remainingPlayers', remainingPlayers.length)
+      // console.log('Object.keys(enhancedDataSet[0])', Object.keys(enhancedDataSet[0]))
+
+
+      const objectHeaderKeys = Object.keys(enhancedDataSet[0]);
+      // const orderedHeaders = orderedHeaderConfig.sort((a, b) => a.order - b.order).map(item => item.key).filter(key => dataSetHeaders.includes(key));
+
+      // setHeaders(orderedHeaders);
+      // // const overrides = [
+      // //   // { key: 'FPPG', order: 1 },
+      // //   { key: 'maxExposure', order: 1 },
+      // //   { key: 'minExposure', order: 2 },
+
+      // //   // { key: 'Position', order: 2 }
+      // // ];
+
+
+      // const defaultHeadersConfig = objectHeaderKeys.map((header, index) => ({
+      //   key: header,
+      //   label: header.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "), // This transforms 'First_Name' to 'First Name'
+      //   order: index + 1  // This uses the index as the default order
+      // }));
+
+      // function applyOverrides(defaultConfig, overrides) {
+      //   let adjustedConfig = [...defaultConfig];
+
+      //   overrides.forEach(override => {
+      //     let item = adjustedConfig.find(header => header.key === override.key);
+      //     if (item) {
+      //       item.order = override.order;
+      //     }
+      //   });
+
+      //   // Adjust orders for non-overridden items
+      //   const maxOverrideOrder = Math.max(...overrides.map(o => o.order));
+      //   adjustedConfig.forEach(item => {
+      //     if (!overrides.some(override => override.key === item.key)) {
+      //       item.order += maxOverrideOrder;
+      //     }
+      //   });
+
+      //   return adjustedConfig.sort((a, b) => a.order - b.order);
+      // }
+      // const finalHeadersConfig = applyOverrides(defaultHeadersConfig, overrides);
+
+      // console.log('finalHeadersConfig', finalHeadersConfig);
+      // setHeaders(finalHeadersConfig);
+      const defaultHeadersConfig = objectHeaderKeys.map((header, index) => ({
+        key: header,
+        label: header.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "), // This transforms 'First_Name' to 'First Name'
+        order: index + 1  // This uses the index as the default order
+      }));
+
+      // Set the default headers to state directly without any overriding logic.
+      setHeaders(defaultHeadersConfig);
+
       setData(enhancedDataSet)
 
       setExcludePlayerLines(excludedPlayers);
@@ -994,11 +1052,18 @@ export default function NFLFanduelDFS(props) {
             {/* <h2><span style={{ fontWeight: '500', fontSize: 24 }}>Slate:<span style={{display: 'block'}}> {selectedSlate}</span></span></h2> */}
 
             {isShowingExcludePlayers ? <TableComponent
+
+              overrides={[
+                { key: 'include', order: 1 },
+                { key: 'FPPG', order: 9 },
+
+              ]}
               columns={excludeColumns}
               headers={headers}
-              excludedKeys={['OG_FPPG']}
+              excludedKeys={['OG_FPPG', 'Nickname', 'isLocked']}
               data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
               setData={setData}
+              usingExcludePlayers={true}
               setFilteredPlayers={setFilteredPlayers}
               filteredPlayers={filteredPlayers}
               excludePlayerLines={excludePlayerLines}
@@ -1010,7 +1075,15 @@ export default function NFLFanduelDFS(props) {
               :
 
               <TableComponent
+                overrides={[
+                  { key: 'maxExposure', order: 1 },
+                  { key: 'minExposure', order: 2 },
+                  { key: 'exclude', order: 3 },
+                  { key: 'FPPG', order: 10 },
+
+                ]}
                 columns={columns}
+                usingExcludePlayers={false}
                 excludedKeys={['OG_FPPG', 'Nickname',]}
                 headers={headers}
                 data={filteredPlayers}

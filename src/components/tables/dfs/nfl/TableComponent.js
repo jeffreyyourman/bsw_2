@@ -1,4 +1,4 @@
-import React, { useEffect,useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { CSVLink } from "react-csv";
 // import {
 
@@ -34,7 +34,7 @@ import {
   FiLock,
   FiUnlock
 } from "react-icons/fi";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoMdAdd } from "react-icons/io";
 
 export default function TableComponent(props) {
   let {
@@ -48,7 +48,9 @@ export default function TableComponent(props) {
     filteredPlayers,
     setFilteredPlayers,
     excludePlayerLines,
-    setExcludePlayerLines
+    setExcludePlayerLines,
+    usingExcludePlayers,
+    overrides,
   } = props;
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('');
@@ -70,38 +72,12 @@ export default function TableComponent(props) {
     }
   };
 
-  // let sortedPlayers;
-  // if (order === 'default') {
-  //   sortedPlayers = ogFilteredPlayers
-  // } else {
-  //   sortedPlayers = [...filteredPlayers].sort((a, b) => {
-  //     // If we have a default sort, just return the original order
-  //     if (order === 'default') return 0;
-
-  //     // Handle numeric sorting explicitly for fields like FPPG
-  //     if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
-  //       if (order === 'asc') {
-  //         return parseFloat(a[orderBy]) - parseFloat(b[orderBy]);
-  //       } else {
-  //         return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
-  //       }
-  //     }
-
-  //     // Handle textual sorting (default)
-  //     if (order === 'asc') {
-  //       return a[orderBy] < b[orderBy] ? -1 : 1;
-  //     } else {
-  //       return a[orderBy] > b[orderBy] ? -1 : 1;
-  //     }
-  //   });
-  // }
-
   const sortedPlayers = useMemo(() => {
     if (order === 'default') {
       return ogFilteredPlayers;
     }
 
-    return [...filteredPlayers].sort((a, b) => {
+    return [...data].sort((a, b) => {
       // If we have a default sort, just return the original order
       if (order === 'default') return 0;
 
@@ -121,7 +97,8 @@ export default function TableComponent(props) {
         return a[orderBy] > b[orderBy] ? -1 : 1;
       }
     });
-  }, [filteredPlayers, order, orderBy]);
+  }, [data, filteredPlayers, excludePlayerLines, order, orderBy,]);
+  // }, [filteredPlayers, order, orderBy, excludePlayerLines]);
   // }, [filteredPlayers, order, orderBy, ogFilteredPlayers]);
 
 
@@ -131,13 +108,19 @@ export default function TableComponent(props) {
     setFilteredPlayers(updatedPlayers);
   };
 
-  const handleExclude = (rowIndex) => {
+  const handleExclude = (playerId) => {
+    console.log('exclude palyerId', playerId);
     // Copy the data to not directly mutate the state
     let playersCopy = [...filteredPlayers];
     let excludedCopy = [...excludePlayerLines];
 
+    // Find the index of the player to be excluded
+    const playerIndex = playersCopy.findIndex(player => player.Id === playerId);
+    console.log('playerIndex', playerIndex);
+    if (playerIndex === -1) return; // Exit function if player not found
+
     // Get the player to be excluded
-    const excludedPlayer = playersCopy.splice(rowIndex, 1)[0];
+    const excludedPlayer = playersCopy.splice(playerIndex, 1)[0];
 
     // Add that player to the excludedCopy
     excludedCopy.push(excludedPlayer);
@@ -146,6 +129,29 @@ export default function TableComponent(props) {
     setFilteredPlayers(playersCopy);
     setExcludePlayerLines(excludedCopy);
   };
+
+  function handleInclude(playerId) {
+
+    console.log('palyerId', playerId);
+    // Copy the excluded players to not directly mutate the state
+    let excludedCopy = [...excludePlayerLines];
+    let playersFilteredCopy = [...filteredPlayers];
+
+    // Find the index of the player to be included
+    const playerIndex = excludedCopy.findIndex(player => player.Id === playerId);
+
+    if (playerIndex === -1) return; // Exit function if player not found
+
+    // Get the player to be included
+    const includedPlayer = excludedCopy.splice(playerIndex, 1)[0];
+
+    // Add that player to the end of the playersFilteredCopy
+    playersFilteredCopy.push(includedPlayer);
+
+    // Update the state
+    setFilteredPlayers(playersFilteredCopy);
+    setExcludePlayerLines(excludedCopy);
+  }
 
 
   const handleMinExposureChange = (playerData, value) => {
@@ -176,16 +182,32 @@ export default function TableComponent(props) {
 
 
   };
+  console.log('headers)', headers);
 
+  function mergeConfigWithOverrides(config) {
+    let tempConfig = [...config]; // Create a temporary copy of the config
+    const sortedOverrides = [...overrides].sort((a, b) => a.order - b.order); // Sort overrides by order
 
-  // const excludedKeys = ['',];
+    sortedOverrides.forEach(override => {
+      // Adjust the orders of columns based on the override's order
+      tempConfig = tempConfig.map(col => {
+        if (col.order >= override.order) {
+          return { ...col, order: col.order + 1 }; // Increment the order by 1
+        }
+        return col;
+      });
 
-  const basicColumns = headers.map(header => ({
-    key: header,
-    label: header.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ") // Transform 'First_Name' to 'First Name'
-  }));
+      // Find the column in the config that matches the override key and assign the override order
+      const matchingColIndex = tempConfig.findIndex(col => col.key === override.key);
+      if (matchingColIndex > -1) {
+        tempConfig[matchingColIndex] = { ...tempConfig[matchingColIndex], ...override };
+      }
+    });
 
-  const exposureColumns = [
+    return tempConfig;
+  }
+
+  const exposureColumnsMerged = mergeConfigWithOverrides([
     {
       key: 'minExposure',
       label: 'Min Exposure',
@@ -212,9 +234,9 @@ export default function TableComponent(props) {
         />
       ),
     }
-  ];
+  ]);
 
-  const actionColumns = [
+  const actionColumnsMerged = mergeConfigWithOverrides([
     {
       key: 'isLocked',
       label: 'Lock',
@@ -232,8 +254,8 @@ export default function TableComponent(props) {
       ),
     },
     {
-      key: 'exclude',
-      label: 'Exclude',
+      key: usingExcludePlayers ? 'include' : 'exclude',
+      label: usingExcludePlayers ? 'Include' : 'Exclude',
       renderer: (rowData, rowIndex) => (
         <Button
           style={{
@@ -241,18 +263,30 @@ export default function TableComponent(props) {
             backgroundColor: "transparent",
             border: "none",
           }}
-          onClick={() => handleExclude(rowIndex)}
+          // Inside the renderer for your exclude/include button:
+          onClick={() => usingExcludePlayers ? handleInclude(rowData.Id) : handleExclude(rowData.Id)}
         >
-          <IoMdClose style={{ color: 'red' }} />
+          {usingExcludePlayers ?
+            <IoMdAdd style={{ color: 'green' }} /> :
+            <IoMdClose style={{ color: 'red' }} />
+          }
         </Button>
       ),
-    },
+    }
+  ]);
+
+
+  const basicColumnsMerged = mergeConfigWithOverrides(headers);
+
+  const columnConfig = [
+    ...exposureColumnsMerged,
+    ...actionColumnsMerged,
+    ...basicColumnsMerged
   ];
 
-  const columnConfig = [...exposureColumns, ...actionColumns, ...basicColumns];
-
-  // Filter out the excluded columns
+  columnConfig.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
   const finalColumnConfig = columnConfig.filter(col => !excludedKeys.includes(col.key));
+  console.log('finalColumnConfig', finalColumnConfig);
 
   return (
     <div>
