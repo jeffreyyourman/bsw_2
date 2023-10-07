@@ -1062,7 +1062,9 @@ export default function NFLFanduelDFS(props) {
                   { key: 'maxExposure', order: 1 },
                   { key: 'minExposure', order: 2 },
                   { key: 'exclude', order: 3 },
-                  { key: 'FPPG', order: 10 },
+                  { key: 'isLocked', order: 4 },
+                  { key: 'FPPG', order: 12 },
+                  { key: 'fanduel_value', order: 13 },
 
                 ]}
                 columns={columns}
