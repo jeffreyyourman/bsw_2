@@ -44,7 +44,6 @@ pricing:
         - Global Game Stack
         - Pre Canned Sestriction Rules
         - Global Game Stacks
-        - Player Prop Builder
       plan: Free
       price: "0"
     - description: Per month
@@ -55,7 +54,7 @@ pricing:
         - Lineup Rewind ≤50
         - Live Swapping ≤ 50
       plan: Tier 1
-      price: "80"
+      price: "15"
     - description: Per month
       items:
         - "#   Up to 150 Lineups Per"
@@ -66,20 +65,19 @@ pricing:
         - Lineup Rewind ≤ 150
         - Future Player Prop Projections
       plan: Tier 2
-      price: "100"
+      price: "30"
     - plan: Tier 3
-      price: "150"
+      price: "45"
       description: Per month
       items:
         - Generate More Than 150 Lineups Per
         - Boom Bust Projection
         - Ownership Projection
         - Saving up to 300 Lineups
-        - saving all optimizer settings
+        - Saving all optimizer settings
         - 10+ stacks
         - Early Access to Content and New Features
         - Live Swapping 150+
         - Lineup Rewind 150+
         - Player Prop Builder
-        - ""
 ---
