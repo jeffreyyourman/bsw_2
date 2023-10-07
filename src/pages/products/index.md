@@ -39,22 +39,47 @@ pricing:
   plans:
     - description: Light better
       items:
-        - 20 optimized lines
-        - 1 Saved line to track
-      plan: Small
-      price: "50"
-    - description: Medium Better
+        - Up to 5 Lineups Per Run
+        - Basic Fantasy Score Projections
+        - Global Game Stack
+        - Pre Canned Sestriction Rules
+        - Global Game Stacks
+        - Player Prop Builder
+      plan: Free
+      price: "0"
+    - description: Per month
       items:
-        - 50 optimized lines
-        - 5 Saved line to track
-      plan: Big
+        - Up to 50 Lineups Per
+        - Save 2-4 Advanced Options
+        - Random Deviation Scoring
+        - Lineup Rewind ≤50
+        - Live Swapping ≤ 50
+      plan: Tier 1
       price: "80"
-    - description: Shark
+    - description: Per month
       items:
-        - 100 optimized lines
-        - 10 Saved line to track
-        - boom bust tool
-        - Standard Deviation to predict bets
-      plan: Custom
+        - "#   Up to 150 Lineups Per"
+        - 5-9 Stacks Settings Saved
+        - Upload Your Own Projections
+        - Content Picks Bundled
+        - Live Swapping ≤ 150
+        - Lineup Rewind ≤ 150
+        - Future Player Prop Projections
+      plan: Tier 2
       price: "100"
+    - plan: Tier 3
+      price: "150"
+      description: Per month
+      items:
+        - Generate More Than 150 Lineups Per
+        - Boom Bust Projection
+        - Ownership Projection
+        - Saving up to 300 Lineups
+        - saving all optimizer settings
+        - 10+ stacks
+        - Early Access to Content and New Features
+        - Live Swapping 150+
+        - Lineup Rewind 150+
+        - Player Prop Builder
+        - ""
 ---
