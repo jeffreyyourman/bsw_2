@@ -69,6 +69,7 @@ const theme = createTheme({
 
 
 export default function NFLFanduelDFS(props) {
+  const baseUrl = 'https://bsw-be-api.onrender.com'
   const classes = useStyles();
   const columns = useColumns();
   const clerk = useClerk();
@@ -143,12 +144,14 @@ export default function NFLFanduelDFS(props) {
   // const [slates, setSlates] = useState([]);
 
   const fetchFdSlates = async () => {
-    const fdSlateList = getFdSlates()
+    // const fdSlateList = getFdSlates()
     // console.log('fdSlateList', fdSlateList);
     try {
-      const response = await axios.get(fdSlateList); // Note: You don't need to specify the "public" directory; just use the root path.
 
-      // console.log('fetchfanduel slate lists - response - ', response.data);
+      const response = await axios.get(`${baseUrl}/dfs-projections/nfl/fd/upcoming-slates`); // Note: You don't need to specify the "public" directory; just use the root path.
+      // const response = await axios.get(fdSlateList); // Note: You don't need to specify the "public" directory; just use the root path.
+
+      console.log('fetchfanduel slate lists - response - ', response.data);
       if (Object.keys(response.data).length === 0) {
         // fetchPlayerSlateDataSet('Main')
         setFdSlates([]);
@@ -611,9 +614,9 @@ export default function NFLFanduelDFS(props) {
 
     axios
       .post(
+        `${baseUrl}/optimizer`,
         // "https://bsw-be-api.onrender.com/optimizer",
-        "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
-        // "https://anxious-teal-gilet.cyclic.cloud/optimizer",
+        // "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         { data: myargs },
         {
           // headers,
