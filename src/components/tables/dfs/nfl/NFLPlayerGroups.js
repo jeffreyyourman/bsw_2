@@ -22,10 +22,11 @@ function NFLPlayerGroups(props) {
     const handleCreateGroup = () => {
         props.setGroups(prev => [...prev, {
             id: generateUniqueId(),
+            stackType: 'playerGroup',
             name: "New Player Group",
             players: [],
             minFromGroup: 1,
-            maxFromGroup: 1,
+            maxFromGroup: 4,
             maxExposure: 50,
         }]);
     };
