@@ -213,6 +213,7 @@ export default function TableComponent(props) {
           type="text"
           min="0"
           max="100"
+          style={{ width: 65 }}
           value={rowData['minExposure'] || ''}
           onChange={(e) => handleMinExposureChange(rowData, e.target.value)}
         />
@@ -226,6 +227,7 @@ export default function TableComponent(props) {
           type="text"
           min="0"
           max="100"
+          style={{ width: 65 }}
           value={rowData['maxExposure'] || ''}
           onChange={(e) => handleMaxExposureChange(rowData, e.target.value)}
         />
@@ -240,6 +242,7 @@ export default function TableComponent(props) {
       renderer: (rowData, rowIndex) => (
         <Button
           style={{
+            width: 65,
             backgroundColor: "transparent",
             border: "none",
             cursor: "pointer",
@@ -256,6 +259,7 @@ export default function TableComponent(props) {
       renderer: (rowData, rowIndex) => (
         <Button
           style={{
+            width: 65,
             cursor: "pointer",
             backgroundColor: "transparent",
             border: "none",
@@ -283,7 +287,7 @@ export default function TableComponent(props) {
 
   columnConfig.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
   const finalColumnConfig = columnConfig.filter(col => !excludedKeys.includes(col.key));
-  // console.log('finalColumnConfig', finalColumnConfig);
+  console.log('finalColumnConfig', finalColumnConfig);
 
   return (
     <div>
@@ -292,11 +296,19 @@ export default function TableComponent(props) {
           <TableHead>
             <TableRow>
               {finalColumnConfig.map((col, index) => (
-                <TableCell key={index}>
+                <TableCell style={{
+                  verticalAlign: 'bottom',
+                  padding: 8,
+                  textAlign:'center',
+                }}
+
+                  key={index} >
                   <TableSortLabel
+                    align="left"
                     active={orderBy === col.key}
                     direction={order}
                     onClick={() => handleSortRequest(col.key)}
+                    style={{ flexDirection: 'column-reverse', padding: 10, textAlign: 'center', verticalAlign: 'bottom' }}
                   >
                     {col.label}
                   </TableSortLabel>
@@ -308,7 +320,9 @@ export default function TableComponent(props) {
             {sortedPlayers.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((player, rowIndex) => (
               <TableRow key={rowIndex}>
                 {finalColumnConfig.map((col, innerIndex) => (
-                  <TableCell key={innerIndex}>
+                  <TableCell
+                    style={{ padding: 12, textAlign: 'center' }}
+                    key={innerIndex}>
                     {col.renderer ? col.renderer(player, rowIndex, col.key) : player[col.key]}
                   </TableCell>
                 ))}

@@ -12,6 +12,8 @@ import {
 
 function NFLPlayerGroups(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [groupSearchTerm, setGroupSearchTerm] = useState("");
 
     const generateUniqueId = () => {
         return new Date().getTime() + "-" + Math.floor(Math.random() * 1000);
@@ -70,6 +72,12 @@ function NFLPlayerGroups(props) {
             ...prev.slice(index + 1),
         ]);
     };
+
+    const displayedPlayers = props.filteredPlayers.filter(player =>
+        player.Nickname.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    
 
     return (
         <div style={{
@@ -172,9 +180,17 @@ function NFLPlayerGroups(props) {
                         }}
                     />
 
-                    <div style={{ display: 'flex', height:'500px', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <div style={{ display: 'flex', height: '500px', flexDirection: 'row', justifyContent: 'space-between' }}>
                         <div style={{ width: '48%' }}>
                             <h4 style={{ marginTop: 24, marginBottom: 8 }}>Add Players to Group</h4>
+                            <TextField
+                                style={{ marginBottom: 16 }}
+                                label="Search Players"
+                                variant="outlined"
+                                value={searchTerm}
+                                onChange={e => setSearchTerm(e.target.value)}
+                                fullWidth
+                            />
                             <TableContainer component={Paper} style={{ width: '100%', height: '90%', overflowY: 'auto' }}>
                                 <Table>
                                     <TableHead>
@@ -185,19 +201,27 @@ function NFLPlayerGroups(props) {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {props.filteredPlayers.map((player, index) => (
-                                            <TableRow key={index}>
-                                                <TableCell>
-                                                    <input
-                                                        type="checkbox"
-                                                        checked={props.groups[getActiveGroupIndex()].players.includes(player.Nickname)}
-                                                        onChange={(e) => handleCheckboxChange(player.Nickname, e.target.checked)}
-                                                    />
+                                        {displayedPlayers.length === 0 ? (
+                                            <TableRow>
+                                                <TableCell colSpan={3} align="center">
+                                                    No players found
                                                 </TableCell>
-                                                <TableCell>{player.Nickname}</TableCell>
-                                                <TableCell>{player.FPPG}</TableCell>
                                             </TableRow>
-                                        ))}
+                                        ) : (
+                                            displayedPlayers.map((player, index) => (
+                                                <TableRow key={index}>
+                                                    <TableCell>
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={props.groups[getActiveGroupIndex()].players.includes(player.Nickname)}
+                                                            onChange={(e) => handleCheckboxChange(player.Nickname, e.target.checked)}
+                                                        />
+                                                    </TableCell>
+                                                    <TableCell>{player.Nickname}</TableCell>
+                                                    <TableCell>{player.FPPG}</TableCell>
+                                                </TableRow>
+                                            ))
+                                        )}
                                     </TableBody>
                                 </Table>
                             </TableContainer>
