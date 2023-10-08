@@ -577,12 +577,12 @@ export default function NFLFanduelDFS(props) {
     });
 
 
-    const playerGroupRules = groups.map(group => ({
-      stackType: 'playerGroup',
-      players: group,
-      minFromGroup: 1,
-      maxExposure: 50
-    }));
+    // const playerGroupRules = groups.map(group => ({
+    //   stackType: 'playerGroup',
+    //   players: group,
+    //   minFromGroup: 1,
+    //   maxExposure: 50
+    // }));
 
     let myargs = {
       numLineups: parseInt(numLineups, 10),
@@ -629,7 +629,7 @@ export default function NFLFanduelDFS(props) {
           minFromTeam: globalMinFromTeam,
           maxExposure: globalMaxExposure,
         },
-        ...playerGroupRules,
+        ...groups,
         ...teamGroups,
         ...teamGameGroups,
       ].filter(Boolean)
