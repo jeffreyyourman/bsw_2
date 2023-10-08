@@ -658,7 +658,7 @@ export default function NFLFanduelDFS(props) {
 
           setGetLineupsErr(response.data[0].error);
         }
-        const fetchedLineups = response.data[0].lineups;
+        const fetchedLineups = response.data[response.data[0].error ? 1 : 0].lineups;
         const manipulatedLineups = fetchedLineups.map(lineup => {
           let totalfppg = 0;
           // let pass_tds = 0;
@@ -740,14 +740,15 @@ export default function NFLFanduelDFS(props) {
         });
         const sortedLineupsDes = sortByMetricDescending(manipulatedLineups, 'lineup_points')
         // const sortedLineupsA = sortByMetricAscending(manipulatedLineups, 'lineup_points')
-        setTopTeams(response.data[1].top_teams)
-        setTopPlayers(response.data[1].top_players)
-        setLineups({ lineups: sortedLineupsDes, topPlayersTeams: response.data[1] });
+        setTopTeams(response.data[response.data[0].error ? 2 : 1].top_teams)
+        setTopPlayers(response.data[response.data[0].error ? 2 : 1].top_players)
+        setLineups({ lineups: sortedLineupsDes, topPlayersTeams: response.data[response.data[0].error ? 2 : 1] });
 
         setLoading(false)
       })
       .catch((error) => {
         setLoading(false)
+        setGetLineupsErr('Error getting lineups, please try again!');
         console.error(error);
       });
   };
@@ -857,7 +858,7 @@ export default function NFLFanduelDFS(props) {
   };
 
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-
+  console.log('getLineupsErr', getLineupsErr);
 
   return (
     <ThemeProvider theme={theme}>
@@ -1089,7 +1090,7 @@ export default function NFLFanduelDFS(props) {
                 >
                   {loading ? "Loading..." : 'Optimize'}
                 </Button>
-                {getLineupsErr && <h3>{getLineupsErr}</h3>}
+               
               </div>
 
               {lineups.length !== 0 && (
@@ -1109,6 +1110,7 @@ export default function NFLFanduelDFS(props) {
                 />
               )}
             </div>
+            {getLineupsErr.length !== 0 && <h3>{getLineupsErr}</h3>}
             {isShowingExcludePlayers ? <TableComponent
 
               overrides={[
