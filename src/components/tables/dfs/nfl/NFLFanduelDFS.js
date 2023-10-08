@@ -136,7 +136,7 @@ export default function NFLFanduelDFS(props) {
   const [teamGroups, setTeamGroups] = useState([]);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
-  const [numLineups, setNumLineups] = useState(303);
+  const [numLineups, setNumLineups] = useState(5);
   const [totalMaxExp, setTotalMaxExp] = useState(35);
   const [randomStd, setrandomStd] = useState(25);
   const [position, setPosition] = useState('All');
@@ -161,6 +161,8 @@ export default function NFLFanduelDFS(props) {
   const [fdSlates, setFdSlates] = useState([]);
   const [espnScoreboard, setEspnScoreboard] = useState([]);
   const [espnStandings, setEspnStandings] = useState([]);
+  const [successUploadOwnProjections, setSuccessUploadOwnProjections] = useState(false);
+  const [successUploadOwnProjectionsLoading, setSuccessUploadOwnProjectionsLoading] = useState(false);
   const getFdSlates = (abbr) => `/mockJson/nfl/slates/fd_slates.json`;
   // const getGameMatchups = (abbr) => `/mockJson/nfl/nfl-current-games-nextgenstats.json`;
   const getEspnScoreboard = (abbr) => `/mockJson/nfl/2023-espn-scoreboard.json`;
@@ -191,7 +193,7 @@ export default function NFLFanduelDFS(props) {
   };
   const fetchGameMatchups = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/dfs-projections/nfl/espn-scoreboard`); 
+      const response = await axios.get(`${baseUrl}/dfs-projections/nfl/espn-scoreboard`);
 
       console.log('get game matchups slate lists - response - ', response.data.data.sports[0].leagues[0].events);
       if (Object.keys(response.data).length === 0) {
@@ -244,7 +246,7 @@ export default function NFLFanduelDFS(props) {
     fetchGameMatchups()
     fetchPlayerSlateDataSet(selectedSlate)
     fetchFdSlates()
-    fetchEspnScoreboard();
+    // fetchEspnScoreboard();
     fetchEspnStandings();
 
   }, [selectedSlate]);
@@ -474,6 +476,7 @@ export default function NFLFanduelDFS(props) {
 
 
   const handleFileUpload = (e) => {
+    setSuccessUploadOwnProjectionsLoading(true)
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onload = (event) => {
@@ -514,6 +517,8 @@ export default function NFLFanduelDFS(props) {
 
       fetchPlayerDataSet(formattedData)
       setOpen(false);
+      setSuccessUploadOwnProjections(true)
+      setSuccessUploadOwnProjectionsLoading(false)
 
     }
     reader.readAsText(file);
@@ -527,13 +532,13 @@ export default function NFLFanduelDFS(props) {
     const transformedPlayers = filteredPlayers.map(player => {
       return {
         FPPG: player.FPPG,
-        First_Name: player.First_Name,
+        'First Name': player['First Name'],
         Game: player.Game,
         Id: player.Id,
-        Injury_Details: player.Injury_Details,
-        Injury_Indicator: player.Injury_Indicator,
+        'Injury Details': player['Injury Details'],
+        'Injury Indicator': player['Injury Indicator'],
         isLocked: player.isLocked,
-        Last_Name: player.Last_Name,
+        'Last Name': player['Last Name'],
         // minExposure: player.minExposure,
         // maxExposure: player.maxExposure,
         minExposure: !player.minExposure ? 0 : Number(player.minExposure),
@@ -541,7 +546,7 @@ export default function NFLFanduelDFS(props) {
         Nickname: player.Nickname,
         Opponent: player.Opponent,
         Position: player.Position,
-        Roster_Position: player["Roster Position"],
+        'Roster Position': player["Roster Position"],
         Salary: player.Salary,
         Team: player.Team,
         Tier: player.Tier,
@@ -922,11 +927,15 @@ export default function NFLFanduelDFS(props) {
           {tabValue === 3 && <NFLUploadOwnProjections
             positions={['QB', 'RB', 'WR', 'TE', 'D']}
             groups={teamGameGroups}
+            handleFileUpload={handleFileUpload}
             gameMatchups={gameAndPlayerMatchups}
             setGroups={setTeamGameGroups}
             filteredPlayers={filteredPlayers}
             playerGroups={playerGroups}
+            data={data}
             setPlayerGroups={setPlayerGroups}
+            successUploadOwnProjections={successUploadOwnProjections}
+            successUploadOwnProjectionsLoading={successUploadOwnProjectionsLoading}
           />}
         </DialogContent>
       </Dialog>

@@ -239,9 +239,9 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
         </IconButton>
         <div ref={carouselRef} style={{ overflow: 'hidden', display: 'flex', width: '100%' }}>
           <div style={{ display: 'flex', transform: `translateX(-${currentIndex * 260}px)` }}>
-            {games.map(game => {
+            {games.map((game, index) => {
 
-              return <div key={game.gameKey} style={{ width: '250px', margin: '0 5px' }}>
+              return <div key={`${index}_${game.gameKey}`} style={{ width: '250px', margin: '0 5px' }}>
                 <Card
                   className="nfl-game-matchup-item"
                   style={{

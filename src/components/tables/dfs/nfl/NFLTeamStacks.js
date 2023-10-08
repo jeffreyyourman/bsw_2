@@ -17,8 +17,8 @@ function NFLTeamStacks(props) {
             numPlayers: 3,
             forTeam: '',
             forPositions: [],
-            minFromGroup: 1,
-            maxFromGroup: 4,
+            // minFromGroup: 1,
+            // maxFromGroup: 4,
             maxExposure: 100
         }]);
     };
@@ -153,7 +153,7 @@ function NFLTeamStacks(props) {
                         }}
                     />
 
-                    <TextField
+                    {/* <TextField
                         style={{ margin: '24px 0px' }}
                         type="number"
                         label="Min From Group"
@@ -184,7 +184,7 @@ function NFLTeamStacks(props) {
                                 ...prev.slice(getActiveGroupIndex() + 1),
                             ]);
                         }}
-                    />
+                    /> */}
 
                     <TextField
                         style={{ margin: '24px 0px' }}

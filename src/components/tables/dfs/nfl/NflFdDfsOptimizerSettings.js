@@ -25,7 +25,6 @@ export default function NflFdDfsOptimizerSettings(props) {
       <Box p={3} display="flex" flexDirection="column" alignItems="stretch">
         <Typography variant="h4" gutterBottom>Optimizer Settings</Typography>
 
-        <input type="file" onChange={props.handleFileUpload} />
 
 
         <FormControl margin="normal" fullWidth>
