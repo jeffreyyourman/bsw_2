@@ -6,8 +6,14 @@ import '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 // import logo from "../img/logo.svg";
+import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
+
 
 const Navbar = () => {
+  const clerk = useClerk();
+  console.log('clerk', clerk)
+  const { isSignedIn, sessionId, userId } = useAuth();
+  console.log('isSignedIn', isSignedIn)
   const [isActive, setIsActive] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);  // for the dropdown
 
@@ -18,68 +24,84 @@ const Navbar = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-  return (
-    <nav
-      className="navbar is-transparent"
-      role="navigation"
-      aria-label="main-navigation"
-      style={{ backgroundColor: '#00203d' }}
-    >
-      <div className="container" style={{ backgroundColor: '#00203d' }}>
-        <div className="navbar-brand">
-          <Link to="/" className="navbar-item" title="Logo">
-            <img src={logo} alt="BSW" style={{ width: "88px" }} />
-          </Link>
-          {/* Hamburger menu */}
-          <button
-            className={`navbar-burger burger ${isActive && "is-active"}`}
-            aria-expanded={isActive}
-            onClick={() => setIsActive(!isActive)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-        </div>
-        <ul id="navMenu" className={`navbar-start has-text-centered navbar-menu ${isActive && "is-active"}`}>
-          {/*... other navbar items*/}
 
-          {/* Dropdown for DFS */}
-          <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/about">
-              About
+
+
+
+  return (
+    <>
+      <nav
+        className="navbar is-transparent"
+        role="navigation"
+        aria-label="main-navigation"
+        style={{ backgroundColor: '#00203d' }}
+      >
+        <div className="container" style={{ backgroundColor: '#00203d' }}>
+          <div className="navbar-brand">
+            <Link to="/" className="navbar-item" title="Logo">
+              <img src={logo} alt="BSW" style={{ width: "88px" }} />
             </Link>
-          </li>
-          <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/blog">
-              Blog
-            </Link>
-          </li>
-          <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/contact">
-              Contact
-            </Link>
-          </li>
-          <li className="navbar-item" style={{ padding: "0px" }}>
-            <div className="navbar-item" style={{cursor:'pointer'}} onClick={handleMenuClick}>
-              DFS
-            </div>
-            <Menu
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleMenuClose}
+            {/* Hamburger menu */}
+            <button
+              className={`navbar-burger burger ${isActive && "is-active"}`}
+              aria-expanded={isActive}
+              onClick={() => setIsActive(!isActive)}
             >
-              {/* <MenuItem onClick={handleMenuClose}>
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+          <ul id="navMenu" className={`navbar-start has-text-centered navbar-menu ${isActive && "is-active"}`}>
+            {/*... other navbar items*/}
+
+            {/* Dropdown for DFS */}
+            <li className="navbar-item" style={{ padding: "0px" }}>
+              <Link className="navbar-item" to="/about">
+                About
+              </Link>
+            </li>
+            <li className="navbar-item" style={{ padding: "0px" }}>
+              <Link className="navbar-item" to="/blog">
+                Blog
+              </Link>
+            </li>
+            <li className="navbar-item" style={{ padding: "0px" }}>
+              <Link className="navbar-item" to="/contact">
+                Contact
+              </Link>
+            </li>
+            <li className="navbar-item" style={{ padding: "0px" }}>
+              <div className="navbar-item" style={{ cursor: 'pointer' }} onClick={handleMenuClick}>
+                DFS
+              </div>
+
+              <Menu
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              >
+                {/* <MenuItem onClick={handleMenuClose}>
                 <Link to="/dfs/sport/nba">NBA</Link>
               </MenuItem> */}
-              <MenuItem onClick={handleMenuClose}>
-                <Link to="/dfs/sport/nfl">NFL</Link>
-              </MenuItem>
-            </Menu>
-          </li>
-        </ul>
-        {/* <ul id="navMenu" className={` navbar-start has-text-centered navbar-menu ${isActive && "is-active"}`}>
+                <MenuItem onClick={handleMenuClose}>
+                  <Link to="/dfs/sport/nfl">NFL</Link>
+                </MenuItem>
+              </Menu>
+            </li>
+            <li className="navbar-item" style={{ padding: "0px" }}>
+              {!isSignedIn ?
+                <button className="sign-up-btn" onClick={() => clerk.openSignUp({})}>
+                  Sign up
+                </button> :
+                <button className="sign-up-btn" onClick={() => clerk.signOut({})}>
+                  Sign out
+                </button>
+              }
+            </li>
+          </ul>
+          {/* <ul id="navMenu" className={` navbar-start has-text-centered navbar-menu ${isActive && "is-active"}`}>
           <li className="navbar-item" style={{ padding: "0px" }}>
             <Link className="navbar-item" to="/about">
               About
@@ -101,8 +123,10 @@ const Navbar = () => {
             </Link>
           </li>
         </ul> */}
-      </div>
-    </nav>
+        </div>
+      </nav>
+      {/* <SignIn /> */}
+    </>
   );
 };
 

@@ -287,7 +287,7 @@ export default function TableComponent(props) {
 
   columnConfig.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
   const finalColumnConfig = columnConfig.filter(col => !excludedKeys.includes(col.key));
-  console.log('finalColumnConfig', finalColumnConfig);
+  // console.log('finalColumnConfig', finalColumnConfig);
 
   return (
     <div>

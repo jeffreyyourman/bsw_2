@@ -13,7 +13,7 @@ import { TextField, FormHelperText, Card, FormControlLabel, Checkbox, Box, Typog
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 
 export default function NflFdDfsOptimizerSettings(props) {
-
+// console.log('props.fdSlates',props.fdSlates);
   return (
     <LeftSideDrawer
       open={props.open}

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import { CSVLink } from "react-csv";
+// import Button from "@mui/material/Button";
 import {
+  Card,
+  Button,
   Table,
   TableBody,
   TableCell,
@@ -10,12 +11,13 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Card,
   TableSortLabel,
   Tabs,
   Tab,
   Box
-} from '@material-ui/core';
+} from '@mui/material';
+import { CSVLink } from "react-csv";
+
 import lodashOrderBy from 'lodash/orderBy';
 
 export default function TemporaryDrawer(props) {
@@ -27,10 +29,6 @@ export default function TemporaryDrawer(props) {
   });
   const [startLine, setStartLine] = useState(null);
   const [endLine, setEndLine] = useState(null);
-
-
-  // const flattenedLineups = props.lineups.lineups.map(lineup => flattenLineup(lineup));
-  // console.log('flattenedLineups',flattenedLineups);
 
   const [order, setOrder] = useState('desc');
   const [orderBy, setOrderBy] = useState('totalfppg');
@@ -176,7 +174,14 @@ export default function TemporaryDrawer(props) {
   console.log('props.lineups.length', props.lineups);
   return (
     <div>
-      <Button onClick={toggleDrawer("bottom", true)}>View lineups</Button>
+      <Button
+        onClick={toggleDrawer("bottom", true)}
+        className="bsw-primary-btns"
+        style={{ width: 165, marginLeft: 8 }}
+        variant="contained"
+      >
+        View lineups {props.lineups.lineups.length}
+      </Button>
       <Drawer
         anchor={"bottom"}
         open={state["bottom"]}
@@ -266,20 +271,7 @@ export default function TemporaryDrawer(props) {
                 </div>
               )}
             </Box>
-            {/* <div style={{ width: '15%', height: "90%", overflowY: 'auto' }}>
-              <h2 style={{ fontWeight: 'bold' }}>Top DFS Players</h2>
-              {props.topPlayers
-                .sort((a, b) => b.totalAmt - a.totalAmt)
-                .map((topPlayer) => {
-                  return (
-                    <div key={topPlayer.playerName}>
-                      <span>{topPlayer.playerName} </span>
-                      <span>{topPlayer.totalAmt} </span>
-                    </div>
-                  );
-                })}
-
-            </div> */}
+     
             <div style={{ width: '85%', height: "90%", overflowY: 'auto' }}>
               <input
                 type="number"

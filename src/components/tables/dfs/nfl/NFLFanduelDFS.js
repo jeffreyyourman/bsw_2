@@ -8,7 +8,20 @@ import { useColumns, useExcludeColumns } from "./NflDfsTableColumns";
 import axios from "axios";
 import { FiUnlock, FiLock } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
-import { TextField, FormHelperText, Card, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
+import {
+  TextField,
+  FormHelperText,
+  Card,
+  FormControlLabel,
+  Checkbox,
+  Box,
+  Typography,
+  Button,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
+} from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -69,7 +82,20 @@ const theme = createTheme({
 
 
 export default function NFLFanduelDFS(props) {
-  const baseUrl = 'https://bsw-be-api.onrender.com'
+  const useLocal = false
+  const useOptimizerUrl = true
+
+  let baseUrl;
+  if (process.env.NODE_ENV === 'development') {
+    if (useLocal) {
+      baseUrl = 'http://localhost:3000'
+    } else {
+
+      baseUrl = 'https://bsw-be-api.onrender.com'
+    }
+  } else {
+    baseUrl = 'https://bsw-be-api.onrender.com';
+  }
   const classes = useStyles();
   const columns = useColumns();
   const clerk = useClerk();
@@ -110,9 +136,9 @@ export default function NFLFanduelDFS(props) {
   const [teamGroups, setTeamGroups] = useState([]);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
-  const [numLineups, setNumLineups] = useState(10);
-  const [totalMaxExp, setTotalMaxExp] = useState(40);
-  const [randomStd, setrandomStd] = useState(20);
+  const [numLineups, setNumLineups] = useState(303);
+  const [totalMaxExp, setTotalMaxExp] = useState(35);
+  const [randomStd, setrandomStd] = useState(25);
   const [position, setPosition] = useState('All');
   // const [searchFilter, setSearchFilter] = useState('');
   const [excludeOpposingDefense, setExcludeOpposingDefense] = useState(false);
@@ -129,13 +155,14 @@ export default function NFLFanduelDFS(props) {
   const [globalMaxExposure, setGlobalMaxExposure] = useState(50);
 
   const [headers, setHeaders] = useState([]);
-  const [gameMatchups, setGameMatchups] = useState([]);
+  const [gameAndPlayerMatchups, setGameAndPlayerMatchups] = useState([]);
+  const [espnScoreBoardMatchups, setEspnScoreBoardMatchups] = useState([]);
   const [gameMatchupsJson, setGameMatchupsJson] = useState([]);
   const [fdSlates, setFdSlates] = useState([]);
   const [espnScoreboard, setEspnScoreboard] = useState([]);
   const [espnStandings, setEspnStandings] = useState([]);
   const getFdSlates = (abbr) => `/mockJson/nfl/slates/fd_slates.json`;
-  const getGameMatchups = (abbr) => `/mockJson/nfl/nfl-current-games-nextgenstats.json`;
+  // const getGameMatchups = (abbr) => `/mockJson/nfl/nfl-current-games-nextgenstats.json`;
   const getEspnScoreboard = (abbr) => `/mockJson/nfl/2023-espn-scoreboard.json`;
   const getEspnStandings = (abbr) => `/mockJson/nfl/2023-espn-standings.json`;
 
@@ -148,15 +175,15 @@ export default function NFLFanduelDFS(props) {
     // console.log('fdSlateList', fdSlateList);
     try {
 
-      const response = await axios.get(`${baseUrl}/dfs-projections/nfl/fd/upcoming-slates`); // Note: You don't need to specify the "public" directory; just use the root path.
-      // const response = await axios.get(fdSlateList); // Note: You don't need to specify the "public" directory; just use the root path.
+      const response = await axios.get(`${baseUrl}/dfs-projections/nfl/fd/upcoming-slates`);
+      // const response = await axios.get(fdSlateList); 
 
-      console.log('fetchfanduel slate lists - response - ', response.data);
+      // console.log('fetchfanduel slate lists - response - ', response.data);
       if (Object.keys(response.data).length === 0) {
         // fetchPlayerSlateDataSet('Main')
         setFdSlates([]);
       } else {
-        setFdSlates(response.data);
+        setFdSlates(response.data.data);
       }
     } catch (error) {
       console.error("Error fetching the JSON data:", error);
@@ -164,46 +191,26 @@ export default function NFLFanduelDFS(props) {
   };
   const fetchGameMatchups = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/dfs-projections/nfl/espn-scoreboard'); 
-      // const response = await axios.get('https://bsw-be-api.onrender.com/dfs-projections/nba/espn-scoreboard'); 
+      const response = await axios.get(`${baseUrl}/dfs-projections/nfl/espn-scoreboard`); 
 
       console.log('get game matchups slate lists - response - ', response.data.data.sports[0].leagues[0].events);
       if (Object.keys(response.data).length === 0) {
         // fetchPlayerSlateDataSet('Main')
-        setGameMatchups([]);
+        setEspnScoreBoardMatchups([]);
       } else {
-        setGameMatchups(response.data);
+        setEspnScoreBoardMatchups(response.data.data.sports[0].leagues[0].events);
       }
     } catch (error) {
       console.error("Error fetching the JSON data:", error);
     }
   };
-  // const fetchGameMatchups = async () => {
-  //   const getGameMatchupsResponse = getGameMatchups()
-  //   // console.log('getGameMatchupsResponse', getGameMatchupsResponse);
-  //   try {
-  //     const response = await axios.get(getGameMatchupsResponse); 
 
-  //     // console.log('get game matchups slate lists - response - ', response.data);
-  //     if (Object.keys(response.data).length === 0) {
-  //       // fetchPlayerSlateDataSet('Main')
-  //       setGameMatchupsJson([]);
-  //     } else {
-  //       setGameMatchupsJson(response.data);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching the JSON data:", error);
-  //   }
-  // };
   const fetchEspnScoreboard = async () => {
     const getEspnScoreboardRes = getEspnScoreboard()
-    console.log('getEspnScoreboardRes', getEspnScoreboardRes);
     try {
-      const response = await axios.get(getEspnScoreboardRes); // Note: You don't need to specify the "public" directory; just use the root path.
+      const response = await axios.get(getEspnScoreboardRes);
 
-      console.log('getEspnScoreboardRes ', response.data);
       if (Object.keys(response.data).length === 0) {
-        // fetchPlayerSlateDataSet('Main')
         setEspnScoreboard([]);
       } else {
         setEspnScoreboard(response.data);
@@ -214,11 +221,11 @@ export default function NFLFanduelDFS(props) {
   };
   const fetchEspnStandings = async () => {
     const getEspnStandingsRes = getEspnStandings()
-    console.log('getEspnStandingsRes', getEspnStandingsRes);
-    try {
-      const response = await axios.get(getEspnStandingsRes); // Note: You don't need to specify the "public" directory; just use the root path.
 
-      console.log('getEspnStandingsRes ', response.data);
+    try {
+      const response = await axios.get(getEspnStandingsRes);
+
+
       if (Object.keys(response.data).length === 0) {
         // fetchPlayerSlateDataSet('Main')
         setEspnStandings([]);
@@ -234,31 +241,14 @@ export default function NFLFanduelDFS(props) {
 
 
   useEffect(() => {
-    // fetchPlayerDataSet(nflPlayerList)
     fetchGameMatchups()
     fetchPlayerSlateDataSet(selectedSlate)
     fetchFdSlates()
     fetchEspnScoreboard();
     fetchEspnStandings();
-    // fetchSlates()
-    // https://www.dailyfantasyfuel.com/data/slates/next/nfl/fd?x=1
-    // https://www.dailyfantasyfuel.com/data/playerdetails/nfl/fd/17042?x=1
-    // https://www.dailyfantasyfuel.com/data/slates/recent/NFL/fanduel?date=2023-10-01&url=17042
-    // https://www.dailyfantasyfuel.com/data/slates/next/nfl/dk?x=1
 
-    // setLineups(NflOptimizedLineups());
   }, [selectedSlate]);
 
-  // https://www.dailyfantasyfuel.com/data/slates/next/nfl/fd
-  //   const fetchSlates = async () => {
-  //     try {
-  //         const fdSlateResponse = await axios.get('');
-  //         console.log('fdSlateResponse.data',fdSlateResponse.data);
-  //         setSlates(fdSlateResponse.data); 
-  //     } catch (error) {
-  //         console.error("Error fetching slates:", error);
-  //     }
-  // };
 
   const fetchPlayerDataSet = (dataSet) => {
     console.log('dataSet', dataSet);
@@ -315,8 +305,9 @@ export default function NFLFanduelDFS(props) {
       });
 
       const updateGameMatchups = Object.values(games);
-
-      setGameMatchups(updateGameMatchups)
+      console.log('updateGameMatchups', updateGameMatchups);
+      // gameAndPlayerMatchups
+      setGameAndPlayerMatchups(updateGameMatchups)
       // console.log('updateGameMatchups', updateGameMatchups);
 
 
@@ -374,7 +365,7 @@ export default function NFLFanduelDFS(props) {
     const slateData1 = getSlateFullDirectory(directoryName)
     // console.log('slateData1', slateData1);
     try {
-      const response = await axios.get(slateData1); // Note: You don't need to specify the "public" directory; just use the root path.
+      const response = await axios.get(slateData1);
 
       // console.log('fetchPlayerSlateDataSet - response - ', response.data);
       if (Object.keys(response.data).length === 0) {
@@ -389,19 +380,6 @@ export default function NFLFanduelDFS(props) {
     }
   };
 
-
-
-  const handleCheckChange = (event) => {
-    const { name, checked } = event.target;
-
-    setSkillPlayersAgainstDef((prevState) => {
-      if (checked && !prevState.includes(name)) {
-        return [...prevState, name];
-      } else {
-        return prevState.filter((item) => item !== name);
-      }
-    });
-  };
 
   const handleSearchOnChange = (text) => {
     if (position !== 'All') setPosition('All')
@@ -441,6 +419,20 @@ export default function NFLFanduelDFS(props) {
   };
 
   const filterPlayersByPosition = (position) => {
+    let filtered = ogfilteredPlayers;
+
+    if (position !== "All") {
+      filtered = filtered.filter(player => player.Position === position);
+    }
+
+    // Exclude players that are in excludePlayerLines for both "All" and specific positions
+    filtered = filtered.filter(player => !excludePlayerLines.some(excludedPlayer => excludedPlayer.Id === player.Id));
+
+    setFilteredPlayers(filtered);
+  };
+
+
+  const filterPlayersByPosition2 = (position) => {
     // console.log('position', position);
     if (position === "All") {
       // console.log('all mfer', data)
@@ -450,6 +442,18 @@ export default function NFLFanduelDFS(props) {
       setFilteredPlayers(ogfilteredPlayers.filter(player => player.Position === position));
     }
   };
+  // const filterPlayersByPosition = (position) => {
+  //   let filtered = excludePlayerLines;
+
+  //   if (position !== "All") {
+  //     filtered = filtered.filter(player => player.Position === position);
+  //   }
+
+  //   // Exclude players that are in excludePlayerLines
+  //   filtered = filtered.filter(player => !excludePlayerLines.some(excludedPlayer => excludedPlayer.someKey === player.someKey));
+
+  //   setFilteredPlayers(filtered);
+  // };
 
   const handleExcludeTeams = (teamAbbr) => {
     if (excludedTeams.includes(teamAbbr)) {
@@ -630,9 +634,9 @@ export default function NFLFanduelDFS(props) {
 
     axios
       .post(
-        `${baseUrl}/optimizer`,
+        // `${baseUrl}/optimizer`,
         // "https://bsw-be-api.onrender.com/optimizer",
-        // "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
+        "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         { data: myargs },
         {
           // headers,
@@ -844,10 +848,7 @@ export default function NFLFanduelDFS(props) {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* <SignIn /> */}
-      {/* <button className="sign-up-btn" onClick={() => clerk.openSignUp({})}>
-        Sign up
-      </button> */}
+
       <Dialog
         fullScreen
         fullWidth
@@ -902,7 +903,7 @@ export default function NFLFanduelDFS(props) {
             <NFLTeamStacks
               positions={['QB', 'RB', 'WR', 'TE', 'D']}
               groups={teamGroups}
-              gameMatchups={gameMatchups}
+              gameMatchups={gameAndPlayerMatchups}
               setGroups={setTeamGroups}
               filteredPlayers={filteredPlayers}
               playerGroups={playerGroups}
@@ -912,7 +913,7 @@ export default function NFLFanduelDFS(props) {
           {tabValue === 2 && <NFLTeamGameStacks
             positions={['QB', 'RB', 'WR', 'TE', 'D']}
             groups={teamGameGroups}
-            gameMatchups={gameMatchups}
+            gameMatchups={gameAndPlayerMatchups}
             setGroups={setTeamGameGroups}
             filteredPlayers={filteredPlayers}
             playerGroups={playerGroups}
@@ -921,7 +922,7 @@ export default function NFLFanduelDFS(props) {
           {tabValue === 3 && <NFLUploadOwnProjections
             positions={['QB', 'RB', 'WR', 'TE', 'D']}
             groups={teamGameGroups}
-            gameMatchups={gameMatchups}
+            gameMatchups={gameAndPlayerMatchups}
             setGroups={setTeamGameGroups}
             filteredPlayers={filteredPlayers}
             playerGroups={playerGroups}
@@ -974,8 +975,8 @@ export default function NFLFanduelDFS(props) {
         <div>
           <div style={{ marginBottom: '24px' }}>
             <GameMatchupsCarousel
-              games={gameMatchupsJson}
-              // games={GameMatchups}
+              // games={gameMatchups}
+              games={espnScoreBoardMatchups}
               handleExcludeTeams={handleExcludeTeams}
               excludedTeams={excludedTeams}
               setExcludedTeams={setExcludedTeams}
@@ -1052,7 +1053,44 @@ export default function NFLFanduelDFS(props) {
           <h2><span style={{ fontWeight: '500', fontSize: 24 }}>{selectedSlate} Slate</span></h2>
           <div style={{ overflow: "auto" }}>
             {/* <h2><span style={{ fontWeight: '500', fontSize: 24 }}>Slate:<span style={{display: 'block'}}> {selectedSlate}</span></span></h2> */}
+            <div style={{
+              width: '150px',
+              marginTop: '8px',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center'
+            }}>
 
+              <div>
+
+                <Button
+                  disabled={loading}
+                  onClick={handleSubmitPlayers}
+                  className="bsw-primary-btns"
+                  variant="contained"
+                  fullWidth
+                >
+                  {loading ? "Loading..." : 'Optimize'}
+                </Button>
+              </div>
+
+              {lineups.length !== 0 && (
+
+                <BottomDrawer
+                  exportLineupsToUpload={exportLineupsToUpload}
+                  toggleAndSortData={toggleAndSortData}
+                  sortDataByAsc={sortDataByAsc}
+                  sortDataByDec={sortDataByDec}
+                  exportPlayerLines={exportPlayerLines}
+                  topPlayers={topPlayers}
+                  topTeams={topTeams}
+                  setLineups={setLineups}
+                  lineups={lineups}
+
+
+                />
+              )}
+            </div>
             {isShowingExcludePlayers ? <TableComponent
 
               overrides={[
@@ -1104,37 +1142,7 @@ export default function NFLFanduelDFS(props) {
 
           </div>
 
-          <div style={{ width: '150px', marginTop: '8px' }}>
 
-            <Button
-              disabled={loading}
-              onClick={handleSubmitPlayers}
-              className="bsw-primary-btns"
-              variant="contained"
-              fullWidth
-            >
-              {loading ? "Loading..." : 'Optimize'}
-            </Button>
-
-            {lineups.length !== 0 && (
-              <div style={{ marginTop: "64px" }}>
-                <p>total lines: {lineups.lineups.length}</p>
-                <BottomDrawer
-                  exportLineupsToUpload={exportLineupsToUpload}
-                  toggleAndSortData={toggleAndSortData}
-                  sortDataByAsc={sortDataByAsc}
-                  sortDataByDec={sortDataByDec}
-                  exportPlayerLines={exportPlayerLines}
-                  topPlayers={topPlayers}
-                  topTeams={topTeams}
-                  setLineups={setLineups}
-                  lineups={lineups}
-
-
-                />
-              </div>
-            )}
-          </div>
 
         </div>
       ) : null}
