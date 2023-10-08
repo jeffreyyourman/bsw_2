@@ -13,7 +13,7 @@ function NFLTeamStacks(props) {
         props.setGroups(prev => [...prev, {
             id: generateUniqueId(),
             name: "New Team Stack",
-            stackType: 'singleTeamStack',
+            stackType: 'team',
             numPlayers: 3,
             forTeam: '',
             forPositions: [],

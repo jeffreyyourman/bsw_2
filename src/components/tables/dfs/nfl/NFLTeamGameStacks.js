@@ -23,7 +23,7 @@ function NFLTeamGameStacks(props) {
             id: generateUniqueId(),
             name: "New Game Stack",
             stackType: 'singleGameStack',
-            numPlayers: 3,
+            // numPlayers: 3,
             forGame: '',
             forPositions: [],
             minFromGroup: 1,
@@ -150,27 +150,12 @@ function NFLTeamGameStacks(props) {
                         }}
                     />
 
-                    <TextField
-                        style={{ margin: '24px 0px' }}
-                        type="number"
-                        label="Number of Players"
-                        fullWidth
-                        variant="outlined"
-                        value={props.groups[getActiveGroupIndex()]?.numPlayers || ''}
-                        onChange={e => {
-                            const newNumPlayers = e.target.value;
-                            props.setGroups(prev => [
-                                ...prev.slice(0, getActiveGroupIndex()),
-                                { ...prev[getActiveGroupIndex()], numPlayers: parseInt(newNumPlayers) },
-                                ...prev.slice(getActiveGroupIndex() + 1),
-                            ]);
-                        }}
-                    />
+
 
                     <TextField
                         style={{ margin: '24px 0px' }}
                         type="number"
-                        label="Min From Group"
+                        label="Min Players From Group"
                         fullWidth
                         variant="outlined"
                         value={props.groups[getActiveGroupIndex()]?.minFromGroup || ''}
@@ -183,6 +168,24 @@ function NFLTeamGameStacks(props) {
                             ]);
                         }}
                     />
+
+                    <TextField
+                        style={{ margin: '24px 0px' }}
+                        type="number"
+                        label="Max number of Players"
+                        fullWidth
+                        variant="outlined"
+                        value={props.groups[getActiveGroupIndex()]?.maxFromGroup || ''}
+                        onChange={e => {
+                            const newMax = e.target.value;
+                            props.setGroups(prev => [
+                                ...prev.slice(0, getActiveGroupIndex()),
+                                { ...prev[getActiveGroupIndex()], maxFromGroup: parseInt(newMax) },
+                                ...prev.slice(getActiveGroupIndex() + 1),
+                            ]);
+                        }}
+                    />
+
 
                     <TextField
                         style={{ margin: '24px 0px' }}

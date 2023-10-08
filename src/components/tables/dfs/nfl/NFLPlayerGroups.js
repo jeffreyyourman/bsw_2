@@ -25,6 +25,7 @@ function NFLPlayerGroups(props) {
             name: "New Player Group",
             players: [],
             minFromGroup: 1,
+            maxFromGroup: 1,
             maxExposure: 50,
         }]);
     };
@@ -77,7 +78,7 @@ function NFLPlayerGroups(props) {
         player.Nickname.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    
+
 
     return (
         <div style={{
@@ -161,6 +162,20 @@ function NFLPlayerGroups(props) {
                             props.setGroups(prev => [
                                 ...prev.slice(0, getActiveGroupIndex()),
                                 { ...prev[getActiveGroupIndex()], minFromGroup: parseInt(newMin) },
+                                ...prev.slice(getActiveGroupIndex() + 1),
+                            ]);
+                        }}
+                    />
+                    <TextField
+                        style={{ margin: 4 }}
+                        type="number"
+                        label="Max From Group"
+                        value={props.groups[getActiveGroupIndex()]?.maxFromGroup || ''}
+                        onChange={e => {
+                            const newMax = e.target.value;
+                            props.setGroups(prev => [
+                                ...prev.slice(0, getActiveGroupIndex()),
+                                { ...prev[getActiveGroupIndex()], maxFromGroup: parseInt(newMax) },
                                 ...prev.slice(getActiveGroupIndex() + 1),
                             ]);
                         }}
