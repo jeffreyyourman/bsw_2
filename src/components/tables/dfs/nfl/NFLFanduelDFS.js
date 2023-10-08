@@ -163,6 +163,7 @@ export default function NFLFanduelDFS(props) {
   const [espnStandings, setEspnStandings] = useState([]);
   const [successUploadOwnProjections, setSuccessUploadOwnProjections] = useState(false);
   const [successUploadOwnProjectionsLoading, setSuccessUploadOwnProjectionsLoading] = useState(false);
+  const [getLineupsErr, setGetLineupsErr] = useState('');
   const getFdSlates = (abbr) => `/mockJson/nfl/slates/fd_slates.json`;
   // const getGameMatchups = (abbr) => `/mockJson/nfl/nfl-current-games-nextgenstats.json`;
   const getEspnScoreboard = (abbr) => `/mockJson/nfl/2023-espn-scoreboard.json`;
@@ -652,6 +653,11 @@ export default function NFLFanduelDFS(props) {
       )
       .then((response) => {
         console.log('response.data', response.data);
+        if (response.data[0].error) {
+          console.error(response.data[0].error);
+
+          setGetLineupsErr(response.data[0].error);
+        }
         const fetchedLineups = response.data[0].lineups;
         const manipulatedLineups = fetchedLineups.map(lineup => {
           let totalfppg = 0;
@@ -1083,6 +1089,7 @@ export default function NFLFanduelDFS(props) {
                 >
                   {loading ? "Loading..." : 'Optimize'}
                 </Button>
+                {getLineupsErr && <h3>{getLineupsErr}</h3>}
               </div>
 
               {lineups.length !== 0 && (
