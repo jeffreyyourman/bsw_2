@@ -160,22 +160,38 @@ export default function NFLFanduelDFS(props) {
     }
   };
   const fetchGameMatchups = async () => {
-    const getGameMatchupsResponse = getGameMatchups()
-    // console.log('getGameMatchupsResponse', getGameMatchupsResponse);
     try {
-      const response = await axios.get(getGameMatchupsResponse); // Note: You don't need to specify the "public" directory; just use the root path.
+      const response = await axios.get('http://localhost:3000/dfs-projections/nfl/espn-scoreboard'); 
+      // const response = await axios.get('https://bsw-be-api.onrender.com/dfs-projections/nba/espn-scoreboard'); 
 
-      // console.log('get game matchups slate lists - response - ', response.data);
+      console.log('get game matchups slate lists - response - ', response.data.data.sports[0].leagues[0].events);
       if (Object.keys(response.data).length === 0) {
         // fetchPlayerSlateDataSet('Main')
-        setGameMatchupsJson([]);
+        setGameMatchups([]);
       } else {
-        setGameMatchupsJson(response.data);
+        setGameMatchups(response.data);
       }
     } catch (error) {
       console.error("Error fetching the JSON data:", error);
     }
   };
+  // const fetchGameMatchups = async () => {
+  //   const getGameMatchupsResponse = getGameMatchups()
+  //   // console.log('getGameMatchupsResponse', getGameMatchupsResponse);
+  //   try {
+  //     const response = await axios.get(getGameMatchupsResponse); 
+
+  //     // console.log('get game matchups slate lists - response - ', response.data);
+  //     if (Object.keys(response.data).length === 0) {
+  //       // fetchPlayerSlateDataSet('Main')
+  //       setGameMatchupsJson([]);
+  //     } else {
+  //       setGameMatchupsJson(response.data);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching the JSON data:", error);
+  //   }
+  // };
   const fetchEspnScoreboard = async () => {
     const getEspnScoreboardRes = getEspnScoreboard()
     console.log('getEspnScoreboardRes', getEspnScoreboardRes);
