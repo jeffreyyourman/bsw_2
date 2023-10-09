@@ -36,7 +36,7 @@ At the heart of BetSweatWin lies a multifaceted approach to sports:
 
 ## How We Help You
 
-Our mission at BetSweatWin isn't just about offering services; it's about elevating your sports experience. With our **lineup optimizer tool** and its accompanying API, you're equipped with robust capabilities to refine your strategies, enhance your game choices, and secure an edge in your fantasy leagues. As we inch closer to introducing sports betting information, our dedication to providing informed, data-driven insights remains unwavering.
+Our mission at BetSweatWin Analytics isn't just about offering services; it's about elevating your sports experience. With our **lineup optimizer tool** and its accompanying API, you're equipped with robust capabilities to refine your strategies, enhance your game choices, and secure an edge in your fantasy leagues. As we inch closer to introducing sports betting information, our dedication to providing informed, data-driven insights remains unwavering.
 
 ## Why BetSweatWin Stands Out
 
