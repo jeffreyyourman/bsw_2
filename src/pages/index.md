@@ -34,6 +34,15 @@ intro:
       servicesHeader: Coming soon 4
   heading: What BSW offers
   description: Coming soon
+title2: Why BetSweatWin Analytics
+image2: /img/kobe2.jpeg
+heading2: fdkaj f;dsakjfdk;slaj fdsfdkaj f;dsakjfdk;slaj fdsfdkaj
+  f;dsakjfdk;slaj fdsfdkaj f;dsakjfdk;slaj fdsfdkaj f;dsakjfdk;slaj fdsfdkaj
+  f;dsakjfdk;slaj fdsfdkaj f;dsakjfdk;slaj fdsfdkaj f;dsakjfdk;slaj fdsfdkaj
+  f;dsakjfdk;slaj fds
+subheading2: Welcome to BetSweatWin Analytics, where passion for sports meets
+  cutting-edge analytics. Dive deep into our journey and discover why we're
+  rapidly becoming a favorite among sports enthusiasts and professionals alike.
 main:
   heading: Great coffee with no compromises
   description: >
