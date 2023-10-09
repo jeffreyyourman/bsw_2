@@ -1,4 +1,4 @@
-import React , { useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
@@ -19,9 +19,9 @@ export const IndexPageTemplate = ({
   intro,
 }) => {
   const heroImage = getImage(image) || image;
-  useEffect(() => {
-   window.location.href='/about' 
-  },[])
+  // useEffect(() => {
+  //  window.location.href='/about' 
+  // },[])
   return (
     <div>
       <FullWidthImage img={heroImage} title={title} subheading={subheading} />
@@ -36,7 +36,19 @@ export const IndexPageTemplate = ({
                       <h1 className="title">{mainpitch.title}</h1>
                     </div>
                     <div className="tile">
-                      <h3 className="subtitle">{mainpitch.description}</h3>
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'row',
+                          justifyContent: 'space-evenly',
+                          // alignItems:'center',
+                        }}
+                      >
+                        <img src="https://th.bing.com/th/id/OIP.51jMxjPx1dBlrIAVLcFP9wAAAA?pid=ImgDet&rs=1" />
+                        <p
+                          style={{ padding: 12, width: '50%' }}
+                          className="subtitle">{mainpitch.description}</p>
+                      </div>
                     </div>
                   </div>
                   <div className="columns">
@@ -64,6 +76,26 @@ export const IndexPageTemplate = ({
                       <Link className="btn" to="/blog">
                         Read more
                       </Link>
+                    </div>
+                  </div>
+                  <div className="content">
+                    <div className="tile">
+                      <h1 className="title">{mainpitch.title}</h1>
+                    </div>
+                    <div className="tile">
+                      <div
+                        style={{
+                          display: 'flex',
+                          flexDirection: 'row-reverse',
+                          justifyContent: 'space-evenly',
+                          // alignItems:'center',
+                        }}
+                      >
+                        <img src="https://th.bing.com/th/id/OIP.51jMxjPx1dBlrIAVLcFP9wAAAA?pid=ImgDet&rs=1" />
+                        <p
+                          style={{ padding: 12, width: '50%' }}
+                          className="subtitle">{mainpitch.description}</p>
+                      </div>
                     </div>
                   </div>
                 </div>

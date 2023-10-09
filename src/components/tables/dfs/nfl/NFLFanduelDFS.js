@@ -157,6 +157,7 @@ export default function NFLFanduelDFS(props) {
   const [headers, setHeaders] = useState([]);
   const [gameAndPlayerMatchups, setGameAndPlayerMatchups] = useState([]);
   const [espnScoreBoardMatchups, setEspnScoreBoardMatchups] = useState([]);
+  const [espnScoreBoardMatchupsLoading, setEspnScoreBoardMatchupsLoading] = useState(false);
   const [gameMatchupsJson, setGameMatchupsJson] = useState([]);
   const [fdSlates, setFdSlates] = useState([]);
   const [espnScoreboard, setEspnScoreboard] = useState([]);
@@ -193,6 +194,7 @@ export default function NFLFanduelDFS(props) {
     }
   };
   const fetchGameMatchups = async () => {
+    setEspnScoreBoardMatchupsLoading(true)
     try {
       const response = await axios.get(`${baseUrl}/dfs-projections/nfl/espn-scoreboard`);
 
@@ -203,8 +205,10 @@ export default function NFLFanduelDFS(props) {
       } else {
         setEspnScoreBoardMatchups(response.data.data.sports[0].leagues[0].events);
       }
+      setEspnScoreBoardMatchupsLoading(false)
     } catch (error) {
       console.error("Error fetching the JSON data:", error);
+      setEspnScoreBoardMatchupsLoading(false)
     }
   };
 
@@ -991,16 +995,18 @@ export default function NFLFanduelDFS(props) {
 
       {filteredPlayers.length > 0 ? (
         <div>
-          <div style={{ marginBottom: '24px' }}>
-            <GameMatchupsCarousel
-              // games={gameMatchups}
-              games={espnScoreBoardMatchups}
-              handleExcludeTeams={handleExcludeTeams}
-              excludedTeams={excludedTeams}
-              setExcludedTeams={setExcludedTeams}
-            />
+          {espnScoreBoardMatchupsLoading ? <h3>loading...</h3> :
 
-          </div>
+            <div style={{ marginBottom: '24px' }}>
+              <GameMatchupsCarousel
+                // games={gameMatchups}
+                games={espnScoreBoardMatchups}
+                handleExcludeTeams={handleExcludeTeams}
+                excludedTeams={excludedTeams}
+                setExcludedTeams={setExcludedTeams}
+              />
+
+            </div>}
 
           <div>
             <div style={{
@@ -1090,7 +1096,7 @@ export default function NFLFanduelDFS(props) {
                 >
                   {loading ? "Loading..." : 'Optimize'}
                 </Button>
-               
+
               </div>
 
               {lineups.length !== 0 && (
