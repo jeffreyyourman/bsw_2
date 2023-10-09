@@ -75,6 +75,7 @@ function NFLUploadOwnProjections(props) {
                 }}>
                 <p>Please make sure you use the same headers as this downloadable example template. </p>
                 <p>You may add additional columns as long as they don't conflict with what's already in the headers </p>
+                <p>Must have these exact headers. You may add additional but these are a must </p>
                 <div>
 
                     <CSVLink

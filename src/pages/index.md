@@ -22,12 +22,16 @@ intro:
   blurbs:
     - image: /img/coffee.png
       text: "Coming soon 1 "
+      servicesHeader: "Coming soon 1 "
     - image: /img/coffee-gear.png
       text: Coming soon 2
+      servicesHeader: Coming soon 2
     - image: /img/tutorials.png
       text: Coming soon 3
+      servicesHeader: Coming soon 3
     - image: /img/meeting-space.png
       text: Coming soon 4
+      servicesHeader: Coming soon 4
   heading: What BSW offers
   description: Coming soon
 main:

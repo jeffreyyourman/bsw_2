@@ -67,17 +67,6 @@ export const IndexPageTemplate = ({
                       </Link>
                     </div>
                   </div>
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      Latest stories
-                    </h3>
-                    <BlogRoll />
-                    <div className="column is-12 has-text-centered">
-                      <Link className="btn" to="/blog">
-                        Read more
-                      </Link>
-                    </div>
-                  </div>
                   <div className="content">
                     <div className="tile">
                       <h1 className="title">{mainpitch.title}</h1>
@@ -98,6 +87,18 @@ export const IndexPageTemplate = ({
                       </div>
                     </div>
                   </div>
+                  <div className="column is-12">
+                    <h3 className="has-text-weight-semibold is-size-2">
+                      Latest stories
+                    </h3>
+                    <BlogRoll />
+                    <div className="column is-12 has-text-centered">
+                      <Link className="btn" to="/blog">
+                        Read more
+                      </Link>
+                    </div>
+                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -122,7 +123,7 @@ IndexPageTemplate.propTypes = {
 
 const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
-
+  console.log('frontmatter',frontmatter);
   return (
     <Layout>
       <IndexPageTemplate
@@ -173,6 +174,7 @@ export const pageQuery = graphql`
               }
             }
             text
+            servicesHeader
           }
           heading
           description
