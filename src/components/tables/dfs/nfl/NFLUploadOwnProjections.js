@@ -39,18 +39,12 @@ function NFLUploadOwnProjections(props) {
         }];
 
 
-        console.log('props.data', props.data);
+        // console.log('props.data', props.data);
         const headers = Object.keys(props.data[0]);
         const csvData = props.data.map(player => headers.map(header => player[header]));
 
         return [headers, ...csvData];
-        // if (props.data) {
 
-        //     const headers = Object.keys(props.data[0]);
-
-        //     console.log(headers);
-        //     return [headers, ...props.data];
-        // }
     };
 
 

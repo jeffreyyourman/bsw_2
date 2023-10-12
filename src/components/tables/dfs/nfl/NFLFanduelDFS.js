@@ -82,7 +82,7 @@ const theme = createTheme({
 
 
 export default function NFLFanduelDFS(props) {
-  const useLocal = false
+  const useLocal = true
   const useOptimizerUrl = true
 
   let baseUrl;
@@ -124,6 +124,7 @@ export default function NFLFanduelDFS(props) {
   const [isDescendingOrder, setIsDescendingOrder] = useState(true);
   const [data, setData] = useState([]);
   const [filteredPlayers, setFilteredPlayers] = useState([]);
+  const [submittedPlayersForOptimizer, setSubmittedPlayersForOptimizer] = useState([]);
   const [ogfilteredPlayers, setOgFilteredPlayers] = useState([]);
   const [exportPlayerLines, setExportPlayerLines] = useState([]);
   const [excludePlayerLines, setExcludePlayerLines] = useState([]);
@@ -257,14 +258,15 @@ export default function NFLFanduelDFS(props) {
   }, [selectedSlate]);
 
 
-  const fetchPlayerDataSet = (dataSet) => {
-    console.log('dataSet', dataSet);
+  const fetchPlayerDataSet = (dataSet, key) => {
+    console.log(`${key} - dataSet`, dataSet);
     if (dataSet[0] === undefined) {
       setHeaders([]);
       setData([]);
       setExcludePlayerLines([]);
       setOgExcludePlayerLines([]);
       setFilteredPlayers([]);
+      setSubmittedPlayersForOptimizer([])
       setOgFilteredPlayers([]);
     } else {
 
@@ -312,7 +314,7 @@ export default function NFLFanduelDFS(props) {
       });
 
       const updateGameMatchups = Object.values(games);
-      console.log('updateGameMatchups', updateGameMatchups);
+      // console.log('updateGameMatchups', updateGameMatchups);
       // gameAndPlayerMatchups
       setGameAndPlayerMatchups(updateGameMatchups)
       // console.log('updateGameMatchups', updateGameMatchups);
@@ -342,6 +344,7 @@ export default function NFLFanduelDFS(props) {
       setOgExcludePlayerLines(excludedPlayers);
 
       setFilteredPlayers(remainingPlayers);
+      setSubmittedPlayersForOptimizer(remainingPlayers);
       setOgFilteredPlayers(remainingPlayers);
     }
   }
@@ -438,30 +441,6 @@ export default function NFLFanduelDFS(props) {
     setFilteredPlayers(filtered);
   };
 
-
-  const filterPlayersByPosition2 = (position) => {
-    // console.log('position', position);
-    if (position === "All") {
-      // console.log('all mfer', data)
-      setFilteredPlayers(ogfilteredPlayers);
-    } else {
-
-      setFilteredPlayers(ogfilteredPlayers.filter(player => player.Position === position));
-    }
-  };
-  // const filterPlayersByPosition = (position) => {
-  //   let filtered = excludePlayerLines;
-
-  //   if (position !== "All") {
-  //     filtered = filtered.filter(player => player.Position === position);
-  //   }
-
-  //   // Exclude players that are in excludePlayerLines
-  //   filtered = filtered.filter(player => !excludePlayerLines.some(excludedPlayer => excludedPlayer.someKey === player.someKey));
-
-  //   setFilteredPlayers(filtered);
-  // };
-
   const handleExcludeTeams = (teamAbbr) => {
     if (excludedTeams.includes(teamAbbr)) {
       // If the team is already excluded, remove it from the exclusion list
@@ -520,7 +499,7 @@ export default function NFLFanduelDFS(props) {
       }).filter(obj => obj.Id !== '');  // This line filters out objects with an empty Id
 
 
-      fetchPlayerDataSet(formattedData)
+      fetchPlayerDataSet(formattedData, 'upload')
       setOpen(false);
       setSuccessUploadOwnProjections(true)
       setSuccessUploadOwnProjectionsLoading(false)
@@ -531,10 +510,10 @@ export default function NFLFanduelDFS(props) {
 
   let handleSubmitPlayers = () => {
     setLoading(true)
+    setGetLineupsErr('');
 
-
-    console.log('player', filteredPlayers[0]);
-    const transformedPlayers = filteredPlayers.map(player => {
+    // console.log('player', filteredPlayers[0]);
+    const transformedPlayers = submittedPlayersForOptimizer.map(player => {
       return {
         FPPG: player.FPPG,
         'First Name': player['First Name'],
@@ -758,14 +737,14 @@ export default function NFLFanduelDFS(props) {
   };
 
   const exportLineupsToUpload = () => {
-    let amtOfLinesToExport = 350;
-    // let amtOfLinesToExport = amtOfLinesToExport || 350;
-    console.log('lineups', lineups.lineups);
-    const limitedLineups = lineups.lineups.slice(0, amtOfLinesToExport);
+    // let amtOfLinesToExport = 350;
+    // // let amtOfLinesToExport = amtOfLinesToExport || 350;
+    // console.log('lineups', lineups.lineups);
+    // const limitedLineups = lineups.lineups.slice(0, amtOfLinesToExport);
 
     // Here, we're creating an array for each lineup that starts with lineup.totalEverything 
     // followed by all the playerIds.
-    const csvData = limitedLineups.map(lineup => {
+    const csvData = lineups.lineups.map(lineup => {
       return [
         lineup.totalfppg.toFixed(2),
         lineup.totalPassTds.toFixed(2),
@@ -862,7 +841,7 @@ export default function NFLFanduelDFS(props) {
   };
 
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  console.log('getLineupsErr', getLineupsErr);
+  // console.log('getLineupsErr', getLineupsErr);
 
   return (
     <ThemeProvider theme={theme}>
@@ -993,7 +972,7 @@ export default function NFLFanduelDFS(props) {
       />
 
 
-      {filteredPlayers.length > 0 ? (
+      {submittedPlayersForOptimizer.length > 0 ? (
         <div>
           {espnScoreBoardMatchupsLoading ? <h3>loading...</h3> :
 
@@ -1075,6 +1054,7 @@ export default function NFLFanduelDFS(props) {
           </div>
 
           <h2><span style={{ fontWeight: '500', fontSize: 24 }}>{selectedSlate} Slate</span></h2>
+          <span style={{ fontWeight: '500', fontSize: 24 }}>{submittedPlayersForOptimizer.length} Available Player(s) in Slate</span>
           <div style={{ overflow: "auto" }}>
             {/* <h2><span style={{ fontWeight: '500', fontSize: 24 }}>Slate:<span style={{display: 'block'}}> {selectedSlate}</span></span></h2> */}
             <div style={{
@@ -1132,6 +1112,8 @@ export default function NFLFanduelDFS(props) {
               usingExcludePlayers={true}
               setFilteredPlayers={setFilteredPlayers}
               filteredPlayers={filteredPlayers}
+              submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+              setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
               excludePlayerLines={excludePlayerLines}
 
 
@@ -1158,6 +1140,8 @@ export default function NFLFanduelDFS(props) {
                 setData={setData}
                 setFilteredPlayers={setFilteredPlayers}
                 filteredPlayers={filteredPlayers}
+                submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+                setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
                 excludePlayerLines={excludePlayerLines}
                 setOgFilteredPlayers={setOgFilteredPlayers}
                 ogFilteredPlayers={ogfilteredPlayers}

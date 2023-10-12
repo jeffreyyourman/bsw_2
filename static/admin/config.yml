@@ -103,12 +103,16 @@ collections:
                     fields:
                       [
                         { label: Image, name: image, widget: image },
-                        { label: Text, name: text, widget: text },
                         { label: ServicesHeader, name: servicesHeader, widget: text },
+                        { label: Text, name: text, widget: text },
                       ],
                   },
                 ],
             }
+          - { label: Title2, name: title2, widget: string }
+          - { label: Image2, name: image2, widget: image }
+          - { label: Heading2, name: heading2, widget: string }
+          - { label: Subheading2, name: subheading2, widget: string }
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"

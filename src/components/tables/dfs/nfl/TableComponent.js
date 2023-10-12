@@ -44,6 +44,8 @@ export default function TableComponent(props) {
     setData,
     filteredPlayers,
     setFilteredPlayers,
+    submittedPlayersForOptimizer,
+    setSubmittedPlayersForOptimizer,
     excludePlayerLines,
     setExcludePlayerLines,
     usingExcludePlayers,
@@ -103,6 +105,8 @@ export default function TableComponent(props) {
     let updatedPlayers = [...filteredPlayers];
     updatedPlayers[rowIndex].isLocked = isLocked;
     setFilteredPlayers(updatedPlayers);
+    // submittedPlayersForOptimizer
+    setSubmittedPlayersForOptimizer(updatedPlayers);
   };
 
   const handleExclude = (playerId) => {
@@ -123,6 +127,8 @@ export default function TableComponent(props) {
     excludedCopy.push(excludedPlayer);
 
     // Update the state
+    // submittedPlayersForOptimizer
+    setSubmittedPlayersForOptimizer(playersCopy);
     setFilteredPlayers(playersCopy);
     setExcludePlayerLines(excludedCopy);
   };
@@ -147,6 +153,8 @@ export default function TableComponent(props) {
 
     // Update the state
     setFilteredPlayers(playersFilteredCopy);
+    // submittedPlayersForOptimizer
+    setSubmittedPlayersForOptimizer(playersFilteredCopy);
     setExcludePlayerLines(excludedCopy);
   }
 
@@ -162,7 +170,8 @@ export default function TableComponent(props) {
     updatedPlayers[playerIndex] = player;
 
     setFilteredPlayers(updatedPlayers);
-
+    // submittedPlayersForOptimizer
+    setSubmittedPlayersForOptimizer(updatedPlayers);
 
   };
   const handleMaxExposureChange = (playerData, value) => {
@@ -176,6 +185,8 @@ export default function TableComponent(props) {
     updatedPlayers[playerIndex] = player;
 
     setFilteredPlayers(updatedPlayers);
+    // submittedPlayersForOptimizer
+    setSubmittedPlayersForOptimizer(updatedPlayers);
 
 
   };
@@ -299,7 +310,7 @@ export default function TableComponent(props) {
                 <TableCell style={{
                   verticalAlign: 'bottom',
                   padding: 8,
-                  textAlign:'center',
+                  textAlign: 'center',
                 }}
 
                   key={index} >
