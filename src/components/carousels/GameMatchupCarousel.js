@@ -143,7 +143,6 @@ const exampleMatchups = [{
 
 
 function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExcludedTeams }) {
-  console.log('games',games);
   const [scoresDataLoading, setScoresDataLoading] = useState(null);
   const displayGameDetails = (game) => {
     const { competitors, odds, date, fullStatus } = game;
@@ -188,9 +187,7 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
       <>
         <div style={{
           borderBottom: '1px solid black',
-          // paddingTop: '8px'
-          // display: 'flex',
-          // alignItems: 'center',
+         
         }}>
           {/* <div>{fullStatus.type.detail !== "Final" && formatDate(fullStatus.type.detail)}</div> */}
 

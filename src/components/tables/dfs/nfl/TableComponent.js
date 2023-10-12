@@ -161,12 +161,12 @@ export default function TableComponent(props) {
 
   const handleMinExposureChange = (playerData, value) => {
     let updatedPlayers = [...sortedPlayers];
-    let playerDataId = playerData.id;
-    let player = updatedPlayers.find(player => player.id === playerDataId);
+    let playerDataId = playerData.Id;
+    let player = updatedPlayers.find(player => player.Id === playerDataId);
 
     player.minExposure = value;  // Assuming 'value' is already defined earlier in your code
 
-    const playerIndex = updatedPlayers.findIndex(player => player.id === playerDataId);
+    const playerIndex = updatedPlayers.findIndex(player => player.Id === playerDataId);
     updatedPlayers[playerIndex] = player;
 
     setFilteredPlayers(updatedPlayers);
@@ -176,19 +176,17 @@ export default function TableComponent(props) {
   };
   const handleMaxExposureChange = (playerData, value) => {
     let updatedPlayers = [...sortedPlayers];
-    let playerDataId = playerData.id;
-    let player = updatedPlayers.find(player => player.id === playerDataId);
+    let playerDataId = playerData.Id;
+    let player = updatedPlayers.find(player => player.Id === playerDataId);
 
     player.maxExposure = value;  // Assuming 'value' is already defined earlier in your code
 
-    const playerIndex = updatedPlayers.findIndex(player => player.id === playerDataId);
+    const playerIndex = updatedPlayers.findIndex(player => player.Id === playerDataId);
     updatedPlayers[playerIndex] = player;
 
     setFilteredPlayers(updatedPlayers);
     // submittedPlayersForOptimizer
     setSubmittedPlayersForOptimizer(updatedPlayers);
-
-
   };
   // console.log('headers)', headers);
 
