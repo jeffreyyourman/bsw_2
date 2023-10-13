@@ -1064,8 +1064,6 @@ export default function NFLFanduelDFS(props) {
             </div>
           </div>
 
-          <h2><span style={{ fontWeight: '500', fontSize: 24 }}>{selectedSlate} Slate</span></h2>
-          <span style={{ fontWeight: '500', fontSize: 24 }}>{submittedPlayersForOptimizer.length} Available Player(s) in Slate</span>
           <div style={{ overflow: "auto" }}>
             {/* <h2><span style={{ fontWeight: '500', fontSize: 24 }}>Slate:<span style={{display: 'block'}}> {selectedSlate}</span></span></h2> */}
             <div style={{
@@ -1109,13 +1107,36 @@ export default function NFLFanduelDFS(props) {
             </div>
             {getLineupsErr.length !== 0 && <h3>{getLineupsErr}</h3>}
 
-            <Tabs value={tableTabValue} onChange={handleTableTabChange}>
-              <Tab label={`All ${data.length}`} />
-              <Tab label={`My Pool ${submittedPlayersForOptimizer.length}`} />
-              <Tab label={`Excluded Players ${excludePlayerLines.length}`} />
-              <Tab label={`Injuries ${filteredInjuredPlayers.length}`} />
-            </Tabs>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+              <p style={{ fontSize: 24 }}>{selectedSlate} Slate</p>
 
+
+              <Tabs
+                className="table-tabs"
+                style={{ display: 'flex', justifyContent: 'center' }}
+                value={tableTabValue} onChange={handleTableTabChange}>
+                <Tab style={{
+                  paddingBottom: '0px'
+                }}
+
+                  label={`All ${data.length}`} />
+                <Tab style={{
+                  paddingBottom: '0px'
+                }}
+
+                  label={`My Pool ${submittedPlayersForOptimizer.length}`} />
+                <Tab style={{
+                  paddingBottom: '0px'
+                }}
+
+                  label={`Excluded Players ${excludePlayerLines.length}`} />
+                <Tab style={{
+                  paddingBottom: '0px'
+                }}
+
+                  label={`Injuries ${filteredInjuredPlayers.length}`} />
+              </Tabs>
+            </div>
 
             {tableTabValue === 0 && <TableComponent
               overrides={[

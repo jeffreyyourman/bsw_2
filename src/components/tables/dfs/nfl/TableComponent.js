@@ -307,7 +307,6 @@ export default function TableComponent(props) {
               {finalColumnConfig.map((col, index) => (
                 <TableCell style={{
                   verticalAlign: 'bottom',
-                  padding: 8,
                   textAlign: 'center',
                 }}
 
