@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, ButtonGroup } from '@mui/material';
 
 function NflPlayerPosFilters({ selectedPosition, onPositionChange, filterPlayersByPosition }) {
-    const positions = ['All', 'QB', 'WR', 'RB', 'TE', 'D'];
+    const positions = ['All', 'QB', 'RB', 'WR', 'TE', 'D'];
     // console.log('selectedPosition,selectedPosition);', selectedPosition)
     // const handleSearch = (event) => {
     //     const searchTerm = event.target.value;
@@ -10,7 +10,7 @@ function NflPlayerPosFilters({ selectedPosition, onPositionChange, filterPlayers
     //     onSearch(searchTerm);  // Notify the parent component
     // };
     return (
-        <ButtonGroup>
+        <ButtonGroup style={{ flexWrap: 'wrap' }}>
             {positions.map(position => (
                 <Button
                     key={position}

@@ -101,7 +101,7 @@ export default function NFLFanduelDFS(props) {
   const clerk = useClerk();
   const [openModal, setOpenModal] = useState(false);
   const [tabValue, setTabValue] = useState(0);
-  const [tableTabValue, setTableTabValue] = useState(0);
+  const [tableTabValue, setTableTabValue] = useState(1);
   const [playerGroups, setPlayerGroups] = useState([]);
 
   // console.log('NflOptimizedLineups',NflOptimizedLineups());
@@ -1108,67 +1108,80 @@ export default function NFLFanduelDFS(props) {
             </div>
             {getLineupsErr.length !== 0 && <h3>{getLineupsErr}</h3>}
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+              alignItems: 'flex-end'
+            }}>
               <p style={{ fontSize: 24 }}>{selectedSlate} Slate</p>
 
 
-              <Tabs
-                className="table-tabs"
-                style={{ display: 'flex', justifyContent: 'center' }}
-                value={tableTabValue} onChange={handleTableTabChange}>
-                <Tab style={{
-                  paddingBottom: '0px'
-                }}
 
-                  label={<span>
-                    All
-                    <span style={{
-                      marginLeft: 5,
-                      fontWeight: 'bold'
-                    }}>
-                      {data.length}
-                    </span>
-                  </span>} />
-                <Tab style={{
-                  paddingBottom: '0px'
-                }}
+              <div style={{
+                // overflowX: 'auto', // this enables horizontal scrolling
+                // whiteSpace: 'nowrap', // this ensures the content doesn't wrap
+              }}>
 
-                  label={<span>
-                    My Pool
-                    <span style={{
-                      marginLeft: 5,
-                      fontWeight: 'bold'
-                    }}>
-                      {submittedPlayersForOptimizer.length}
-                    </span>
-                  </span>} />
-                <Tab style={{
-                  paddingBottom: '0px'
-                }}
 
-                  label={<span>
-                    Excluded Players
-                    <span style={{
-                      marginLeft: 5,
-                      fontWeight: 'bold'
-                    }}>
-                      {excludePlayerLines.length}
-                    </span>
-                  </span>} />
-                <Tab style={{
-                  paddingBottom: '0px'
-                }}
+                <Tabs
+                  className="table-tabs"
+                  style={{ display: 'flex', justifyContent: 'center' }}
+                  value={tableTabValue} onChange={handleTableTabChange}>
+                  <Tab style={{
+                    paddingBottom: '0px'
+                  }}
 
-                  label={<span>
-                    Injuries
-                    <span style={{
-                      marginLeft: 5,
-                      fontWeight: 'bold'
-                    }}>
-                      {filteredInjuredPlayers.length}
-                    </span>
-                  </span>} />
-              </Tabs>
+                    label={<span>
+                      All
+                      <span style={{
+                        marginLeft: 5,
+                        fontWeight: 'bold'
+                      }}>
+                        {data.length}
+                      </span>
+                    </span>} />
+                  <Tab style={{
+                    paddingBottom: '0px'
+                  }}
+
+                    label={<span>
+                      My Pool
+                      <span style={{
+                        marginLeft: 5,
+                        fontWeight: 'bold'
+                      }}>
+                        {submittedPlayersForOptimizer.length}
+                      </span>
+                    </span>} />
+                  <Tab style={{
+                    paddingBottom: '0px'
+                  }}
+
+                    label={<span>
+                      Excluded Players
+                      <span style={{
+                        marginLeft: 5,
+                        fontWeight: 'bold'
+                      }}>
+                        {excludePlayerLines.length}
+                      </span>
+                    </span>} />
+                  <Tab style={{
+                    paddingBottom: '0px'
+                  }}
+
+                    label={<span>
+                      Injuries
+                      <span style={{
+                        marginLeft: 5,
+                        fontWeight: 'bold'
+                      }}>
+                        {filteredInjuredPlayers.length}
+                      </span>
+                    </span>} />
+                </Tabs>
+              </div>
             </div>
 
             {/* All Players Table */}
