@@ -1031,7 +1031,7 @@ export default function NFLFanduelDFS(props) {
 
                 }
               </div>
-              <div className="dfs-optimizer-filter-wrapper">
+              {/* <div className="dfs-optimizer-filter-wrapper">
                 <Button
                   onClick={toggleAllAndExcludedPlayers}
                   className="bsw-primary-btns"
@@ -1039,8 +1039,8 @@ export default function NFLFanduelDFS(props) {
                 >
                   {isShowingExcludePlayers ? 'Back to all' : `View ${excludePlayerLines.length} excluded player(s)`}
                 </Button>
-              </div>
-              {!isShowingExcludePlayers &&
+              </div> */}
+              {!isShowingExcludePlayers && <>
                 <div className="dfs-optimizer-filter-wrapper">
                   <Button
                     onClick={toggleOptimizerBuildStackPropertiesDrawer}
@@ -1049,17 +1049,18 @@ export default function NFLFanduelDFS(props) {
                   >
                     Optimizer Options
                   </Button>
+                </div>
+                <div className="dfs-optimizer-filter-wrapper">
                   <Button
                     onClick={() => setOpenModal(true)}
                     className="bsw-primary-btns"
                     variant="contained"
-                    style={{ marginLeft: '8px' }}
                   >
                     Advanced Settings
                   </Button>
-
-
-                </div>}
+                </div>
+              </>
+              }
 
             </div>
           </div>
@@ -1119,25 +1120,58 @@ export default function NFLFanduelDFS(props) {
                   paddingBottom: '0px'
                 }}
 
-                  label={`All ${data.length}`} />
+                  label={<span>
+                    All
+                    <span style={{
+                      marginLeft: 5,
+                      fontWeight: 'bold'
+                    }}>
+                      {data.length}
+                    </span>
+                  </span>} />
                 <Tab style={{
                   paddingBottom: '0px'
                 }}
 
-                  label={`My Pool ${submittedPlayersForOptimizer.length}`} />
+                  label={<span>
+                    My Pool
+                    <span style={{
+                      marginLeft: 5,
+                      fontWeight: 'bold'
+                    }}>
+                      {submittedPlayersForOptimizer.length}
+                    </span>
+                  </span>} />
                 <Tab style={{
                   paddingBottom: '0px'
                 }}
 
-                  label={`Excluded Players ${excludePlayerLines.length}`} />
+                  label={<span>
+                    Excluded Players
+                    <span style={{
+                      marginLeft: 5,
+                      fontWeight: 'bold'
+                    }}>
+                      {excludePlayerLines.length}
+                    </span>
+                  </span>} />
                 <Tab style={{
                   paddingBottom: '0px'
                 }}
 
-                  label={`Injuries ${filteredInjuredPlayers.length}`} />
+                  label={<span>
+                    Injuries
+                    <span style={{
+                      marginLeft: 5,
+                      fontWeight: 'bold'
+                    }}>
+                      {filteredInjuredPlayers.length}
+                    </span>
+                  </span>} />
               </Tabs>
             </div>
 
+            {/* All Players Table */}
             {tableTabValue === 0 && <TableComponent
               overrides={[
                 { key: 'maxExposure', order: 1 },
@@ -1163,7 +1197,7 @@ export default function NFLFanduelDFS(props) {
               ogFilteredPlayers={ogfilteredPlayers}
               setExcludePlayerLines={setExcludePlayerLines} />}
 
-            {/* All Players Table */}
+            {/* My Players Table */}
             {tableTabValue === 1 && <TableComponent
               overrides={[
                 { key: 'maxExposure', order: 1 },
@@ -1191,10 +1225,13 @@ export default function NFLFanduelDFS(props) {
 
             {/* Exlcude Players Table */}
             {tableTabValue === 2 && <TableComponent
-
               overrides={[
-                { key: 'include', order: 1 },
-                { key: 'FPPG', order: 9 },
+                { key: 'maxExposure', order: 1 },
+                { key: 'minExposure', order: 2 },
+                { key: 'include', order: 3 },
+                { key: 'isLocked', order: 4 },
+                { key: 'FPPG', order: 12 },
+                { key: 'fanduel_value', order: 13 },
 
               ]}
               columns={excludeColumns}
@@ -1218,8 +1255,12 @@ export default function NFLFanduelDFS(props) {
             {tableTabValue === 3 && <TableComponent
 
               overrides={[
-                { key: 'include', order: 1 },
-                { key: 'FPPG', order: 9 },
+                { key: 'maxExposure', order: 1 },
+                { key: 'minExposure', order: 2 },
+                { key: 'exclude', order: 3 },
+                { key: 'isLocked', order: 4 },
+                { key: 'FPPG', order: 12 },
+                { key: 'fanduel_value', order: 13 },
 
               ]}
               columns={excludeColumns}
