@@ -985,7 +985,7 @@ export default function NFLFanduelDFS(props) {
 
       {submittedPlayersForOptimizer.length > 0 ? (
         <div>
-          {espnScoreBoardMatchupsLoading ? <h3>loading...</h3> :
+          {espnScoreBoardMatchupsLoading ? <h3>Loading scoreboard, this may take a moment...</h3> :
 
             <div style={{ marginBottom: '24px' }}>
               <GameMatchupsCarousel
