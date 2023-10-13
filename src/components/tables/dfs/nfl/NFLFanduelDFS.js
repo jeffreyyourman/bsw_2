@@ -101,6 +101,7 @@ export default function NFLFanduelDFS(props) {
   const clerk = useClerk();
   const [openModal, setOpenModal] = useState(false);
   const [tabValue, setTabValue] = useState(0);
+  const [tableTabValue, setTableTabValue] = useState(0);
   const [playerGroups, setPlayerGroups] = useState([]);
 
   // console.log('NflOptimizedLineups',NflOptimizedLineups());
@@ -110,6 +111,9 @@ export default function NFLFanduelDFS(props) {
 
   const handleTabChange = (event, newValue) => {
     setTabValue(newValue);
+  };
+  const handleTableTabChange = (event, newValue) => {
+    setTableTabValue(newValue);
   };
 
 
@@ -124,6 +128,7 @@ export default function NFLFanduelDFS(props) {
   const [isDescendingOrder, setIsDescendingOrder] = useState(true);
   const [data, setData] = useState([]);
   const [filteredPlayers, setFilteredPlayers] = useState([]);
+  const [filteredInjuredPlayers, setFilteredInjuredPlayers] = useState([]);
   const [submittedPlayersForOptimizer, setSubmittedPlayersForOptimizer] = useState([]);
   const [ogfilteredPlayers, setOgFilteredPlayers] = useState([]);
   const [exportPlayerLines, setExportPlayerLines] = useState([]);
@@ -320,6 +325,8 @@ export default function NFLFanduelDFS(props) {
       // console.log('updateGameMatchups', updateGameMatchups);
 
 
+      const injuredPlayers = enhancedDataSet.filter(player => player['Injury Indicator'] !== '');
+      console.log('injuredPlayers', injuredPlayers);
       const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
       // console.log('excludedPlayers', excludedPlayers);
 
@@ -338,8 +345,12 @@ export default function NFLFanduelDFS(props) {
       // Set the default headers to state directly without any overriding logic.
       setHeaders(defaultHeadersConfig);
 
-      setData(enhancedDataSet)
 
+
+
+
+      setData(enhancedDataSet)
+      setFilteredInjuredPlayers(injuredPlayers)
       setExcludePlayerLines(excludedPlayers);
       setOgExcludePlayerLines(excludedPlayers);
 
@@ -1058,11 +1069,7 @@ export default function NFLFanduelDFS(props) {
           <div style={{ overflow: "auto" }}>
             {/* <h2><span style={{ fontWeight: '500', fontSize: 24 }}>Slate:<span style={{display: 'block'}}> {selectedSlate}</span></span></h2> */}
             <div style={{
-              width: '150px',
               marginTop: '8px',
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center'
             }}>
 
               <div>
@@ -1073,14 +1080,17 @@ export default function NFLFanduelDFS(props) {
                   className="bsw-primary-btns"
                   variant="contained"
                   fullWidth
+                  style={{ width: 165, padding: 16, marginBottom: 12 }}
                 >
                   {loading ? "Loading..." : 'Optimize'}
                 </Button>
 
               </div>
 
+
               {lineups.length !== 0 && (
 
+                // <div>
                 <BottomDrawer
                   exportLineupsToUpload={exportLineupsToUpload}
                   toggleAndSortData={toggleAndSortData}
@@ -1094,10 +1104,124 @@ export default function NFLFanduelDFS(props) {
 
 
                 />
+                // {/* </div> */}
               )}
             </div>
             {getLineupsErr.length !== 0 && <h3>{getLineupsErr}</h3>}
-            {isShowingExcludePlayers ? <TableComponent
+
+            <Tabs value={tableTabValue} onChange={handleTableTabChange}>
+              <Tab label={`All ${data.length}`} />
+              <Tab label={`My Pool ${submittedPlayersForOptimizer.length}`} />
+              <Tab label={`Excluded Players ${excludePlayerLines.length}`} />
+              <Tab label={`Injuries ${filteredInjuredPlayers.length}`} />
+            </Tabs>
+
+
+            {tableTabValue === 0 && <TableComponent
+              overrides={[
+                { key: 'maxExposure', order: 1 },
+                { key: 'minExposure', order: 2 },
+                { key: 'exclude', order: 3 },
+                { key: 'isLocked', order: 4 },
+                { key: 'FPPG', order: 12 },
+                { key: 'fanduel_value', order: 13 },
+
+              ]}
+              columns={columns}
+              usingExcludePlayers={false}
+              excludedKeys={['OG_FPPG', 'Nickname',]}
+              headers={headers}
+              data={data}
+              setData={setData}
+              setFilteredPlayers={setFilteredPlayers}
+              filteredPlayers={filteredPlayers}
+              submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+              setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
+              excludePlayerLines={excludePlayerLines}
+              setOgFilteredPlayers={setOgFilteredPlayers}
+              ogFilteredPlayers={ogfilteredPlayers}
+              setExcludePlayerLines={setExcludePlayerLines} />}
+
+            {/* All Players Table */}
+            {tableTabValue === 1 && <TableComponent
+              overrides={[
+                { key: 'maxExposure', order: 1 },
+                { key: 'minExposure', order: 2 },
+                { key: 'exclude', order: 3 },
+                { key: 'isLocked', order: 4 },
+                { key: 'FPPG', order: 12 },
+                { key: 'fanduel_value', order: 13 },
+
+              ]}
+              columns={columns}
+              usingExcludePlayers={false}
+              excludedKeys={['OG_FPPG', 'Nickname',]}
+              headers={headers}
+              data={filteredPlayers}
+              setData={setData}
+              setFilteredPlayers={setFilteredPlayers}
+              filteredPlayers={filteredPlayers}
+              submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+              setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
+              excludePlayerLines={excludePlayerLines}
+              setOgFilteredPlayers={setOgFilteredPlayers}
+              ogFilteredPlayers={ogfilteredPlayers}
+              setExcludePlayerLines={setExcludePlayerLines} />}
+
+            {/* Exlcude Players Table */}
+            {tableTabValue === 2 && <TableComponent
+
+              overrides={[
+                { key: 'include', order: 1 },
+                { key: 'FPPG', order: 9 },
+
+              ]}
+              columns={excludeColumns}
+              headers={headers}
+              excludedKeys={['OG_FPPG', 'Nickname', 'isLocked']}
+              data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
+              setData={setData}
+              usingExcludePlayers={true}
+              setFilteredPlayers={setFilteredPlayers}
+              filteredPlayers={filteredPlayers}
+              submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+              setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
+              excludePlayerLines={excludePlayerLines}
+
+
+              setOgFilteredPlayers={setOgExcludePlayerLines}
+              ogFilteredPlayers={ogExcludePlayerLines}
+              setExcludePlayerLines={setExcludePlayerLines} />}
+
+            {/* Injured Players Table */}
+            {tableTabValue === 3 && <TableComponent
+
+              overrides={[
+                { key: 'include', order: 1 },
+                { key: 'FPPG', order: 9 },
+
+              ]}
+              columns={excludeColumns}
+              headers={headers}
+              excludedKeys={['minExposure', 'maxExposure', 'include', 'exclude', 'Nickname', 'isLocked']}
+              data={filteredInjuredPlayers.length !== 0 ? filteredInjuredPlayers : []}
+              setData={setData}
+              usingExcludePlayers={true}
+              setFilteredPlayers={setFilteredPlayers}
+              filteredPlayers={filteredPlayers}
+              submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+              setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
+              excludePlayerLines={excludePlayerLines}
+
+
+              setOgFilteredPlayers={setOgExcludePlayerLines}
+              ogFilteredPlayers={ogExcludePlayerLines}
+              setExcludePlayerLines={setExcludePlayerLines} />}
+
+
+
+
+            {/* {isShowingExcludePlayers ? <TableComponent
 
               overrides={[
                 { key: 'include', order: 1 },
@@ -1147,7 +1271,7 @@ export default function NFLFanduelDFS(props) {
                 ogFilteredPlayers={ogfilteredPlayers}
                 setExcludePlayerLines={setExcludePlayerLines} />
 
-            }
+            } */}
 
 
           </div>

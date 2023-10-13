@@ -177,7 +177,7 @@ export default function TemporaryDrawer(props) {
       <Button
         onClick={toggleDrawer("bottom", true)}
         className="bsw-primary-btns"
-        style={{ width: 165, marginLeft: 8 }}
+        style={{ width: 165, padding: 16}}
         variant="contained"
       >
         View lineups {props.lineups.lineups.length}
