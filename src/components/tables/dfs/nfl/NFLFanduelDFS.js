@@ -1308,7 +1308,7 @@ export default function NFLFanduelDFS(props) {
                 ]}
                 columns={columns}
                 usingExcludePlayers={false}
-                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'Tier']}
+                excludedKeys={['Tier', 'Played', 'include', 'exclude', 'OG_FPPG', 'Nickname', 'Tier']}
                 headers={headers}
                 data={data}
                 setData={setData}
