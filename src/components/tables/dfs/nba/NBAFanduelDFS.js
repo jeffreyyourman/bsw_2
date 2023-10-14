@@ -555,19 +555,6 @@ export default function NBAFanduelDFS(props) {
   };
 
 
-  // const filterPlayersByPosition = (position) => {
-  //   let filtered = ogfilteredPlayers;
-
-  //   if (position !== "All") {
-  //     filtered = filtered.filter(player => player.Position === position);
-  //   }
-
-  //   // Exclude players that are in excludePlayerLines for both "All" and specific positions
-  //   filtered = filtered.filter(player => !excludePlayerLines.some(excludedPlayer => excludedPlayer.Id === player.Id));
-
-  //   setFilteredPlayers(filtered);
-  // };
-
   const handleExcludeTeams = (teamAbbr) => {
     if (excludedTeams.includes(teamAbbr)) {
       // If the team is already excluded, remove it from the exclusion list
