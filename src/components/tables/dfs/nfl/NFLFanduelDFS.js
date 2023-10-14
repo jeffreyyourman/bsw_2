@@ -1163,6 +1163,21 @@ export default function NFLFanduelDFS(props) {
                     Advanced Settings
                   </Button>
                 </div>
+
+                <div className="dfs-optimizer-filter-wrapper">
+
+                  <Button
+                    disabled={loading}
+                    onClick={handleSubmitPlayers}
+                    className="bsw-primary-btns"
+                    variant="contained"
+                    fullWidth
+                    style={{ width: 165 }}
+                  >
+                    {loading ? "Loading..." : 'Optimize'}
+                  </Button>
+
+                </div>
               </>
               }
 
@@ -1170,29 +1185,7 @@ export default function NFLFanduelDFS(props) {
           </div>
 
           <div style={{ overflow: "auto" }}>
-            {/* <h2><span style={{ fontWeight: '500', fontSize: 24 }}>Slate:<span style={{display: 'block'}}> {selectedSlate}</span></span></h2> */}
-            <div style={{
-              marginTop: '8px',
-            }}>
 
-              <div>
-
-                <Button
-                  disabled={loading}
-                  onClick={handleSubmitPlayers}
-                  className="bsw-primary-btns"
-                  variant="contained"
-                  fullWidth
-                  style={{ width: 165, padding: 16, marginBottom: 12 }}
-                >
-                  {loading ? "Loading..." : 'Optimize'}
-                </Button>
-
-              </div>
-
-
-
-            </div>
             {getLineupsErr.length !== 0 && <h3>{getLineupsErr}</h3>}
 
             <div style={{
@@ -1202,7 +1195,7 @@ export default function NFLFanduelDFS(props) {
               alignItems: 'flex-end'
             }}>
 
-              {tableTabValue === 0 ?
+              {tableTabValue === 4 ?
                 <p style={{ fontSize: 24 }}>{'Optimized lineups'}</p> :
                 <p style={{ fontSize: 24 }}>{selectedSlate} Slate</p>
               }
@@ -1221,27 +1214,6 @@ export default function NFLFanduelDFS(props) {
                   className="table-tabs"
                   style={{ display: 'flex', justifyContent: 'center' }}
                   value={tableTabValue} onChange={handleTableTabChange}>
-
-
-                  {lineups.length !== 0 && (
-                    <Tab style={{
-                      paddingBottom: '0px'
-                    }}
-
-                      label={<span>
-                        View Lineups
-                        <span style={{
-                          marginLeft: 5,
-                          fontWeight: 'bold'
-                        }}>
-                          {lineups.lineups.length}
-                        </span>
-                      </span>} />
-
-
-                  )}
-
-
                   <Tab style={{
                     paddingBottom: '0px'
                   }}
@@ -1296,6 +1268,23 @@ export default function NFLFanduelDFS(props) {
                     </span>} />
 
 
+                  {lineups.length !== 0 && (
+                    <Tab style={{
+                      paddingBottom: '0px'
+                    }}
+
+                      label={<span>
+                        View Lineups
+                        <span style={{
+                          marginLeft: 5,
+                          fontWeight: 'bold'
+                        }}>
+                          {lineups.lineups.length}
+                        </span>
+                      </span>} />
+
+
+                  )}
 
 
 
@@ -1303,26 +1292,8 @@ export default function NFLFanduelDFS(props) {
               </div>
             </div>
 
-{/* Generated Lineups Table */}
-            {tableTabValue === 0 && <NFLFanduelDfsLineups
-              exportLineupsToUpload={exportLineupsToUpload}
-              toggleAndSortData={toggleAndSortData}
-              sortDataByAsc={sortDataByAsc}
-              sortDataByDec={sortDataByDec}
-              exportPlayerLines={exportPlayerLines}
-              topPlayers={topPlayers}
-              topTeams={topTeams}
-              setTopPlayers={setTopPlayers}
-              setTopTeams={setTopTeams}
-              generateTopPlayersAndTeams={generateTopPlayersAndTeams}
-              setLineups={setLineups}
-              lineups={lineups}
-            />
-            }
-            
-
             {/* All Players Table */}
-            {tableTabValue === 1 && <TableComponent
+            {tableTabValue === 0 && <TableComponent
               overrides={[
                 { key: 'maxExposure', order: 1 },
                 { key: 'minExposure', order: 2 },
@@ -1348,7 +1319,7 @@ export default function NFLFanduelDFS(props) {
               setExcludePlayerLines={setExcludePlayerLines} />}
 
             {/* My Players Table */}
-            {tableTabValue === 2 && <TableComponent
+            {tableTabValue === 1 && <TableComponent
               overrides={[
                 { key: 'maxExposure', order: 1 },
                 { key: 'minExposure', order: 2 },
@@ -1374,7 +1345,7 @@ export default function NFLFanduelDFS(props) {
               setExcludePlayerLines={setExcludePlayerLines} />}
 
             {/* Exlcude Players Table */}
-            {tableTabValue === 3 && <TableComponent
+            {tableTabValue === 2 && <TableComponent
               overrides={[
                 { key: 'maxExposure', order: 1 },
                 { key: 'minExposure', order: 2 },
@@ -1402,7 +1373,7 @@ export default function NFLFanduelDFS(props) {
               setExcludePlayerLines={setExcludePlayerLines} />}
 
             {/* Injured Players Table */}
-            {tableTabValue === 4 && <TableComponent
+            {tableTabValue === 3 && <TableComponent
 
               overrides={[
                 { key: 'maxExposure', order: 1 },
@@ -1431,7 +1402,21 @@ export default function NFLFanduelDFS(props) {
               setExcludePlayerLines={setExcludePlayerLines} />}
 
 
-      
+            {tableTabValue === 4 && <NFLFanduelDfsLineups
+              exportLineupsToUpload={exportLineupsToUpload}
+              toggleAndSortData={toggleAndSortData}
+              sortDataByAsc={sortDataByAsc}
+              sortDataByDec={sortDataByDec}
+              exportPlayerLines={exportPlayerLines}
+              topPlayers={topPlayers}
+              topTeams={topTeams}
+              setTopPlayers={setTopPlayers}
+              setTopTeams={setTopTeams}
+              generateTopPlayersAndTeams={generateTopPlayersAndTeams}
+              setLineups={setLineups}
+              lineups={lineups}
+            />
+            }
 
 
 
