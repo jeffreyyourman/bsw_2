@@ -151,7 +151,7 @@ export default function NBAFanduelDFS(props) {
   const [excludeOpposingDefense, setExcludeOpposingDefense] = useState(false);
   const [pairQbWithWrOrTe, setPairQbWithWrOrTe] = useState(false);
   const [excludeQbANdRb, setExcludeQbANdRb] = useState(false);
-  const [restrict2TEsSameTeam, setRestrict2TEsSameTeam] = useState(false);
+  const [restrict2CsSameTeam, setRestrict2CsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
   const [skillPlayersAgainstDef, setSkillPlayersAgainstDef] = useState([]);
   const [selectedSlate, setSelectedSlate] = useState('Main');
@@ -545,7 +545,7 @@ export default function NBAFanduelDFS(props) {
     let filtered = ogfilteredPlayers;
 
     if (position !== "All") {
-      filtered = filtered.filter(player => player.Position === position);
+      filtered = filtered.filter(player => player.Position.includes(position));
     }
 
     // Exclude players that are in excludePlayerLines for both "All" and specific positions
@@ -553,6 +553,20 @@ export default function NBAFanduelDFS(props) {
 
     setFilteredPlayers(filtered);
   };
+
+
+  // const filterPlayersByPosition = (position) => {
+  //   let filtered = ogfilteredPlayers;
+
+  //   if (position !== "All") {
+  //     filtered = filtered.filter(player => player.Position === position);
+  //   }
+
+  //   // Exclude players that are in excludePlayerLines for both "All" and specific positions
+  //   filtered = filtered.filter(player => !excludePlayerLines.some(excludedPlayer => excludedPlayer.Id === player.Id));
+
+  //   setFilteredPlayers(filtered);
+  // };
 
   const handleExcludeTeams = (teamAbbr) => {
     if (excludedTeams.includes(teamAbbr)) {
@@ -652,9 +666,9 @@ export default function NBAFanduelDFS(props) {
       // },
 
       rules: [
-        restrict2TEsSameTeam && {
+        restrict2CsSameTeam && {
           stackType: 'restrictSame',
-          positions: ['TE', 'TE'],
+          positions: ['C', 'C'],
 
         },
         excludeQbANdRb && {
@@ -887,16 +901,15 @@ export default function NBAFanduelDFS(props) {
       'totalRecTds',
       'totalTds',
       'totalEverything',
-      'PG',
-      'PG',
-      'SG',
-      'SG',
-      'SF',
-      'SF',
-      'PF',
-      'PF',
-      'C',
-    ];
+      "QB",
+      "RB",
+      "RB",
+      "WR",
+      "WR",
+      "WR",
+      "TE",
+      "FLEX",
+      "DEF"];
 
     // Since csvData already contains arrays structured the way we want, 
     // we can just spread it into the return array after the headers.
@@ -981,7 +994,7 @@ export default function NBAFanduelDFS(props) {
               right: 8,
               top: 8,
               cursor: 'pointer',
-              fontSize: '1.5rem'
+              fontSize: '1.5rem',
             }}
           >
             X
@@ -1009,7 +1022,7 @@ export default function NBAFanduelDFS(props) {
 
           {tabValue === 1 &&
             <NBATeamStacks
-              positions={['QB', 'RB', 'WR', 'TE', 'D']}
+              positions={['PG', 'SG', 'SF', 'PF', 'C']}
               groups={teamGroups}
               gameMatchups={gameAndPlayerMatchups}
               setGroups={setTeamGroups}
@@ -1019,7 +1032,7 @@ export default function NBAFanduelDFS(props) {
             />
           }
           {tabValue === 2 && <NBATeamGameStacks
-            positions={['QB', 'RB', 'WR', 'TE', 'D']}
+            positions={['PG', 'SG', 'SF', 'PF', 'C']}
             groups={teamGameGroups}
             gameMatchups={gameAndPlayerMatchups}
             setGroups={setTeamGameGroups}
@@ -1028,7 +1041,7 @@ export default function NBAFanduelDFS(props) {
             setPlayerGroups={setPlayerGroups}
           />}
           {tabValue === 3 && <NBAUploadOwnProjections
-            positions={['QB', 'RB', 'WR', 'TE', 'D']}
+            positions={['PG', 'SG', 'SF', 'PF', 'C']}
             groups={teamGameGroups}
             handleFileUpload={handleFileUpload}
             gameMatchups={gameAndPlayerMatchups}
@@ -1069,8 +1082,8 @@ export default function NBAFanduelDFS(props) {
         setPairQbWithWrOrTe={setPairQbWithWrOrTe}
         excludeQbANdRb={excludeQbANdRb}
         setExcludeQbANdRb={setExcludeQbANdRb}
-        restrict2TEsSameTeam={restrict2TEsSameTeam}
-        setRestrict2TEsSameTeam={setRestrict2TEsSameTeam}
+        restrict2CsSameTeam={restrict2CsSameTeam}
+        setRestrict2CsSameTeam={setRestrict2CsSameTeam}
         includeGlobalGameStack={includeGlobalGameStack}
         setIncludeGlobalGameStack={setIncludeGlobalGameStack}
         globalNumPlayers={globalNumPlayers}

@@ -131,7 +131,7 @@ export default function NbaFdDfsOptimizerSettings(props) {
         </FormControl>
 
 
-        <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
+        {/* <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
           <FormControlLabel
             style={{ whiteSpace: 'break-spaces' }}
             control={
@@ -185,9 +185,9 @@ export default function NbaFdDfsOptimizerSettings(props) {
             </>
           }
 
-        </Card>
+        </Card> */}
 
-        <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
+        {/* <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
           <FormControlLabel
             control={
               <Checkbox
@@ -199,8 +199,8 @@ export default function NbaFdDfsOptimizerSettings(props) {
             }
             label="pair QB with WR and/or a TE "
           />
-        </Card>
-        <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
+        </Card> */}
+        {/* <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
           <FormControlLabel
             control={
               <Checkbox
@@ -211,17 +211,17 @@ export default function NbaFdDfsOptimizerSettings(props) {
             }
             label="Exclude QB and RBs"
           />
-        </Card>
+        </Card> */}
         <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
           <FormControlLabel
             control={
               <Checkbox
-                checked={props.restrict2TEsSameTeam}
-                onChange={props.handleCheckboxChange(props.setRestrict2TEsSameTeam)}
+                checked={props.restrict2CsSameTeam}
+                onChange={props.handleCheckboxChange(props.setRestrict2CsSameTeam)}
                 color="primary"
               />
             }
-            label="Restrict 2 TEs from same team"
+            label="Restrict 2 CS from same team"
           />
         </Card>
 
