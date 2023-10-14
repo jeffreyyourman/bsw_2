@@ -126,6 +126,7 @@ export default function NFLFanduelDFS(props) {
   // const nflPlayerList = NflPlayerList();
   const [lineups, setLineups] = useState([]);
   const [topPlayers, setTopPlayers] = useState([]);
+  const [topPlayersAndTeams, SetTopPlayersAndTeams] = useState([]);
   const [topTeams, setTopTeams] = useState([]);
   const [excludedLineups, setExcludedLineups] = useState([]);
   const [isDescendingOrder, setIsDescendingOrder] = useState(true);
@@ -789,10 +790,19 @@ export default function NFLFanduelDFS(props) {
 
         });
         const sortedLineupsDes = sortByMetricDescending(manipulatedLineups, 'lineup_points')
+        console.log('sortedLineupsDes', sortedLineupsDes);
         // const sortedLineupsA = sortByMetricAscending(manipulatedLineups, 'lineup_points')
-        setTopTeams(response.data[response.data[0].error ? 2 : 1].top_teams)
-        setTopPlayers(response.data[response.data[0].error ? 2 : 1].top_players)
-        setLineups({ lineups: sortedLineupsDes, topPlayersTeams: response.data[response.data[0].error ? 2 : 1] });
+
+        const { topPlayers, topTeams } = generateTopPlayersAndTeams(sortedLineupsDes);
+        console.log('topPlayers, topTeams', topPlayers, topTeams);
+        setTopPlayers(topPlayers);
+        setTopTeams(topTeams);
+
+
+        // setTopTeams(response.data[response.data[0].error ? 2 : 1].top_teams)
+        // setTopPlayers(response.data[response.data[0].error ? 2 : 1].top_players)
+        // SetTopPlayersAndTeams()
+        setLineups({ lineups: sortedLineupsDes});
 
         setLoading(false)
       })
@@ -801,6 +811,42 @@ export default function NFLFanduelDFS(props) {
         setGetLineupsErr('Error getting lineups, please try again!');
         console.error(error);
       });
+  };
+
+  const generateTopPlayersAndTeams = (lineups) => {
+    const playerCount = {};
+    const teamCount = {};
+
+    lineups.forEach(lineup => {
+      lineup.players.forEach(player => {
+        // For each player, increment the total count
+        if (playerCount[player.playerId]) {
+          playerCount[player.playerId].totalAmt += 1;
+        } else {
+          playerCount[player.playerId] = {
+            playerName: player.playerName,
+            playerId: player.playerId,
+            totalAmt: 1
+          };
+        }
+
+        // Increment team count
+        if (teamCount[player.playerTeam]) {
+          teamCount[player.playerTeam].totalAmt += 1;
+        } else {
+          teamCount[player.playerTeam] = {
+            teamName: player.playerTeam,
+            totalAmt: 1
+          };
+        }
+      });
+    });
+
+    // Convert the player and team counts to arrays and sort them by totalAmt
+    const topPlayers = Object.values(playerCount).sort((a, b) => b.totalAmt - a.totalAmt);
+    const topTeams = Object.values(teamCount).sort((a, b) => b.totalAmt - a.totalAmt);
+
+    return { topPlayers, topTeams };
   };
 
   const exportLineupsToUpload = () => {
@@ -1155,6 +1201,9 @@ export default function NFLFanduelDFS(props) {
                   exportPlayerLines={exportPlayerLines}
                   topPlayers={topPlayers}
                   topTeams={topTeams}
+                  setTopPlayers={setTopPlayers}
+setTopTeams={setTopTeams}
+generateTopPlayersAndTeams={generateTopPlayersAndTeams}
                   setLineups={setLineups}
                   lineups={lineups}
 

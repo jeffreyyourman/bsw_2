@@ -48,36 +48,75 @@ export default function TemporaryDrawer(props) {
   // console.log('savedLineups', savedLineups);
 
   // console.log('deletedLineups', deletedLineups);
+  // const handleCheckboxChange = (lineup, isChecked) => {
+  //   if (isChecked) {
+  //     setSaveLineups(prev => [...prev, lineup]);
+  //     setDeletedLineups(prev => prev.filter(item => item !== lineup));
+  //   } else {
+  //     setDeletedLineups(prev => [...prev, lineup]);
+  //     setSaveLineups(prev => prev.filter(item => item !== lineup));
+  //   }
+  // };
+
+  // const handleBulkDelete = () => {
+  //   const start = parseInt(startLine, 10);
+  //   const end = parseInt(endLine, 10);
+
+
+  //   const newLineups = props.lineups.lineups.filter((_, index) => index < start || index > end);
+
+  //   // Instead of overwriting the whole props.lineups object, 
+  //   // spread the existing properties and just modify the lineups property.
+  //   const updatedLineupsObj = {
+  //     ...props.lineups,
+  //     lineups: newLineups
+  //   };
+
+  //   props.setLineups(updatedLineupsObj);
+  // }
+
   const handleCheckboxChange = (lineup, isChecked) => {
+    let newSaveLineups, newDeletedLineups;
+
     if (isChecked) {
-      setSaveLineups(prev => [...prev, lineup]);
-      setDeletedLineups(prev => prev.filter(item => item !== lineup));
+      newSaveLineups = [...savedLineups, lineup];
+      newDeletedLineups = deletedLineups.filter(item => item !== lineup);
     } else {
-      setDeletedLineups(prev => [...prev, lineup]);
-      setSaveLineups(prev => prev.filter(item => item !== lineup));
+      newDeletedLineups = [...deletedLineups, lineup];
+      newSaveLineups = savedLineups.filter(item => item !== lineup);
     }
+
+    setSaveLineups(newSaveLineups);
+    setDeletedLineups(newDeletedLineups);
+
+    // Combine both saved and deleted lineups to get the current set of lineups
+    const currentLineups = [...newSaveLineups, ...newDeletedLineups];
+
+    const { topPlayers, topTeams } = props.generateTopPlayersAndTeams(newSaveLineups);
+    props.setTopPlayers(topPlayers);
+    props.setTopTeams(topTeams);
   };
 
   const handleBulkDelete = () => {
     const start = parseInt(startLine, 10);
     const end = parseInt(endLine, 10);
 
-    // if (isNaN(start) || isNaN(end)) {
-    //     alert("Please enter valid lineup numbers");
-    //     return;
-    // }
-
     const newLineups = props.lineups.lineups.filter((_, index) => index < start || index > end);
 
-    // Instead of overwriting the whole props.lineups object, 
-    // spread the existing properties and just modify the lineups property.
     const updatedLineupsObj = {
       ...props.lineups,
       lineups: newLineups
     };
 
     props.setLineups(updatedLineupsObj);
-  }
+
+    // Recalculate top players and teams based on the new set of lineups
+    const { topPlayers, topTeams } = props.generateTopPlayersAndTeams(newLineups);
+    props.setTopPlayers(topPlayers);
+    props.setTopTeams(topTeams);
+  };
+
+
 
   const handleSortRequest = (property) => {
     console.log('property', property);
@@ -177,7 +216,7 @@ export default function TemporaryDrawer(props) {
       <Button
         onClick={toggleDrawer("bottom", true)}
         className="bsw-primary-btns"
-        style={{ width: 165, padding: 16}}
+        style={{ width: 165, padding: 16 }}
         variant="contained"
       >
         View lineups {props.lineups.lineups.length}
@@ -238,6 +277,7 @@ export default function TemporaryDrawer(props) {
               {selectedTab === 0 && (
                 <div>
                   <h2 style={{ fontWeight: 'bold', marginTop: 16 }}>Top DFS Players</h2>
+                  <p style={{ marginTop: 8 }}>{props.topPlayers.length} Player(s) used</p>
                   {props.topPlayers
                     .sort((a, b) => b.totalAmt - a.totalAmt)
                     .map((topPlayer) => (
@@ -256,6 +296,7 @@ export default function TemporaryDrawer(props) {
               {selectedTab === 1 && (
                 <div>
                   <h2 style={{ fontWeight: 'bold', marginTop: 16 }}>Top Teams</h2>
+                  <p style={{ marginTop: 8 }}>{props.topTeams.length} Teams(s) used</p>
                   {props.topTeams
                     .sort((a, b) => b.totalAmt - a.totalAmt)
                     .map((topTeam) => (
@@ -271,7 +312,7 @@ export default function TemporaryDrawer(props) {
                 </div>
               )}
             </Box>
-     
+
             <div style={{ width: '85%', height: "90%", overflowY: 'auto' }}>
               <input
                 type="number"
