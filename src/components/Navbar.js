@@ -72,6 +72,16 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="navbar-item" style={{ padding: "0px" }}>
+              <Link className="navbar-item" to="/dfs/sport/nfl">
+                NFL
+              </Link>
+            </li>
+            <li className="navbar-item" style={{ padding: "0px" }}>
+              <Link className="navbar-item" to="/dfs/sport/nba">
+                NBA
+              </Link>
+            </li>
+            {/* <li className="navbar-item" style={{ padding: "0px" }}>
               <div className="navbar-item" style={{ cursor: 'pointer' }} onClick={handleMenuClick}>
                 DFS
               </div>
@@ -82,14 +92,17 @@ const Navbar = () => {
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
               >
-                {/* <MenuItem onClick={handleMenuClose}>
-                <Link to="/dfs/sport/nba">NBA</Link>
-              </MenuItem> */}
                 <MenuItem onClick={handleMenuClose}>
-                  <Link to="/dfs/sport/nfl">NFL</Link>
+                  <Link to="/dfs/sport/nba">NBA</Link>
+                </MenuItem>
+                <MenuItem onClick={handleMenuClose}>
+                  <Link to="/dfs/sport/nfl"></Link>
+                </MenuItem>
+                <MenuItem onClick={handleMenuClose}>
+                  <Link to="/dfs/sport/nba"></Link>
                 </MenuItem>
               </Menu>
-            </li>
+            </li> */}
             <li className="navbar-item" style={{ padding: "0px" }}>
               {!isSignedIn ?
                 <button className="sign-up-btn" onClick={() => clerk.openSignUp({})}>
@@ -123,8 +136,8 @@ const Navbar = () => {
             </Link>
           </li>
         </ul> */}
-        </div>
-      </nav>
+        </div >
+      </nav >
       {/* <SignIn /> */}
     </>
   );

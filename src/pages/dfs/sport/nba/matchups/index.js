@@ -1,10 +1,10 @@
 import * as React from "react";
 import NbaDfsLayout from "../../../../../components/layouts/NbaDfsLayout";
 
-const InjuriesPage = () => (
+const MatchupsPage = () => (
   <NbaDfsLayout>
-    <h1>Injuries Page - Coming soon</h1>
+    <h1>Matchups Page - Coming soon</h1>
   </NbaDfsLayout>
 );
 
-export default InjuriesPage;
+export default MatchupsPage;
