@@ -246,7 +246,7 @@ export default function TemporaryDrawer(props) {
             justifyContent: 'space-between',
             flexDirection: 'row',
           }}>
-            <Box sx={{ width: '15%', height: "90%", overflowY: 'auto' }}>
+            <Box sx={{ width: '20%%', overflowY: 'auto' }}>
               <div style={{ display: 'flex', marginTop: '8px', flexDirection: 'row', borderBottom: '1px solid #ccc' }}>
 
                 <p
@@ -264,6 +264,7 @@ export default function TemporaryDrawer(props) {
                 <p
                   style={{
                     cursor: 'pointer',
+                    marginLeft: 12,
                     borderBottom: selectedTab === 1 ? '2px solid #00203d' : 'none',
                     color: selectedTab === 1 ? '#00203d' : '#888',
                     fontWeight: selectedTab === 1 ? 'bold' : 'normal'
@@ -277,7 +278,7 @@ export default function TemporaryDrawer(props) {
               {selectedTab === 0 && (
                 <div>
                   <h2 style={{ fontWeight: 'bold', marginTop: 16 }}>Top DFS Players</h2>
-                  <p style={{ marginTop: 8 }}>{props.topPlayers.length} Player(s) used</p>
+                  <p style={{ marginTop: 8, marginBottom: 16 }}>{props.topPlayers.length} Player(s) used</p>
                   {props.topPlayers
                     .sort((a, b) => b.totalAmt - a.totalAmt)
                     .map((topPlayer) => (
@@ -296,7 +297,7 @@ export default function TemporaryDrawer(props) {
               {selectedTab === 1 && (
                 <div>
                   <h2 style={{ fontWeight: 'bold', marginTop: 16 }}>Top Teams</h2>
-                  <p style={{ marginTop: 8 }}>{props.topTeams.length} Teams(s) used</p>
+                  <p style={{ marginTop: 8, marginBottom: 16 }}>{props.topTeams.length} Teams(s) used</p>
                   {props.topTeams
                     .sort((a, b) => b.totalAmt - a.totalAmt)
                     .map((topTeam) => (
@@ -313,7 +314,7 @@ export default function TemporaryDrawer(props) {
               )}
             </Box>
 
-            <div style={{ width: '85%', height: "90%", overflowY: 'auto' }}>
+            <div style={{ width: '80%', overflowY: 'auto' }}>
               <input
                 type="number"
                 value={startLine || ""}

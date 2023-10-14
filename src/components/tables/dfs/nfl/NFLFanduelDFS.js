@@ -39,6 +39,7 @@ import BottomDrawer from "../../../drawers/BottomDrawer";
 
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NflPlayerPosFilter from "./NflPlayerPosFilters";
+import NFLFanduelDfsLineups from "./NFLFanduelDfsLineups";
 import NFLPlayerSearch from "./NflPlayerSearch";
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { useAuth } from '../../../../context/AuthContext';
@@ -146,7 +147,7 @@ export default function NFLFanduelDFS(props) {
   const [teamGroups, setTeamGroups] = useState([]);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
-  const [numLineups, setNumLineups] = useState(5);
+  const [numLineups, setNumLineups] = useState(25);
   const [totalMaxExp, setTotalMaxExp] = useState(35);
   const [randomStd, setrandomStd] = useState(25);
   const [position, setPosition] = useState('All');
@@ -802,7 +803,7 @@ export default function NFLFanduelDFS(props) {
         // setTopTeams(response.data[response.data[0].error ? 2 : 1].top_teams)
         // setTopPlayers(response.data[response.data[0].error ? 2 : 1].top_players)
         // SetTopPlayersAndTeams()
-        setLineups({ lineups: sortedLineupsDes});
+        setLineups({ lineups: sortedLineupsDes });
 
         setLoading(false)
       })
@@ -1190,27 +1191,7 @@ export default function NFLFanduelDFS(props) {
               </div>
 
 
-              {lineups.length !== 0 && (
 
-                // <div>
-                <BottomDrawer
-                  exportLineupsToUpload={exportLineupsToUpload}
-                  toggleAndSortData={toggleAndSortData}
-                  sortDataByAsc={sortDataByAsc}
-                  sortDataByDec={sortDataByDec}
-                  exportPlayerLines={exportPlayerLines}
-                  topPlayers={topPlayers}
-                  topTeams={topTeams}
-                  setTopPlayers={setTopPlayers}
-setTopTeams={setTopTeams}
-generateTopPlayersAndTeams={generateTopPlayersAndTeams}
-                  setLineups={setLineups}
-                  lineups={lineups}
-
-
-                />
-                // {/* </div> */}
-              )}
             </div>
             {getLineupsErr.length !== 0 && <h3>{getLineupsErr}</h3>}
 
@@ -1220,7 +1201,11 @@ generateTopPlayersAndTeams={generateTopPlayersAndTeams}
               flexWrap: 'wrap',
               alignItems: 'flex-end'
             }}>
-              <p style={{ fontSize: 24 }}>{selectedSlate} Slate</p>
+
+              {tableTabValue === 0 ?
+                <p style={{ fontSize: 24 }}>{'Optimized lineups'}</p> :
+                <p style={{ fontSize: 24 }}>{selectedSlate} Slate</p>
+              }
 
 
 
@@ -1236,6 +1221,27 @@ generateTopPlayersAndTeams={generateTopPlayersAndTeams}
                   className="table-tabs"
                   style={{ display: 'flex', justifyContent: 'center' }}
                   value={tableTabValue} onChange={handleTableTabChange}>
+
+
+                  {lineups.length !== 0 && (
+                    <Tab style={{
+                      paddingBottom: '0px'
+                    }}
+
+                      label={<span>
+                        View Lineups
+                        <span style={{
+                          marginLeft: 5,
+                          fontWeight: 'bold'
+                        }}>
+                          {lineups.lineups.length}
+                        </span>
+                      </span>} />
+
+
+                  )}
+
+
                   <Tab style={{
                     paddingBottom: '0px'
                   }}
@@ -1288,12 +1294,35 @@ generateTopPlayersAndTeams={generateTopPlayersAndTeams}
                         {filteredInjuredPlayers.length}
                       </span>
                     </span>} />
+
+
+
+
+
                 </Tabs>
               </div>
             </div>
 
+{/* Generated Lineups Table */}
+            {tableTabValue === 0 && <NFLFanduelDfsLineups
+              exportLineupsToUpload={exportLineupsToUpload}
+              toggleAndSortData={toggleAndSortData}
+              sortDataByAsc={sortDataByAsc}
+              sortDataByDec={sortDataByDec}
+              exportPlayerLines={exportPlayerLines}
+              topPlayers={topPlayers}
+              topTeams={topTeams}
+              setTopPlayers={setTopPlayers}
+              setTopTeams={setTopTeams}
+              generateTopPlayersAndTeams={generateTopPlayersAndTeams}
+              setLineups={setLineups}
+              lineups={lineups}
+            />
+            }
+            
+
             {/* All Players Table */}
-            {tableTabValue === 0 && <TableComponent
+            {tableTabValue === 1 && <TableComponent
               overrides={[
                 { key: 'maxExposure', order: 1 },
                 { key: 'minExposure', order: 2 },
@@ -1319,7 +1348,7 @@ generateTopPlayersAndTeams={generateTopPlayersAndTeams}
               setExcludePlayerLines={setExcludePlayerLines} />}
 
             {/* My Players Table */}
-            {tableTabValue === 1 && <TableComponent
+            {tableTabValue === 2 && <TableComponent
               overrides={[
                 { key: 'maxExposure', order: 1 },
                 { key: 'minExposure', order: 2 },
@@ -1345,7 +1374,7 @@ generateTopPlayersAndTeams={generateTopPlayersAndTeams}
               setExcludePlayerLines={setExcludePlayerLines} />}
 
             {/* Exlcude Players Table */}
-            {tableTabValue === 2 && <TableComponent
+            {tableTabValue === 3 && <TableComponent
               overrides={[
                 { key: 'maxExposure', order: 1 },
                 { key: 'minExposure', order: 2 },
@@ -1373,7 +1402,7 @@ generateTopPlayersAndTeams={generateTopPlayersAndTeams}
               setExcludePlayerLines={setExcludePlayerLines} />}
 
             {/* Injured Players Table */}
-            {tableTabValue === 3 && <TableComponent
+            {tableTabValue === 4 && <TableComponent
 
               overrides={[
                 { key: 'maxExposure', order: 1 },
@@ -1400,6 +1429,9 @@ generateTopPlayersAndTeams={generateTopPlayersAndTeams}
               setOgFilteredPlayers={setOgExcludePlayerLines}
               ogFilteredPlayers={ogExcludePlayerLines}
               setExcludePlayerLines={setExcludePlayerLines} />}
+
+
+      
 
 
 

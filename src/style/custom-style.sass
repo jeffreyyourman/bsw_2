@@ -5,7 +5,7 @@ html, body
 
 .playerGroupLeftSideWrapper
   box-shadow: $boxShadowStyle
-  
+
 .nfl-game-matchup-item
   box-shadow: $boxShadowStyle
 
@@ -13,18 +13,20 @@ html, body
   background-color: $primary-navy-blue !important
   color: $primary-white !important
 
-  
 .table-tab-container > .MuiTabs-flexContainer
   // display:flex
   justify-content: flex-end
   flex-wrap: wrap
+
+th
+  -webkit-position: sticky
+  position: sticky
 
 .MuiTableCell-head
   padding: 0px 8px 8px 8px !important
 
 .dfs-optimizer-filter-wrapper
   margin: 12px
-
 
 .nfl-table-optimizer
   width: auto !important
@@ -33,30 +35,27 @@ html, body
   // border-collapse: separate !important
   border-collapse: collapse !important
 
-
-.nfl-table-header 
+.nfl-table-header
   background-color: #00203d !important
   color: white !important
 
-.nfl-table-header2, .nfl-table-optimizer tbody tr 
+.nfl-table-header2, .nfl-table-optimizer tbody tr
   border: 1px solid #ccc
 
 .nfl-table-header2 th, .nfl-table-optimizer tbody td
   border: 1px solid #ccc
   padding: 8px
 
-
 // .nfl-table-header2 
 //   background-color: green !important
 
-.nfl-table-optimizer thead th 
+.nfl-table-optimizer thead th
   text-align: center !important
   color: white !important
 
   // margin: 10px !important
   // background-color: purple !important
   vertical-align: middle !important
-
 
 .nfl-table-optimizer td
   padding: 8px !important
@@ -66,10 +65,9 @@ html, body
   padding: 8px !important
 
 /* For the cells */
-.nfl-table-optimizer tbody td 
+.nfl-table-optimizer tbody td
   text-align: center !important
   vertical-align: middle !important
-
 
 .navbar .navbar-menu
   box-shadow: none !important
