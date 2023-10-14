@@ -110,6 +110,9 @@ export default function NFLFanduelDFS(props) {
   };
 
   const handleTabChange = (event, newValue) => {
+    if (successUploadOwnProjections) {
+      setSuccessUploadOwnProjections(false);
+    }
     setTabValue(newValue);
   };
   const handleTableTabChange = (event, newValue) => {
@@ -194,6 +197,9 @@ export default function NFLFanduelDFS(props) {
         setFdSlates([]);
       } else {
         setFdSlates(response.data.data);
+        // call projections inside here and inside there align the fppg here. 
+        // then make the call for here once the mapping of the projections and Ids happen
+        // fetchPlayerSlateDataSet(selectedSlate)
       }
     } catch (error) {
       console.error("Error fetching the JSON data:", error);
@@ -263,6 +269,101 @@ export default function NFLFanduelDFS(props) {
   }, [selectedSlate]);
 
 
+
+
+
+  // The player upload list can include Data that we already have and in which case take the uploaded data
+  // the handleFileUpload creates a new set of headers, this is where we want the two to be merged.
+  // align the player.Id 's and use the required FPPG and fill in the rest that aren't already in the headers and push to end of headers. 
+  // if there are any additional columns i don't already have, put those in as well.
+  // if the player id that is uploaded doesn't match anything in the dataset, just return current dataset. 
+
+
+  // also in the fetchPlayerDataSet function. I am going to make a call for the daily fantasy fuel projections and align teh fppg column with that to load the page. 
+  // i need the headers to always be these plus whatever additional ones they have. 
+  // Id	Position
+  // First Name
+  // Nickname
+  // Last Name
+  // FPPG
+  // Played
+  // Salary
+  // Game
+  // Team
+  // Opponent
+  // Injury Indicator
+  // Injury Details
+  // Tier			
+  // Roster Position
+
+  const handleFileUpload = (e) => {
+    setSuccessUploadOwnProjectionsLoading(true)
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const csvData = event.target.result;
+      const parsedData = csvData.split("\n").map((row) => {
+        // Trim each cell to remove spaces and control characters
+        return row.split(",").map(cell => cell.trim());
+      });
+      // Clean up headers (keys for your objects)
+      const headers = parsedData[0].map(header => header.trim().replace(/\r$/, ''));
+
+      const rows = parsedData.slice(1);
+      // console.log('rows', rows);
+      const formattedData = rows.map((row) => {
+        // Convert fantasy points per game to numbers
+        // console.log('row[5]', row[5])
+        row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
+        row[5] = isNaN(row[5]) ? 0 : row[5];
+
+
+        const formattedRow = headers.reduce((acc, header, index) => {
+          if (header === "Roster Position" && row[index] === "DEF") {
+            acc[header] = "D";
+          } else {
+            acc[header] = row[index];
+          }
+          return acc;
+        }, {});
+
+        // Delete property with empty string key
+        if (formattedRow[""] !== undefined) {
+          delete formattedRow[""];
+        }
+
+        return formattedRow;
+      }).filter(obj => obj.Id !== '');  // This line filters out objects with an empty Id
+
+      const mergedData = formattedData.map(uploadedPlayer => {
+        const existingPlayer = data.find(player => player.Id === uploadedPlayer.Id);
+        if (existingPlayer) {
+          // If the uploaded player exists in the current dataset, merge them
+          return { ...existingPlayer, ...uploadedPlayer };
+        }
+        return uploadedPlayer;
+      });
+
+
+      console.log('mergedData', mergedData);
+
+      fetchPlayerDataSet(mergedData, 'upload');
+
+
+
+
+      // fetchPlayerDataSet(formattedData, 'upload')
+      setOpen(false);
+      setSuccessUploadOwnProjections(true)
+      setSuccessUploadOwnProjectionsLoading(false)
+
+    }
+    reader.readAsText(file);
+  };
+
+
+
+
   const fetchPlayerDataSet = (dataSet, key) => {
     console.log(`${key} - dataSet`, dataSet);
     if (dataSet[0] === undefined) {
@@ -278,8 +379,6 @@ export default function NFLFanduelDFS(props) {
 
       const enhancedDataSet = dataSet.map(player => ({
         ...player,
-        // minExposure: player.minExposure || '', // if it already exists, keep it, otherwise initialize it to an empty string
-        // maxExposure: player.maxExposure || ''  // same as above
       }));
 
       const games = {};
@@ -319,22 +418,26 @@ export default function NFLFanduelDFS(props) {
       });
 
       const updateGameMatchups = Object.values(games);
-      // console.log('updateGameMatchups', updateGameMatchups);
-      // gameAndPlayerMatchups
       setGameAndPlayerMatchups(updateGameMatchups)
-      // console.log('updateGameMatchups', updateGameMatchups);
-
 
       const injuredPlayers = enhancedDataSet.filter(player => player['Injury Indicator'] !== '');
-      console.log('injuredPlayers', injuredPlayers);
       const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
-      // console.log('excludedPlayers', excludedPlayers);
 
       // Players with FPPG not equal to 0
       const remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
 
+      const requiredHeaders = [
+        "Id", "Position", "First Name", "Nickname", "Last Name",
+        "FPPG", "Played", "Salary", "Game", "Team", "Opponent",
+        "Injury Indicator", "Injury Details", "Tier", "Roster Position"
+      ];
 
-      const objectHeaderKeys = Object.keys(enhancedDataSet[0]);
+      const objectHeaderKeys = [...new Set([...requiredHeaders, ...Object.keys(enhancedDataSet[0])])];
+
+
+
+
+      // const objectHeaderKeys = Object.keys(enhancedDataSet[0]);
 
       const defaultHeadersConfig = objectHeaderKeys.map((header, index) => ({
         key: header,
@@ -344,8 +447,6 @@ export default function NFLFanduelDFS(props) {
 
       // Set the default headers to state directly without any overriding logic.
       setHeaders(defaultHeadersConfig);
-
-
 
 
 
@@ -359,6 +460,9 @@ export default function NFLFanduelDFS(props) {
       setOgFilteredPlayers(remainingPlayers);
     }
   }
+
+
+
 
 
   const handleCheckboxChange = (setter) => (event) => {
@@ -470,54 +574,6 @@ export default function NFLFanduelDFS(props) {
   };
 
 
-  const handleFileUpload = (e) => {
-    setSuccessUploadOwnProjectionsLoading(true)
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const csvData = event.target.result;
-      const parsedData = csvData.split("\n").map((row) => {
-        // Trim each cell to remove spaces and control characters
-        return row.split(",").map(cell => cell.trim());
-      });
-      // Clean up headers (keys for your objects)
-      const headers = parsedData[0].map(header => header.trim().replace(/\r$/, ''));
-
-      const rows = parsedData.slice(1);
-      // console.log('rows', rows);
-      const formattedData = rows.map((row) => {
-        // Convert fantasy points per game to numbers
-        // console.log('row[5]', row[5])
-        row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
-        row[5] = isNaN(row[5]) ? 0 : row[5];
-
-
-        const formattedRow = headers.reduce((acc, header, index) => {
-          if (header === "Roster Position" && row[index] === "DEF") {
-            acc[header] = "D";
-          } else {
-            acc[header] = row[index];
-          }
-          return acc;
-        }, {});
-
-        // Delete property with empty string key
-        if (formattedRow[""] !== undefined) {
-          delete formattedRow[""];
-        }
-
-        return formattedRow;
-      }).filter(obj => obj.Id !== '');  // This line filters out objects with an empty Id
-
-
-      fetchPlayerDataSet(formattedData, 'upload')
-      setOpen(false);
-      setSuccessUploadOwnProjections(true)
-      setSuccessUploadOwnProjectionsLoading(false)
-
-    }
-    reader.readAsText(file);
-  };
 
   let handleSubmitPlayers = () => {
     setLoading(true)
@@ -937,6 +993,7 @@ export default function NFLFanduelDFS(props) {
             playerGroups={playerGroups}
             data={data}
             setPlayerGroups={setPlayerGroups}
+
             successUploadOwnProjections={successUploadOwnProjections}
             successUploadOwnProjectionsLoading={successUploadOwnProjectionsLoading}
           />}
@@ -1118,10 +1175,12 @@ export default function NFLFanduelDFS(props) {
 
 
 
-              <div style={{
-                // overflowX: 'auto', // this enables horizontal scrolling
-                // whiteSpace: 'nowrap', // this ensures the content doesn't wrap
-              }}>
+              <div
+                className="table-tab-container"
+                style={{
+                  // overflowX: 'auto', // this enables horizontal scrolling
+                  // whiteSpace: 'nowrap', // this ensures the content doesn't wrap
+                }}>
 
 
                 <Tabs
@@ -1197,7 +1256,7 @@ export default function NFLFanduelDFS(props) {
               ]}
               columns={columns}
               usingExcludePlayers={false}
-              excludedKeys={['OG_FPPG', 'Nickname',]}
+              excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'Tier']}
               headers={headers}
               data={data}
               setData={setData}
@@ -1223,7 +1282,7 @@ export default function NFLFanduelDFS(props) {
               ]}
               columns={columns}
               usingExcludePlayers={false}
-              excludedKeys={['OG_FPPG', 'Nickname',]}
+              excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname',]}
               headers={headers}
               data={filteredPlayers}
               setData={setData}
@@ -1249,7 +1308,7 @@ export default function NFLFanduelDFS(props) {
               ]}
               columns={excludeColumns}
               headers={headers}
-              excludedKeys={['OG_FPPG', 'Nickname', 'isLocked']}
+              excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked']}
               data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
               setData={setData}
               usingExcludePlayers={true}
@@ -1278,7 +1337,7 @@ export default function NFLFanduelDFS(props) {
               ]}
               columns={excludeColumns}
               headers={headers}
-              excludedKeys={['minExposure', 'maxExposure', 'include', 'exclude', 'Nickname', 'isLocked']}
+              excludedKeys={['Tier', 'Played', 'minExposure', 'maxExposure', 'include', 'exclude', 'Nickname', 'isLocked']}
               data={filteredInjuredPlayers.length !== 0 ? filteredInjuredPlayers : []}
               setData={setData}
               usingExcludePlayers={true}
@@ -1305,7 +1364,7 @@ export default function NFLFanduelDFS(props) {
               ]}
               columns={excludeColumns}
               headers={headers}
-              excludedKeys={['OG_FPPG', 'Nickname', 'isLocked']}
+              excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked']}
               data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
               setData={setData}
               usingExcludePlayers={true}
@@ -1333,7 +1392,7 @@ export default function NFLFanduelDFS(props) {
                 ]}
                 columns={columns}
                 usingExcludePlayers={false}
-                excludedKeys={['OG_FPPG', 'Nickname',]}
+                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname',]}
                 headers={headers}
                 data={filteredPlayers}
                 setData={setData}
