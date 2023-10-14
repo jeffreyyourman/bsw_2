@@ -54,7 +54,7 @@ export default function TableComponent(props) {
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('');
   const [page, setPage] = useState(0); // current page
-  const [rowsPerPage, setRowsPerPage] = useState(5); // rows per page
+  const [rowsPerPage, setRowsPerPage] = useState(10); // rows per page
 
   const handleSortRequest = (property) => {
     let isAsc = orderBy === property && order === 'asc';

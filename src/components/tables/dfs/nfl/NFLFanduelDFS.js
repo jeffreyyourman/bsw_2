@@ -1292,134 +1292,137 @@ export default function NFLFanduelDFS(props) {
               </div>
             </div>
 
-            {/* All Players Table */}
-            {tableTabValue === 0 && <TableComponent
-              overrides={[
-                { key: 'maxExposure', order: 1 },
-                { key: 'minExposure', order: 2 },
-                { key: 'exclude', order: 3 },
-                { key: 'isLocked', order: 4 },
-                { key: 'FPPG', order: 12 },
-                { key: 'fanduel_value', order: 13 },
 
-              ]}
-              columns={columns}
-              usingExcludePlayers={false}
-              excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'Tier']}
-              headers={headers}
-              data={data}
-              setData={setData}
-              setFilteredPlayers={setFilteredPlayers}
-              filteredPlayers={filteredPlayers}
-              submittedPlayersForOptimizer={submittedPlayersForOptimizer}
-              setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
-              excludePlayerLines={excludePlayerLines}
-              setOgFilteredPlayers={setOgFilteredPlayers}
-              ogFilteredPlayers={ogfilteredPlayers}
-              setExcludePlayerLines={setExcludePlayerLines} />}
+            <div style={{ height: '60vh', overflowY: 'auto' }}>
 
-            {/* My Players Table */}
-            {tableTabValue === 1 && <TableComponent
-              overrides={[
-                { key: 'maxExposure', order: 1 },
-                { key: 'minExposure', order: 2 },
-                { key: 'exclude', order: 3 },
-                { key: 'isLocked', order: 4 },
-                { key: 'FPPG', order: 12 },
-                { key: 'fanduel_value', order: 13 },
+              {/* All Players Table */}
+              {tableTabValue === 0 && <TableComponent
+                overrides={[
+                  { key: 'maxExposure', order: 1 },
+                  { key: 'minExposure', order: 2 },
+                  { key: 'exclude', order: 3 },
+                  { key: 'isLocked', order: 4 },
+                  { key: 'FPPG', order: 12 },
+                  { key: 'fanduel_value', order: 13 },
 
-              ]}
-              columns={columns}
-              usingExcludePlayers={false}
-              excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname',]}
-              headers={headers}
-              data={filteredPlayers}
-              setData={setData}
-              setFilteredPlayers={setFilteredPlayers}
-              filteredPlayers={filteredPlayers}
-              submittedPlayersForOptimizer={submittedPlayersForOptimizer}
-              setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
-              excludePlayerLines={excludePlayerLines}
-              setOgFilteredPlayers={setOgFilteredPlayers}
-              ogFilteredPlayers={ogfilteredPlayers}
-              setExcludePlayerLines={setExcludePlayerLines} />}
+                ]}
+                columns={columns}
+                usingExcludePlayers={false}
+                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'Tier']}
+                headers={headers}
+                data={data}
+                setData={setData}
+                setFilteredPlayers={setFilteredPlayers}
+                filteredPlayers={filteredPlayers}
+                submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+                setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
+                excludePlayerLines={excludePlayerLines}
+                setOgFilteredPlayers={setOgFilteredPlayers}
+                ogFilteredPlayers={ogfilteredPlayers}
+                setExcludePlayerLines={setExcludePlayerLines} />}
 
-            {/* Exlcude Players Table */}
-            {tableTabValue === 2 && <TableComponent
-              overrides={[
-                { key: 'maxExposure', order: 1 },
-                { key: 'minExposure', order: 2 },
-                { key: 'include', order: 3 },
-                { key: 'isLocked', order: 4 },
-                { key: 'FPPG', order: 12 },
-                { key: 'fanduel_value', order: 13 },
+              {/* My Players Table */}
+              {tableTabValue === 1 && <TableComponent
+                overrides={[
+                  { key: 'maxExposure', order: 1 },
+                  { key: 'minExposure', order: 2 },
+                  { key: 'exclude', order: 3 },
+                  { key: 'isLocked', order: 4 },
+                  { key: 'FPPG', order: 12 },
+                  { key: 'fanduel_value', order: 13 },
 
-              ]}
-              columns={excludeColumns}
-              headers={headers}
-              excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked']}
-              data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
-              setData={setData}
-              usingExcludePlayers={true}
-              setFilteredPlayers={setFilteredPlayers}
-              filteredPlayers={filteredPlayers}
-              submittedPlayersForOptimizer={submittedPlayersForOptimizer}
-              setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
-              excludePlayerLines={excludePlayerLines}
+                ]}
+                columns={columns}
+                usingExcludePlayers={false}
+                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname',]}
+                headers={headers}
+                data={filteredPlayers}
+                setData={setData}
+                setFilteredPlayers={setFilteredPlayers}
+                filteredPlayers={filteredPlayers}
+                submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+                setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
+                excludePlayerLines={excludePlayerLines}
+                setOgFilteredPlayers={setOgFilteredPlayers}
+                ogFilteredPlayers={ogfilteredPlayers}
+                setExcludePlayerLines={setExcludePlayerLines} />}
 
+              {/* Exlcude Players Table */}
+              {tableTabValue === 2 && <TableComponent
+                overrides={[
+                  { key: 'maxExposure', order: 1 },
+                  { key: 'minExposure', order: 2 },
+                  { key: 'include', order: 3 },
+                  { key: 'isLocked', order: 4 },
+                  { key: 'FPPG', order: 12 },
+                  { key: 'fanduel_value', order: 13 },
 
-              setOgFilteredPlayers={setOgExcludePlayerLines}
-              ogFilteredPlayers={ogExcludePlayerLines}
-              setExcludePlayerLines={setExcludePlayerLines} />}
-
-            {/* Injured Players Table */}
-            {tableTabValue === 3 && <TableComponent
-
-              overrides={[
-                { key: 'maxExposure', order: 1 },
-                { key: 'minExposure', order: 2 },
-                { key: 'exclude', order: 3 },
-                { key: 'isLocked', order: 4 },
-                { key: 'FPPG', order: 12 },
-                { key: 'fanduel_value', order: 13 },
-
-              ]}
-              columns={excludeColumns}
-              headers={headers}
-              excludedKeys={['Tier', 'Played', 'minExposure', 'maxExposure', 'include', 'exclude', 'Nickname', 'isLocked']}
-              data={filteredInjuredPlayers.length !== 0 ? filteredInjuredPlayers : []}
-              setData={setData}
-              usingExcludePlayers={true}
-              setFilteredPlayers={setFilteredPlayers}
-              filteredPlayers={filteredPlayers}
-              submittedPlayersForOptimizer={submittedPlayersForOptimizer}
-              setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
-              excludePlayerLines={excludePlayerLines}
+                ]}
+                columns={excludeColumns}
+                headers={headers}
+                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked']}
+                data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
+                setData={setData}
+                usingExcludePlayers={true}
+                setFilteredPlayers={setFilteredPlayers}
+                filteredPlayers={filteredPlayers}
+                submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+                setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
+                excludePlayerLines={excludePlayerLines}
 
 
-              setOgFilteredPlayers={setOgExcludePlayerLines}
-              ogFilteredPlayers={ogExcludePlayerLines}
-              setExcludePlayerLines={setExcludePlayerLines} />}
+                setOgFilteredPlayers={setOgExcludePlayerLines}
+                ogFilteredPlayers={ogExcludePlayerLines}
+                setExcludePlayerLines={setExcludePlayerLines} />}
+
+              {/* Injured Players Table */}
+              {tableTabValue === 3 && <TableComponent
+
+                overrides={[
+                  { key: 'maxExposure', order: 1 },
+                  { key: 'minExposure', order: 2 },
+                  { key: 'exclude', order: 3 },
+                  { key: 'isLocked', order: 4 },
+                  { key: 'FPPG', order: 12 },
+                  { key: 'fanduel_value', order: 13 },
+
+                ]}
+                columns={excludeColumns}
+                headers={headers}
+                excludedKeys={['Tier', 'Played', 'minExposure', 'maxExposure', 'include', 'exclude', 'Nickname', 'isLocked']}
+                data={filteredInjuredPlayers.length !== 0 ? filteredInjuredPlayers : []}
+                setData={setData}
+                usingExcludePlayers={true}
+                setFilteredPlayers={setFilteredPlayers}
+                filteredPlayers={filteredPlayers}
+                submittedPlayersForOptimizer={submittedPlayersForOptimizer}
+                setSubmittedPlayersForOptimizer={setSubmittedPlayersForOptimizer}
+                excludePlayerLines={excludePlayerLines}
 
 
-            {tableTabValue === 4 && <NFLFanduelDfsLineups
-              exportLineupsToUpload={exportLineupsToUpload}
-              toggleAndSortData={toggleAndSortData}
-              sortDataByAsc={sortDataByAsc}
-              sortDataByDec={sortDataByDec}
-              exportPlayerLines={exportPlayerLines}
-              topPlayers={topPlayers}
-              topTeams={topTeams}
-              setTopPlayers={setTopPlayers}
-              setTopTeams={setTopTeams}
-              generateTopPlayersAndTeams={generateTopPlayersAndTeams}
-              setLineups={setLineups}
-              lineups={lineups}
-            />
-            }
+                setOgFilteredPlayers={setOgExcludePlayerLines}
+                ogFilteredPlayers={ogExcludePlayerLines}
+                setExcludePlayerLines={setExcludePlayerLines} />}
 
 
+              {tableTabValue === 4 && <NFLFanduelDfsLineups
+                exportLineupsToUpload={exportLineupsToUpload}
+                toggleAndSortData={toggleAndSortData}
+                sortDataByAsc={sortDataByAsc}
+                sortDataByDec={sortDataByDec}
+                exportPlayerLines={exportPlayerLines}
+                topPlayers={topPlayers}
+                topTeams={topTeams}
+                setTopPlayers={setTopPlayers}
+                setTopTeams={setTopTeams}
+                generateTopPlayersAndTeams={generateTopPlayersAndTeams}
+                setLineups={setLineups}
+                lineups={lineups}
+              />
+              }
 
+
+            </div>
 
             {/* {isShowingExcludePlayers ? <TableComponent
 
