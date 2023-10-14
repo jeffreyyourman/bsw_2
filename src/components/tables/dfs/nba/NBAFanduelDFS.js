@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useTable, useSortBy, useFilters, usePagination } from "react-table";
 import { CSVLink } from "react-csv";
 import { useColumns, useExcludeColumns } from "./NflDfsTableColumns";
-// import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
+// import { NflPlayerList } from '../../../../mockJson/nba/nflPlayerList'
 import axios from "axios";
 import { FiUnlock, FiLock } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
@@ -27,20 +27,16 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import PlayerGroups from './NFLPlayerGroups.js';
-import NFLTeamStacks from './NFLTeamStacks.js';
-import NFLTeamGameStacks from './NFLTeamGameStacks.js';
-import NFLUploadOwnProjections from './NFLUploadOwnProjections.js';
+import NBAPlayerGroups from './NBAPlayerGroups.js';
+import NBATeamStacks from './NBATeamStacks.js';
+import NBATeamGameStacks from './NBATeamGameStacks.js';
+import NBAUploadOwnProjections from './NBAUploadOwnProjections.js';
 import TableComponent from './TableComponent.js';
-import NflFdDfsOptimizerSettings from './NflFdDfsOptimizerSettings.js';
-import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
-
-import BottomDrawer from "../../../drawers/BottomDrawer";
-
+import NBAFdDfsOptimizerSettings from './NBAFdDfsOptimizerSettings.js';
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
-import NflPlayerPosFilter from "./NflPlayerPosFilters";
-import NFLFanduelDfsLineups from "./NFLFanduelDfsLineups";
-import NFLPlayerSearch from "./NflPlayerSearch";
+import NBAPlayerPosFilter from "./NBAPlayerPosFilters";
+import NBAFanduelDfsLineups from "./NBAFanduelDfsLineups";
+import NBAPlayerSearch from "./NBAPlayerSearch";
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import { useAuth } from '../../../../context/AuthContext';
 import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
@@ -82,7 +78,7 @@ const theme = createTheme({
 });
 
 
-export default function NFLFanduelDFS(props) {
+export default function NBAFanduelDFS(props) {
   const useLocal = true
   const useOptimizerUrl = true
 
@@ -176,21 +172,31 @@ export default function NFLFanduelDFS(props) {
   const [successUploadOwnProjections, setSuccessUploadOwnProjections] = useState(false);
   const [successUploadOwnProjectionsLoading, setSuccessUploadOwnProjectionsLoading] = useState(false);
   const [getLineupsErr, setGetLineupsErr] = useState('');
-  const getFdSlates = (abbr) => `/mockJson/nfl/slates/fd_slates.json`;
-  // const getGameMatchups = (abbr) => `/mockJson/nfl/nfl-current-games-nextgenstats.json`;
-  const getEspnScoreboard = (abbr) => `/mockJson/nfl/2023-espn-scoreboard.json`;
-  const getEspnStandings = (abbr) => `/mockJson/nfl/2023-espn-standings.json`;
+  const getFdSlates = (abbr) => `/mockJson/nba/slates/fd_slates.json`;
+  // const getGameMatchups = (abbr) => `/mockJson/nba/nfl-current-games-nextgenstats.json`;
+  const getEspnScoreboard = (abbr) => `/mockJson/nba/2023-espn-scoreboard.json`;
+  const getEspnStandings = (abbr) => `/mockJson/nba/2023-espn-standings.json`;
 
 
 
-  // const [slates, setSlates] = useState([]);
+  useEffect(() => {
+    fetchGameMatchups()
+    fetchPlayerSlateDataSet(selectedSlate)
+    fetchFdSlates()
+    // fetchEspnScoreboard();
+    fetchEspnStandings();
+
+  }, [selectedSlate]);
+
+
+
 
   const fetchFdSlates = async () => {
     // const fdSlateList = getFdSlates()
     // console.log('fdSlateList', fdSlateList);
     try {
 
-      const response = await axios.get(`${baseUrl}/dfs-projections/nfl/fd/upcoming-slates`);
+      const response = await axios.get(`${baseUrl}/dfs-projections/nba/fd/upcoming-slates`);
       // const response = await axios.get(fdSlateList); 
 
       // console.log('fetchfanduel slate lists - response - ', response.data);
@@ -210,7 +216,7 @@ export default function NFLFanduelDFS(props) {
   const fetchGameMatchups = async () => {
     setEspnScoreBoardMatchupsLoading(true)
     try {
-      const response = await axios.get(`${baseUrl}/dfs-projections/nfl/espn-scoreboard`);
+      const response = await axios.get(`${baseUrl}/dfs-projections/nba/espn-scoreboard`);
 
       console.log('get game matchups slate lists - response - ', response.data.data.sports[0].leagues[0].events);
       if (Object.keys(response.data).length === 0) {
@@ -226,20 +232,6 @@ export default function NFLFanduelDFS(props) {
     }
   };
 
-  const fetchEspnScoreboard = async () => {
-    const getEspnScoreboardRes = getEspnScoreboard()
-    try {
-      const response = await axios.get(getEspnScoreboardRes);
-
-      if (Object.keys(response.data).length === 0) {
-        setEspnScoreboard([]);
-      } else {
-        setEspnScoreboard(response.data);
-      }
-    } catch (error) {
-      console.error("Error fetching the JSON data:", error);
-    }
-  };
   const fetchEspnStandings = async () => {
     const getEspnStandingsRes = getEspnStandings()
 
@@ -248,7 +240,6 @@ export default function NFLFanduelDFS(props) {
 
 
       if (Object.keys(response.data).length === 0) {
-        // fetchPlayerSlateDataSet('Main')
         setEspnStandings([]);
       } else {
         setEspnStandings(response.data);
@@ -258,45 +249,6 @@ export default function NFLFanduelDFS(props) {
     }
   };
 
-
-
-
-  useEffect(() => {
-    fetchGameMatchups()
-    fetchPlayerSlateDataSet(selectedSlate)
-    fetchFdSlates()
-    // fetchEspnScoreboard();
-    fetchEspnStandings();
-
-  }, [selectedSlate]);
-
-
-
-
-
-  // The player upload list can include Data that we already have and in which case take the uploaded data
-  // the handleFileUpload creates a new set of headers, this is where we want the two to be merged.
-  // align the player.Id 's and use the required FPPG and fill in the rest that aren't already in the headers and push to end of headers. 
-  // if there are any additional columns i don't already have, put those in as well.
-  // if the player id that is uploaded doesn't match anything in the dataset, just return current dataset. 
-
-
-  // also in the fetchPlayerDataSet function. I am going to make a call for the daily fantasy fuel projections and align teh fppg column with that to load the page. 
-  // i need the headers to always be these plus whatever additional ones they have. 
-  // Id	Position
-  // First Name
-  // Nickname
-  // Last Name
-  // FPPG
-  // Played
-  // Salary
-  // Game
-  // Team
-  // Opponent
-  // Injury Indicator
-  // Injury Details
-  // Tier			
-  // Roster Position
 
   const handleFileUpload = (e) => {
     setSuccessUploadOwnProjectionsLoading(true)
@@ -485,7 +437,7 @@ export default function NFLFanduelDFS(props) {
   };
 
 
-  const getSlateFullDirectory = (abbr) => `/mockJson/nfl/slates/${abbr}-slate/nflPlayerList.json`;
+  const getSlateFullDirectory = (abbr) => `/mockJson/nba/slates/${abbr}-slate/nflPlayerList.json`;
 
   const fetchPlayerSlateDataSet = async (slateType) => {
     const directoryName = slateTypeToDirectory(slateType);
@@ -1001,7 +953,7 @@ export default function NFLFanduelDFS(props) {
           </Tabs>
 
           {tabValue === 0 && (
-            <PlayerGroups
+            <NBAPlayerGroups
               groups={groups}
               setGroups={setGroups}
               filteredPlayers={filteredPlayers}
@@ -1011,7 +963,7 @@ export default function NFLFanduelDFS(props) {
           )}
 
           {tabValue === 1 &&
-            <NFLTeamStacks
+            <NBATeamStacks
               positions={['QB', 'RB', 'WR', 'TE', 'D']}
               groups={teamGroups}
               gameMatchups={gameAndPlayerMatchups}
@@ -1021,7 +973,7 @@ export default function NFLFanduelDFS(props) {
               setPlayerGroups={setPlayerGroups}
             />
           }
-          {tabValue === 2 && <NFLTeamGameStacks
+          {tabValue === 2 && <NBATeamGameStacks
             positions={['QB', 'RB', 'WR', 'TE', 'D']}
             groups={teamGameGroups}
             gameMatchups={gameAndPlayerMatchups}
@@ -1030,7 +982,7 @@ export default function NFLFanduelDFS(props) {
             playerGroups={playerGroups}
             setPlayerGroups={setPlayerGroups}
           />}
-          {tabValue === 3 && <NFLUploadOwnProjections
+          {tabValue === 3 && <NBAUploadOwnProjections
             positions={['QB', 'RB', 'WR', 'TE', 'D']}
             groups={teamGameGroups}
             handleFileUpload={handleFileUpload}
@@ -1046,7 +998,7 @@ export default function NFLFanduelDFS(props) {
           />}
         </DialogContent>
       </Dialog>
-      <NflFdDfsOptimizerSettings
+      <NBAFdDfsOptimizerSettings
         open={open}
         anchor={'right'}
         handleDrawerOpen={handleDrawerOpen}
@@ -1112,7 +1064,7 @@ export default function NFLFanduelDFS(props) {
             }}>
               {!isShowingExcludePlayers &&
                 <div className="dfs-optimizer-filter-wrapper">
-                  <NflPlayerPosFilter
+                  <NBAPlayerPosFilter
                     players={data}
                     selectedPosition={position}
                     filterPlayersByPosition={filterPlayersByPosition}
@@ -1121,13 +1073,13 @@ export default function NFLFanduelDFS(props) {
                 </div>}
               <div className="dfs-optimizer-filter-wrapper">
                 {isShowingExcludePlayers ?
-                  <NFLPlayerSearch
+                  <NBAPlayerSearch
                     data={excludePlayerLines}
                     onSearch={handleSearchExcludedPlayersOnChange}
                     isShowingExcludePlayers={isShowingExcludePlayers}
                   />
                   :
-                  <NFLPlayerSearch
+                  <NBAPlayerSearch
                     data={filteredPlayers}
                     onSearch={handleSearchOnChange}
                     isShowingExcludePlayers={isShowingExcludePlayers}
@@ -1405,7 +1357,7 @@ export default function NFLFanduelDFS(props) {
                 setExcludePlayerLines={setExcludePlayerLines} />}
 
 
-              {tableTabValue === 4 && <NFLFanduelDfsLineups
+              {tableTabValue === 4 && <NBAFanduelDfsLineups
                 exportLineupsToUpload={exportLineupsToUpload}
                 toggleAndSortData={toggleAndSortData}
                 sortDataByAsc={sortDataByAsc}
