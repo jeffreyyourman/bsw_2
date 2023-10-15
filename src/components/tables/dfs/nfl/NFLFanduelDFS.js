@@ -1286,8 +1286,9 @@ export default function NFLFanduelDFS(props) {
               </div>
             </div>
 
-
-            <div style={{ height: '70vh', overflowY: 'auto' }}>
+            <div
+            //  style={{ height: '70vh', overflowY: 'auto' }}
+            >
 
               {/* All Players Table */}
               {tableTabValue === 0 && <TableComponent
@@ -1354,7 +1355,7 @@ export default function NFLFanduelDFS(props) {
                 ]}
                 columns={excludeColumns}
                 headers={headers}
-                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked',  'minExposure', 'maxExposure',]}
+                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked', 'minExposure', 'maxExposure',]}
                 data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
                 setData={setData}
                 usingExcludePlayers={true}
