@@ -160,35 +160,32 @@ export default function TableComponent(props) {
 
 
   const handleMinExposureChange = (playerData, value) => {
-    let updatedPlayers = [...sortedPlayers];
+    let updatedPlayers = [...props.submittedPlayersForOptimizer];
+    
     let playerDataId = playerData.Id;
     let player = updatedPlayers.find(player => player.Id === playerDataId);
 
-    player.minExposure = value;  // Assuming 'value' is already defined earlier in your code
+    player.minExposure = value;  
 
     const playerIndex = updatedPlayers.findIndex(player => player.Id === playerDataId);
     updatedPlayers[playerIndex] = player;
 
-    setFilteredPlayers(updatedPlayers);
-    // submittedPlayersForOptimizer
     setSubmittedPlayersForOptimizer(updatedPlayers);
 
   };
   const handleMaxExposureChange = (playerData, value) => {
-    let updatedPlayers = [...sortedPlayers];
+    let updatedPlayers = [...props.submittedPlayersForOptimizer];
     let playerDataId = playerData.Id;
     let player = updatedPlayers.find(player => player.Id === playerDataId);
 
-    player.maxExposure = value;  // Assuming 'value' is already defined earlier in your code
+    player.maxExposure = value;  
 
     const playerIndex = updatedPlayers.findIndex(player => player.Id === playerDataId);
     updatedPlayers[playerIndex] = player;
 
-    setFilteredPlayers(updatedPlayers);
-    // submittedPlayersForOptimizer
+    // setFilteredPlayers(updatedPlayers);
     setSubmittedPlayersForOptimizer(updatedPlayers);
   };
-  // console.log('headers)', headers);
 
   function mergeConfigWithOverrides(config) {
     let tempConfig = [...config]; // Create a temporary copy of the config
@@ -219,7 +216,7 @@ export default function TableComponent(props) {
       label: 'Min Exposure',
       renderer: (rowData) => (
         <input
-          type="text"
+          type="number"
           min="0"
           max="100"
           style={{ width: 65 }}
@@ -233,7 +230,7 @@ export default function TableComponent(props) {
       label: 'Max Exposure',
       renderer: (rowData) => (
         <input
-          type="text"
+          type="number"
           min="0"
           max="100"
           style={{ width: 65 }}
@@ -296,7 +293,7 @@ export default function TableComponent(props) {
 
   columnConfig.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
   const finalColumnConfig = columnConfig.filter(col => !excludedKeys.includes(col.key));
-  // console.log('finalColumnConfig', finalColumnConfig);
+  
 
   return (
     <div>

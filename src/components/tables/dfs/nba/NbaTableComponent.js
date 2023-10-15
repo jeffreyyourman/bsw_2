@@ -33,7 +33,7 @@ import {
 } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
 
-export default function TableComponent(props) {
+export default function NbaTableComponent(props) {
   let {
     headers,
     columns,
@@ -160,7 +160,7 @@ export default function TableComponent(props) {
 
 
   const handleMinExposureChange = (playerData, value) => {
-    let updatedPlayers = [...sortedPlayers];
+    let updatedPlayers = [...props.submittedPlayersForOptimizer];
     let playerDataId = playerData.Id;
     let player = updatedPlayers.find(player => player.Id === playerDataId);
 
@@ -175,7 +175,7 @@ export default function TableComponent(props) {
 
   };
   const handleMaxExposureChange = (playerData, value) => {
-    let updatedPlayers = [...sortedPlayers];
+    let updatedPlayers = [...props.submittedPlayersForOptimizer];
     let playerDataId = playerData.Id;
     let player = updatedPlayers.find(player => player.Id === playerDataId);
 

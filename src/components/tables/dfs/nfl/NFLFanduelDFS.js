@@ -312,10 +312,8 @@ export default function NFLFanduelDFS(props) {
       const headers = parsedData[0].map(header => header.trim().replace(/\r$/, ''));
 
       const rows = parsedData.slice(1);
-      // console.log('rows', rows);
       const formattedData = rows.map((row) => {
         // Convert fantasy points per game to numbers
-        // console.log('row[5]', row[5])
         row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
         row[5] = isNaN(row[5]) ? 0 : row[5];
 
@@ -347,7 +345,7 @@ export default function NFLFanduelDFS(props) {
       });
 
 
-      console.log('mergedData', mergedData);
+      // console.log('mergedData', mergedData);
 
       fetchPlayerDataSet(mergedData, 'upload');
 
@@ -490,18 +488,15 @@ export default function NFLFanduelDFS(props) {
   const fetchPlayerSlateDataSet = async (slateType) => {
     const directoryName = slateTypeToDirectory(slateType);
     const slateData1 = getSlateFullDirectory(directoryName)
-    // console.log('slateData1', slateData1);
     try {
       const response = await axios.get(slateData1);
 
-      // console.log('fetchPlayerSlateDataSet - response - ', response.data);
       if (Object.keys(response.data).length === 0) {
         fetchPlayerSlateDataSet('Main')
       } else {
 
         fetchPlayerDataSet(response.data);
       }
-      // setData(response.data);
     } catch (error) {
       console.error("Error fetching the JSON data:", error);
     }
@@ -519,7 +514,6 @@ export default function NFLFanduelDFS(props) {
         return player;
       }
     });
-    // console.log('filtername;, fil', filterName)
     if (filterName.length !== 0) {
       setFilteredPlayers(filterName);
     } else {
@@ -1293,7 +1287,7 @@ export default function NFLFanduelDFS(props) {
             </div>
 
 
-            <div style={{ height: '60vh', overflowY: 'auto' }}>
+            <div style={{ height: '70vh', overflowY: 'auto' }}>
 
               {/* All Players Table */}
               {tableTabValue === 0 && <TableComponent
@@ -1360,7 +1354,7 @@ export default function NFLFanduelDFS(props) {
                 ]}
                 columns={excludeColumns}
                 headers={headers}
-                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked']}
+                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked',  'minExposure', 'maxExposure',]}
                 data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
                 setData={setData}
                 usingExcludePlayers={true}

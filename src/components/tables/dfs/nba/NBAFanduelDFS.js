@@ -31,7 +31,7 @@ import PlayerGroups from './NBAPlayerGroups.js';
 import NBATeamStacks from './NBATeamStacks.js';
 import NBATeamGameStacks from './NBATeamGameStacks.js';
 import NBAUploadOwnProjections from './NBAUploadOwnProjections.js';
-import TableComponent from './TableComponent.js';
+import NbaTableComponent from './NbaTableComponent.js';
 import NbaFdDfsOptimizerSettings from './NbaFdDfsOptimizerSettings.js';
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import NbaPlayerPosFilter from "./NbaPlayerPosFilters";
@@ -1290,10 +1290,10 @@ export default function NBAFanduelDFS(props) {
             </div>
 
 
-            <div style={{ height: '60vh', overflowY: 'auto' }}>
+            <div style={{ height: '70vh', overflowY: 'auto' }}>
 
               {/* All Players Table */}
-              {tableTabValue === 0 && <TableComponent
+              {tableTabValue === 0 && <NbaTableComponent
                 overrides={[
                   { key: 'maxExposure', order: 1 },
                   { key: 'minExposure', order: 2 },
@@ -1319,7 +1319,7 @@ export default function NBAFanduelDFS(props) {
                 setExcludePlayerLines={setExcludePlayerLines} />}
 
               {/* My Players Table */}
-              {tableTabValue === 1 && <TableComponent
+              {tableTabValue === 1 && <NbaTableComponent
                 overrides={[
                   { key: 'maxExposure', order: 1 },
                   { key: 'minExposure', order: 2 },
@@ -1345,7 +1345,7 @@ export default function NBAFanduelDFS(props) {
                 setExcludePlayerLines={setExcludePlayerLines} />}
 
               {/* Exlcude Players Table */}
-              {tableTabValue === 2 && <TableComponent
+              {tableTabValue === 2 && <NbaTableComponent
                 overrides={[
                   { key: 'maxExposure', order: 1 },
                   { key: 'minExposure', order: 2 },
@@ -1357,7 +1357,7 @@ export default function NBAFanduelDFS(props) {
                 ]}
                 columns={excludeColumns}
                 headers={headers}
-                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked']}
+                excludedKeys={['Tier', 'Played', 'OG_FPPG', 'Nickname', 'isLocked',  'minExposure', 'maxExposure',]}
                 data={excludePlayerLines.length !== 0 ? excludePlayerLines : []}
                 setData={setData}
                 usingExcludePlayers={true}
@@ -1373,7 +1373,7 @@ export default function NBAFanduelDFS(props) {
                 setExcludePlayerLines={setExcludePlayerLines} />}
 
               {/* Injured Players Table */}
-              {tableTabValue === 3 && <TableComponent
+              {tableTabValue === 3 && <NbaTableComponent
 
                 overrides={[
                   { key: 'maxExposure', order: 1 },
@@ -1421,7 +1421,7 @@ export default function NBAFanduelDFS(props) {
 
             </div>
 
-            {/* {isShowingExcludePlayers ? <TableComponent
+            {/* {isShowingExcludePlayers ? <NbaTableComponent
 
               overrides={[
                 { key: 'include', order: 1 },
@@ -1446,7 +1446,7 @@ export default function NBAFanduelDFS(props) {
               setExcludePlayerLines={setExcludePlayerLines} />
               :
 
-              <TableComponent
+              <NbaTableComponent
                 overrides={[
                   { key: 'maxExposure', order: 1 },
                   { key: 'minExposure', order: 2 },
