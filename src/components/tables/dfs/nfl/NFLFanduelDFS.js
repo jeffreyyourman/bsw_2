@@ -159,6 +159,8 @@ export default function NFLFanduelDFS(props) {
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
   const [skillPlayersAgainstDef, setSkillPlayersAgainstDef] = useState([]);
   const [selectedSlate, setSelectedSlate] = useState('Main');
+  const [selectedSlateData, setSelectedSlateData] = useState(null);
+  const [dailyFantasyFuelPlayerProjs, setDailyFantasyFuelPlayerProjs] = useState(null);
 
   const [includeGlobalGameStack, setIncludeGlobalGameStack] = useState(false);
   const [globalNumPlayers, setGlobalNumPlayers] = useState(4);
@@ -194,14 +196,60 @@ export default function NFLFanduelDFS(props) {
       // const response = await axios.get(fdSlateList); 
 
       // console.log('fetchfanduel slate lists - response - ', response.data);
+
+      let selectedSlate = null;
+
+      // Find the first slate with "main" in slate_type
+      const mainSlate = response.data.data.find((slate) => slate.slate_type.toLowerCase().includes("Main"));
+
+      if (mainSlate) {
+        selectedSlate = mainSlate;
+      } else {
+        // If no main slate is found, find the first available slate without showdown_flag
+        const availableSlate = response.data.data.find((slate) => slate.showdown_flag === 0);
+
+        if (availableSlate) {
+          selectedSlate = availableSlate;
+        } else {
+          console.log("No suitable slate found.");
+          // You can handle the case where no suitable slate is found here.
+        }
+      }
+
+      console.log("Selected Slate:", selectedSlate);
+      setSelectedSlateData(selectedSlate);
+      fetchDailyFantasyFuelPlayerProjections(selectedSlate)
+
+      // setSelectedSlateData(response.data.data);
       if (Object.keys(response.data).length === 0) {
-        // fetchPlayerSlateDataSet('Main')
         setFdSlates([]);
       } else {
         setFdSlates(response.data.data);
         // call projections inside here and inside there align the fppg here. 
         // then make the call for here once the mapping of the projections and Ids happen
         // fetchPlayerSlateDataSet(selectedSlate)
+      }
+    } catch (error) {
+      console.error("Error fetching the JSON data:", error);
+    }
+  };
+
+
+
+  const fetchDailyFantasyFuelPlayerProjections = async (selectedSlateParam) => {
+
+    try {
+
+      const response = await axios.get(`${baseUrl}/dfs-projections/nfl/fd/slate-playerlist/${selectedSlateParam.url}`);
+      // const response = await axios.get(fdSlateList); 
+
+      console.log('fetchfanduel player projections list daily fantasy - response - ', response.data);
+      if (Object.keys(response.data).length === 0) {
+
+        setDailyFantasyFuelPlayerProjs([]);
+      } else {
+        setDailyFantasyFuelPlayerProjs(response.data.data);
+        fetchPlayerSlateDataSet(selectedSlate, response.data.data);
       }
     } catch (error) {
       console.error("Error fetching the JSON data:", error);
@@ -214,7 +262,6 @@ export default function NFLFanduelDFS(props) {
 
       console.log('get game matchups slate lists - response - ', response.data.data.sports[0].leagues[0].events);
       if (Object.keys(response.data).length === 0) {
-        // fetchPlayerSlateDataSet('Main')
         setEspnScoreBoardMatchups([]);
       } else {
         setEspnScoreBoardMatchups(response.data.data.sports[0].leagues[0].events);
@@ -248,7 +295,6 @@ export default function NFLFanduelDFS(props) {
 
 
       if (Object.keys(response.data).length === 0) {
-        // fetchPlayerSlateDataSet('Main')
         setEspnStandings([]);
       } else {
         setEspnStandings(response.data);
@@ -263,7 +309,8 @@ export default function NFLFanduelDFS(props) {
 
   useEffect(() => {
     fetchGameMatchups()
-    fetchPlayerSlateDataSet(selectedSlate)
+
+    // fetchDailyFantasyFuelPlayerProjections()
     fetchFdSlates()
     // fetchEspnScoreboard();
     fetchEspnStandings();
@@ -347,7 +394,7 @@ export default function NFLFanduelDFS(props) {
 
       // console.log('mergedData', mergedData);
 
-      fetchPlayerDataSet(mergedData, 'upload');
+      fetchPlayerDataSet(mergedData);
 
 
 
@@ -364,8 +411,7 @@ export default function NFLFanduelDFS(props) {
 
 
 
-  const fetchPlayerDataSet = (dataSet, key) => {
-    console.log(`${key} - dataSet`, dataSet);
+  const fetchPlayerDataSet = (dataSet, projectionsToMatch) => {
     if (dataSet[0] === undefined) {
       setHeaders([]);
       setData([]);
@@ -420,17 +466,30 @@ export default function NFLFanduelDFS(props) {
       const updateGameMatchups = Object.values(games);
       setGameAndPlayerMatchups(updateGameMatchups)
 
-      const injuredPlayers = enhancedDataSet.filter(player => player['Injury Indicator'] !== '');
-      const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
-
-      // Players with FPPG not equal to 0
-      const remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
 
       const requiredHeaders = [
-        "Id", "Position", "First Name", "Nickname", "Last Name",
-        "FPPG", "Played", "Salary", "Game", "Team", "Opponent",
-        "Injury Indicator", "Injury Details", "Tier", "Roster Position"
+        "Id",
+        "Position",
+        "First Name",
+        "Nickname",
+        "Last Name",
+        "FPPG",
+        "Played",
+        "Value",
+        "Salary",
+        "Game",
+        "Team",
+        "Opponent",
+        "Injury Indicator",
+        "Injury Details",
+        "Tier",
+        "Roster Position",
+        'opp_rank',
+        "opp_rank_bucket"
       ];
+
+
+
 
       const objectHeaderKeys = [...new Set([...requiredHeaders, ...Object.keys(enhancedDataSet[0])])];
 
@@ -445,9 +504,40 @@ export default function NFLFanduelDFS(props) {
         order: index + 1  // This uses the index as the default order
       }));
 
-      // Set the default headers to state directly without any overriding logic.
-      setHeaders(defaultHeadersConfig);
+      enhancedDataSet.map((player) => {
+        const playerName = `${player["First Name"]} ${player["Last Name"]}`;
 
+        // Check if player is in projectionsToMatch based on name
+        const isPlayerInProjections = projectionsToMatch.some((projection) => {
+          const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
+          return playerName === projectionsToMatchName;
+        });
+
+        if (isPlayerInProjections) {
+          // Player is in projectionsToMatch, update properties as needed
+          projectionsToMatch.forEach((projection) => {
+            const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
+            if (playerName === projectionsToMatchName) {
+              // Update player properties based on projection data
+              player.FPPG = projection.ppg;
+              player.Value = projection.value;
+              player.opp_rank = projection.opp_rank;
+              player.opp_rank_bucket = projection.opp_rank_bucket;
+              // Add more properties as needed
+            }
+          });
+        }
+
+        // console.log('player', player);
+        return player;
+      });
+
+      // Set the default headers to state directly without any overriding logic.
+      const injuredPlayers = enhancedDataSet.filter(player => player['Injury Indicator'] !== '');
+      const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
+
+      // Players with FPPG not equal to 0
+      const remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
 
 
       setData(enhancedDataSet)
@@ -458,6 +548,9 @@ export default function NFLFanduelDFS(props) {
       setFilteredPlayers(remainingPlayers);
       setSubmittedPlayersForOptimizer(remainingPlayers);
       setOgFilteredPlayers(remainingPlayers);
+
+
+      setHeaders(defaultHeadersConfig);
     }
   }
 
@@ -485,17 +578,18 @@ export default function NFLFanduelDFS(props) {
 
   const getSlateFullDirectory = (abbr) => `/mockJson/nfl/slates/${abbr}-slate/nflPlayerList.json`;
 
-  const fetchPlayerSlateDataSet = async (slateType) => {
+  const fetchPlayerSlateDataSet = async (slateType, additionalProjections) => {
     const directoryName = slateTypeToDirectory(slateType);
     const slateData1 = getSlateFullDirectory(directoryName)
     try {
       const response = await axios.get(slateData1);
 
       if (Object.keys(response.data).length === 0) {
-        fetchPlayerSlateDataSet('Main')
+        // fetchPlayerSlateDataSet('Main')
+        console.log('no data found')
       } else {
 
-        fetchPlayerDataSet(response.data);
+        fetchPlayerDataSet(response.data, additionalProjections);
       }
     } catch (error) {
       console.error("Error fetching the JSON data:", error);
@@ -1043,6 +1137,8 @@ export default function NFLFanduelDFS(props) {
       <NflFdDfsOptimizerSettings
         open={open}
         anchor={'right'}
+        selectedSlateData={selectedSlateData}
+        setSelectedSlateData={setSelectedSlateData}
         handleDrawerOpen={handleDrawerOpen}
         // style={{ backgroundColor: '#fdfdfd' }}
         handleDrawerClose={handleDrawerClose}

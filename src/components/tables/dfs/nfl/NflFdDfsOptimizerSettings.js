@@ -13,7 +13,7 @@ import { TextField, FormHelperText, Card, FormControlLabel, Checkbox, Box, Typog
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 
 export default function NflFdDfsOptimizerSettings(props) {
-// console.log('props.fdSlates',props.fdSlates);
+  // console.log('props.fdSlates',props.fdSlates);
   return (
     <LeftSideDrawer
       open={props.open}
@@ -113,7 +113,13 @@ export default function NflFdDfsOptimizerSettings(props) {
             labelId="gameSelector-label"
             value={props.selectedSlate}
             defaultValue={props.selectedSlate}
-            onChange={(e) => props.handleGameSlateChange(e.target.value)}
+            onChange={(e) => {
+              const selectedValue = e.target.value;
+              const selectedGame = props.fdSlates.find((game) => game.slate_type === selectedValue);
+              console.log('selectedGame', selectedGame)
+              props.handleGameSlateChange(e.target.value)
+            }
+            }
             label="Select Game Slate"
             fullWidth
           >
