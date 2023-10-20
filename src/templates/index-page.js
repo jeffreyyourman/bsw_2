@@ -8,6 +8,9 @@ import Features from "../components/Features";
 import BlogRoll from "../components/BlogRoll";
 import FullWidthImage from "../components/FullWidthImage_split";
 import { Star } from '@mui/icons-material';
+import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
+
+
 import {
   Box,
   Button,
@@ -33,6 +36,23 @@ import ChatIcon from '@mui/icons-material/Chat';  // Representing Discord as MUI
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import SocialIconsRow from "../components/socials/SocialIconsRow";
+import dalle1 from "../img/dalle/dalle1.png";
+import dalle2 from "../img/dalle/dalle2.png";
+import dalle3 from "../img/dalle/dalle3.png";
+import dalle4 from "../img/dalle/dalle4.png";
+import dalle5 from "../img/dalle/dalle5.png";
+import dalle6 from "../img/dalle/dalle6.png";
+import dalle7 from "../img/dalle/dalle7.png";
+import dalle8 from "../img/dalle/dalle8.png";
+import dalle9 from "../img/dalle/dalle9.png";
+import dalle10 from "../img/dalle/dalle10.png";
+import dalle11 from "../img/dalle/dalle11.png";
+import dalle12 from "../img/dalle/dalle12.png";
+import dalle_full1 from "../img/dalle/dalle_full1.png";
+import dalle_full2 from "../img/dalle/dalle_full2.png";
+import dalle_full3 from "../img/dalle/dalle_full3.png";
+import dalle_full4 from "../img/dalle/dalle_full4.png";
+import dalle_full5 from "../img/dalle/dalle_full5.png";
 
 const TextImageRowSection = (props) => {
   return (
@@ -74,10 +94,12 @@ const TextImageRowSection = (props) => {
 
         {/* right side */}
         <div>
-          <img src="https://picsum.photos/600/300" alt="Graph" style={{ width: '100%', borderRadius: 4 }} />
+          {/* <img src="https://picsum.photos/600/300" alt="Graph" style={{ width: '100%', borderRadius: 4 }} /> */}
+          <img src={props.imageSrc} alt="Graph" style={{ width: '600px', borderRadius: 4 }} />
         </div>
 
       </div>
+      {/* {props.actionWrapper && <div>{props.actionWrapper}</div>} */}
     </div >
   )
 }
@@ -121,7 +143,7 @@ const TextImageRow = (props) => {
 
         {/* right side */}
         <div>
-          <img src="https://picsum.photos/600/300" alt="Graph" style={{ width: '100%', borderRadius: 4 }} />
+          <img src={props.imgSrc} alt="Graph" style={{ width: '300px', borderRadius: 4 }} />
         </div>
 
       </div>
@@ -129,6 +151,13 @@ const TextImageRow = (props) => {
   )
 }
 
+const FulLWidthImgCustom = (props) => {
+  return (
+    <div style={{ margin: '-20px' }}>
+      <img src={props.src} alt="Graph" style={{ width: '100%', height: '400px', borderRadius: 4 }} />
+    </div>
+  )
+}
 
 // eslint-disable-next-line
 const HeaderComponent = (props) => {
@@ -155,29 +184,33 @@ const HeaderComponent = (props) => {
             // marginTop: 32,
             fontSize: 32,
           }}>
-            Win More Bets
+            BetSweatWin Analytics: Next-Gen Sports Statistics!
           </h1>
           <h2 style={{
             marginTop: 16,
             fontSize: 24,
           }}>
-            Go h2remium to access our most exclusive tools. As low as $9.99/month!
+            Dive into BetSweatWin Analytics, where cutting-edge technology meets unparalleled sports insights. Elevate your sports experience with tools and insights tailored for today's enthusiast.
           </h2>
           {/* <Typography variant="h3" color="secondary">Win More Bets</Typography> */}
           <div style={{
             marginTop: 32,
           }}>
-            <Button variant="contained" color="primary" style={{ marginRight: 8 }}>Upgrade Now</Button>
-            <Button variant="contained" color="secondary">Upgrade For Free!</Button>
+            {props.actionWrapper}
+            {/* <Button variant="contained" color="primary" style={{ marginRight: 8 }}>Upgrade Now</Button>
+            <Button variant="contained" color="secondary">Upgrade For Free!</Button> */}
             <SocialIconsRow />
           </div>
         </div>
         {/* right side */}
         <div>
-          <img src="https://picsum.photos/600/300" alt="Graph" style={{ width: '100%', borderRadius: 4 }} />
+          <img src={dalle1} alt="BSW_Header" style={{ width: '600px', borderRadius: 4 }} />
+          {/* <img src="https://picsum.photos/600/300" alt="Graph" style={{ width: '100%', borderRadius: 4 }} /> */}
+
         </div>
 
       </div>
+
     </div >
   )
 }
@@ -204,15 +237,48 @@ const ServiceSection = (props) => {
           textAlign: 'center',
           marginTop: 16,
           fontSize: 24,
-        }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna a</p>
+        }}>
+          Discover the unparalleled suite of tools and services offered by BetSweatWin Analytics. Designed for both novices and experts, we're here to elevate your sports analytics experience.
+
+
+        </p>
       </div>
+
+
+      <TextImageRow
+        // sectionBgColor={}
+        textDirection={'row'}
+        sectionTitle={'Elite Analytics Dashboard'}
+        sectionDescription={'Get a glimpse of the most detailed statistics, charts, and predictions curated by our top analysts. Enhance your betting game by understanding the nuances of every match, player, and team.'}
+        imgSrc={dalle11}
+      // actionWrapper={ }
+      />
+      <TextImageRow
+        // sectionBgColor={}
+        textDirection={"row-reverse"}
+        sectionTitle={"Comprehensive Training Modules"}
+        sectionDescription={"We offer in-depth training modules and tutorials to help our users understand the world of sports betting. From the basics to advanced strategies, we've got you covered."}
+        // actionWrapper={ }
+        imgSrc={dalle8}
+      />
+
+      <TextImageRow
+        // sectionBgColor={}
+        textDirection={"row"}
+        sectionTitle={"Community & Expert Forums"}
+        sectionDescription={"Join our community of avid sports enthusiasts and betting experts. Engage in discussions, share insights, ask questions, and learn from the best in the industry."}
+        imgSrc={dalle9}
+      // actionWrapper={ }
+      />
+
       <div style={{
         display: 'flex',
         alignItems: 'center',
         flexDirection: props.textDirection,
         justifyContent: 'space-evenly',
         flexWrap: 'wrap',
-        marginTop: 16,
+        margin: '16px 0px 20px 0px',
+        paddingBottom: 16,
       }}>
         {/* left side */}
         <div
@@ -236,39 +302,15 @@ const ServiceSection = (props) => {
           <div style={{
             marginTop: 32,
           }}>
-            <Button variant="contained" color="primary" style={{ marginRight: 8 }}>Upgrade Now</Button>
-            <Button variant="contained" color="secondary">Upgrade For Free!</Button>
+          {props.actionWrapper}
           </div>
         </div>
         {/* right side */}
         <div>
-          <img src="https://picsum.photos/600/300" alt="Graph" style={{ width: '100%', borderRadius: 4 }} />
+          <img src={dalle12} alt="Graph" style={{ width: '500px', borderRadius: 4 }} />
         </div>
 
       </div>
-
-      <TextImageRow
-        // sectionBgColor={}
-        textDirection={'row'}
-        sectionTitle={'Service 1'}
-        sectionDescription={'Service 1 Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1Service 1'}
-      // actionWrapper={ }
-      />
-      <TextImageRow
-        // sectionBgColor={}
-        textDirection={'row-reverse'}
-        sectionTitle={'Service 2'}
-        sectionDescription={'Service 2 Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2'}
-      // actionWrapper={ }
-      />
-
-      <TextImageRow
-        // sectionBgColor={}
-        textDirection={'row'}
-        sectionTitle={'Service 3'}
-        sectionDescription={'Service 3 Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3Service 3'}
-      // actionWrapper={ }
-      />
 
     </div >
   )
@@ -283,6 +325,8 @@ export const IndexPageTemplate = ({
   intro,
 }) => {
   const heroImage = getImage(image) || image;
+  const { isSignedIn, sessionId, userId } = useAuth();
+
   // useEffect(() => {
   //  window.location.href='/about' 
   // },[])
@@ -291,30 +335,55 @@ export const IndexPageTemplate = ({
       <HeaderComponent
         textDirection={'row'}
         sectionBgColor={'#99e6ff'}
+       actionWrapper={!isSignedIn ?
+          <Button variant="contained" color="primary" style={{ marginRight: 8 }}>Sign up now!</Button> :
+          <Button variant="contained" color="secondary">Upgrade For Free!</Button>
+        }
       />
       <TextImageRowSection
         sectionBgColor={'#eff3fc'}
         textDirection={'row-reverse'}
         sectionTitle={'About BetSweatWin Analytics'}
-        sectionDescription={'Service 2 Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2'}
-      // actionWrapper={ }
+        sectionDescription={"At BetSweatWin Analytics, we're more than just a sports analytics company - we're your partner in elevating your sports experience. Our journey is deeply rooted in a passion for sports, combined with the power of cutting-edge analytics, bringing you the best of both worlds."}
+        actionWrapper={<div style={{
+          marginTop: 32,
+        }}>
+          <h2>What Sets Us Apart:</h2>
+          <ul>
+            <li><strong>Expertise & Passion:</strong> Our team consists of sports veterans and analytics experts, ensuring that every piece of content, every tool, and every insight is top-notch and credible.</li>
+            <li><strong>Affordability:</strong> We take pride in being the most affordable analytics dashboard in the industry, making sure that high-quality sports analytics are accessible to all.</li>
+            <li><strong>Innovation & Future-Ready Tools:</strong> With our advanced AI intelligence model, we're not just keeping up with the trends; we're setting them. Our tools evolve, learn, and adapt, ensuring you're always ahead of the game.</li>
+            <li><strong>Community at Heart:</strong> BetSweatWin is not just a platform; it's a community. We listen, engage, and grow with our users. Your feedback and success stories are our driving force.</li>
+          </ul>
+        </div>}
+        imageSrc={dalle2}
       />
 
-      <FullWidthImage img={heroImage} />
+      {/* <FullWidthImage img={heroImage} /> */}
+      <FulLWidthImgCustom src={dalle_full5} />
 
       <ServiceSection
         textDirection={'row-reverse'}
         sectionBgColor={'#99e6ff'}
+        actionWrapper= {!isSignedIn ?
+          <Button variant="contained" color="primary" style={{ marginRight: 8 }}>Sign up now!</Button> :
+          <Button variant="contained" color="secondary">Upgrade For Free!</Button>
+        }
+
       />
 
-      <FullWidthImage img={heroImage} />
-
+      {/* <FullWidthImage img={dalle_full1} /> */}
+      <FulLWidthImgCustom src={dalle_full1} />
+      {/* dalle_full1
+dalle_full2
+dalle_full3 */}
       <TextImageRowSection
         sectionBgColor={'#eff3fc'}
         textDirection={'row'}
-        sectionTitle={'About BetSweatWin Analytics'}
-        sectionDescription={'Service 2 Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2Service 2'}
-      // actionWrapper={ }
+        sectionTitle={'Why BetSweatWin Analytics'}
+
+        sectionDescription={"At BetSweatWin, innovation is in our DNA. We're constantly pushing boundaries to offer the most advanced analytics in the industry. Our platform is built with you, the community, at its heart—taking advice and feedback from our valued users to continually refine our services. Reliability is not just a promise; it's our ethos. We pride ourselves on nurturing strong partnerships, ensuring that every aspect of our service exceeds expectations. Dive into a realm where data meets passion and where you, our community, guide the future."}
+        imageSrc={dalle3}
       />
 
     </>
