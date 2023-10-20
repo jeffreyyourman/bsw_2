@@ -176,10 +176,8 @@ export default function NFLFanduelDFS(props) {
       // console.log('fetchfanduel slate lists - response - ', response.data);
 
       let selectedSlate = null;
-
       // Find the first slate with "main" in slate_type
-      const mainSlate = response.data.data.find((slate) => slate.slate_type.toLowerCase().includes("Main"));
-
+      const mainSlate = response.data.data.find((slate) => slate.slate_type.toLowerCase().includes("main"));
       if (mainSlate) {
         selectedSlate = mainSlate;
       } else {
