@@ -426,7 +426,7 @@ export default function NFLFanduelDFS(props) {
         "Roster Position",
         'opp_rank',
         "opp_rank_bucket",
-        
+
       ];
 
 
@@ -445,41 +445,89 @@ export default function NFLFanduelDFS(props) {
         order: index + 1  // This uses the index as the default order
       }));
 
+      // enhancedDataSet.map((player) => {
+      //   const playerName = `${player["First Name"]} ${player["Last Name"]}`;
+
+      //   if (projectionsToMatch && projectionsToMatch.length !== 0) {
+
+      //     const isPlayerInProjections = projectionsToMatch.some((projection) => {
+      //       const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
+      //       return playerName === projectionsToMatchName;
+      //     });
+
+      //     if (isPlayerInProjections) {
+      //       // Player is in projectionsToMatch, update properties as needed
+      //       projectionsToMatch.forEach((projection) => {
+      //         const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
+      //         if (playerName === projectionsToMatchName) {
+      //           // Update player properties based on projection data
+      //           player.FPPG = projection.ppg;
+      //           player.Value = projection.value;
+      //           player.opp_rank = projection.opp_rank;
+      //           player.opp_rank_bucket = projection.opp_rank_bucket;
+      //           player.projected_team_score = projection.projected_team_score;
+      //           // Add more properties as needed
+      //         }
+      //       });
+      //     }
+
+
+      //     return player;
+      //   }
+      // });
+
       enhancedDataSet.map((player) => {
         const playerName = `${player["First Name"]} ${player["Last Name"]}`;
 
-        // Check if player is in projectionsToMatch based on name
-        const isPlayerInProjections = projectionsToMatch.some((projection) => {
-          const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
-          return playerName === projectionsToMatchName;
-        });
-
-        if (isPlayerInProjections) {
-          // Player is in projectionsToMatch, update properties as needed
-          projectionsToMatch.forEach((projection) => {
-            const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
-            if (playerName === projectionsToMatchName) {
-              // Update player properties based on projection data
-              player.FPPG = projection.ppg;
-              player.Value = projection.value;
-              player.opp_rank = projection.opp_rank;
-              player.opp_rank_bucket = projection.opp_rank_bucket;
-              player.projected_team_score = projection.projected_team_score;
-              // Add more properties as needed
-            }
-          });
+        if (player['Injury Indicator'] === 'O') {
+          // If the player has an Injury Indicator of "O", set FPPG to 0
+          player.FPPG = 0;
+          return player; // Return the player immediately without further checks
         }
 
-        // console.log('player', player);
-        return player;
+        if (projectionsToMatch && projectionsToMatch.length !== 0) {
+          const isPlayerInProjections = projectionsToMatch.some((projection) => {
+            const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
+            return playerName === projectionsToMatchName;
+          });
+
+          if (isPlayerInProjections) {
+            // Player is in projectionsToMatch, update properties as needed
+            projectionsToMatch.forEach((projection) => {
+              const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
+              if (playerName === projectionsToMatchName) {
+                // Update player properties based on projection data
+                player.FPPG = projection.ppg;
+                player.Value = projection.value;
+                player.opp_rank = projection.opp_rank;
+                player.opp_rank_bucket = projection.opp_rank_bucket;
+                player.projected_team_score = projection.projected_team_score;
+                // Add more properties as needed
+              }
+            });
+          }
+
+          return player;
+        }
       });
 
+
+      // Check if player is in projectionsToMatch based on name
+      console.log('dataSet', dataSet);
       // Set the default headers to state directly without any overriding logic.
       const injuredPlayers = enhancedDataSet.filter(player => player['Injury Indicator'] !== '');
       const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
 
-      // Players with FPPG not equal to 0
+      // // Players with FPPG not equal to 0
       const remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
+
+      // const excludedPlayers = enhancedDataSet.filter(player =>
+      //   Number(player.FPPG) <= 2 || player['Injury Indicator'] !== ''
+      // );
+
+      // const remainingPlayers = enhancedDataSet.filter(player =>
+      //   Number(player.FPPG) > 2 && player['Injury Indicator'] === ''
+      // );
 
 
       setData(enhancedDataSet)
@@ -1270,7 +1318,7 @@ export default function NFLFanduelDFS(props) {
                       paddingBottom: '0px'
                     }}
 
-                      label={<span style={{color:'red', fontSize:16}}>
+                      label={<span style={{ color: 'red', fontSize: 16 }}>
                         View Lineups
                         <span style={{
                           marginLeft: 5,
