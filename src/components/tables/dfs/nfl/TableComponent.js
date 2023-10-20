@@ -97,66 +97,7 @@ export default function TableComponent(props) {
       }
     });
   }, [data, filteredPlayers, excludePlayerLines, order, orderBy,]);
-  // }, [filteredPlayers, order, orderBy, excludePlayerLines]);
-  // }, [filteredPlayers, order, orderBy, ogFilteredPlayers]);
-
-
-  // const handleLock = (isLocked, rowIndex) => {
-  //   let updatedPlayers = [...filteredPlayers];
-  //   updatedPlayers[rowIndex].isLocked = isLocked;
-  //   setFilteredPlayers(updatedPlayers);
-  //   // submittedPlayersForOptimizer
-  //   setSubmittedPlayersForOptimizer(updatedPlayers);
-  // };
-
-  // const handleExclude = (playerId) => {
-  //   // console.log('exclude palyerId', playerId);
-  //   // Copy the data to not directly mutate the state
-  //   let playersCopy = [...filteredPlayers];
-  //   let excludedCopy = [...excludePlayerLines];
-
-  //   // Find the index of the player to be excluded
-  //   const playerIndex = playersCopy.findIndex(player => player.Id === playerId);
-  //   // console.log('playerIndex', playerIndex);
-  //   if (playerIndex === -1) return; // Exit function if player not found
-
-  //   // Get the player to be excluded
-  //   const excludedPlayer = playersCopy.splice(playerIndex, 1)[0];
-
-  //   // Add that player to the excludedCopy
-  //   excludedCopy.push(excludedPlayer);
-
-  //   // Update the state
-  //   // submittedPlayersForOptimizer
-  //   setSubmittedPlayersForOptimizer(playersCopy);
-  //   setFilteredPlayers(playersCopy);
-  //   setExcludePlayerLines(excludedCopy);
-  // };
-
-  // function handleInclude(playerId) {
-
-  //   // console.log('palyerId', playerId);
-  //   // Copy the excluded players to not directly mutate the state
-  //   let excludedCopy = [...excludePlayerLines];
-  //   let playersFilteredCopy = [...filteredPlayers];
-
-  //   // Find the index of the player to be included
-  //   const playerIndex = excludedCopy.findIndex(player => player.Id === playerId);
-
-  //   if (playerIndex === -1) return; // Exit function if player not found
-
-  //   // Get the player to be included
-  //   const includedPlayer = excludedCopy.splice(playerIndex, 1)[0];
-
-  //   // Add that player to the end of the playersFilteredCopy
-  //   playersFilteredCopy.push(includedPlayer);
-
-  //   // Update the state
-  //   setFilteredPlayers(playersFilteredCopy);
-  //   // submittedPlayersForOptimizer
-  //   setSubmittedPlayersForOptimizer(playersFilteredCopy);
-  //   setExcludePlayerLines(excludedCopy);
-  // }
+  
   const handleLock = (isLocked, rowIndex) => {
     let updatedPlayers = [...props.submittedPlayersForOptimizer]; // Clone the array
     updatedPlayers[rowIndex].isLocked = isLocked;

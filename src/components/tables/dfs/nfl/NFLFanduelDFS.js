@@ -130,10 +130,10 @@ export default function NFLFanduelDFS(props) {
   const [teamGroups, setTeamGroups] = useState([]);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
-  const [numLineups, setNumLineups] = useState(25);
+  const [numLineups, setNumLineups] = useState(5);
   const [totalMaxExp, setTotalMaxExp] = useState(35);
   const [randomStd, setrandomStd] = useState(25);
-  const [position, setPosition] = useState('All');
+  const [currentPosition, setCurrentPosition] = useState('All');
   // const [searchFilter, setSearchFilter] = useState('');
   const [excludeOpposingDefense, setExcludeOpposingDefense] = useState(false);
   const [pairQbWithWrOrTe, setPairQbWithWrOrTe] = useState(false);
@@ -477,7 +477,7 @@ export default function NFLFanduelDFS(props) {
       enhancedDataSet.map((player) => {
         const playerName = `${player["First Name"]} ${player["Last Name"]}`;
 
-        if (player['Injury Indicator'] === 'O') {
+        if (player['Injury Indicator'] === 'O' || player['Injury Indicator'] === 'D' || player['Injury Indicator'] === 'IR') {
           // If the player has an Injury Indicator of "O", set FPPG to 0
           player.FPPG = 0;
           return player; // Return the player immediately without further checks
@@ -586,7 +586,7 @@ export default function NFLFanduelDFS(props) {
 
 
   const handleSearchOnChange = (text) => {
-    if (position !== 'All') setPosition('All')
+    if (currentPosition !== 'All') setCurrentPosition('All')
     if (excludedTeams.length !== 0) setExcludedTeams([])
 
     let searchTextLowerCase = text.toLowerCase();
@@ -603,7 +603,7 @@ export default function NFLFanduelDFS(props) {
     }
   };
   const handleSearchExcludedPlayersOnChange = (text) => {
-    if (position !== 'All') setPosition('All')
+    if (currentPosition !== 'All') setCurrentPosition('All')
     if (excludedTeams.length !== 0) setExcludedTeams([])
 
     let searchTextLowerCase = text.toLowerCase();
@@ -621,11 +621,11 @@ export default function NFLFanduelDFS(props) {
     }
   };
 
-  const filterPlayersByPosition = (position) => {
+  const filterPlayersByPosition = (positionParam) => {
     let filtered = ogfilteredPlayers;
 
-    if (position !== "All") {
-      filtered = filtered.filter(player => player.Position === position);
+    if (positionParam !== "All") {
+      filtered = filtered.filter(player => player.Position === positionParam);
     }
 
     // Exclude players that are in excludePlayerLines for both "All" and specific positions
@@ -854,6 +854,7 @@ export default function NFLFanduelDFS(props) {
         setLineups({ lineups: sortedLineupsDes });
 
         setLoading(false)
+        setTableTabValue(4);
       })
       .catch((error) => {
         setLoading(false)
@@ -1157,9 +1158,9 @@ export default function NFLFanduelDFS(props) {
                 <div className="dfs-optimizer-filter-wrapper">
                   <NflPlayerPosFilter
                     players={data}
-                    selectedPosition={position}
+                    selectedPosition={currentPosition}
                     filterPlayersByPosition={filterPlayersByPosition}
-                    onPositionChange={setPosition}
+                    onPositionChange={setCurrentPosition}
                   />
                 </div>}
               <div className="dfs-optimizer-filter-wrapper">
