@@ -302,7 +302,7 @@ const ServiceSection = (props) => {
           <div style={{
             marginTop: 32,
           }}>
-          {props.actionWrapper}
+            {props.actionWrapper}
           </div>
         </div>
         {/* right side */}
@@ -335,7 +335,7 @@ export const IndexPageTemplate = ({
       <HeaderComponent
         textDirection={'row'}
         sectionBgColor={'#99e6ff'}
-       actionWrapper={!isSignedIn ?
+        actionWrapper={!isSignedIn ?
           <Button variant="contained" color="primary" style={{ marginRight: 8 }}>Sign up now!</Button> :
           <Button variant="contained" color="secondary">Upgrade For Free!</Button>
         }
@@ -348,7 +348,7 @@ export const IndexPageTemplate = ({
         actionWrapper={<div style={{
           marginTop: 32,
         }}>
-          <h2>What Sets Us Apart:</h2>
+          <h2 style={{ fontSize: 24 }}>What Sets Us Apart:</h2>
           <ul>
             <li><strong>Expertise & Passion:</strong> Our team consists of sports veterans and analytics experts, ensuring that every piece of content, every tool, and every insight is top-notch and credible.</li>
             <li><strong>Affordability:</strong> We take pride in being the most affordable analytics dashboard in the industry, making sure that high-quality sports analytics are accessible to all.</li>
@@ -365,7 +365,7 @@ export const IndexPageTemplate = ({
       <ServiceSection
         textDirection={'row-reverse'}
         sectionBgColor={'#99e6ff'}
-        actionWrapper= {!isSignedIn ?
+        actionWrapper={!isSignedIn ?
           <Button variant="contained" color="primary" style={{ marginRight: 8 }}>Sign up now!</Button> :
           <Button variant="contained" color="secondary">Upgrade For Free!</Button>
         }
