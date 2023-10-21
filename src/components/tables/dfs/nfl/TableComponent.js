@@ -97,7 +97,7 @@ export default function TableComponent(props) {
       }
     });
   }, [data, filteredPlayers, excludePlayerLines, order, orderBy,]);
-  
+
   const handleLock = (isLocked, rowIndex) => {
     let updatedPlayers = [...props.submittedPlayersForOptimizer]; // Clone the array
     updatedPlayers[rowIndex].isLocked = isLocked;
@@ -106,8 +106,23 @@ export default function TableComponent(props) {
     setSubmittedPlayersForOptimizer(updatedPlayers); // Update the state
   };
 
+  // const handleExclude = (playerId) => {
+  //   let playersCopy = [...props.submittedPlayersForOptimizer]; // Clone the array
+  //   let excludedCopy = [...excludePlayerLines];
+  //   const playerIndex = playersCopy.findIndex((player) => player.Id === playerId);
+
+  //   if (playerIndex === -1) return;
+
+  //   const excludedPlayer = playersCopy.splice(playerIndex, 1)[0];
+  //   excludedCopy.push(excludedPlayer);
+  //   setFilteredPlayers(playersCopy);
+
+  //   setSubmittedPlayersForOptimizer(playersCopy);
+  //   setExcludePlayerLines(excludedCopy);
+  // };
+
   const handleExclude = (playerId) => {
-    let playersCopy = [...props.submittedPlayersForOptimizer]; // Clone the array
+    let playersCopy = [...props.submittedPlayersForOptimizer];
     let excludedCopy = [...excludePlayerLines];
     const playerIndex = playersCopy.findIndex((player) => player.Id === playerId);
 
@@ -115,12 +130,14 @@ export default function TableComponent(props) {
 
     const excludedPlayer = playersCopy.splice(playerIndex, 1)[0];
     excludedCopy.push(excludedPlayer);
-    setFilteredPlayers(playersCopy);
 
-    setSubmittedPlayersForOptimizer(playersCopy);
+    // Filter the players based on the position after excluding
+    const finalPlayers = props.positionFilter === "All" ? playersCopy : playersCopy.filter(player => player.Position === props.positionFilter);
+
+    setFilteredPlayers(finalPlayers);
+    setSubmittedPlayersForOptimizer(finalPlayers);
     setExcludePlayerLines(excludedCopy);
   };
-
   const handleInclude = (playerId) => {
     let excludedCopy = [...excludePlayerLines];
     let playersFilteredCopy = [...props.submittedPlayersForOptimizer]; // Clone the array

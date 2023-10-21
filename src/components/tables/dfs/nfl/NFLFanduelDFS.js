@@ -622,6 +622,8 @@ export default function NFLFanduelDFS(props) {
   };
 
   const filterPlayersByPosition = (positionParam) => {
+    // setCurrentPosition(positionParam)
+
     let filtered = ogfilteredPlayers;
 
     if (positionParam !== "All") {
@@ -1364,7 +1366,11 @@ export default function NFLFanduelDFS(props) {
                 excludePlayerLines={excludePlayerLines}
                 setOgFilteredPlayers={setOgFilteredPlayers}
                 ogFilteredPlayers={ogfilteredPlayers}
-                setExcludePlayerLines={setExcludePlayerLines} />}
+                positionFilter={currentPosition}
+                setExcludePlayerLines={setExcludePlayerLines}
+              />
+
+              }
 
               {/* My Players Table */}
               {tableTabValue === 1 && <TableComponent
@@ -1390,7 +1396,11 @@ export default function NFLFanduelDFS(props) {
                 excludePlayerLines={excludePlayerLines}
                 setOgFilteredPlayers={setOgFilteredPlayers}
                 ogFilteredPlayers={ogfilteredPlayers}
-                setExcludePlayerLines={setExcludePlayerLines} />}
+                positionFilter={currentPosition}
+                setExcludePlayerLines={setExcludePlayerLines}
+              />
+
+              }
 
               {/* Exlcude Players Table */}
               {tableTabValue === 2 && <TableComponent
@@ -1418,7 +1428,11 @@ export default function NFLFanduelDFS(props) {
 
                 setOgFilteredPlayers={setOgExcludePlayerLines}
                 ogFilteredPlayers={ogExcludePlayerLines}
-                setExcludePlayerLines={setExcludePlayerLines} />}
+                positionFilter={currentPosition}
+                setExcludePlayerLines={setExcludePlayerLines}
+              />
+
+              }
 
               {/* Injured Players Table */}
               {tableTabValue === 3 && <TableComponent
@@ -1447,7 +1461,11 @@ export default function NFLFanduelDFS(props) {
 
                 setOgFilteredPlayers={setOgExcludePlayerLines}
                 ogFilteredPlayers={ogExcludePlayerLines}
-                setExcludePlayerLines={setExcludePlayerLines} />}
+                positionFilter={currentPosition}
+                setExcludePlayerLines={setExcludePlayerLines}
+              />
+
+              }
 
 
               {tableTabValue === 4 && <NFLFanduelDfsLineups
