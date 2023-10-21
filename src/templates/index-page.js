@@ -143,7 +143,7 @@ const TextImageRow = (props) => {
 
         {/* right side */}
         <div>
-          <img src={props.imgSrc} alt="Graph" style={{ width: '300px', borderRadius: 4 }} />
+          <img src={props.imgSrc} alt="Graph" style={{ width: 500, borderRadius: 4 }} />
         </div>
 
       </div>
@@ -225,7 +225,9 @@ const ServiceSection = (props) => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: 25,
+        padding: '64px 25px 25px 25px',
+        // paddingTop:32,
+        marginBottom:48,
       }}
       >
         <h1 style={{
@@ -245,31 +247,37 @@ const ServiceSection = (props) => {
       </div>
 
 
-      <TextImageRow
-        // sectionBgColor={}
-        textDirection={'row'}
-        sectionTitle={'Elite Analytics Dashboard'}
-        sectionDescription={'Get a glimpse of the most detailed statistics, charts, and predictions curated by our top analysts. Enhance your betting game by understanding the nuances of every match, player, and team.'}
-        imgSrc={dalle11}
-      // actionWrapper={ }
-      />
-      <TextImageRow
-        // sectionBgColor={}
-        textDirection={"row-reverse"}
-        sectionTitle={"Comprehensive Training Modules"}
-        sectionDescription={"We offer in-depth training modules and tutorials to help our users understand the world of sports betting. From the basics to advanced strategies, we've got you covered."}
+      <div style={{marginBottom:64}}>
+        <TextImageRow
+          // sectionBgColor={}
+          textDirection={'row'}
+          sectionTitle={'Elite Analytics Dashboard'}
+          sectionDescription={'Get a glimpse of the most detailed statistics, charts, and predictions curated by our top analysts. Enhance your betting game by understanding the nuances of every match, player, and team.'}
+          imgSrc={dalle11}
         // actionWrapper={ }
-        imgSrc={dalle8}
-      />
+        />
+        <div style={{marginBottom:64}}>
+        </div>
+        <TextImageRow
+          // sectionBgColor={}
+          textDirection={"row-reverse"}
+          sectionTitle={"Comprehensive Training Modules"}
+          sectionDescription={"We offer in-depth training modules and tutorials to help our users understand the world of sports betting. From the basics to advanced strategies, we've got you covered."}
+          // actionWrapper={ }
+          imgSrc={dalle8}
+        />
+      </div>
 
-      <TextImageRow
-        // sectionBgColor={}
-        textDirection={"row"}
-        sectionTitle={"Community & Expert Forums"}
-        sectionDescription={"Join our community of avid sports enthusiasts and betting experts. Engage in discussions, share insights, ask questions, and learn from the best in the industry."}
-        imgSrc={dalle9}
-      // actionWrapper={ }
-      />
+      <div style={{marginBottom:64}}>
+        <TextImageRow
+          // sectionBgColor={}
+          textDirection={"row"}
+          sectionTitle={"Community & Expert Forums"}
+          sectionDescription={"Join our community of avid sports enthusiasts and betting experts. Engage in discussions, share insights, ask questions, and learn from the best in the industry."}
+          imgSrc={dalle9}
+        // actionWrapper={ }
+        />
+      </div>
 
       <div style={{
         display: 'flex',
