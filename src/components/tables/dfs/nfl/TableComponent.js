@@ -18,6 +18,7 @@ import {
   FormHelperText,
   FormControlLabel,
   Checkbox,
+  Snackbar,
   Typography,
   Button,
   Select,
@@ -208,6 +209,21 @@ export default function TableComponent(props) {
   }
 
   const exposureColumnsMerged = mergeConfigWithOverrides([
+    
+    {
+      key: 'maxExposure',
+      label: 'Max Exposure',
+      renderer: (rowData) => (
+        <input
+          type="number"
+          min="0"
+          max="100"
+          style={{ width: 65 }}
+          value={rowData['maxExposure'] || ''}
+          onChange={(e) => handleMaxExposureChange(rowData, e.target.value)}
+        />
+      ),
+    },
     {
       key: 'minExposure',
       label: 'Min Exposure',
@@ -222,20 +238,6 @@ export default function TableComponent(props) {
         />
       ),
     },
-    {
-      key: 'maxExposure',
-      label: 'Max Exposure',
-      renderer: (rowData) => (
-        <input
-          type="number"
-          min="0"
-          max="100"
-          style={{ width: 65 }}
-          value={rowData['maxExposure'] || ''}
-          onChange={(e) => handleMaxExposureChange(rowData, e.target.value)}
-        />
-      ),
-    }
   ]);
 
   const actionColumnsMerged = mergeConfigWithOverrides([
@@ -351,6 +353,24 @@ export default function TableComponent(props) {
           </select>
         </div>
         <div>
+
+          <Button
+            // variant="contained"
+            // color="primary"
+            style={{ marginRight: 8}}
+            onClick={props.resetMinExposureValues}>
+            Reset Min Exposure Values
+          </Button>
+          <Button
+            // variant="contained"
+            // color="primary"
+            onClick={props.resetMaxExposureValues}>
+            Reset Max Exposure Values
+          </Button>
+
+
+        </div>
+        <div>
           <Button onClick={() => setPage(prev => Math.max(prev - 1, 0))} disabled={page === 0}>
             Previous
           </Button>
@@ -358,6 +378,21 @@ export default function TableComponent(props) {
           <Button onClick={() => setPage(prev => Math.min(prev + 1, Math.ceil(sortedPlayers.length / rowsPerPage) - 1))} disabled={page >= Math.floor(sortedPlayers.length / rowsPerPage)}>
             Next
           </Button>
+
+
+
+          <Snackbar
+            open={props.isSnackbarOpen}
+            autoHideDuration={3000}
+            onClose={() => props.setIsSnackbarOpen(false)}
+            message="Exposure values reset successfully!"
+            action={
+              <Button color="secondary" size="small" onClick={() => props.setIsSnackbarOpen(false)}>
+                Close
+              </Button>
+            }
+          />
+
         </div>
       </div>
 

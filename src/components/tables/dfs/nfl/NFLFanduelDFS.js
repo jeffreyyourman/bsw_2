@@ -1,13 +1,13 @@
 
 
 import React, { useState, useEffect } from "react";
-import { useTable, useSortBy, useFilters, usePagination } from "react-table";
-import { CSVLink } from "react-csv";
+
 import { useColumns, useExcludeColumns } from "./NflDfsTableColumns";
 // import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
 import axios from "axios";
 import {
   Button,
+  Snackbar
 } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -84,11 +84,12 @@ export default function NFLFanduelDFS(props) {
   const classes = useStyles();
   const columns = useColumns();
   const clerk = useClerk();
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+
   const [tabValue, setTabValue] = useState(0);
   const [tableTabValue, setTableTabValue] = useState(1);
   const [playerGroups, setPlayerGroups] = useState([]);
-
   const handleClose = () => {
     setOpenModal(false);
   };
@@ -653,6 +654,41 @@ export default function NFLFanduelDFS(props) {
     }
   };
 
+
+  const resetMinExposureValues = () => {
+    const resetPlayers = submittedPlayersForOptimizer.map(player => {
+      return {
+        ...player,
+        minExposure: '',
+        maxExposure: player.maxExposure
+      };
+    });
+    // setData(enhancedDataSet)
+    // setFilteredInjuredPlayers(injuredPlayers)
+    // setExcludePlayerLines(excludedPlayers);
+    // setOgExcludePlayerLines(excludedPlayers);
+
+    setFilteredPlayers(resetPlayers);
+    setSubmittedPlayersForOptimizer(resetPlayers);
+    setOgFilteredPlayers(resetPlayers);
+
+    setSubmittedPlayersForOptimizer(resetPlayers);
+    setIsSnackbarOpen(true); // Open the snackbar
+  };
+  const resetMaxExposureValues = () => {
+    const resetPlayers = submittedPlayersForOptimizer.map(player => {
+      return {
+        ...player,
+        minExposure: player.minExposure,
+        maxExposure: ''
+      };
+    });
+
+    setFilteredPlayers(resetPlayers);
+    setSubmittedPlayersForOptimizer(resetPlayers);
+    setOgFilteredPlayers(resetPlayers);
+    setIsSnackbarOpen(true); // Open the snackbar
+  };
 
 
   let handleSubmitPlayers = () => {
@@ -1345,8 +1381,8 @@ export default function NFLFanduelDFS(props) {
               {/* All Players Table */}
               {tableTabValue === 0 && <TableComponent
                 overrides={[
-                  { key: 'maxExposure', order: 1 },
-                  { key: 'minExposure', order: 2 },
+                  { key: 'minExposure', order: 1 },
+                  { key: 'maxExposure', order: 2 },
                   { key: 'exclude', order: 3 },
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
@@ -1368,6 +1404,10 @@ export default function NFLFanduelDFS(props) {
                 ogFilteredPlayers={ogfilteredPlayers}
                 positionFilter={currentPosition}
                 setExcludePlayerLines={setExcludePlayerLines}
+                setIsSnackbarOpen={setIsSnackbarOpen}
+                isSnackbarOpen={isSnackbarOpen}
+                resetMinExposureValues={resetMinExposureValues}
+                resetMaxExposureValues={resetMaxExposureValues}
               />
 
               }
@@ -1375,8 +1415,8 @@ export default function NFLFanduelDFS(props) {
               {/* My Players Table */}
               {tableTabValue === 1 && <TableComponent
                 overrides={[
-                  { key: 'maxExposure', order: 1 },
-                  { key: 'minExposure', order: 2 },
+                  { key: 'minExposure', order: 1 },
+                  { key: 'maxExposure', order: 2 },
                   { key: 'exclude', order: 3 },
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
@@ -1398,6 +1438,11 @@ export default function NFLFanduelDFS(props) {
                 ogFilteredPlayers={ogfilteredPlayers}
                 positionFilter={currentPosition}
                 setExcludePlayerLines={setExcludePlayerLines}
+                setIsSnackbarOpen={setIsSnackbarOpen}
+                isSnackbarOpen={isSnackbarOpen}
+                resetMinExposureValues={resetMinExposureValues}
+                resetMaxExposureValues={resetMaxExposureValues}
+
               />
 
               }
@@ -1405,8 +1450,8 @@ export default function NFLFanduelDFS(props) {
               {/* Exlcude Players Table */}
               {tableTabValue === 2 && <TableComponent
                 overrides={[
-                  { key: 'maxExposure', order: 1 },
-                  { key: 'minExposure', order: 2 },
+                  { key: 'minExposure', order: 1 },
+                  { key: 'maxExposure', order: 2 },
                   { key: 'include', order: 3 },
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
@@ -1430,6 +1475,11 @@ export default function NFLFanduelDFS(props) {
                 ogFilteredPlayers={ogExcludePlayerLines}
                 positionFilter={currentPosition}
                 setExcludePlayerLines={setExcludePlayerLines}
+                setIsSnackbarOpen={setIsSnackbarOpen}
+                isSnackbarOpen={isSnackbarOpen}
+                resetMinExposureValues={resetMinExposureValues}
+                resetMaxExposureValues={resetMaxExposureValues}
+
               />
 
               }
@@ -1438,8 +1488,8 @@ export default function NFLFanduelDFS(props) {
               {tableTabValue === 3 && <TableComponent
 
                 overrides={[
-                  { key: 'maxExposure', order: 1 },
-                  { key: 'minExposure', order: 2 },
+                  { key: 'minExposure', order: 1 },
+                  { key: 'maxExposure', order: 2 },
                   { key: 'exclude', order: 3 },
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
@@ -1463,6 +1513,10 @@ export default function NFLFanduelDFS(props) {
                 ogFilteredPlayers={ogExcludePlayerLines}
                 positionFilter={currentPosition}
                 setExcludePlayerLines={setExcludePlayerLines}
+                setIsSnackbarOpen={setIsSnackbarOpen}
+                isSnackbarOpen={isSnackbarOpen}
+                resetMinExposureValues={resetMinExposureValues}
+                resetMaxExposureValues={resetMaxExposureValues}
               />
 
               }
