@@ -57,7 +57,7 @@ pricing:
       price: "15"
     - description: Per month
       items:
-        - "#   Up to 150 Lineups Per"
+        - "# Up to 150 Lineups Per"
         - 5-9 Stacks Settings Saved
         - Upload Your Own Projections
         - Content Picks Bundled
