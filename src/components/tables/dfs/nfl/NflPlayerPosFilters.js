@@ -16,7 +16,7 @@ function NflPlayerPosFilters({ selectedPosition, onPositionChange, filterPlayers
                     key={position}
                     onClick={() => {
                         onPositionChange(position)
-                        filterPlayersByPosition(position)
+                        // filterPlayersByPosition(position)
                     }}
                     variant="outlined"
                     style={{ backgroundColor: selectedPosition === position ? '#00203d' : 'white', color: selectedPosition === position ? 'white' : 'black' }}

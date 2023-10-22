@@ -222,12 +222,24 @@ export default function NflFdDfsOptimizerSettings(props) {
           <FormControlLabel
             control={
               <Checkbox
+                checked={props.restrict2RBsSameTeam}
+                onChange={props.handleCheckboxChange(props.setRestrict2RBsSameTeam)}
+                color="primary"
+              />
+            }
+            label="Restrict 2 Running Backs from the same team"
+          />
+        </Card>
+        <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
+          <FormControlLabel
+            control={
+              <Checkbox
                 checked={props.restrict2TEsSameTeam}
                 onChange={props.handleCheckboxChange(props.setRestrict2TEsSameTeam)}
                 color="primary"
               />
             }
-            label="Restrict 2 TEs from same team"
+            label="Restrict 2 Tight Ends from the same team"
           />
         </Card>
 

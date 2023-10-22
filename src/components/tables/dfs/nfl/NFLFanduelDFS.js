@@ -140,6 +140,7 @@ export default function NFLFanduelDFS(props) {
   const [pairQbWithWrOrTe, setPairQbWithWrOrTe] = useState(false);
   const [excludeQbANdRb, setExcludeQbANdRb] = useState(false);
   const [restrict2TEsSameTeam, setRestrict2TEsSameTeam] = useState(false);
+  const [restrict2RBsSameTeam, setRestrict2RBsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
   const [skillPlayersAgainstDef, setSkillPlayersAgainstDef] = useState([]);
   const [selectedSlate, setSelectedSlate] = useState('Main');
@@ -335,7 +336,7 @@ export default function NFLFanduelDFS(props) {
         return uploadedPlayer;
       });
 
-
+      console.log('formattedData', formattedData);
 
       fetchPlayerDataSet(mergedData);
       setOpen(false);
@@ -350,6 +351,7 @@ export default function NFLFanduelDFS(props) {
 
 
   const fetchPlayerDataSet = (dataSet, projectionsToMatch) => {
+    console.log('123 - dataSet - ', dataSet);
     if (dataSet[0] === undefined) {
       setHeaders([]);
       setData([]);
@@ -623,7 +625,7 @@ export default function NFLFanduelDFS(props) {
   };
 
   const filterPlayersByPosition = (positionParam) => {
-    // setCurrentPosition(positionParam)
+    setCurrentPosition(positionParam)
 
     let filtered = ogfilteredPlayers;
 
@@ -756,7 +758,10 @@ export default function NFLFanduelDFS(props) {
         restrict2TEsSameTeam && {
           stackType: 'restrictSame',
           positions: ['TE', 'TE'],
-
+        },
+        restrict2RBsSameTeam && {
+          stackType: 'restrictSame',
+          positions: ['RB', 'RB'],
         },
         excludeQbANdRb && {
           stackType: 'restrictSame',
@@ -1156,6 +1161,8 @@ export default function NFLFanduelDFS(props) {
         setExcludeQbANdRb={setExcludeQbANdRb}
         restrict2TEsSameTeam={restrict2TEsSameTeam}
         setRestrict2TEsSameTeam={setRestrict2TEsSameTeam}
+        restrict2RBsSameTeam={restrict2RBsSameTeam}
+        setRestrict2RBsSameTeam={setRestrict2RBsSameTeam}
         includeGlobalGameStack={includeGlobalGameStack}
         setIncludeGlobalGameStack={setIncludeGlobalGameStack}
         globalNumPlayers={globalNumPlayers}
@@ -1408,6 +1415,8 @@ export default function NFLFanduelDFS(props) {
                 isSnackbarOpen={isSnackbarOpen}
                 resetMinExposureValues={resetMinExposureValues}
                 resetMaxExposureValues={resetMaxExposureValues}
+                selectedPosition={currentPosition}
+                filterPlayersByPosition={filterPlayersByPosition}
               />
 
               }
@@ -1442,6 +1451,8 @@ export default function NFLFanduelDFS(props) {
                 isSnackbarOpen={isSnackbarOpen}
                 resetMinExposureValues={resetMinExposureValues}
                 resetMaxExposureValues={resetMaxExposureValues}
+                selectedPosition={currentPosition}
+                filterPlayersByPosition={filterPlayersByPosition}
 
               />
 
@@ -1479,6 +1490,8 @@ export default function NFLFanduelDFS(props) {
                 isSnackbarOpen={isSnackbarOpen}
                 resetMinExposureValues={resetMinExposureValues}
                 resetMaxExposureValues={resetMaxExposureValues}
+                selectedPosition={currentPosition}
+                filterPlayersByPosition={filterPlayersByPosition}
 
               />
 
@@ -1517,6 +1530,8 @@ export default function NFLFanduelDFS(props) {
                 isSnackbarOpen={isSnackbarOpen}
                 resetMinExposureValues={resetMinExposureValues}
                 resetMaxExposureValues={resetMaxExposureValues}
+                selectedPosition={currentPosition}
+                filterPlayersByPosition={filterPlayersByPosition}
               />
 
               }
