@@ -72,15 +72,22 @@ export default function TableComponent(props) {
     }
   };
 
+
   const sortedPlayers = useMemo(() => {
-    if (order === 'default') {
-      return ogFilteredPlayers;
+    let playersToSort = [...data];  // start with all players
+
+    // Filter by position if the props.selectedPosition is not 'All'
+    if (props.selectedPosition !== 'All') {
+      playersToSort = playersToSort.filter(player => player.Position === props.selectedPosition);
     }
 
-    return [...data].sort((a, b) => {
-      // If we have a default sort, just return the original order
-      if (order === 'default') return 0;
+    // If the order is 'default', return the original players list
+    if (order === 'default') {
+      return playersToSort;
+    }
 
+    // Sort players based on the order and orderBy values
+    return playersToSort.sort((a, b) => {
       // Handle numeric sorting explicitly for fields like FPPG
       if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
         if (order === 'asc') {
@@ -97,7 +104,33 @@ export default function TableComponent(props) {
         return a[orderBy] > b[orderBy] ? -1 : 1;
       }
     });
-  }, [data, filteredPlayers, excludePlayerLines, order, orderBy,]);
+  }, [data, props.selectedPosition, order, orderBy]);
+  // const sortedPlayers = useMemo(() => {
+  //   if (order === 'default') {
+  //     return ogFilteredPlayers;
+  //   }
+
+  //   return [...data].sort((a, b) => {
+  //     // If we have a default sort, just return the original order
+  //     if (order === 'default') return 0;
+
+  //     // Handle numeric sorting explicitly for fields like FPPG
+  //     if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
+  //       if (order === 'asc') {
+  //         return parseFloat(a[orderBy]) - parseFloat(b[orderBy]);
+  //       } else {
+  //         return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
+  //       }
+  //     }
+
+  //     // Handle textual sorting (default)
+  //     if (order === 'asc') {
+  //       return a[orderBy] < b[orderBy] ? -1 : 1;
+  //     } else {
+  //       return a[orderBy] > b[orderBy] ? -1 : 1;
+  //     }
+  //   });
+  // }, [data, filteredPlayers, excludePlayerLines, order, orderBy, props.selectedPosition]);
 
   const handleLock = (isLocked, rowIndex) => {
     let updatedPlayers = [...props.submittedPlayersForOptimizer]; // Clone the array
@@ -107,23 +140,8 @@ export default function TableComponent(props) {
     setSubmittedPlayersForOptimizer(updatedPlayers); // Update the state
   };
 
-  // const handleExclude = (playerId) => {
-  //   let playersCopy = [...props.submittedPlayersForOptimizer]; // Clone the array
-  //   let excludedCopy = [...excludePlayerLines];
-  //   const playerIndex = playersCopy.findIndex((player) => player.Id === playerId);
-
-  //   if (playerIndex === -1) return;
-
-  //   const excludedPlayer = playersCopy.splice(playerIndex, 1)[0];
-  //   excludedCopy.push(excludedPlayer);
-  //   setFilteredPlayers(playersCopy);
-
-  //   setSubmittedPlayersForOptimizer(playersCopy);
-  //   setExcludePlayerLines(excludedCopy);
-  // };
-
   const handleExclude = (playerId) => {
-    let playersCopy = [...props.submittedPlayersForOptimizer];
+    let playersCopy = [...props.submittedPlayersForOptimizer]; // Clone the array
     let excludedCopy = [...excludePlayerLines];
     const playerIndex = playersCopy.findIndex((player) => player.Id === playerId);
 
@@ -131,14 +149,13 @@ export default function TableComponent(props) {
 
     const excludedPlayer = playersCopy.splice(playerIndex, 1)[0];
     excludedCopy.push(excludedPlayer);
+    setFilteredPlayers(playersCopy);
 
-    // Filter the players based on the position after excluding
-    const finalPlayers = props.positionFilter === "All" ? playersCopy : playersCopy.filter(player => player.Position === props.positionFilter);
-
-    setFilteredPlayers(finalPlayers);
-    setSubmittedPlayersForOptimizer(finalPlayers);
+    setSubmittedPlayersForOptimizer(playersCopy);
     setExcludePlayerLines(excludedCopy);
+    // props.filterPlayersByPosition(props.selectedPosition)
   };
+
   const handleInclude = (playerId) => {
     let excludedCopy = [...excludePlayerLines];
     let playersFilteredCopy = [...props.submittedPlayersForOptimizer]; // Clone the array
@@ -209,7 +226,7 @@ export default function TableComponent(props) {
   }
 
   const exposureColumnsMerged = mergeConfigWithOverrides([
-    
+
     {
       key: 'maxExposure',
       label: 'Max Exposure',
@@ -357,7 +374,7 @@ export default function TableComponent(props) {
           <Button
             // variant="contained"
             // color="primary"
-            style={{ marginRight: 8}}
+            style={{ marginRight: 8 }}
             onClick={props.resetMinExposureValues}>
             Reset Min Exposure Values
           </Button>
