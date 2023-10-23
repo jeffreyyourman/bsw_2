@@ -138,9 +138,7 @@ export default function NBAFanduelDFS(props) {
   const [excludeOpposingDefense, setExcludeOpposingDefense] = useState(false);
   const [pairQbWithWrOrTe, setPairQbWithWrOrTe] = useState(false);
   const [excludeQbANdRb, setExcludeQbANdRb] = useState(false);
-  // const [restrict2TEsSameTeam, setRestrict2TEsSameTeam] = useState(false);
   const [restrict2CsSameTeam, setRestrict2CsSameTeam] = useState(false);
-  // const [restrict2RBsSameTeam, setRestrict2RBsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
   const [skillPlayersAgainstDef, setSkillPlayersAgainstDef] = useState([]);
   const [selectedSlate, setSelectedSlate] = useState('Main');
@@ -593,36 +591,6 @@ export default function NBAFanduelDFS(props) {
     }
   };
 
-  // const filterPlayersByPosition = (positionParam) => {
-  //   setCurrentPosition(positionParam)
-
-  //   let filtered = ogfilteredPlayers;
-
-  //   if (positionParam !== "All") {
-  //     filtered = filtered.filter(player => player.Position === positionParam);
-  //   }
-
-  //   // Exclude players that are in excludePlayerLines for both "All" and specific positions
-  //   filtered = filtered.filter(player => !excludePlayerLines.some(excludedPlayer => excludedPlayer.Id === player.Id));
-
-  //   setFilteredPlayers(filtered);
-  // };
-  // const filterPlayersByPosition = (positionParam) => {
-  //   setCurrentPosition(positionParam)
-
-  //   let filtered = ogfilteredPlayers;
-
-  //   if (positionParam !== "All") {
-  //     console.log('filtered',filtered[0])
-  //     filtered = filtered.filter(player => player.Position.includes(positionParam));
-  //   }
-
-  //   // Exclude players that are in excludePlayerLines for both "All" and specific positions
-  //   filtered = filtered.filter(player => !excludePlayerLines.some(excludedPlayer => excludedPlayer.Id === player.Id));
-
-  //   setFilteredPlayers(filtered);
-  // };
-
   const handleExcludeTeams = (teamAbbr) => {
     if (excludedTeams.includes(teamAbbr)) {
       // If the team is already excluded, remove it from the exclusion list
@@ -649,10 +617,6 @@ export default function NBAFanduelDFS(props) {
         maxExposure: player.maxExposure
       };
     });
-    // setData(enhancedDataSet)
-    // setFilteredInjuredPlayers(injuredPlayers)
-    // setExcludePlayerLines(excludedPlayers);
-    // setOgExcludePlayerLines(excludedPlayers);
 
     setFilteredPlayers(resetPlayers);
     setSubmittedPlayersForOptimizer(resetPlayers);
@@ -696,8 +660,6 @@ export default function NBAFanduelDFS(props) {
         // maxExposure: player.maxExposure,
         minExposure: Number(player.minExposure),
         maxExposure: Number(player.maxExposure),
-        // minExposure: !player.minExposure ? 0 : Number(player.minExposure),
-        // maxExposure: !player.maxExposure || player.maxExposure == 0 ? totalMaxExp : Number(player.maxExposure),
         Nickname: player.Nickname,
         Opponent: player.Opponent,
         Position: player.Position,
@@ -743,25 +705,6 @@ export default function NBAFanduelDFS(props) {
           stackType: 'restrictSame',
           positions: ['C', 'C'],
         },
-        // restrict2RBsSameTeam && {
-        //   stackType: 'restrictSame',
-        //   positions: ['RB', 'RB'],
-        // },
-        // excludeQbANdRb && {
-        //   stackType: 'restrictSame',
-        //   positions: ['RB', 'QB'],
-
-        // },
-        // pairQbWithWrOrTe && {
-        //   stackType: 'position',
-        //   positions: ['QB', ['WR', 'TE']],
-        //   maxExposure: 50
-        // },
-        // excludeOpposingDefense && {
-        //   stackType: 'restrictOpp',
-        //   team1Pos: ['D'],
-        //   team2Pos: skillPlayersAgainstDef.length === 0 ? ['QB'] : skillPlayersAgainstDef,
-        // },
         includeGlobalGameStack && {
           stackType: 'game',
           numPlayers: globalNumPlayers,
