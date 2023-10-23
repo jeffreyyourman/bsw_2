@@ -18,7 +18,7 @@ import PlayerGroups from './NFLPlayerGroups.js';
 import NFLTeamStacks from './NFLTeamStacks.js';
 import NFLTeamGameStacks from './NFLTeamGameStacks.js';
 import NFLUploadOwnProjections from './NFLUploadOwnProjections.js';
-import TableComponent from './TableComponent.js';
+import TableComponent from '../SharedTableComponent.js';
 import NflFdDfsOptimizerSettings from './NflFdDfsOptimizerSettings.js';
 
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
@@ -64,6 +64,9 @@ const theme = createTheme({
     },
   },
 });
+
+
+const SPORT_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'D'];
 
 
 export default function NFLFanduelDFS(props) {
@@ -1063,7 +1066,7 @@ export default function NFLFanduelDFS(props) {
 
           {tabValue === 1 &&
             <NFLTeamStacks
-              positions={['QB', 'RB', 'WR', 'TE', 'D']}
+              positions={SPORT_POSITIONS}
               groups={teamGroups}
               gameMatchups={gameAndPlayerMatchups}
               setGroups={setTeamGroups}
@@ -1073,7 +1076,7 @@ export default function NFLFanduelDFS(props) {
             />
           }
           {tabValue === 2 && <NFLTeamGameStacks
-            positions={['QB', 'RB', 'WR', 'TE', 'D']}
+            positions={SPORT_POSITIONS}
             groups={teamGameGroups}
             gameMatchups={gameAndPlayerMatchups}
             setGroups={setTeamGameGroups}
@@ -1082,7 +1085,7 @@ export default function NFLFanduelDFS(props) {
             setPlayerGroups={setPlayerGroups}
           />}
           {tabValue === 3 && <NFLUploadOwnProjections
-            positions={['QB', 'RB', 'WR', 'TE', 'D']}
+            positions={SPORT_POSITIONS}
             groups={teamGameGroups}
             handleFileUpload={handleFileUpload}
             gameMatchups={gameAndPlayerMatchups}
@@ -1169,6 +1172,7 @@ export default function NFLFanduelDFS(props) {
                 <div className="dfs-optimizer-filter-wrapper">
                   <NflPlayerPosFilter
                     players={data}
+                    pos={SPORT_POSITIONS}
                     selectedPosition={currentPosition}
                     filterPlayersByPosition={filterPlayersByPosition}
                     onPositionChange={setCurrentPosition}
