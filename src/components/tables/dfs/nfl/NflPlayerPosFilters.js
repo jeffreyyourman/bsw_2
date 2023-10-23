@@ -4,7 +4,7 @@ import { Button, ButtonGroup } from '@mui/material';
 function NflPlayerPosFilters(props) {
     let { pos, selectedPosition, onPositionChange } = props
 
-    const positions = pos;
+    const positions = ['All', ...pos];
 
     return (
         <ButtonGroup style={{ flexWrap: 'wrap' }}>
