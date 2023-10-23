@@ -11,7 +11,7 @@ import {
     Paper,
 } from '@material-ui/core';
 import { CSVLink } from "react-csv";
-function NFLUploadOwnProjections(props) {
+function NBAUploadOwnProjections(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
     const [selectedGame, setSelectedGame] = useState('');
     const generateUniqueId = () => {
@@ -97,6 +97,6 @@ function NFLUploadOwnProjections(props) {
     );
 }
 
-export default NFLUploadOwnProjections;
+export default NBAUploadOwnProjections;
 
 

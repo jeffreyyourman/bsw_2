@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 
-function NFLTeamStacks(props) {
+function NBATeamStacks(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
     const generateUniqueId = () => {
         return new Date().getTime() + "-" + Math.floor(Math.random() * 1000);
@@ -264,7 +264,7 @@ function NFLTeamStacks(props) {
     );
 }
 
-export default NFLTeamStacks;
+export default NBATeamStacks;
 
 
 // import React, { useState } from 'react';
@@ -279,7 +279,7 @@ export default NFLTeamStacks;
 //     Paper,
 // } from '@material-ui/core';
 
-// function NFLTeamStacks(props) {
+// function NBATeamStacks(props) {
 //     const [activeGroupId, setActiveGroupId] = useState(null);
 //     const [selectedGame, setSelectedGame] = useState('');
 //     const generateUniqueId = () => {
@@ -509,6 +509,6 @@ export default NFLTeamStacks;
 //     );
 // }
 
-// export default NFLTeamStacks;
+// export default NBATeamStacks;
 
 

@@ -52,17 +52,17 @@ export default function TableComponent(props) {
 
   const sortedPlayers = useMemo(() => {
     let playersToSort = [...data];  // start with all players
-
+  
     // Filter by position if the props.selectedPosition is not 'All'
     if (props.selectedPosition !== 'All') {
-      playersToSort = playersToSort.filter(player => player.Position === props.selectedPosition);
+      playersToSort = playersToSort.filter(player => player.Position.includes(props.selectedPosition));
     }
-
+  
     // If the order is 'default', return the original players list
     if (order === 'default') {
       return playersToSort;
     }
-
+  
     // Sort players based on the order and orderBy values
     return playersToSort.sort((a, b) => {
       // Handle numeric sorting explicitly for fields like FPPG
@@ -73,7 +73,7 @@ export default function TableComponent(props) {
           return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
         }
       }
-
+  
       // Handle textual sorting (default)
       if (order === 'asc') {
         return a[orderBy] < b[orderBy] ? -1 : 1;

@@ -11,7 +11,7 @@ import {
     Paper,
 } from '@material-ui/core';
 
-function NFLTeamGameStacks(props) {
+function NBATeamGameStacks(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
     const [selectedGame, setSelectedGame] = useState('');
     const generateUniqueId = () => {
@@ -265,7 +265,7 @@ function NFLTeamGameStacks(props) {
     );
 }
 
-export default NFLTeamGameStacks;
+export default NBATeamGameStacks;
 
 
 //   {/* {activeGroupId && props.groups[getActiveGroupIndex()] && (
