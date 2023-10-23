@@ -25,8 +25,8 @@ import NBAPlayerPosFilters from "./NBAPlayerPosFilters";
 import NBAFanduelDfsLineups from "./NBAFanduelDfsLineups";
 import NBAPlayerSearch from "./NBAPlayerSearch";
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
-import { useAuth } from '../../../../context/AuthContext';
-import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
+// import { useAuth } from '../../../../context/AuthContext';
+import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
 import useMediaQuery from '@mui/material/useMediaQuery';
 // import TableComponent from "./TableComponent.js";
 const useStyles = makeStyles((theme) => ({
@@ -85,6 +85,12 @@ export default function NBAFanduelDFS(props) {
   const classes = useStyles();
   const columns = useColumns();
   const clerk = useClerk();
+  // const { isLoaded, userId, sessionId, getToken, user } = useAuth();
+  const auth = useAuth();
+  console.log('clerk', clerk.user);
+  console.log('clerk', clerk?.user?.primaryEmailAddress?.emailAddress);
+  console.log('auth', auth);
+  // console.log('user',user);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
@@ -106,7 +112,7 @@ export default function NBAFanduelDFS(props) {
   };
 
 
-  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  // const { isAuthenticated, setIsAuthenticated } = useAuth();
   const excludeColumns = useExcludeColumns();
   const [lineups, setLineups] = useState([]);
   const [topPlayers, setTopPlayers] = useState([]);
@@ -484,18 +490,29 @@ export default function NBAFanduelDFS(props) {
       console.log('dataSet', dataSet);
       // Set the default headers to state directly without any overriding logic.
       const injuredPlayers = enhancedDataSet.filter(player => player['Injury Indicator'] !== '');
-      const excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
 
-      // // Players with FPPG not equal to 0
-      const remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
+      let excludedPlayers;
+      let remainingPlayers;
 
-      // const excludedPlayers = enhancedDataSet.filter(player =>
-      //   Number(player.FPPG) <= 2 || player['Injury Indicator'] !== ''
-      // );
 
-      // const remainingPlayers = enhancedDataSet.filter(player =>
-      //   Number(player.FPPG) > 2 && player['Injury Indicator'] === ''
-      // );
+
+      if (clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com') {
+        excludedPlayers = enhancedDataSet.filter(player =>
+          Number(player.FPPG) <= 2 ||
+          player['Injury Indicator'] !== '' ||
+          player['Projected Minutes'] < 18
+        );
+
+        remainingPlayers = enhancedDataSet.filter(player =>
+          Number(player.FPPG) > 2 &&
+          player['Injury Indicator'] === '' &&
+          player['Projected Minutes'] >= 18
+        );
+      } else {
+        excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
+        remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
+      }
+
 
 
       setData(enhancedDataSet)
@@ -1496,4 +1513,4 @@ export default function NBAFanduelDFS(props) {
       ) : null}
     </ThemeProvider>
   );
-}
+} 
