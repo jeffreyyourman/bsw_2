@@ -1,6 +1,6 @@
 import React from "react";
 
-export function NflLineupsColumns() {
+export function NBALineupsCols() {
     
     const columns = React.useMemo(
         () => [

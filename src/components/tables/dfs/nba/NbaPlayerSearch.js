@@ -6,7 +6,7 @@ import {
 } from "react-icons/io";
 
 
-function NFLPlayerSearch(props) {
+function NBAPlayerSearch(props) {
     const [searchText, setSearchText] = useState('');
 
     const handleSearch = (event) => {
@@ -35,4 +35,4 @@ function NFLPlayerSearch(props) {
     );
 }
 
-export default NFLPlayerSearch;
+export default NBAPlayerSearch;

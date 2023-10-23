@@ -1,7 +1,7 @@
 import React from "react";
 
 export function useColumns() {
-    const getTeamLogo = (abbr) => `/img/teams/nba/${abbr}.gif`;
+    const getTeamLogo = (abbr) => `/img/teams/nfl/${abbr}.gif`;
 
 
 

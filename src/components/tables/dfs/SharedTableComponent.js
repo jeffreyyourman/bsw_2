@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { CSVLink } from "react-csv";
+import React, { useMemo, useState } from "react";
 import {
   Table,
   TableBody,
@@ -8,26 +7,10 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Card,
   TableSortLabel,
-  Tabs,
-  Tab,
-  Drawer,
-  Box,
-  TextField,
-  FormHelperText,
-  FormControlLabel,
-  Checkbox,
   Snackbar,
-  Typography,
-  Button,
-  Select,
-  MenuItem,
-  FormControl,
-  InputLabel
-} from '@mui/material';
+  Button} from '@mui/material';
 
-import lodashOrderBy from 'lodash/orderBy';
 import {
   FiLock,
   FiUnlock
@@ -37,15 +20,9 @@ import { IoMdClose, IoMdAdd } from "react-icons/io";
 export default function TableComponent(props) {
   let {
     headers,
-    columns,
     data,
-    setOgFilteredPlayers,
-    ogFilteredPlayers,
     excludedKeys,
-    setData,
-    filteredPlayers,
     setFilteredPlayers,
-    submittedPlayersForOptimizer,
     setSubmittedPlayersForOptimizer,
     excludePlayerLines,
     setExcludePlayerLines,
@@ -75,17 +52,17 @@ export default function TableComponent(props) {
 
   const sortedPlayers = useMemo(() => {
     let playersToSort = [...data];  // start with all players
-
+  
     // Filter by position if the props.selectedPosition is not 'All'
     if (props.selectedPosition !== 'All') {
-      playersToSort = playersToSort.filter(player => player.Position === props.selectedPosition);
+      playersToSort = playersToSort.filter(player => player.Position.includes(props.selectedPosition));
     }
-
+  
     // If the order is 'default', return the original players list
     if (order === 'default') {
       return playersToSort;
     }
-
+  
     // Sort players based on the order and orderBy values
     return playersToSort.sort((a, b) => {
       // Handle numeric sorting explicitly for fields like FPPG
@@ -96,7 +73,7 @@ export default function TableComponent(props) {
           return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
         }
       }
-
+  
       // Handle textual sorting (default)
       if (order === 'asc') {
         return a[orderBy] < b[orderBy] ? -1 : 1;
@@ -105,32 +82,6 @@ export default function TableComponent(props) {
       }
     });
   }, [data, props.selectedPosition, order, orderBy]);
-  // const sortedPlayers = useMemo(() => {
-  //   if (order === 'default') {
-  //     return ogFilteredPlayers;
-  //   }
-
-  //   return [...data].sort((a, b) => {
-  //     // If we have a default sort, just return the original order
-  //     if (order === 'default') return 0;
-
-  //     // Handle numeric sorting explicitly for fields like FPPG
-  //     if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
-  //       if (order === 'asc') {
-  //         return parseFloat(a[orderBy]) - parseFloat(b[orderBy]);
-  //       } else {
-  //         return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
-  //       }
-  //     }
-
-  //     // Handle textual sorting (default)
-  //     if (order === 'asc') {
-  //       return a[orderBy] < b[orderBy] ? -1 : 1;
-  //     } else {
-  //       return a[orderBy] > b[orderBy] ? -1 : 1;
-  //     }
-  //   });
-  // }, [data, filteredPlayers, excludePlayerLines, order, orderBy, props.selectedPosition]);
 
   const handleLock = (isLocked, rowIndex) => {
     let updatedPlayers = [...props.submittedPlayersForOptimizer]; // Clone the array
@@ -278,7 +229,7 @@ export default function TableComponent(props) {
     {
       key: usingExcludePlayers ? 'include' : 'exclude',
       label: usingExcludePlayers ? 'Include' : 'Exclude',
-      renderer: (rowData, rowIndex) => (
+      renderer: (rowData) => (
         <Button
           style={{
             width: 65,
@@ -323,7 +274,7 @@ export default function TableComponent(props) {
                   textAlign: 'center',
                 }}
 
-                  key={index} >
+                  key={`${col.key}_${index}`} >
                   <TableSortLabel
                     align="left"
                     active={orderBy === col.key}

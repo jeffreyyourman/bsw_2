@@ -18,7 +18,7 @@ import PlayerGroups from './NFLPlayerGroups.js';
 import NFLTeamStacks from './NFLTeamStacks.js';
 import NFLTeamGameStacks from './NFLTeamGameStacks.js';
 import NFLUploadOwnProjections from './NFLUploadOwnProjections.js';
-import TableComponent from './TableComponent.js';
+import TableComponent from '../SharedTableComponent.js';
 import NflFdDfsOptimizerSettings from './NflFdDfsOptimizerSettings.js';
 
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
@@ -64,6 +64,9 @@ const theme = createTheme({
     },
   },
 });
+
+
+const SPORT_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'D'];
 
 
 export default function NFLFanduelDFS(props) {
@@ -436,46 +439,12 @@ export default function NFLFanduelDFS(props) {
       const objectHeaderKeys = [...new Set([...requiredHeaders, ...Object.keys(enhancedDataSet[0])])];
 
 
-
-
-      // const objectHeaderKeys = Object.keys(enhancedDataSet[0]);
-
       const defaultHeadersConfig = objectHeaderKeys.map((header, index) => ({
         key: header,
         label: header.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "), // This transforms 'First_Name' to 'First Name'
         order: index + 1  // This uses the index as the default order
       }));
 
-      // enhancedDataSet.map((player) => {
-      //   const playerName = `${player["First Name"]} ${player["Last Name"]}`;
-
-      //   if (projectionsToMatch && projectionsToMatch.length !== 0) {
-
-      //     const isPlayerInProjections = projectionsToMatch.some((projection) => {
-      //       const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
-      //       return playerName === projectionsToMatchName;
-      //     });
-
-      //     if (isPlayerInProjections) {
-      //       // Player is in projectionsToMatch, update properties as needed
-      //       projectionsToMatch.forEach((projection) => {
-      //         const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
-      //         if (playerName === projectionsToMatchName) {
-      //           // Update player properties based on projection data
-      //           player.FPPG = projection.ppg;
-      //           player.Value = projection.value;
-      //           player.opp_rank = projection.opp_rank;
-      //           player.opp_rank_bucket = projection.opp_rank_bucket;
-      //           player.projected_team_score = projection.projected_team_score;
-      //           // Add more properties as needed
-      //         }
-      //       });
-      //     }
-
-
-      //     return player;
-      //   }
-      // });
 
       enhancedDataSet.map((player) => {
         const playerName = `${player["First Name"]} ${player["Last Name"]}`;
@@ -1097,7 +1066,7 @@ export default function NFLFanduelDFS(props) {
 
           {tabValue === 1 &&
             <NFLTeamStacks
-              positions={['QB', 'RB', 'WR', 'TE', 'D']}
+              positions={SPORT_POSITIONS}
               groups={teamGroups}
               gameMatchups={gameAndPlayerMatchups}
               setGroups={setTeamGroups}
@@ -1107,7 +1076,7 @@ export default function NFLFanduelDFS(props) {
             />
           }
           {tabValue === 2 && <NFLTeamGameStacks
-            positions={['QB', 'RB', 'WR', 'TE', 'D']}
+            positions={SPORT_POSITIONS}
             groups={teamGameGroups}
             gameMatchups={gameAndPlayerMatchups}
             setGroups={setTeamGameGroups}
@@ -1116,7 +1085,7 @@ export default function NFLFanduelDFS(props) {
             setPlayerGroups={setPlayerGroups}
           />}
           {tabValue === 3 && <NFLUploadOwnProjections
-            positions={['QB', 'RB', 'WR', 'TE', 'D']}
+            positions={SPORT_POSITIONS}
             groups={teamGameGroups}
             handleFileUpload={handleFileUpload}
             gameMatchups={gameAndPlayerMatchups}
@@ -1203,6 +1172,7 @@ export default function NFLFanduelDFS(props) {
                 <div className="dfs-optimizer-filter-wrapper">
                   <NflPlayerPosFilter
                     players={data}
+                    pos={SPORT_POSITIONS}
                     selectedPosition={currentPosition}
                     filterPlayersByPosition={filterPlayersByPosition}
                     onPositionChange={setCurrentPosition}

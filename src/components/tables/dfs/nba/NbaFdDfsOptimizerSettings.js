@@ -1,19 +1,19 @@
 
 
 import React, { useState, useEffect } from "react";
-import { useTable, useSortBy, useFilters, usePagination } from "react-table";
-import { CSVLink } from "react-csv";
-// import { useColumns, useExcludeColumns } from "./NbaDfsTableColumns";
-// import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
-import axios from "axios";
-import { FiUnlock, FiLock } from "react-icons/fi";
-import { IoMdClose, IoMdAdd } from "react-icons/io";
+// import { useTable, useSortBy, useFilters, usePagination } from "react-table";
+// import { CSVLink } from "react-csv";
+// import { useColumns, useExcludeColumns } from "./NBADfsTableColumns";
+// // import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
+// import axios from "axios";
+// import { FiUnlock, FiLock } from "react-icons/fi";
+// import { IoMdClose, IoMdAdd } from "react-icons/io";
 import { TextField, FormHelperText, Card, FormControlLabel, Checkbox, Box, Typography, Button, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 
-export default function NbaFdDfsOptimizerSettings(props) {
-// console.log('props.fdSlates',props.fdSlates);
+export default function NBAFdDfsOptimizerSettings(props) {
+  // console.log('props.fdSlates',props.fdSlates);
   return (
     <LeftSideDrawer
       open={props.open}
@@ -113,7 +113,13 @@ export default function NbaFdDfsOptimizerSettings(props) {
             labelId="gameSelector-label"
             value={props.selectedSlate}
             defaultValue={props.selectedSlate}
-            onChange={(e) => props.handleGameSlateChange(e.target.value)}
+            onChange={(e) => {
+              const selectedValue = e.target.value;
+              const selectedGame = props.fdSlates.find((game) => game.slate_type === selectedValue);
+              console.log('selectedGame', selectedGame)
+              props.handleGameSlateChange(e.target.value)
+            }
+            }
             label="Select Game Slate"
             fullWidth
           >
@@ -209,11 +215,12 @@ export default function NbaFdDfsOptimizerSettings(props) {
                 color="primary"
               />
             }
-            label="Exclude QB and RBs"
+            label="Exclude QB and Cs"
           />
         </Card> */}
         <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
           <FormControlLabel
+            style={{ whiteSpace: 'break-spaces' }}
             control={
               <Checkbox
                 checked={props.restrict2CsSameTeam}
@@ -221,9 +228,21 @@ export default function NbaFdDfsOptimizerSettings(props) {
                 color="primary"
               />
             }
-            label="Restrict 2 CS from same team"
+            label="Restrict 2 Centers from the same team"
           />
         </Card>
+        {/* <Card style={{ backgroundColor: 'white', padding: '16px', marginBottom: '16px' }}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={props.restrict2TEsSameTeam}
+                onChange={props.handleCheckboxChange(props.setRestrict2TEsSameTeam)}
+                color="primary"
+              />
+            }
+            label="Restrict 2 Tight Ends from the same team"
+          />
+        </Card> */}
 
 
 

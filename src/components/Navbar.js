@@ -1,29 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
-import github from "../img/github-icon.svg";
 import logo from "../img/BetSweatWinText.png";
 import '@mui/material/styles';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-// import logo from "../img/logo.svg";
-import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
+import { useClerk, useAuth } from "@clerk/clerk-react";
 
 
 const Navbar = () => {
   const clerk = useClerk();
-  console.log('clerk', clerk)
+  // console.log('clerk', clerk)
   const { isSignedIn, sessionId, userId } = useAuth();
-  console.log('isSignedIn', isSignedIn)
+  // console.log('isSignedIn', isSignedIn)
   const [isActive, setIsActive] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);  // for the dropdown
+  // const [anchorEl, setAnchorEl] = useState(null);  // for the dropdown
 
-  const handleMenuClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  // const handleMenuClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleMenuClose = () => {
+  //   setAnchorEl(null);
+  // };
 
 
 
