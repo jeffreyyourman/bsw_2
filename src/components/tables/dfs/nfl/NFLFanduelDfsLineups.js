@@ -40,7 +40,6 @@ export default function NFLFanduelDfsLineups(props) {
     setSaveLineups(initialSavedLineups)
   }, [initialSavedLineups])
   const handleChangeTab = (newValue) => {
-    console.log('newvalue', newValue);
     setSelectedTab(newValue);
   };
 
@@ -88,7 +87,6 @@ export default function NFLFanduelDfsLineups(props) {
 
 
   const handleSortRequest = (property) => {
-    console.log('property', property);
     if (orderBy === property) { // If the same header is clicked
       if (order === 'desc') {
         setOrder('asc');
@@ -102,16 +100,7 @@ export default function NFLFanduelDfsLineups(props) {
       setOrderBy(property);
     }
   };
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
 
-    setState({ ...state, [anchor]: open });
-  };
 
   let sortedLineups;
   if (order === 'default') {
@@ -120,16 +109,9 @@ export default function NFLFanduelDfsLineups(props) {
     sortedLineups = lodashOrderBy(props.lineups.lineups, [orderBy], [order]);
   }
 
-  console.log('selectedTab', selectedTab)
 
   const exportLineupsToUpload = () => {
-    // let amtOfLinesToExport = 350;
-    // // let amtOfLinesToExport = amtOfLinesToExport || 350;
-    // console.log('lineups', lineups.lineups);
-    // const limitedLineups = lineups.lineups.slice(0, amtOfLinesToExport);
 
-    // Here, we're creating an array for each lineup that starts with lineup.totalEverything 
-    // followed by all the playerIds.
     const csvData = savedLineups.map(lineup => {
       return [
         lineup.totalfppg.toFixed(2),
@@ -179,18 +161,18 @@ export default function NFLFanduelDfsLineups(props) {
   };
 
 
-  console.log('props.lineups.length', props.lineups);
   return (
     <div>
 
       <div style={{ padding: "15px", height: "60vh" }}>
-        <div style={{ display: 'flex',
-         alignItems: 'center',
-         flexDirection: 'row',
-         flexWrap: 'wrap' ,
-         marginTop:'24px',
-         marginBottom:'24px',
-         }}>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          marginTop: '24px',
+          marginBottom: '24px',
+        }}>
           <CSVLink
             style={{ marginRight: 8 }}
             asyncOnClick={true}
@@ -337,7 +319,7 @@ export default function NFLFanduelDfsLineups(props) {
 
                       </TableSortLabel>
                     </TableCell>
-                    <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
+                    {/* <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
 
 
                       <TableSortLabel
@@ -349,8 +331,8 @@ export default function NFLFanduelDfsLineups(props) {
 
 
                       </TableSortLabel>
-                    </TableCell>
-                    <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
+                    </TableCell> */}
+                    {/* <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
 
 
                       <TableSortLabel
@@ -362,8 +344,8 @@ export default function NFLFanduelDfsLineups(props) {
 
 
                       </TableSortLabel>
-                    </TableCell>
-                    <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
+                    </TableCell> */}
+                    {/* <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
 
 
                       <TableSortLabel
@@ -375,7 +357,7 @@ export default function NFLFanduelDfsLineups(props) {
 
 
                       </TableSortLabel>
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
 
                       QB</TableCell>
@@ -407,7 +389,6 @@ export default function NFLFanduelDfsLineups(props) {
                 </TableHead>
                 <TableBody>
                   {sortedLineups.map((lineup, index) => {
-                    // console.log('lineup', lineup)
                     return <TableRow key={index}>
                       <TableCell style={{ position: 'sticky', left: 0, zIndex: 2, background: '#fff' }}>
                         <input
@@ -418,9 +399,9 @@ export default function NFLFanduelDfsLineups(props) {
                       </TableCell>
                       <TableCell>{lineup.lineup_points}</TableCell>
                       <TableCell>{lineup.lineup_salary}</TableCell>
-                      <TableCell>{lineup.totalTds.toFixed(2)}</TableCell>
+                      {/* <TableCell>{lineup.totalTds.toFixed(2)}</TableCell>
                       <TableCell>{lineup.totalEverything.toFixed(2)}</TableCell>
-                      <TableCell>{lineup.totalRecTds.toFixed(2)}</TableCell>
+                      <TableCell>{lineup.totalRecTds.toFixed(2)}</TableCell> */}
                       {lineup.players.map((player, playerIndex) => (
                         <TableCell key={playerIndex}>{player.playerName}</TableCell>
                       ))}

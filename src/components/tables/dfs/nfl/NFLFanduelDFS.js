@@ -436,46 +436,12 @@ export default function NFLFanduelDFS(props) {
       const objectHeaderKeys = [...new Set([...requiredHeaders, ...Object.keys(enhancedDataSet[0])])];
 
 
-
-
-      // const objectHeaderKeys = Object.keys(enhancedDataSet[0]);
-
       const defaultHeadersConfig = objectHeaderKeys.map((header, index) => ({
         key: header,
         label: header.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" "), // This transforms 'First_Name' to 'First Name'
         order: index + 1  // This uses the index as the default order
       }));
 
-      // enhancedDataSet.map((player) => {
-      //   const playerName = `${player["First Name"]} ${player["Last Name"]}`;
-
-      //   if (projectionsToMatch && projectionsToMatch.length !== 0) {
-
-      //     const isPlayerInProjections = projectionsToMatch.some((projection) => {
-      //       const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
-      //       return playerName === projectionsToMatchName;
-      //     });
-
-      //     if (isPlayerInProjections) {
-      //       // Player is in projectionsToMatch, update properties as needed
-      //       projectionsToMatch.forEach((projection) => {
-      //         const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
-      //         if (playerName === projectionsToMatchName) {
-      //           // Update player properties based on projection data
-      //           player.FPPG = projection.ppg;
-      //           player.Value = projection.value;
-      //           player.opp_rank = projection.opp_rank;
-      //           player.opp_rank_bucket = projection.opp_rank_bucket;
-      //           player.projected_team_score = projection.projected_team_score;
-      //           // Add more properties as needed
-      //         }
-      //       });
-      //     }
-
-
-      //     return player;
-      //   }
-      // });
 
       enhancedDataSet.map((player) => {
         const playerName = `${player["First Name"]} ${player["Last Name"]}`;
