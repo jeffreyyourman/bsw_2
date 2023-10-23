@@ -350,7 +350,6 @@ export default function NBAFanduelDFS(props) {
 
 
   const fetchPlayerDataSet = (dataSet, projectionsToMatch) => {
-    console.log('123 - dataSet - ', dataSet);
     if (dataSet[0] === undefined) {
       setHeaders([]);
       setData([]);
@@ -728,7 +727,7 @@ export default function NBAFanduelDFS(props) {
     let myargs = {
       numLineups: parseInt(numLineups, 10),
       site: 'FANDUEL',
-      sport: 'FOOTBALL',
+      sport: 'BASKETBALL',
       totalMaxExp,
       randomStd,
       players: transformedPlayers,

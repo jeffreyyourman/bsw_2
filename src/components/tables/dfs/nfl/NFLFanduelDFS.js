@@ -354,7 +354,6 @@ export default function NFLFanduelDFS(props) {
 
 
   const fetchPlayerDataSet = (dataSet, projectionsToMatch) => {
-    console.log('123 - dataSet - ', dataSet);
     if (dataSet[0] === undefined) {
       setHeaders([]);
       setData([]);
