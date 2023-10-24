@@ -87,9 +87,9 @@ export default function NBAFanduelDFS(props) {
   const clerk = useClerk();
   // const { isLoaded, userId, sessionId, getToken, user } = useAuth();
   const auth = useAuth();
-  console.log('clerk', clerk.user);
-  console.log('clerk', clerk?.user?.primaryEmailAddress?.emailAddress);
-  console.log('auth', auth);
+  // console.log('clerk', clerk.user);
+  // console.log('clerk', clerk?.user?.primaryEmailAddress?.emailAddress);
+  // console.log('auth', auth);
   // console.log('user',user);
   const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -136,9 +136,9 @@ export default function NBAFanduelDFS(props) {
   const [teamGroups, setTeamGroups] = useState([]);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
-  const [numLineups, setNumLineups] = useState(5);
-  const [totalMaxExp, setTotalMaxExp] = useState(35);
-  const [randomStd, setrandomStd] = useState(25);
+  const [numLineups, setNumLineups] = useState(300);
+  const [totalMaxExp, setTotalMaxExp] = useState(60);
+  const [randomStd, setrandomStd] = useState(30);
   const [currentPosition, setCurrentPosition] = useState('All');
   // const [searchFilter, setSearchFilter] = useState('');
   const [excludeOpposingDefense, setExcludeOpposingDefense] = useState(false);
@@ -415,7 +415,7 @@ export default function NBAFanduelDFS(props) {
         "First Name",
         "Nickname",
         "Last Name",
-        "FPPG",
+        // "FPPG",
         "Played",
         "Value",
         "Salary",
@@ -496,23 +496,25 @@ export default function NBAFanduelDFS(props) {
 
 
 
-      if (clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com') {
-        excludedPlayers = enhancedDataSet.filter(player =>
-          Number(player.FPPG) <= 2 ||
-          player['Injury Indicator'] !== '' ||
-          player['Projected Minutes'] < 18
-        );
+      // if (clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com') {
+      //   excludedPlayers = enhancedDataSet.filter(player =>
+      //     Number(player.FPPG) <= 2 ||
+      //     player['Injury Indicator'] !== '' ||
+      //     player['Projected Minutes'] < 18
+      //   );
 
-        remainingPlayers = enhancedDataSet.filter(player =>
-          Number(player.FPPG) > 2 &&
-          player['Injury Indicator'] === '' &&
-          player['Projected Minutes'] >= 18
-        );
-      } else {
-        excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
-        remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
-      }
+      //   remainingPlayers = enhancedDataSet.filter(player =>
+      //     Number(player.FPPG) > 2 &&
+      //     player['Injury Indicator'] === '' &&
+      //     player['Projected Minutes'] >= 18
+      //   );
+      // } else {
+      //   excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
+      //   remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
+      // }
 
+      excludedPlayers = enhancedDataSet.filter(player => Number(player.FPPG) <= 2);
+      remainingPlayers = enhancedDataSet.filter(player => Number(player.FPPG) > 2);
 
 
       setData(enhancedDataSet)
@@ -648,6 +650,20 @@ export default function NBAFanduelDFS(props) {
         ...player,
         minExposure: player.minExposure,
         maxExposure: ''
+      };
+    });
+
+    setFilteredPlayers(resetPlayers);
+    setSubmittedPlayersForOptimizer(resetPlayers);
+    setOgFilteredPlayers(resetPlayers);
+    setIsSnackbarOpen(true); // Open the snackbar
+  };
+  const everyonePlays = () => {
+    const resetPlayers = submittedPlayersForOptimizer.map(player => {
+      return {
+        ...player,
+        minExposure: 1,
+        maxExposure: player.maxExposure
       };
     });
 
@@ -1364,6 +1380,7 @@ export default function NBAFanduelDFS(props) {
                 resetMinExposureValues={resetMinExposureValues}
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
+                everyonePlays={everyonePlays}
               // filterPlayersByPosition={filterPlayersByPosition}
               />
 
@@ -1401,6 +1418,7 @@ export default function NBAFanduelDFS(props) {
                 resetMinExposureValues={resetMinExposureValues}
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
+                everyonePlays={everyonePlays}
               // filterPlayersByPosition={filterPlayersByPosition}
 
               />
@@ -1441,6 +1459,7 @@ export default function NBAFanduelDFS(props) {
                 resetMinExposureValues={resetMinExposureValues}
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
+                everyonePlays={everyonePlays}
               // filterPlayersByPosition={filterPlayersByPosition}
 
               />
@@ -1482,6 +1501,7 @@ export default function NBAFanduelDFS(props) {
                 resetMinExposureValues={resetMinExposureValues}
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
+                everyonePlays={everyonePlays}
               // filterPlayersByPosition={filterPlayersByPosition}
               />
 
@@ -1504,11 +1524,8 @@ export default function NBAFanduelDFS(props) {
               />
               }
 
-
             </div>
-
           </div>
-
         </div>
       ) : null}
     </ThemeProvider>

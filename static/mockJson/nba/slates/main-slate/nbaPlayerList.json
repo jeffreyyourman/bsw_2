@@ -33,9 +33,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PF/C",
-        "FPPG": "46.70",
-        "Value": "4.17",
-        "Projected Minutes": "33.90"
+        "FPPG": "47.30",
+        "Value": "4.22",
+        "Projected Minutes": "33.92"
     },
     {
         "Id": "94790-9646",
@@ -71,9 +71,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SF/PF",
-        "FPPG": "43.50",
-        "Value": "4.22",
-        "Projected Minutes": "34.22"
+        "FPPG": "44.00",
+        "Value": "4.27",
+        "Projected Minutes": "34.24"
     },
     {
         "Id": "94790-9524",
@@ -90,9 +90,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PG/SG",
-        "FPPG": "46.10",
-        "Value": "4.61",
-        "Projected Minutes": "35.75"
+        "FPPG": "46.90",
+        "Value": "4.69",
+        "Projected Minutes": "36.82"
     },
     {
         "Id": "94790-58460",
@@ -109,8 +109,8 @@
         "Injury Details": "Toe",
         "Tier": "",
         "Roster Position": "SG",
-        "FPPG": "38.80",
-        "Value": "4.04",
+        "FPPG": "39.00",
+        "Value": "4.06",
         "Projected Minutes": "35.54"
     },
     {
@@ -128,8 +128,8 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PG",
-        "FPPG": "35.70",
-        "Value": "4.06",
+        "FPPG": "35.90",
+        "Value": "4.08",
         "Projected Minutes": "34.48"
     },
     {
@@ -147,8 +147,8 @@
         "Injury Details": "Back",
         "Tier": "",
         "Roster Position": "PG/SG",
-        "FPPG": "34.70",
-        "Value": "4.14",
+        "FPPG": "34.90",
+        "Value": "4.15",
         "Projected Minutes": "34.37"
     },
     {
@@ -166,9 +166,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PG",
-        "FPPG": "30.10",
-        "Value": "3.77",
-        "Projected Minutes": "27.83"
+        "FPPG": "31.60",
+        "Value": "3.95",
+        "Projected Minutes": "28.67"
     },
     {
         "Id": "94790-55057",
@@ -200,13 +200,13 @@
         "Game": "PHO@GS",
         "Team": "GS",
         "Opponent": "PHO",
-        "Injury Indicator": "GTD",
+        "Injury Indicator": "O",
         "Injury Details": "Ankle",
         "Tier": "",
         "Roster Position": "PF/C",
-        "FPPG": "27.30",
-        "Value": "3.90",
-        "Projected Minutes": "28.63"
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-49116",
@@ -223,9 +223,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SF/PF",
-        "FPPG": "31.20",
-        "Value": "4.59",
-        "Projected Minutes": "33.47"
+        "FPPG": "31.80",
+        "Value": "4.68",
+        "Projected Minutes": "34.48"
     },
     {
         "Id": "94790-158136",
@@ -244,7 +244,7 @@
         "Roster Position": "SG/SF",
         "FPPG": "23.50",
         "Value": "3.51",
-        "Projected Minutes": "31.96"
+        "Projected Minutes": "31.98"
     },
     {
         "Id": "94790-14509",
@@ -261,9 +261,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SG",
-        "FPPG": "32.40",
-        "Value": "4.98",
-        "Projected Minutes": "34.20"
+        "FPPG": "32.80",
+        "Value": "5.05",
+        "Projected Minutes": "35.23"
     },
     {
         "Id": "94790-58312",
@@ -280,9 +280,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PG",
-        "FPPG": "26.90",
-        "Value": "4.35",
-        "Projected Minutes": "29.04"
+        "FPPG": "27.30",
+        "Value": "4.40",
+        "Projected Minutes": "29.05"
     },
     {
         "Id": "94790-42202",
@@ -299,9 +299,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PF/C",
-        "FPPG": "15.60",
-        "Value": "2.55",
-        "Projected Minutes": "13.92"
+        "FPPG": "15.70",
+        "Value": "2.57",
+        "Projected Minutes": "14.22"
     },
     {
         "Id": "94790-84682",
@@ -318,9 +318,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SF/PF",
-        "FPPG": "0.00",
-        "Value": "0.00",
-        "Projected Minutes": "0.00"
+        "FPPG": "29.30",
+        "Value": "4.88",
+        "Projected Minutes": "30.94"
     },
     {
         "Id": "94790-41594",
@@ -356,9 +356,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "C",
-        "FPPG": "21.60",
-        "Value": "4.00",
-        "Projected Minutes": "20.53"
+        "FPPG": "27.00",
+        "Value": "5.00",
+        "Projected Minutes": "25.76"
     },
     {
         "Id": "94790-101387",
@@ -375,9 +375,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PG/SG",
-        "FPPG": "16.00",
-        "Value": "3.08",
-        "Projected Minutes": "24.62"
+        "FPPG": "14.80",
+        "Value": "2.85",
+        "Projected Minutes": "22.63"
     },
     {
         "Id": "94790-84721",
@@ -390,13 +390,13 @@
         "Game": "LAL@DEN",
         "Team": "LAL",
         "Opponent": "DEN",
-        "Injury Indicator": "GTD",
+        "Injury Indicator": "O",
         "Injury Details": "Heel",
         "Tier": "",
         "Roster Position": "PF",
-        "FPPG": "16.80",
-        "Value": "3.30",
-        "Projected Minutes": "18.40"
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-15636",
@@ -432,8 +432,8 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PF/C",
-        "FPPG": "16.90",
-        "Value": "3.39",
+        "FPPG": "17.00",
+        "Value": "3.41",
         "Projected Minutes": "18.26"
     },
     {
@@ -451,9 +451,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SF/PF",
-        "FPPG": "17.00",
-        "Value": "3.54",
-        "Projected Minutes": "22.02"
+        "FPPG": "17.80",
+        "Value": "3.70",
+        "Projected Minutes": "23.03"
     },
     {
         "Id": "94790-110340",
@@ -470,9 +470,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PF/C",
-        "FPPG": "0.00",
-        "Value": "0.00",
-        "Projected Minutes": "0.05"
+        "FPPG": "8.20",
+        "Value": "1.75",
+        "Projected Minutes": "10.05"
     },
     {
         "Id": "94790-16604",
@@ -508,9 +508,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SF",
-        "FPPG": "20.00",
-        "Value": "4.35",
-        "Projected Minutes": "22.81"
+        "FPPG": "21.40",
+        "Value": "4.66",
+        "Projected Minutes": "24.73"
     },
     {
         "Id": "94790-110339",
@@ -565,9 +565,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PF",
-        "FPPG": "8.80",
-        "Value": "2.00",
-        "Projected Minutes": "11.01"
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.01"
     },
     {
         "Id": "94790-160174",
@@ -584,9 +584,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PG",
-        "FPPG": "0.00",
-        "Value": "0.00",
-        "Projected Minutes": "0.08"
+        "FPPG": "10.30",
+        "Value": "2.40",
+        "Projected Minutes": "11.08"
     },
     {
         "Id": "94790-84689",
@@ -603,8 +603,8 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SG/SF",
-        "FPPG": "19.90",
-        "Value": "4.62",
+        "FPPG": "19.70",
+        "Value": "4.58",
         "Projected Minutes": "23.60"
     },
     {
@@ -622,9 +622,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SF/PF",
-        "FPPG": "16.00",
-        "Value": "3.81",
-        "Projected Minutes": "23.87"
+        "FPPG": "17.00",
+        "Value": "4.04",
+        "Projected Minutes": "24.88"
     },
     {
         "Id": "94790-58519",
@@ -679,8 +679,8 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SG/SF",
-        "FPPG": "12.30",
-        "Value": "2.94",
+        "FPPG": "12.40",
+        "Value": "2.96",
         "Projected Minutes": "17.41"
     },
     {
@@ -698,8 +698,8 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SG",
-        "FPPG": "14.20",
-        "Value": "3.46",
+        "FPPG": "14.00",
+        "Value": "3.42",
         "Projected Minutes": "19.90"
     },
     {
@@ -774,9 +774,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PG",
-        "FPPG": "10.90",
-        "Value": "2.73",
-        "Projected Minutes": "14.13"
+        "FPPG": "13.20",
+        "Value": "3.29",
+        "Projected Minutes": "17.13"
     },
     {
         "Id": "94790-9556",
@@ -793,8 +793,8 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SG",
-        "FPPG": "17.50",
-        "Value": "4.38",
+        "FPPG": "17.30",
+        "Value": "4.33",
         "Projected Minutes": "25.88"
     },
     {
@@ -831,8 +831,8 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PF/C",
-        "FPPG": "11.80",
-        "Value": "3.03",
+        "FPPG": "11.90",
+        "Value": "3.05",
         "Projected Minutes": "14.74"
     },
     {
@@ -909,7 +909,7 @@
         "Roster Position": "SG",
         "FPPG": "8.40",
         "Value": "2.22",
-        "Projected Minutes": "12.09"
+        "Projected Minutes": "12.45"
     },
     {
         "Id": "94790-55056",
@@ -926,9 +926,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PF/C",
-        "FPPG": "0.00",
-        "Value": "0.00",
-        "Projected Minutes": "0.05"
+        "FPPG": "20.90",
+        "Value": "5.64",
+        "Projected Minutes": "22.67"
     },
     {
         "Id": "94790-157906",
@@ -1021,9 +1021,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SG",
-        "FPPG": "4.80",
-        "Value": "1.34",
-        "Projected Minutes": "7.96"
+        "FPPG": "9.80",
+        "Value": "2.71",
+        "Projected Minutes": "15.96"
     },
     {
         "Id": "94790-171761",
@@ -1040,9 +1040,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SG",
-        "FPPG": "13.80",
-        "Value": "3.83",
-        "Projected Minutes": "15.35"
+        "FPPG": "11.10",
+        "Value": "3.07",
+        "Projected Minutes": "12.35"
     },
     {
         "Id": "94790-171659",
@@ -1116,9 +1116,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "SG",
-        "FPPG": "8.30",
-        "Value": "2.38",
-        "Projected Minutes": "10.03"
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.03"
     },
     {
         "Id": "94790-171668",
@@ -1173,9 +1173,9 @@
         "Injury Details": "",
         "Tier": "",
         "Roster Position": "PF",
-        "FPPG": "0.00",
-        "Value": "0.00",
-        "Projected Minutes": "0.02"
+        "FPPG": "3.80",
+        "Value": "1.07",
+        "Projected Minutes": "4.12"
     },
     {
         "Id": "94790-117285",

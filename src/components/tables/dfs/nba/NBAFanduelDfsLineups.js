@@ -114,46 +114,35 @@ export default function NBAFanduelDfsLineups(props) {
 
     const csvData = savedLineups.map(lineup => {
       return [
-        lineup.totalfppg.toFixed(2),
-        lineup.totalPassTds.toFixed(2),
-        lineup.totalPassInterceptions.toFixed(2),
-        lineup.totalPassYards.toFixed(2),
-        lineup.totalRushAtt.toFixed(2),
-        lineup.totalRushTds.toFixed(2),
-        lineup.totalRushYds.toFixed(2),
-        lineup.totalReceptions.toFixed(2),
-        lineup.totalRecYds.toFixed(2),
-        lineup.totalRecTgts.toFixed(2),
-        lineup.totalRecTds.toFixed(2),
-        lineup.totalTds.toFixed(2),
-        lineup.totalEverything.toFixed(2),
+        lineup.lineup_points.toFixed(2),
+        // lineup.totalfppg.toFixed(2),
+        // lineup.totalPassTds.toFixed(2),
+        // lineup.totalPassInterceptions.toFixed(2),
+        // lineup.totalPassYards.toFixed(2),
+        // lineup.totalRushAtt.toFixed(2),
+        // lineup.totalRushTds.toFixed(2),
+        // lineup.totalRushYds.toFixed(2),
+        // lineup.totalReceptions.toFixed(2),
+        // lineup.totalRecYds.toFixed(2),
+        // lineup.totalRecTgts.toFixed(2),
+        // lineup.totalRecTds.toFixed(2),
+        // lineup.totalTds.toFixed(2),
+        // lineup.totalEverything.toFixed(2),
         ...lineup.players.map(player => player.playerId)
       ];
     });
 
     const headers = [
-      'totalfppg',
-      'totalPassTds',
-      'totalPassInterceptions',
-      'totalPassYards',
-      'totalRushAtt',
-      'totalRushTds',
-      'totalRushYds',
-      'totalReceptions',
-      'totalRecYds',
-      'totalRecTgts',
-      'totalRecTds',
-      'totalTds',
-      'totalEverything',
-      "QB",
-      "RB",
-      "RB",
-      "WR",
-      "WR",
-      "WR",
-      "TE",
-      "FLEX",
-      "DEF"];
+      'lineup_points',
+      "PG",
+      "PG",
+      "SG",
+      "SG",
+      "SF",
+      "SF",
+      "PF",
+      "PF",
+      "C"];
 
     // Since csvData already contains arrays structured the way we want, 
     // we can just spread it into the return array after the headers.
@@ -301,7 +290,7 @@ export default function NBAFanduelDfsLineups(props) {
                       <TableSortLabel
                         active={orderBy === 'totalfppg'}
                         direction={order}
-                        onClick={() => handleSortRequest('totalfppg')}
+                        onClick={() => handleSortRequest('lineup_points')}
                       >
                         Total Projected
                       </TableSortLabel>
