@@ -17,8 +17,11 @@ import {
   FiUnlock
 } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
+import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
 
 export default function TableComponent(props) {
+  const clerk = useClerk();
+
   let {
     headers,
     data,
@@ -366,12 +369,13 @@ export default function TableComponent(props) {
             onClick={props.resetMaxExposureValues}>
             Reset Max Exposure Values
           </Button>
-          <Button
+
+         {clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com' &&<Button
             // variant="contained"
             // color="primary"
             onClick={props.everyonePlays}>
             Everyone Plays
-          </Button>
+          </Button>}
 
 
         </div>
