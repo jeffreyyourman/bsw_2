@@ -5,8 +5,7 @@
         "First Name": "Nikola",
         "Nickname": "Nikola Jokic",
         "Last Name": "Jokic",
-        "FPPG": 56.96,
-        "Played": "90",
+        "OG_FPPG": 56.96,
         "Salary": "11500",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -14,7 +13,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "C"
+        "Roster Position": "C",
+        "FPPG": "52.80",
+        "Value": "4.59",
+        "Projected Minutes": "33.44"
     },
     {
         "Id": "94790-15755",
@@ -22,8 +24,7 @@
         "First Name": "Anthony",
         "Nickname": "Anthony Davis",
         "Last Name": "Davis",
-        "FPPG": 52.67,
-        "Played": "73",
+        "OG_FPPG": 52.67,
         "Salary": "11200",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -31,7 +32,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF/C"
+        "Roster Position": "PF/C",
+        "FPPG": "47.30",
+        "Value": "4.22",
+        "Projected Minutes": "33.92"
     },
     {
         "Id": "94790-9646",
@@ -39,8 +43,7 @@
         "First Name": "Kevin",
         "Nickname": "Kevin Durant",
         "Last Name": "Durant",
-        "FPPG": 48.32,
-        "Played": "58",
+        "OG_FPPG": 48.32,
         "Salary": "10800",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -48,7 +51,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF/PF"
+        "Roster Position": "SF/PF",
+        "FPPG": "41.70",
+        "Value": "3.86",
+        "Projected Minutes": "34.83"
     },
     {
         "Id": "94790-9488",
@@ -56,8 +62,7 @@
         "First Name": "LeBron",
         "Nickname": "LeBron James",
         "Last Name": "James",
-        "FPPG": 49.95,
-        "Played": "73",
+        "OG_FPPG": 49.95,
         "Salary": "10300",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -65,7 +70,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF/PF"
+        "Roster Position": "SF/PF",
+        "FPPG": "44.00",
+        "Value": "4.27",
+        "Projected Minutes": "34.24"
     },
     {
         "Id": "94790-9524",
@@ -73,8 +81,7 @@
         "First Name": "Stephen",
         "Nickname": "Stephen Curry",
         "Last Name": "Curry",
-        "FPPG": 46.84,
-        "Played": "69",
+        "OG_FPPG": 46.84,
         "Salary": "10000",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -82,7 +89,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG/SG"
+        "Roster Position": "PG/SG",
+        "FPPG": "46.90",
+        "Value": "4.69",
+        "Projected Minutes": "36.82"
     },
     {
         "Id": "94790-58460",
@@ -90,16 +100,18 @@
         "First Name": "Devin",
         "Nickname": "Devin Booker",
         "Last Name": "Booker",
-        "FPPG": 44.78,
-        "Played": "64",
+        "OG_FPPG": 44.78,
         "Salary": "9600",
         "Game": "PHO@GS",
         "Team": "PHO",
         "Opponent": "GS",
-        "Injury Indicator": "",
-        "Injury Details": "",
+        "Injury Indicator": "GTD",
+        "Injury Details": "Toe",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "39.00",
+        "Value": "4.06",
+        "Projected Minutes": "35.54"
     },
     {
         "Id": "94790-66108",
@@ -107,8 +119,7 @@
         "First Name": "Jamal",
         "Nickname": "Jamal Murray",
         "Last Name": "Murray",
-        "FPPG": 38.04,
-        "Played": "85",
+        "OG_FPPG": 38.04,
         "Salary": "8800",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -116,7 +127,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "35.90",
+        "Value": "4.08",
+        "Projected Minutes": "34.48"
     },
     {
         "Id": "94790-15595",
@@ -124,8 +138,7 @@
         "First Name": "Bradley",
         "Nickname": "Bradley Beal",
         "Last Name": "Beal",
-        "FPPG": 37.81,
-        "Played": "50",
+        "OG_FPPG": 37.81,
         "Salary": "8400",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -133,7 +146,10 @@
         "Injury Indicator": "GTD",
         "Injury Details": "Back",
         "Tier": "",
-        "Roster Position": "PG/SG"
+        "Roster Position": "PG/SG",
+        "FPPG": "34.90",
+        "Value": "4.15",
+        "Projected Minutes": "34.37"
     },
     {
         "Id": "94790-9623",
@@ -141,8 +157,7 @@
         "First Name": "Chris",
         "Nickname": "Chris Paul",
         "Last Name": "Paul",
-        "FPPG": 36.09,
-        "Played": "66",
+        "OG_FPPG": 36.09,
         "Salary": "8000",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -150,7 +165,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "31.60",
+        "Value": "3.95",
+        "Projected Minutes": "28.67"
     },
     {
         "Id": "94790-55057",
@@ -158,8 +176,7 @@
         "First Name": "Jusuf",
         "Nickname": "Jusuf Nurkic",
         "Last Name": "Nurkic",
-        "FPPG": 31.24,
-        "Played": "52",
+        "OG_FPPG": 31.24,
         "Salary": "7500",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -167,7 +184,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "C"
+        "Roster Position": "C",
+        "FPPG": "30.00",
+        "Value": "4.00",
+        "Projected Minutes": "27.32"
     },
     {
         "Id": "94790-15860",
@@ -175,16 +195,18 @@
         "First Name": "Draymond",
         "Nickname": "Draymond Green",
         "Last Name": "Green",
-        "FPPG": 30.51,
-        "Played": "85",
+        "OG_FPPG": 30.51,
         "Salary": "7000",
         "Game": "PHO@GS",
         "Team": "GS",
         "Opponent": "PHO",
-        "Injury Indicator": "GTD",
+        "Injury Indicator": "O",
         "Injury Details": "Ankle",
         "Tier": "",
-        "Roster Position": "PF/C"
+        "Roster Position": "PF/C",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-49116",
@@ -192,8 +214,7 @@
         "First Name": "Andrew",
         "Nickname": "Andrew Wiggins",
         "Last Name": "Wiggins",
-        "FPPG": 31.16,
-        "Played": "50",
+        "OG_FPPG": 31.16,
         "Salary": "6800",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -201,7 +222,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF/PF"
+        "Roster Position": "SF/PF",
+        "FPPG": "31.80",
+        "Value": "4.68",
+        "Projected Minutes": "34.48"
     },
     {
         "Id": "94790-158136",
@@ -209,8 +233,7 @@
         "First Name": "Austin",
         "Nickname": "Austin Reaves",
         "Last Name": "Reaves",
-        "FPPG": 23.99,
-        "Played": "81",
+        "OG_FPPG": 23.99,
         "Salary": "6700",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -218,7 +241,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG/SF"
+        "Roster Position": "SG/SF",
+        "FPPG": "23.50",
+        "Value": "3.51",
+        "Projected Minutes": "31.98"
     },
     {
         "Id": "94790-14509",
@@ -226,8 +252,7 @@
         "First Name": "Klay",
         "Nickname": "Klay Thompson",
         "Last Name": "Thompson",
-        "FPPG": 31.27,
-        "Played": "82",
+        "OG_FPPG": 31.27,
         "Salary": "6500",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -235,7 +260,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "32.80",
+        "Value": "5.05",
+        "Projected Minutes": "35.23"
     },
     {
         "Id": "94790-58312",
@@ -243,8 +271,7 @@
         "First Name": "D'Angelo",
         "Nickname": "D'Angelo Russell",
         "Last Name": "Russell",
-        "FPPG": 30.79,
-        "Played": "88",
+        "OG_FPPG": 30.79,
         "Salary": "6200",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -252,7 +279,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "27.30",
+        "Value": "4.40",
+        "Projected Minutes": "29.05"
     },
     {
         "Id": "94790-42202",
@@ -260,8 +290,7 @@
         "First Name": "Christian",
         "Nickname": "Christian Wood",
         "Last Name": "Wood",
-        "FPPG": 30.89,
-        "Played": "67",
+        "OG_FPPG": 30.89,
         "Salary": "6100",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -269,7 +298,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF/C"
+        "Roster Position": "PF/C",
+        "FPPG": "15.70",
+        "Value": "2.57",
+        "Projected Minutes": "14.22"
     },
     {
         "Id": "94790-84682",
@@ -277,16 +309,18 @@
         "First Name": "Michael",
         "Nickname": "Michael Porter",
         "Last Name": "Porter",
-        "FPPG": 27.79,
-        "Played": "82",
+        "OG_FPPG": 27.79,
         "Salary": "6000",
         "Game": "LAL@DEN",
         "Team": "DEN",
         "Opponent": "LAL",
-        "Injury Indicator": "GTD",
-        "Injury Details": "Ankle",
+        "Injury Indicator": "",
+        "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF/PF"
+        "Roster Position": "SF/PF",
+        "FPPG": "29.30",
+        "Value": "4.88",
+        "Projected Minutes": "30.94"
     },
     {
         "Id": "94790-41594",
@@ -294,8 +328,7 @@
         "First Name": "Aaron",
         "Nickname": "Aaron Gordon",
         "Last Name": "Gordon",
-        "FPPG": 30.74,
-        "Played": "88",
+        "OG_FPPG": 30.74,
         "Salary": "5700",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -303,7 +336,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF"
+        "Roster Position": "PF",
+        "FPPG": "32.20",
+        "Value": "5.65",
+        "Projected Minutes": "31.48"
     },
     {
         "Id": "94790-58576",
@@ -311,8 +347,7 @@
         "First Name": "Kevon",
         "Nickname": "Kevon Looney",
         "Last Name": "Looney",
-        "FPPG": 25.68,
-        "Played": "95",
+        "OG_FPPG": 25.68,
         "Salary": "5400",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -320,7 +355,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "C"
+        "Roster Position": "C",
+        "FPPG": "27.00",
+        "Value": "5.00",
+        "Projected Minutes": "25.76"
     },
     {
         "Id": "94790-101387",
@@ -328,16 +366,18 @@
         "First Name": "Gabe",
         "Nickname": "Gabe Vincent",
         "Last Name": "Vincent",
-        "FPPG": 18.06,
-        "Played": "92",
+        "OG_FPPG": 18.06,
         "Salary": "5200",
         "Game": "LAL@DEN",
         "Team": "LAL",
         "Opponent": "DEN",
-        "Injury Indicator": "GTD",
-        "Injury Details": "Back",
+        "Injury Indicator": "",
+        "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG/SG"
+        "Roster Position": "PG/SG",
+        "FPPG": "14.80",
+        "Value": "2.85",
+        "Projected Minutes": "22.63"
     },
     {
         "Id": "94790-84721",
@@ -345,16 +385,18 @@
         "First Name": "Jarred",
         "Nickname": "Jarred Vanderbilt",
         "Last Name": "Vanderbilt",
-        "FPPG": 21.48,
-        "Played": "94",
+        "OG_FPPG": 21.48,
         "Salary": "5100",
         "Game": "LAL@DEN",
         "Team": "LAL",
         "Opponent": "DEN",
-        "Injury Indicator": "GTD",
+        "Injury Indicator": "O",
         "Injury Details": "Heel",
         "Tier": "",
-        "Roster Position": "PF"
+        "Roster Position": "PF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-15636",
@@ -362,8 +404,7 @@
         "First Name": "Kentavious",
         "Nickname": "Kentavious Caldwell-Pope",
         "Last Name": "Caldwell-Pope",
-        "FPPG": 22.29,
-        "Played": "96",
+        "OG_FPPG": 22.29,
         "Salary": "5000",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -371,7 +412,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "22.30",
+        "Value": "4.46",
+        "Projected Minutes": "31.34"
     },
     {
         "Id": "94790-97263",
@@ -379,16 +423,18 @@
         "First Name": "Drew",
         "Nickname": "Drew Eubanks",
         "Last Name": "Eubanks",
-        "FPPG": 19.66,
-        "Played": "78",
+        "OG_FPPG": 19.66,
         "Salary": "5000",
         "Game": "PHO@GS",
         "Team": "PHO",
         "Opponent": "GS",
-        "Injury Indicator": "GTD",
-        "Injury Details": "Ankle",
+        "Injury Indicator": "",
+        "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF/C"
+        "Roster Position": "PF/C",
+        "FPPG": "17.00",
+        "Value": "3.41",
+        "Projected Minutes": "18.26"
     },
     {
         "Id": "94790-110349",
@@ -396,8 +442,7 @@
         "First Name": "Rui",
         "Nickname": "Rui Hachimura",
         "Last Name": "Hachimura",
-        "FPPG": 19.19,
-        "Played": "80",
+        "OG_FPPG": 19.19,
         "Salary": "4800",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -405,7 +450,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF/PF"
+        "Roster Position": "SF/PF",
+        "FPPG": "17.80",
+        "Value": "3.70",
+        "Projected Minutes": "23.03"
     },
     {
         "Id": "94790-110340",
@@ -413,8 +461,7 @@
         "First Name": "Jaxson",
         "Nickname": "Jaxson Hayes",
         "Last Name": "Hayes",
-        "FPPG": 11.4,
-        "Played": "48",
+        "OG_FPPG": 11.4,
         "Salary": "4700",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -422,7 +469,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF/C"
+        "Roster Position": "PF/C",
+        "FPPG": "8.20",
+        "Value": "1.75",
+        "Projected Minutes": "10.05"
     },
     {
         "Id": "94790-16604",
@@ -430,8 +480,7 @@
         "First Name": "Justin",
         "Nickname": "Justin Holiday",
         "Last Name": "Holiday",
-        "FPPG": 9.23,
-        "Played": "46",
+        "OG_FPPG": 9.23,
         "Salary": "4700",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -439,7 +488,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG/SF"
+        "Roster Position": "SG/SF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.06"
     },
     {
         "Id": "94790-157904",
@@ -447,8 +499,7 @@
         "First Name": "Jonathan",
         "Nickname": "Jonathan Kuminga",
         "Last Name": "Kuminga",
-        "FPPG": 16.96,
-        "Played": "77",
+        "OG_FPPG": 16.96,
         "Salary": "4600",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -456,7 +507,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF"
+        "Roster Position": "SF",
+        "FPPG": "21.40",
+        "Value": "4.66",
+        "Projected Minutes": "24.73"
     },
     {
         "Id": "94790-110339",
@@ -464,16 +518,18 @@
         "First Name": "Cam",
         "Nickname": "Cam Reddish",
         "Last Name": "Reddish",
-        "FPPG": 17.25,
-        "Played": "40",
+        "OG_FPPG": 17.25,
         "Salary": "4500",
         "Game": "LAL@DEN",
         "Team": "LAL",
         "Opponent": "DEN",
-        "Injury Indicator": "GTD",
-        "Injury Details": "Ankle",
+        "Injury Indicator": "",
+        "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG/SF"
+        "Roster Position": "SG/SF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.02"
     },
     {
         "Id": "94790-14529",
@@ -481,16 +537,18 @@
         "First Name": "Cory",
         "Nickname": "Cory Joseph",
         "Last Name": "Joseph",
-        "FPPG": 15.37,
-        "Played": "62",
+        "OG_FPPG": 15.37,
         "Salary": "4500",
         "Game": "PHO@GS",
         "Team": "GS",
         "Opponent": "PHO",
-        "Injury Indicator": "GTD",
-        "Injury Details": "Back",
+        "Injury Indicator": "",
+        "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.10"
     },
     {
         "Id": "94790-84688",
@@ -498,8 +556,7 @@
         "First Name": "Keita",
         "Nickname": "Keita Bates-Diop",
         "Last Name": "Bates-Diop",
-        "FPPG": 18.52,
-        "Played": "67",
+        "OG_FPPG": 18.52,
         "Salary": "4400",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -507,7 +564,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF"
+        "Roster Position": "PF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.01"
     },
     {
         "Id": "94790-160174",
@@ -515,8 +575,7 @@
         "First Name": "Jordan",
         "Nickname": "Jordan Goodwin",
         "Last Name": "Goodwin",
-        "FPPG": 17.74,
-        "Played": "62",
+        "OG_FPPG": 17.74,
         "Salary": "4300",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -524,7 +583,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "10.30",
+        "Value": "2.40",
+        "Projected Minutes": "11.08"
     },
     {
         "Id": "94790-84689",
@@ -532,8 +594,7 @@
         "First Name": "Josh",
         "Nickname": "Josh Okogie",
         "Last Name": "Okogie",
-        "FPPG": 15.87,
-        "Played": "82",
+        "OG_FPPG": 15.87,
         "Salary": "4300",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -541,7 +602,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG/SF"
+        "Roster Position": "SG/SF",
+        "FPPG": "19.70",
+        "Value": "4.58",
+        "Projected Minutes": "23.60"
     },
     {
         "Id": "94790-23572",
@@ -549,8 +613,7 @@
         "First Name": "Taurean",
         "Nickname": "Taurean Prince",
         "Last Name": "Prince",
-        "FPPG": 15.33,
-        "Played": "61",
+        "OG_FPPG": 15.33,
         "Salary": "4200",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -558,7 +621,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF/PF"
+        "Roster Position": "SF/PF",
+        "FPPG": "17.00",
+        "Value": "4.04",
+        "Projected Minutes": "24.88"
     },
     {
         "Id": "94790-58519",
@@ -566,8 +632,7 @@
         "First Name": "Gary",
         "Nickname": "Gary Payton",
         "Last Name": "Payton",
-        "FPPG": 13.91,
-        "Played": "34",
+        "OG_FPPG": 13.91,
         "Salary": "4200",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -575,7 +640,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-18376",
@@ -583,8 +651,7 @@
         "First Name": "Damion",
         "Nickname": "Damion Lee",
         "Last Name": "Lee",
-        "FPPG": 13.39,
-        "Played": "82",
+        "OG_FPPG": 13.39,
         "Salary": "4200",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -592,7 +659,10 @@
         "Injury Indicator": "O",
         "Injury Details": "Knee",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-84711",
@@ -600,8 +670,7 @@
         "First Name": "Grayson",
         "Nickname": "Grayson Allen",
         "Last Name": "Allen",
-        "FPPG": 19.78,
-        "Played": "77",
+        "OG_FPPG": 19.78,
         "Salary": "4200",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -609,7 +678,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG/SF"
+        "Roster Position": "SG/SF",
+        "FPPG": "12.40",
+        "Value": "2.96",
+        "Projected Minutes": "17.41"
     },
     {
         "Id": "94790-171744",
@@ -617,16 +689,18 @@
         "First Name": "Christian",
         "Nickname": "Christian Braun",
         "Last Name": "Braun",
-        "FPPG": 10.15,
-        "Played": "95",
+        "OG_FPPG": 10.15,
         "Salary": "4100",
         "Game": "LAL@DEN",
         "Team": "DEN",
         "Opponent": "LAL",
-        "Injury Indicator": "GTD",
-        "Injury Details": "Calf",
+        "Injury Indicator": "",
+        "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "14.00",
+        "Value": "3.42",
+        "Projected Minutes": "19.90"
     },
     {
         "Id": "94790-110313",
@@ -634,8 +708,7 @@
         "First Name": "Bol",
         "Nickname": "Bol Bol",
         "Last Name": "Bol",
-        "FPPG": 20.81,
-        "Played": "70",
+        "OG_FPPG": 20.81,
         "Salary": "4100",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -643,7 +716,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "C"
+        "Roster Position": "C",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.05"
     },
     {
         "Id": "94790-15744",
@@ -651,16 +727,18 @@
         "First Name": "Rodney",
         "Nickname": "Rodney McGruder",
         "Last Name": "McGruder",
-        "FPPG": 10.72,
-        "Played": "33",
+        "OG_FPPG": 10.72,
         "Salary": "4000",
         "Game": "PHO@GS",
         "Team": "GS",
         "Opponent": "PHO",
-        "Injury Indicator": "GTD",
-        "Injury Details": "Concussion",
+        "Injury Indicator": "",
+        "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-110343",
@@ -668,8 +746,7 @@
         "First Name": "Nassir",
         "Nickname": "Nassir Little",
         "Last Name": "Little",
-        "FPPG": 12.73,
-        "Played": "54",
+        "OG_FPPG": 12.73,
         "Salary": "4000",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -677,7 +754,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF"
+        "Roster Position": "SF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.05"
     },
     {
         "Id": "94790-14523",
@@ -685,8 +765,7 @@
         "First Name": "Reggie",
         "Nickname": "Reggie Jackson",
         "Last Name": "Jackson",
-        "FPPG": 17.16,
-        "Played": "74",
+        "OG_FPPG": 17.16,
         "Salary": "4000",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -694,7 +773,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "13.20",
+        "Value": "3.29",
+        "Projected Minutes": "17.13"
     },
     {
         "Id": "94790-9556",
@@ -702,8 +784,7 @@
         "First Name": "Eric",
         "Nickname": "Eric Gordon",
         "Last Name": "Gordon",
-        "FPPG": 20.02,
-        "Played": "74",
+        "OG_FPPG": 20.02,
         "Salary": "4000",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -711,7 +792,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "17.30",
+        "Value": "4.33",
+        "Projected Minutes": "25.88"
     },
     {
         "Id": "94790-9577",
@@ -719,8 +803,7 @@
         "First Name": "Rudy",
         "Nickname": "Rudy Gay",
         "Last Name": "Gay",
-        "FPPG": 11.57,
-        "Played": "56",
+        "OG_FPPG": 11.57,
         "Salary": "4000",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -728,7 +811,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF/PF"
+        "Roster Position": "SF/PF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-145305",
@@ -736,8 +822,7 @@
         "First Name": "Zeke",
         "Nickname": "Zeke Nnaji",
         "Last Name": "Nnaji",
-        "FPPG": 9.79,
-        "Played": "58",
+        "OG_FPPG": 9.79,
         "Salary": "3900",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -745,7 +830,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF/C"
+        "Roster Position": "PF/C",
+        "FPPG": "11.90",
+        "Value": "3.05",
+        "Projected Minutes": "14.74"
     },
     {
         "Id": "94790-145310",
@@ -753,8 +841,7 @@
         "First Name": "Saben",
         "Nickname": "Saben Lee",
         "Last Name": "Lee",
-        "FPPG": 13.66,
-        "Played": "25",
+        "OG_FPPG": 13.66,
         "Salary": "3900",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -762,7 +849,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.03"
     },
     {
         "Id": "94790-85238",
@@ -770,8 +860,7 @@
         "First Name": "Yuta",
         "Nickname": "Yuta Watanabe",
         "Last Name": "Watanabe",
-        "FPPG": 11.36,
-        "Played": "59",
+        "OG_FPPG": 11.36,
         "Salary": "3900",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -779,7 +868,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG/SF"
+        "Roster Position": "SG/SF",
+        "FPPG": "8.20",
+        "Value": "2.10",
+        "Projected Minutes": "11.40"
     },
     {
         "Id": "94790-189468",
@@ -787,8 +879,7 @@
         "First Name": "Colin",
         "Nickname": "Colin Castleton",
         "Last Name": "Castleton",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3800",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -796,7 +887,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF/C"
+        "Roster Position": "PF/C",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-157802",
@@ -804,8 +898,7 @@
         "First Name": "Moses",
         "Nickname": "Moses Moody",
         "Last Name": "Moody",
-        "FPPG": 9.2,
-        "Played": "75",
+        "OG_FPPG": 9.2,
         "Salary": "3800",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -813,7 +906,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "8.40",
+        "Value": "2.22",
+        "Projected Minutes": "12.45"
     },
     {
         "Id": "94790-55056",
@@ -821,8 +917,7 @@
         "First Name": "Dario",
         "Nickname": "Dario Saric",
         "Last Name": "Saric",
-        "FPPG": 12.94,
-        "Played": "59",
+        "OG_FPPG": 12.94,
         "Salary": "3700",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -830,7 +925,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF/C"
+        "Roster Position": "PF/C",
+        "FPPG": "20.90",
+        "Value": "5.64",
+        "Projected Minutes": "22.67"
     },
     {
         "Id": "94790-157906",
@@ -838,8 +936,7 @@
         "First Name": "Usman",
         "Nickname": "Usman Garuba",
         "Last Name": "Garuba",
-        "FPPG": 11.49,
-        "Played": "75",
+        "OG_FPPG": 11.49,
         "Salary": "3700",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -847,7 +944,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF"
+        "Roster Position": "PF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-188423",
@@ -855,16 +955,18 @@
         "First Name": "Julian",
         "Nickname": "Julian Strawther",
         "Last Name": "Strawther",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3600",
         "Game": "LAL@DEN",
         "Team": "DEN",
         "Opponent": "LAL",
-        "Injury Indicator": "",
-        "Injury Details": "",
+        "Injury Indicator": "GTD",
+        "Injury Details": "Ankle",
         "Tier": "",
-        "Roster Position": "SF"
+        "Roster Position": "SF",
+        "FPPG": "11.70",
+        "Value": "3.24",
+        "Projected Minutes": "14.02"
     },
     {
         "Id": "94790-145309",
@@ -872,8 +974,7 @@
         "First Name": "Udoka",
         "Nickname": "Udoka Azubuike",
         "Last Name": "Azubuike",
-        "FPPG": 9.15,
-        "Played": "36",
+        "OG_FPPG": 9.15,
         "Salary": "3600",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -881,7 +982,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "C"
+        "Roster Position": "C",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.06"
     },
     {
         "Id": "94790-84701",
@@ -889,8 +993,7 @@
         "First Name": "Chimezie",
         "Nickname": "Chimezie Metu",
         "Last Name": "Metu",
-        "FPPG": 10.4,
-        "Played": "69",
+        "OG_FPPG": 10.4,
         "Salary": "3600",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -898,7 +1001,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "C"
+        "Roster Position": "C",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.09"
     },
     {
         "Id": "94790-171751",
@@ -906,8 +1012,7 @@
         "First Name": "Max",
         "Nickname": "Max Christie",
         "Last Name": "Christie",
-        "FPPG": 6.27,
-        "Played": "50",
+        "OG_FPPG": 6.27,
         "Salary": "3600",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -915,7 +1020,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "9.80",
+        "Value": "2.71",
+        "Projected Minutes": "15.96"
     },
     {
         "Id": "94790-171761",
@@ -923,8 +1031,7 @@
         "First Name": "Peyton",
         "Nickname": "Peyton Watson",
         "Last Name": "Watson",
-        "FPPG": 6.44,
-        "Played": "28",
+        "OG_FPPG": 6.44,
         "Salary": "3600",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -932,7 +1039,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "11.10",
+        "Value": "3.07",
+        "Projected Minutes": "12.35"
     },
     {
         "Id": "94790-171659",
@@ -940,8 +1050,7 @@
         "First Name": "Lester",
         "Nickname": "Lester Quinones",
         "Last Name": "Quinones",
-        "FPPG": 3.65,
-        "Played": "4",
+        "OG_FPPG": 3.65,
         "Salary": "3500",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -949,7 +1058,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-192648",
@@ -957,8 +1069,7 @@
         "First Name": "Souley",
         "Nickname": "Souley Boum",
         "Last Name": "Boum",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -966,7 +1077,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-188432",
@@ -974,16 +1088,18 @@
         "First Name": "Jalen",
         "Nickname": "Jalen Hood-Schifino",
         "Last Name": "Hood-Schifino",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "LAL",
         "Opponent": "DEN",
-        "Injury Indicator": "",
-        "Injury Details": "",
+        "Injury Indicator": "GTD",
+        "Injury Details": "Knee",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.02"
     },
     {
         "Id": "94790-188433",
@@ -991,8 +1107,7 @@
         "First Name": "Brandin",
         "Nickname": "Brandin Podziemski",
         "Last Name": "Podziemski",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -1000,7 +1115,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.03"
     },
     {
         "Id": "94790-171668",
@@ -1008,8 +1126,7 @@
         "First Name": "Collin",
         "Nickname": "Collin Gillespie",
         "Last Name": "Gillespie",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -1017,7 +1134,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-189469",
@@ -1025,8 +1145,7 @@
         "First Name": "D'Moi",
         "Nickname": "D'Moi Hodge",
         "Last Name": "Hodge",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -1034,7 +1153,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-188450",
@@ -1042,8 +1164,7 @@
         "First Name": "Trayce",
         "Nickname": "Trayce Jackson-Davis",
         "Last Name": "Jackson-Davis",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -1051,24 +1172,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF"
-    },
-    {
-        "Id": "94790-158243",
-        "Position": "SF",
-        "First Name": "Ish",
-        "Nickname": "Ish Wainright",
-        "Last Name": "Wainright",
-        "FPPG": 10.04,
-        "Played": "66",
-        "Salary": "3500",
-        "Game": "PHO@GS",
-        "Team": "PHO",
-        "Opponent": "GS",
-        "Injury Indicator": "GTD",
-        "Injury Details": "Calf",
-        "Tier": "",
-        "Roster Position": "SF"
+        "Roster Position": "PF",
+        "FPPG": "3.80",
+        "Value": "1.07",
+        "Projected Minutes": "4.12"
     },
     {
         "Id": "94790-117285",
@@ -1076,16 +1183,18 @@
         "First Name": "Vlatko",
         "Nickname": "Vlatko Cancar",
         "Last Name": "Cancar",
-        "FPPG": 9.95,
-        "Played": "65",
+        "OG_FPPG": 9.95,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
         "Opponent": "LAL",
-        "Injury Indicator": "",
-        "Injury Details": "",
+        "Injury Indicator": "O",
+        "Injury Details": "Knee",
         "Tier": "",
-        "Roster Position": "SF"
+        "Roster Position": "SF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-188458",
@@ -1093,8 +1202,7 @@
         "First Name": "Jalen",
         "Nickname": "Jalen Pickett",
         "Last Name": "Pickett",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -1102,7 +1210,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.02"
     },
     {
         "Id": "94790-188459",
@@ -1110,8 +1221,7 @@
         "First Name": "Hunter",
         "Nickname": "Hunter Tyson",
         "Last Name": "Tyson",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -1119,7 +1229,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PF"
+        "Roster Position": "PF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.02"
     },
     {
         "Id": "94790-195894",
@@ -1127,8 +1240,7 @@
         "First Name": "Vincent",
         "Nickname": "Vincent Valerio-Bodon",
         "Last Name": "Valerio-Bodon",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -1136,7 +1248,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF"
+        "Roster Position": "SF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-195893",
@@ -1144,8 +1259,7 @@
         "First Name": "Javan",
         "Nickname": "Javan Johnson",
         "Last Name": "Johnson",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -1153,7 +1267,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF"
+        "Roster Position": "SF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-188469",
@@ -1161,8 +1278,7 @@
         "First Name": "Maxwell",
         "Nickname": "Maxwell Lewis",
         "Last Name": "Lewis",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -1170,7 +1286,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF"
+        "Roster Position": "SF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.02"
     },
     {
         "Id": "94790-195782",
@@ -1178,8 +1297,7 @@
         "First Name": "Kendric",
         "Nickname": "Kendric Davis",
         "Last Name": "Davis",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -1187,7 +1305,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-84677",
@@ -1195,8 +1316,7 @@
         "First Name": "Jerome",
         "Nickname": "Jerome Robinson",
         "Last Name": "Robinson",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "PHO@GS",
         "Team": "GS",
@@ -1204,7 +1324,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-195783",
@@ -1212,8 +1335,7 @@
         "First Name": "Armaan",
         "Nickname": "Armaan Franklin",
         "Last Name": "Franklin",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -1221,7 +1343,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "PG"
+        "Roster Position": "PG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-193991",
@@ -1229,8 +1354,7 @@
         "First Name": "Alex",
         "Nickname": "Alex Fudge",
         "Last Name": "Fudge",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -1238,7 +1362,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF/PF"
+        "Roster Position": "SF/PF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-164036",
@@ -1246,8 +1373,7 @@
         "First Name": "Braxton",
         "Nickname": "Braxton Key",
         "Last Name": "Key",
-        "FPPG": 1.73,
-        "Played": "3",
+        "OG_FPPG": 1.73,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -1255,7 +1381,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SF"
+        "Roster Position": "SF",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-195784",
@@ -1263,8 +1392,7 @@
         "First Name": "Andrew",
         "Nickname": "Andrew Funk",
         "Last Name": "Funk",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -1272,7 +1400,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-9561",
@@ -1280,8 +1411,7 @@
         "First Name": "DeAndre",
         "Nickname": "DeAndre Jordan",
         "Last Name": "Jordan",
-        "FPPG": 13.06,
-        "Played": "43",
+        "OG_FPPG": 13.06,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
@@ -1289,7 +1419,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "C"
+        "Roster Position": "C",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.05"
     },
     {
         "Id": "94790-195820",
@@ -1297,8 +1430,7 @@
         "First Name": "Damion",
         "Nickname": "Damion Baugh",
         "Last Name": "Baugh",
-        "FPPG": 0,
-        "Played": "",
+        "OG_FPPG": 0,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "LAL",
@@ -1306,7 +1438,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-157804",
@@ -1314,8 +1449,7 @@
         "First Name": "Keon",
         "Nickname": "Keon Johnson",
         "Last Name": "Johnson",
-        "FPPG": 9.06,
-        "Played": "40",
+        "OG_FPPG": 9.06,
         "Salary": "3500",
         "Game": "PHO@GS",
         "Team": "PHO",
@@ -1323,7 +1457,10 @@
         "Injury Indicator": "",
         "Injury Details": "",
         "Tier": "",
-        "Roster Position": "SG"
+        "Roster Position": "SG",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.00"
     },
     {
         "Id": "94790-159097",
@@ -1331,15 +1468,17 @@
         "First Name": "Jay",
         "Nickname": "Jay Huff",
         "Last Name": "Huff",
-        "FPPG": 15.31,
-        "Played": "7",
+        "OG_FPPG": 15.31,
         "Salary": "3500",
         "Game": "LAL@DEN",
         "Team": "DEN",
         "Opponent": "LAL",
-        "Injury Indicator": "",
-        "Injury Details": "",
+        "Injury Indicator": "GTD",
+        "Injury Details": "Ribs",
         "Tier": "",
-        "Roster Position": "C"
+        "Roster Position": "C",
+        "FPPG": "0.00",
+        "Value": "0.00",
+        "Projected Minutes": "0.04"
     }
 ]

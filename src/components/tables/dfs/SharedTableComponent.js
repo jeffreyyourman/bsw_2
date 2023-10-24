@@ -9,15 +9,19 @@ import {
   Paper,
   TableSortLabel,
   Snackbar,
-  Button} from '@mui/material';
+  Button
+} from '@mui/material';
 
 import {
   FiLock,
   FiUnlock
 } from "react-icons/fi";
 import { IoMdClose, IoMdAdd } from "react-icons/io";
+import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
 
 export default function TableComponent(props) {
+  const clerk = useClerk();
+
   let {
     headers,
     data,
@@ -52,17 +56,17 @@ export default function TableComponent(props) {
 
   const sortedPlayers = useMemo(() => {
     let playersToSort = [...data];  // start with all players
-  
+
     // Filter by position if the props.selectedPosition is not 'All'
     if (props.selectedPosition !== 'All') {
       playersToSort = playersToSort.filter(player => player.Position.includes(props.selectedPosition));
     }
-  
+
     // If the order is 'default', return the original players list
     if (order === 'default') {
       return playersToSort;
     }
-  
+
     // Sort players based on the order and orderBy values
     return playersToSort.sort((a, b) => {
       // Handle numeric sorting explicitly for fields like FPPG
@@ -73,7 +77,7 @@ export default function TableComponent(props) {
           return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
         }
       }
-  
+
       // Handle textual sorting (default)
       if (order === 'asc') {
         return a[orderBy] < b[orderBy] ? -1 : 1;
@@ -134,6 +138,19 @@ export default function TableComponent(props) {
       updatedPlayers[playerIndex].minExposure = value;
 
       // Update the state with the modified array
+      setSubmittedPlayersForOptimizer(updatedPlayers);
+    }
+  };
+
+  const handleFPPGChange = (playerData, value) => {
+    const updatedPlayers = [...props.submittedPlayersForOptimizer];
+
+    const playerDataId = playerData.Id;
+    const playerIndex = updatedPlayers.findIndex((player) => player.Id === playerDataId);
+
+    if (playerIndex !== -1) {
+      updatedPlayers[playerIndex].FPPG = parseFloat(value); // Convert the input value to a float
+
       setSubmittedPlayersForOptimizer(updatedPlayers);
     }
   };
@@ -250,7 +267,24 @@ export default function TableComponent(props) {
   ]);
 
 
-  const basicColumnsMerged = mergeConfigWithOverrides(headers);
+  const basicColumnsMerged = mergeConfigWithOverrides([
+    ...headers.filter(header => header.key !== 'FPPG'),
+    {
+      key: 'FPPG',
+      label: 'FPPG',
+      renderer: (rowData) => (
+        <input
+          type="number"
+          // disabled
+          style={{ width: 65 }}
+          value={rowData['FPPG'] || ''}
+          onChange={(e) => handleFPPGChange(rowData, e.target.value)}
+        />
+      ),
+    },
+  ]);
+
+
 
   const columnConfig = [
     ...exposureColumnsMerged,
@@ -335,6 +369,13 @@ export default function TableComponent(props) {
             onClick={props.resetMaxExposureValues}>
             Reset Max Exposure Values
           </Button>
+
+         {clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com' &&<Button
+            // variant="contained"
+            // color="primary"
+            onClick={props.everyonePlays}>
+            Everyone Plays
+          </Button>}
 
 
         </div>
