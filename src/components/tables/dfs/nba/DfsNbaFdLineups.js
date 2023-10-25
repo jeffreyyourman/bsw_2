@@ -20,7 +20,7 @@ import { CSVLink } from "react-csv";
 
 import lodashOrderBy from 'lodash/orderBy';
 
-export default function NbaFanduelDfsLineups(props) {
+export default function DfsNbaFdLineups(props) {
   const [state, setState] = useState({
     top: false,
     left: false,

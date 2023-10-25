@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import {
     Table,
     TableBody,
@@ -10,11 +11,9 @@ import {
     Paper,
 } from '@material-ui/core';
 
-function NbaPlayerGroups(props) {
+function TeamGameStacksNba(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [groupSearchTerm, setGroupSearchTerm] = useState("");
-
+    const [selectedGame, setSelectedGame] = useState('');
     const generateUniqueId = () => {
         return new Date().getTime() + "-" + Math.floor(Math.random() * 1000);
     };
@@ -22,12 +21,14 @@ function NbaPlayerGroups(props) {
     const handleCreateGroup = () => {
         props.setGroups(prev => [...prev, {
             id: generateUniqueId(),
-            stackType: 'playerGroup',
-            name: "New Player Group",
-            players: [],
+            name: "New Game Stack",
+            stackType: 'singleGameStack',
+            // numPlayers: 3,
+            forGame: '',
+            forPositions: [],
             minFromGroup: 1,
             maxFromGroup: 4,
-            maxExposure: 50,
+            maxExposure: 100
         }]);
     };
 
@@ -75,12 +76,6 @@ function NbaPlayerGroups(props) {
         ]);
     };
 
-    const displayedPlayers = props.filteredPlayers.filter(player =>
-        player.Nickname.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-
-
     return (
         <div style={{
             display: 'flex',
@@ -94,14 +89,14 @@ function NbaPlayerGroups(props) {
                     backgroundColor: 'white',
                     marginTop: 16,
                     padding: 16,
-                    overflowY: 'hidden',
+                    overflowY: 'auto',
                     marginRight: 8,
                     // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
 
                 }}>
                 <Button onClick={handleCreateGroup}
                     style={{ backgroundColor: '#00203d' }}
-                    variant="contained">Create Player Group</Button>
+                    variant="contained">Create Game Stack</Button>
                 <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
                     {props.groups.map((group) => (
                         <div
@@ -129,20 +124,21 @@ function NbaPlayerGroups(props) {
             {activeGroupId && props.groups[getActiveGroupIndex()] && (
                 <div
                     className="playerGroupLeftSideWrapper"
-
                     style={{
                         width: '70%',
                         backgroundColor: 'white',
-                        overflowY: 'hidden',
+                        overflowY: 'auto',
                         marginTop: 16,
                         padding: 16,
-                        // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
-
-                    }}>
+                    }}
+                >
                     <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
+
                     <TextField
-                        style={{ margin: 4 }}
+                        style={{ margin: '24px 0px' }}
                         label="Group Name"
+                        fullWidth
+                        variant="outlined"
                         value={props.groups[getActiveGroupIndex()]?.name || ''}
                         onChange={e => {
                             const newName = e.target.value;
@@ -153,10 +149,15 @@ function NbaPlayerGroups(props) {
                             ]);
                         }}
                     />
+
+
+
                     <TextField
-                        style={{ margin: 4 }}
+                        style={{ margin: '24px 0px' }}
                         type="number"
-                        label="Min From Group"
+                        label="Min Players From Group"
+                        fullWidth
+                        variant="outlined"
                         value={props.groups[getActiveGroupIndex()]?.minFromGroup || ''}
                         onChange={e => {
                             const newMin = e.target.value;
@@ -167,10 +168,13 @@ function NbaPlayerGroups(props) {
                             ]);
                         }}
                     />
+
                     <TextField
-                        style={{ margin: 4 }}
+                        style={{ margin: '24px 0px' }}
                         type="number"
-                        label="Max From Group"
+                        label="Max number of Players"
+                        fullWidth
+                        variant="outlined"
                         value={props.groups[getActiveGroupIndex()]?.maxFromGroup || ''}
                         onChange={e => {
                             const newMax = e.target.value;
@@ -181,10 +185,14 @@ function NbaPlayerGroups(props) {
                             ]);
                         }}
                     />
+
+
                     <TextField
-                        style={{ margin: 4 }}
+                        style={{ margin: '24px 0px' }}
                         type="number"
                         label="Max Exposure"
+                        fullWidth
+                        variant="outlined"
                         value={props.groups[getActiveGroupIndex()]?.maxExposure || ''}
                         onChange={e => {
                             const newMaxExposure = e.target.value;
@@ -196,84 +204,65 @@ function NbaPlayerGroups(props) {
                         }}
                     />
 
-                    <div style={{ display: 'flex', height: '500px', flexDirection: 'row', justifyContent: 'space-between' }}>
-                        <div style={{ width: '48%' }}>
-                            <h4 style={{ marginTop: 24, marginBottom: 8 }}>Add Players to Group</h4>
-                            <TextField
-                                style={{ marginBottom: 16 }}
-                                label="Search Players"
-                                variant="outlined"
-                                value={searchTerm}
-                                onChange={e => setSearchTerm(e.target.value)}
-                                fullWidth
-                            />
-                            <TableContainer component={Paper} style={{ width: '100%', height: '90%', overflowY: 'auto' }}>
-                                <Table>
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>Use</TableCell>
-                                            <TableCell>Name</TableCell>
-                                            <TableCell>FPPG</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {displayedPlayers.length === 0 ? (
-                                            <TableRow>
-                                                <TableCell colSpan={3} align="center">
-                                                    No players found
-                                                </TableCell>
-                                            </TableRow>
-                                        ) : (
-                                            displayedPlayers.map((player, index) => (
-                                                <TableRow key={index}>
-                                                    <TableCell>
-                                                        <input
-                                                            type="checkbox"
-                                                            checked={props.groups[getActiveGroupIndex()].players.includes(player.Nickname)}
-                                                            onChange={(e) => handleCheckboxChange(player.Nickname, e.target.checked)}
-                                                        />
-                                                    </TableCell>
-                                                    <TableCell>{player.Nickname}</TableCell>
-                                                    <TableCell>{player.FPPG}</TableCell>
-                                                </TableRow>
-                                            ))
-                                        )}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        </div>
+                    <div style={{ marginTop: 24, marginBottom: 8 }}>
+                        <h4>Select Positions for Group</h4>
+                        <FormControl fullWidth variant="outlined" style={{ margin: 4 }}>
+                            <InputLabel>Positions</InputLabel>
+                            <Select
+                                multiple
+                                value={props.groups[getActiveGroupIndex()]?.forPositions || []}
+                                onChange={e => {
+                                    const selectedOptions = e.target.value;
+                                    props.setGroups(prev => [
+                                        ...prev.slice(0, getActiveGroupIndex()),
+                                        { ...prev[getActiveGroupIndex()], forPositions: selectedOptions },
+                                        ...prev.slice(getActiveGroupIndex() + 1),
+                                    ]);
+                                }}
+                                label="Positions"
+                            >
+                                {props.positions.map(position => (
+                                    <MenuItem key={position} value={position}>
+                                        {position}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+                    </div>
 
-                        <div style={{ width: '48%' }}>
-                            <h4 style={{ marginTop: 24, marginBottom: 8 }}>Current Group Players</h4>
-                            <TableContainer component={Paper} style={{ height: '90%', overflowY: 'auto' }}>
-                                <Table>
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>Name</TableCell>
-                                            <TableCell>FPPG</TableCell>
-                                        </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {props.groups[getActiveGroupIndex()].players.map((playerName, index) => {
-                                            const player = props.filteredPlayers.find(p => p.Nickname === playerName) || { Nickname: 'Unknown', FPPG: 'Unknown' };
-                                            return (
-                                                <TableRow key={index}>
-                                                    <TableCell>{player.Nickname}</TableCell>
-                                                    <TableCell>{player.FPPG}</TableCell>
-                                                </TableRow>
-                                            );
-                                        })}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                        </div>
+                    <div style={{ width: '100%', marginTop: 16 }}>
+                        <h4>Select Game for Group</h4>
+                        <TextField
+                            select
+                            fullWidth
+                            variant="outlined"
+                            value={props.groups[getActiveGroupIndex()]?.forGame || ''}
+                            onChange={e => {
+                                const newGame = e.target.value;
+                                props.setGroups(prev => [
+                                    ...prev.slice(0, getActiveGroupIndex()),
+                                    { ...prev[getActiveGroupIndex()], forGame: newGame },
+                                    ...prev.slice(getActiveGroupIndex() + 1),
+                                ]);
+                            }}
+                        >
+                            <MenuItem value="">
+                                <em>Select a game</em>
+                            </MenuItem>
+                            {props.gameMatchups.map((game, index) => (
+                                <MenuItem key={index} value={game.gameMatchup}>
+                                    {game.gameMatchup}
+                                </MenuItem>
+                            ))}
+                        </TextField>
                     </div>
 
                 </div>
             )}
+
+
         </div>
     );
 }
 
-export default NbaPlayerGroups;
-
+export default TeamGameStacksNba;

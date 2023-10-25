@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
-import { useColumns, useExcludeColumns } from "./NbaDfsTableColumns";
+import { useColumns, useExcludeColumns } from "./DfsNbaTableColumns";
 import axios from "axios";
 import {
   Button,
@@ -13,17 +13,17 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import PlayerGroups from './NbaPlayerGroups.js';
-import NbaTeamStacks from './NbaTeamStacks.js';
-import NbaTeamGameStacks from './NbaTeamGameStacks.js';
-import NbaUploadOwnProjections from './NbaUploadOwnProjections.js';
+import PlayerGroups from './PlayerGroupsNba.js';
+import TeamStacksNba from './TeamStacksNba.js';
+import TeamGameStacksNba from './TeamGameStacksNba.js';
+import UploadProjectionsNba from './UploadProjectionsNba.js';
 import TableComponent from '../SharedTableComponent';
-import NbaFdDfsOptimizerSettings from './NbaFdDfsOptimizerSettings.js';
+import DfsNbaFdOptimizerSettings from './DfsNbaFdOptimizerSettings.js';
 
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
-import NbaPlayerPosFilters from "./NbaPlayerPosFilters";
-import NbaFanduelDfsLineups from "./NbaFanduelDfsLineups";
-import NbaPlayerSearch from "./NbaPlayerSearch";
+import PlayerPosFilterNba from "./PlayerPosFilterNba";
+import DfsNbaFdLineups from "./DfsNbaFdLineups";
+import PlayerSearchNba from "./PlayerSearchNba";
 import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 // import { useAuth } from '../../../../context/AuthContext';
 import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
@@ -67,7 +67,7 @@ const theme = createTheme({
 const SPORT_POSITIONS = ['PG', 'SG', 'SF', 'PF', 'C'];
 
 
-export default function NbaFanduelDfs(props) {
+export default function DfsFanduelNba(props) {
   const useLocal = true
   const useOptimizerUrl = true
 
@@ -1056,7 +1056,7 @@ export default function NbaFanduelDfs(props) {
           )}
 
           {tabValue === 1 &&
-            <NbaTeamStacks
+            <TeamStacksNba
               positions={SPORT_POSITIONS}
               groups={teamGroups}
               gameMatchups={gameAndPlayerMatchups}
@@ -1066,7 +1066,7 @@ export default function NbaFanduelDfs(props) {
               setPlayerGroups={setPlayerGroups}
             />
           }
-          {tabValue === 2 && <NbaTeamGameStacks
+          {tabValue === 2 && <TeamGameStacksNba
             positions={SPORT_POSITIONS}
             groups={teamGameGroups}
             gameMatchups={gameAndPlayerMatchups}
@@ -1075,7 +1075,7 @@ export default function NbaFanduelDfs(props) {
             playerGroups={playerGroups}
             setPlayerGroups={setPlayerGroups}
           />}
-          {tabValue === 3 && <NbaUploadOwnProjections
+          {tabValue === 3 && <UploadProjectionsNba
             positions={SPORT_POSITIONS}
             groups={teamGameGroups}
             handleFileUpload={handleFileUpload}
@@ -1091,7 +1091,7 @@ export default function NbaFanduelDfs(props) {
           />}
         </DialogContent>
       </Dialog>
-      <NbaFdDfsOptimizerSettings
+      <DfsNbaFdOptimizerSettings
         open={open}
         anchor={'right'}
         selectedSlateData={selectedSlateData}
@@ -1163,7 +1163,7 @@ export default function NbaFanduelDfs(props) {
             }}>
               {!isShowingExcludePlayers &&
                 <div className="dfs-optimizer-filter-wrapper">
-                  <NbaPlayerPosFilters
+                  <PlayerPosFilterNba
                     players={data}
                     pos={SPORT_POSITIONS}
                     selectedPosition={currentPosition}
@@ -1173,13 +1173,13 @@ export default function NbaFanduelDfs(props) {
                 </div>}
               <div className="dfs-optimizer-filter-wrapper">
                 {isShowingExcludePlayers ?
-                  <NbaPlayerSearch
+                  <PlayerSearchNba
                     data={excludePlayerLines}
                     onSearch={handleSearchExcludedPlayersOnChange}
                     isShowingExcludePlayers={isShowingExcludePlayers}
                   />
                   :
-                  <NbaPlayerSearch
+                  <PlayerSearchNba
                     data={filteredPlayers}
                     onSearch={handleSearchOnChange}
                     isShowingExcludePlayers={isShowingExcludePlayers}
@@ -1508,7 +1508,7 @@ export default function NbaFanduelDfs(props) {
               }
 
 
-              {tableTabValue === 4 && <NbaFanduelDfsLineups
+              {tableTabValue === 4 && <DfsNbaFdLineups
                 exportLineupsToUpload={exportLineupsToUpload}
                 toggleAndSortData={toggleAndSortData}
                 sortDataByAsc={sortDataByAsc}

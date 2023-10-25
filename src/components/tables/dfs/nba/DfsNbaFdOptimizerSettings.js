@@ -5,7 +5,7 @@ import { TextField, FormHelperText, Card, FormControlLabel, Checkbox, Box, Typog
 
 import LeftSideDrawer from "../../../drawers/LeftSideDrawer";
 
-export default function NbaFdDfsOptimizerSettings(props) {
+export default function DfsNbaFdOptimizerSettings(props) {
   // console.log('props.fdSlates',props.fdSlates);
   return (
     <LeftSideDrawer
