@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import NBAFanduelDFS from "../tables/dfs/nba/NbaFanduelDFS";
+import NBAFanduelDFS from "../tables/dfs/nba/NBAFanduelDFS";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
