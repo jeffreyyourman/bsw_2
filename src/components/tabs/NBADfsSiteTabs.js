@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import NbaFanduelDfs from "../tables/dfs/nba/NbaFanduelDfs";
+import DfsFdNba from "../tables/dfs/nba/DfsFdNba";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -67,8 +67,8 @@ function NBADfsSiteTabs(props) {
                         <div className="">
                             <div className="">
                                 <div className="">
-                                    {/* <h1>NBAFanduelDFS</h1> */}
-                                    <NbaFanduelDfs />
+                                    {/* <h1>DfsFdNba</h1> */}
+                                    <DfsFdNba />
                                 </div>
 
                             </div>

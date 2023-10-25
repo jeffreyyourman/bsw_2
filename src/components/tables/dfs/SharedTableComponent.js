@@ -142,6 +142,28 @@ export default function TableComponent(props) {
     }
   };
 
+  const calculateValueForNBA = (projectedPoints, salary) => {
+    let salaryInThousands = salary / 1000;
+    return projectedPoints / salaryInThousands;
+  } 
+
+  const calculateValueForNFL = (projectedPoints, salary) => {
+    let salaryInThousands = salary / 1000;
+    return projectedPoints / (salaryInThousands * 4);
+  } 
+
+  const calculateValue = (projectedPoints, salary, sport) => {
+    // console.log('projectedPoints, salary', projectedPoints, salary);
+    switch (sport) {
+      case "nba":
+        return calculateValueForNBA(projectedPoints, salary);
+      case "nfl":
+        return calculateValueForNFL(projectedPoints, salary);
+      // You can add more cases for other sports
+      default:
+        return 0; // Default value, adjust as needed
+    }
+  }
   const handleFPPGChange = (playerData, value) => {
     const updatedPlayers = [...props.submittedPlayersForOptimizer];
 
@@ -267,8 +289,26 @@ export default function TableComponent(props) {
   ]);
 
 
+  // const basicColumnsMerged = mergeConfigWithOverrides([
+  //   ...headers.filter(header => header.key !== 'FPPG'),
+  //   {
+  //     key: 'FPPG',
+  //     label: 'FPPG',
+  //     renderer: (rowData) => (
+  //       <input
+  //         type="number"
+  //         // disabled
+  //         style={{ width: 65 }}
+  //         value={rowData['FPPG'] || ''}
+  //         onChange={(e) => handleFPPGChange(rowData, e.target.value)}
+  //       />
+  //     ),
+  //   },
+  // ]);
+
+
   const basicColumnsMerged = mergeConfigWithOverrides([
-    ...headers.filter(header => header.key !== 'FPPG'),
+    ...headers.filter(header => header.key !== 'FPPG' && header.key !== 'Value'),
     {
       key: 'FPPG',
       label: 'FPPG',
@@ -282,7 +322,16 @@ export default function TableComponent(props) {
         />
       ),
     },
+    {
+      key: 'Value',
+      label: 'Value',
+      renderer: (rowData) => {
+        const playerValue = calculateValue(rowData['FPPG'], rowData['Salary'], props.sport);
+        return <span>{playerValue.toFixed(2)}</span>;
+      },
+    },
   ]);
+
 
 
 
@@ -370,7 +419,7 @@ export default function TableComponent(props) {
             Reset Max Exposure Values
           </Button>
 
-         {clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com' &&<Button
+          {clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com' && <Button
             // variant="contained"
             // color="primary"
             onClick={props.everyonePlays}>
