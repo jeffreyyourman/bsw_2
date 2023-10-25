@@ -150,7 +150,7 @@ export default function TableComponent(props) {
   const calculateValueForNFL = (projectedPoints, salary) => {
     let salaryInThousands = salary / 1000;
     return projectedPoints / (salaryInThousands * 4);
-  }
+  } 
 
   const calculateValue = (projectedPoints, salary, sport) => {
     // console.log('projectedPoints, salary', projectedPoints, salary);
