@@ -137,8 +137,8 @@ export default function NBAFanduelDFS(props) {
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
   const [numLineups, setNumLineups] = useState(300);
-  const [totalMaxExp, setTotalMaxExp] = useState(60);
-  const [randomStd, setrandomStd] = useState(30);
+  const [totalMaxExp, setTotalMaxExp] = useState(70);
+  const [randomStd, setrandomStd] = useState(35);
   const [currentPosition, setCurrentPosition] = useState('All');
   // const [searchFilter, setSearchFilter] = useState('');
   const [excludeOpposingDefense, setExcludeOpposingDefense] = useState(false);
