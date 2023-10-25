@@ -1356,6 +1356,7 @@ export default function DfsFanduelNba(props) {
                   { key: 'exclude', order: 3 },
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
+                  { key: 'Value', order: 14 },
                   // { key: 'fanduel_value', order: 13 },
                   { key: 'Projected Minutes', order: 13 },
 
@@ -1381,6 +1382,7 @@ export default function DfsFanduelNba(props) {
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
+                sport={'nba'}
               // filterPlayersByPosition={filterPlayersByPosition}
               />
 
@@ -1394,6 +1396,7 @@ export default function DfsFanduelNba(props) {
                   { key: 'exclude', order: 3 },
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
+                  { key: 'Value', order: 14 },
                   { key: 'Projected Minutes', order: 13 },
                   // { key: 'fanduel_value', order: 13 },
 
@@ -1419,6 +1422,7 @@ export default function DfsFanduelNba(props) {
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
+                sport={'nba'}
               // filterPlayersByPosition={filterPlayersByPosition}
 
               />
@@ -1433,6 +1437,7 @@ export default function DfsFanduelNba(props) {
                   { key: 'include', order: 3 },
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
+                  { key: 'Value', order: 14 },
                   { key: 'Projected Minutes', order: 13 },
                   // { key: 'fanduel_value', order: 13 },
 
@@ -1460,6 +1465,7 @@ export default function DfsFanduelNba(props) {
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
+                sport={'nba'}
               // filterPlayersByPosition={filterPlayersByPosition}
 
               />
@@ -1475,6 +1481,7 @@ export default function DfsFanduelNba(props) {
                   { key: 'exclude', order: 3 },
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
+                  { key: 'Value', order: 14 },
                   // { key: 'fanduel_value', order: 13 },
                   { key: 'Projected Minutes', order: 13 },
 
@@ -1502,6 +1509,7 @@ export default function DfsFanduelNba(props) {
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
+                sport={'nba'}
               // filterPlayersByPosition={filterPlayersByPosition}
               />
 
