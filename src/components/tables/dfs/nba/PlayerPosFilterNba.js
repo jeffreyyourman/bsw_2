@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, ButtonGroup } from '@mui/material';
 
-function NbaPlayerPosFilters(props) {
+function PlayerPosFilterNba(props) {
     let { pos, selectedPosition, onPositionChange } = props
     const positions = ['All', ...pos];
     
@@ -23,4 +23,4 @@ function NbaPlayerPosFilters(props) {
     );
 }
 
-export default NbaPlayerPosFilters;
+export default PlayerPosFilterNba;
