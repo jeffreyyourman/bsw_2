@@ -308,72 +308,35 @@ export default function DfsNbaFdLineups(props) {
 
                       </TableSortLabel>
                     </TableCell>
-                    {/* <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-
-                      <TableSortLabel
-                        active={orderBy === 'totalTds'}
-                        direction={order}
-                        onClick={() => handleSortRequest('totalTds')}
-                      >
-                        Total Projected Touchdowns
-
-
-                      </TableSortLabel>
-                    </TableCell> */}
-                    {/* <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-
-                      <TableSortLabel
-                        active={orderBy === 'totalEverything'}
-                        direction={order}
-                        onClick={() => handleSortRequest('totalEverything')}
-                      >
-                        Total All Stats
-
-
-                      </TableSortLabel>
-                    </TableCell> */}
-                    {/* <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-
-                      <TableSortLabel
-                        active={orderBy === 'totalRecTds'}
-                        direction={order}
-                        onClick={() => handleSortRequest('totalRecTds')}
-                      >
-                        totalRecTds
-
-
-                      </TableSortLabel>
-                    </TableCell> */}
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
+                      PG
+                    </TableCell>
 
-                      QB</TableCell>
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-                      RB</TableCell>
+                      PG
+                    </TableCell>
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-                      RB</TableCell>
+                      SG
+                    </TableCell>
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-                      WR</TableCell>
+                      SG
+                    </TableCell>
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-                      WR</TableCell>
+                      SF
+                    </TableCell>
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-                      WR</TableCell>
+                      SF
+                    </TableCell>
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-                      TE</TableCell>
+                      PF
+                    </TableCell>
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
-
-                      Flex</TableCell>
+                      PF
+                    </TableCell>
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
+                      C
+                    </TableCell>
 
-                      Def</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
