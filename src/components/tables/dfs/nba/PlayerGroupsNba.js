@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
 import {
+    Button,
+    TextField,
     Table,
     TableBody,
     TableCell,
@@ -8,7 +9,9 @@ import {
     TableHead,
     TableRow,
     Paper,
-} from '@material-ui/core';
+    Checkbox,
+} from '@mui/material';
+
 
 function PlayerGroupsNba(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
@@ -75,6 +78,22 @@ function PlayerGroupsNba(props) {
         ]);
     };
 
+    const saveToBackend = (data) => {
+        // Make API call here
+        console.log("Saving to backend:", data);
+    };
+
+    const handleToggleGroupEnabled = (id) => {
+        const index = props.groups.findIndex(group => group.id === id);
+        if (index === -1) return;
+
+        props.setGroups(prev => [
+            ...prev.slice(0, index),
+            { ...prev[index], enabled: !prev[index].enabled },
+            ...prev.slice(index + 1),
+        ]);
+    };
+
     const displayedPlayers = props.filteredPlayers.filter(player =>
         player.Nickname.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -100,25 +119,33 @@ function PlayerGroupsNba(props) {
 
                 }}>
                 <Button onClick={handleCreateGroup}
-                    style={{ backgroundColor: '#00203d' }}
+                    style={{ backgroundColor: '#00203d', marginBottom: '16px' }}
+
                     variant="contained">Create Player Group</Button>
                 <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
                     {props.groups.map((group) => (
                         <div
                             key={group.id}
-                            style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
+                            style={{ display: 'flex', cursor: 'pointer', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                             <div
                                 style={{
                                     display: 'flex',
                                     flexDirection: 'row',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    flexGrow: 1
                                 }}
                                 onClick={() => handleSelectGroup(group.id)}>
-                                <h1>{group.name}</h1>
+                                <Checkbox
+                                    color="primary"
+                                    checked={group.enabled || false}
+                                    onChange={() => handleToggleGroupEnabled(group.id)}
+                                />
+                                <h1 style={{ flexGrow: 1, margin: 0 }}>{group.name}</h1>
                                 <Button
                                     size="small"
-                                    style={{ color: 'red', fontSize: '32px' }}
-                                    onClick={() => handleDeleteGroup(group.id)}>
+                                    color="error"
+                                    variant="outlined"
+                                    onClick={(e) => { e.stopPropagation(); handleDeleteGroup(group.id); }}>
                                     X
                                 </Button>
                             </div>
@@ -196,7 +223,18 @@ function PlayerGroupsNba(props) {
                         }}
                     />
 
-                    <div style={{ display: 'flex', height: '500px', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <div style={{ width: '100%', marginTop: 16 }}>
+                        <Button
+                            style={{ backgroundColor: '#00203d' }}
+                            variant="contained"
+                            color="primary"
+                            onClick={() => {
+                                saveToBackend(props.groups)
+                            }}>Save for later</Button>
+
+                    </div>
+
+                    <div style={{ display: 'flex', height: '300px', flexDirection: 'row', justifyContent: 'space-between' }}>
                         <div style={{ width: '48%' }}>
                             <h4 style={{ marginTop: 24, marginBottom: 8 }}>Add Players to Group</h4>
                             <TextField

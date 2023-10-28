@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import {
+    Button,
+    Checkbox,
+    TextField, Select, MenuItem, InputLabel, FormControl
+} from '@mui/material';
 
 function TeamStacksNba(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
@@ -67,6 +71,22 @@ function TeamStacksNba(props) {
         ]);
     };
 
+    const saveToBackend = (data) => {
+        // Make API call here
+        console.log("Saving to backend:", data);
+    };
+
+    const handleToggleGroupEnabled = (id) => {
+        const index = props.groups.findIndex(group => group.id === id);
+        if (index === -1) return;
+
+        props.setGroups(prev => [
+            ...prev.slice(0, index),
+            { ...prev[index], enabled: !prev[index].enabled },
+            ...prev.slice(index + 1),
+        ]);
+    };
+
     return (
         <div style={{
             display: 'flex',
@@ -84,29 +104,55 @@ function TeamStacksNba(props) {
                     marginRight: 8,
                 }}>
                 <Button onClick={handleCreateGroup}
-                    style={{ backgroundColor: '#00203d' }}
+                    style={{ backgroundColor: '#00203d', marginBottom: '16px' }}
                     variant="contained">Create Team Stack</Button>
                 <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
                     {props.groups.map((group) => (
                         <div
                             key={group.id}
-                            style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
+                            style={{ display: 'flex', cursor: 'pointer', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                             <div
                                 style={{
                                     display: 'flex',
                                     flexDirection: 'row',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    flexGrow: 1
                                 }}
                                 onClick={() => handleSelectGroup(group.id)}>
-                                <h1>{group.name}</h1>
+                                <Checkbox
+                                    color="primary"
+                                    checked={group.enabled || false}
+                                    onChange={() => handleToggleGroupEnabled(group.id)}
+                                />
+                                <h1 style={{ flexGrow: 1, margin: 0 }}>{group.name}</h1>
                                 <Button
                                     size="small"
-                                    style={{ color: 'red', fontSize: '32px' }}
-                                    onClick={() => handleDeleteGroup(group.id)}>
+                                    color="error"
+                                    variant="outlined"
+                                    onClick={(e) => { e.stopPropagation(); handleDeleteGroup(group.id); }}>
                                     X
                                 </Button>
                             </div>
                         </div>
+                        // <div
+                        //     key={group.id}
+                        //     style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
+                        //     <div
+                        //         style={{
+                        //             display: 'flex',
+                        //             flexDirection: 'row',
+                        //             alignItems: 'center'
+                        //         }}
+                        //         onClick={() => handleSelectGroup(group.id)}>
+                        //         <h1>{group.name}</h1>
+                        //         <Button
+                        //             size="small"
+                        //             style={{ color: 'red', fontSize: '32px' }}
+                        //             onClick={() => handleDeleteGroup(group.id)}>
+                        //             X
+                        //         </Button>
+                        //     </div>
+                        // </div>
                     ))}
                 </div>
             </div>
@@ -257,7 +303,16 @@ function TeamStacksNba(props) {
                         </TextField>
                     </div>
 
+                    <div style={{ width: '100%', marginTop: 16 }}>
+                        <Button
+                            style={{ backgroundColor: '#00203d' }}
+                            variant="contained"
+                            color="primary"
+                            onClick={() => {
+                                saveToBackend(props.groups)
+                            }}>Save for later</Button>
 
+                    </div>
                 </div>
             )}
         </div>

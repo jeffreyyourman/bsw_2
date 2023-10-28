@@ -180,7 +180,7 @@ export default function NFLFanduelDFS(props) {
 
       // console.log('fetchfanduel slate lists - response - ', response.data);
 
-      let selectedSlate = null;
+      let selectedSlate = 'main';
       // Find the first slate with "main" in slate_type
       const mainSlate = response.data.data.find((slate) => slate.slate_type.toLowerCase().includes("main"));
       if (mainSlate) {
@@ -713,6 +713,10 @@ export default function NFLFanduelDFS(props) {
       };
     });
 
+    const enabledGroups = groups.filter(group => group.enabled);
+    const enabledTeamGroups = teamGroups.filter(group => group.enabled);
+    const enabledTeamGameGroups = teamGameGroups.filter(group => group.enabled);
+
     let myargs = {
       numLineups: parseInt(numLineups, 10),
       site: 'FANDUEL',
@@ -752,9 +756,9 @@ export default function NFLFanduelDFS(props) {
           minFromTeam: globalMinFromTeam,
           maxExposure: globalMaxExposure,
         },
-        ...groups,
-        ...teamGroups,
-        ...teamGameGroups,
+        ...enabledGroups,
+        ...enabledTeamGroups,
+        ...enabledTeamGameGroups,
       ].filter(Boolean)
     };
     const headers = {
