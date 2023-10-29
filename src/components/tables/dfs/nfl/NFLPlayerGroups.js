@@ -10,12 +10,18 @@ import {
     TableRow,
     Paper,
     Checkbox,
+    Snackbar,
+    Alert,
 } from '@mui/material';
+import axios from 'axios';
 
 function NFLPlayerGroups(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [groupSearchTerm, setGroupSearchTerm] = useState("");
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState('success'); // can be 'error', 'info', 'success', or 'warning'
 
     const generateUniqueId = () => {
         return new Date().getTime() + "-" + Math.floor(Math.random() * 1000);
@@ -80,9 +86,29 @@ function NFLPlayerGroups(props) {
     };
 
     const saveToBackend = (data) => {
-        // Make API call here
-        console.log("Saving to backend:", data);
+        console.log("Saving to backend:", data[0]);
+
+        axios.post(
+            `${props.baseUrl}/saveNbaPlayerGroups`,
+            { data: data[0] },
+            {
+                // headers,
+                // timeout: 600000  // 10 minutes in milliseconds
+            }
+        )
+            .then((response) => {
+                setSnackbarMessage('Player Groups saved successfully!');
+                setSnackbarSeverity('success');
+                setSnackbarOpen(true);
+            })
+            .catch((error) => {
+                console.error(error);
+                setSnackbarMessage('Error saving NFL Player Groups.');
+                setSnackbarSeverity('error');
+                setSnackbarOpen(true);
+            });
     };
+
 
     const handleToggleGroupEnabled = (id) => {
         const index = props.groups.findIndex(group => group.id === id);
@@ -107,6 +133,17 @@ function NFLPlayerGroups(props) {
             height: '90%',
             flexDirection: 'row',
         }}>
+               <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={3000}
+                onClose={() => setSnackbarOpen(false)}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                style={{ zIndex: 2000 }}  // this is the added line
+            >
+                <Alert onClose={() => setSnackbarOpen(false)} severity={snackbarSeverity}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
             <div
                 className="playerGroupLeftSideWrapper"
                 style={{
@@ -197,8 +234,27 @@ function NFLPlayerGroups(props) {
                         // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
 
                     }}>
-                    <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        marginBottom: '12px',
+                    }}>
+                        <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
+                        <div>
+                            {/* <div style={{ width: '100%', marginTop: 16 }}> */}
+                            <Button
+                                style={{ backgroundColor: '#00203d' }}
+                                variant="contained"
+                                color="primary"
+                                onClick={() => {
+                                    saveToBackend(props.groups)
+                                }}>Save for later</Button>
 
+                        </div>
+                    </div>
                     <TextField
                         style={{ margin: 4 }}
                         label="Group Name"

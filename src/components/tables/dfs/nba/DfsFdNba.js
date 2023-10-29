@@ -1052,6 +1052,7 @@ export default function DfsFanduelNba(props) {
               filteredPlayers={filteredPlayers}
               playerGroups={playerGroups}
               setPlayerGroups={setPlayerGroups}
+              baseUrl={baseUrl}
             />
           )}
 
@@ -1064,6 +1065,7 @@ export default function DfsFanduelNba(props) {
               filteredPlayers={filteredPlayers}
               playerGroups={playerGroups}
               setPlayerGroups={setPlayerGroups}
+              baseUrl={baseUrl}
             />
           }
           {tabValue === 2 && <TeamGameStacksNba
@@ -1074,6 +1076,7 @@ export default function DfsFanduelNba(props) {
             filteredPlayers={filteredPlayers}
             playerGroups={playerGroups}
             setPlayerGroups={setPlayerGroups}
+            baseUrl={baseUrl}
           />}
           {tabValue === 3 && <UploadProjectionsNba
             positions={SPORT_POSITIONS}
@@ -1085,6 +1088,7 @@ export default function DfsFanduelNba(props) {
             playerGroups={playerGroups}
             data={data}
             setPlayerGroups={setPlayerGroups}
+            baseUrl={baseUrl}
 
             successUploadOwnProjections={successUploadOwnProjections}
             successUploadOwnProjectionsLoading={successUploadOwnProjectionsLoading}

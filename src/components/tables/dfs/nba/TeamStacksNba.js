@@ -2,11 +2,25 @@ import React, { useState } from 'react';
 import {
     Button,
     Checkbox,
-    TextField, Select, MenuItem, InputLabel, FormControl
+    TextField,
+    Select,
+    MenuItem,
+    InputLabel,
+    FormControl,
+    Snackbar,
+    Alert,
 } from '@mui/material';
+import axios from 'axios';
 
 function TeamStacksNba(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
+
+
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState('success'); // can be 'error', 'info', 'success', or 'warning'
+
+
     const generateUniqueId = () => {
         return new Date().getTime() + "-" + Math.floor(Math.random() * 1000);
     };
@@ -72,9 +86,29 @@ function TeamStacksNba(props) {
     };
 
     const saveToBackend = (data) => {
-        // Make API call here
-        console.log("Saving to backend:", data);
+        console.log("Saving to backend:", data[0]);
+
+        axios.post(
+            `${props.baseUrl}/saveNbaPlayerGroups`,
+            { data: data[0] },
+            {
+                // headers,
+                // timeout: 600000  // 10 minutes in milliseconds
+            }
+        )
+            .then((response) => {
+                setSnackbarMessage('Team Stacks saved successfully!');
+                setSnackbarSeverity('success');
+                setSnackbarOpen(true);
+            })
+            .catch((error) => {
+                console.error(error);
+                setSnackbarMessage('Error saving NBA Team Stacks.');
+                setSnackbarSeverity('error');
+                setSnackbarOpen(true);
+            });
     };
+
 
     const handleToggleGroupEnabled = (id) => {
         const index = props.groups.findIndex(group => group.id === id);
@@ -93,6 +127,17 @@ function TeamStacksNba(props) {
             height: '90%',
             flexDirection: 'row',
         }}>
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={3000}
+                onClose={() => setSnackbarOpen(false)}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                style={{ zIndex: 2000 }}  // this is the added line
+            >
+                <Alert onClose={() => setSnackbarOpen(false)} severity={snackbarSeverity}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
             <div
                 className="playerGroupLeftSideWrapper"
                 style={{
@@ -166,7 +211,28 @@ function TeamStacksNba(props) {
                         marginTop: 16,
                         padding: 16,
                     }}>
-                    <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        marginBottom: '12px',
+                    }}>
+
+                        <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Team Stacks</h4>
+                        <div >
+                            {/* <div style={{ width: '100%', marginTop: 16 }}> */}
+                            <Button
+                                style={{ backgroundColor: '#00203d' }}
+                                variant="contained"
+                                color="primary"
+                                onClick={() => {
+                                    saveToBackend(props.groups)
+                                }}>Save for later</Button>
+
+                        </div>
+                    </div>
                     <TextField
                         style={{ margin: '24px 0px' }}
                         label="Group Name"
@@ -303,7 +369,7 @@ function TeamStacksNba(props) {
                         </TextField>
                     </div>
 
-                    <div style={{ width: '100%', marginTop: 16 }}>
+                    {/* <div style={{ width: '100%', marginTop: 16 }}>
                         <Button
                             style={{ backgroundColor: '#00203d' }}
                             variant="contained"
@@ -312,7 +378,7 @@ function TeamStacksNba(props) {
                                 saveToBackend(props.groups)
                             }}>Save for later</Button>
 
-                    </div>
+                    </div> */}
                 </div>
             )}
         </div>
