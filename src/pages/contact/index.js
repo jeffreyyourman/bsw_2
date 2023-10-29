@@ -1,7 +1,14 @@
 import * as React from "react";
 import { navigate } from "gatsby-link";
 import Layout from "../../components/layouts/Layout";
-
+import {
+  TextField,
+  Button,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
+} from '@mui/material';
 function encode(data) {
   return Object.keys(data)
     .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -11,7 +18,7 @@ function encode(data) {
 export default class Index extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isValidated: false };
+    this.state = { isValidated: false, reason: "" };
   }
 
   handleChange = (e) => {
@@ -57,50 +64,70 @@ export default class Index extends React.Component {
                     <input name="bot-field" onChange={this.handleChange} />
                   </label>
                 </div>
+
                 <div className="field">
-                  <label className="label" htmlFor={"name"}>
-                    Your name
-                  </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type={"text"}
-                      name={"name"}
+                  <FormControl style={{ marginBottom: "24px", width: "400px", backgroundColor: "white" }}>
+                    <InputLabel htmlFor="name">Your name</InputLabel>
+                    <TextField
+                      id="name"
+                      type="text"
+                      name="name"
+                      value={this.state.name}
                       onChange={this.handleChange}
-                      id={"name"}
-                      required={true}
+                      fullWidth
                     />
-                  </div>
+                  </FormControl>
                 </div>
+
                 <div className="field">
-                  <label className="label" htmlFor={"email"}>
-                    Email
-                  </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type={"email"}
-                      name={"email"}
+                  <FormControl style={{ marginBottom: "24px", width: "400px", backgroundColor: "white" }}>
+                    <InputLabel htmlFor="email">Email</InputLabel>
+                    <TextField
+                      id="email"
+                      type="email"
+                      name="email"
+                      value={this.state.email}
                       onChange={this.handleChange}
-                      id={"email"}
-                      required={true}
+                      fullWidth
                     />
-                  </div>
+                  </FormControl>
                 </div>
+
                 <div className="field">
-                  <label className="label" htmlFor={"message"}>
-                    Message
-                  </label>
-                  <div className="control">
-                    <textarea
-                      className="textarea"
-                      name={"message"}
+                  <FormControl style={{ marginBottom: "24px", width: "400px", backgroundColor: "white" }}>
+                    <InputLabel id="reason-label">Reason</InputLabel>
+                    <Select
+                      labelId="reason-label"
+                      label="Reason"
+                      name="reason"
+                      value={this.state.reason}
                       onChange={this.handleChange}
-                      id={"message"}
-                      required={true}
-                    />
-                  </div>
+                      fullWidth
+                    >
+                      <MenuItem value={"Feature Request"}>Feature Request</MenuItem>
+                      <MenuItem value={"Issue Request"}>Issue Request</MenuItem>
+                      <MenuItem value={"Account Issue"}>Account Issue</MenuItem>
+                      <MenuItem value={"Website Issue"}>Website Issue</MenuItem>
+                      <MenuItem value={"Other"}>Other</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
+
+                <div className="field">
+                  <FormControl style={{ marginBottom: "24px", width: "400px", backgroundColor: "white" }}>
+                    <InputLabel htmlFor="message">Message</InputLabel>
+                    <TextField
+                      id="message"
+                      name="message"
+                      value={this.state.message}
+                      onChange={this.handleChange}
+                      fullWidth
+                      multiline
+                      rows={4}
+                    />
+                  </FormControl>
+                </div>
+
                 <div className="field">
                   <button className="button is-link" type="submit">
                     Send
