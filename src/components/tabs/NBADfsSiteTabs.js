@@ -33,11 +33,11 @@ function NBADfsSiteTabs(props) {
 
     return (
         <div style={{ padding: 25 }}>
-            <h3
+            {/* <h3
                 style={{ marginBottom: 15 }}
                 className="has-text-weight-semibold is-size-2">
                 {props.heading}
-            </h3>
+            </h3> */}
             <Tabs
                 sx={{ backgroundColor: 'white', borderBottom: '1px solid #e0e0e0' }}
                 value={value}

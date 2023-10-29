@@ -140,13 +140,8 @@ export default function DfsFanduelNba(props) {
   const [totalMaxExp, setTotalMaxExp] = useState(70);
   const [randomStd, setrandomStd] = useState(35);
   const [currentPosition, setCurrentPosition] = useState('All');
-  // const [searchFilter, setSearchFilter] = useState('');
-  const [excludeOpposingDefense, setExcludeOpposingDefense] = useState(false);
-  const [pairQbWithWrOrTe, setPairQbWithWrOrTe] = useState(false);
-  const [excludeQbANdRb, setExcludeQbANdRb] = useState(false);
   const [restrict2CsSameTeam, setRestrict2CsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
-  const [skillPlayersAgainstDef, setSkillPlayersAgainstDef] = useState([]);
   const [selectedSlate, setSelectedSlate] = useState('Main');
   const [selectedSlateData, setSelectedSlateData] = useState(null);
   const [dailyFantasyFuelPlayerProjs, setDailyFantasyFuelPlayerProjs] = useState(null);
@@ -160,7 +155,6 @@ export default function DfsFanduelNba(props) {
   const [gameAndPlayerMatchups, setGameAndPlayerMatchups] = useState([]);
   const [espnScoreBoardMatchups, setEspnScoreBoardMatchups] = useState([]);
   const [espnScoreBoardMatchupsLoading, setEspnScoreBoardMatchupsLoading] = useState(false);
-  const [gameMatchupsJson, setGameMatchupsJson] = useState([]);
   const [fdSlates, setFdSlates] = useState([]);
   const [espnScoreboard, setEspnScoreboard] = useState([]);
   const [espnStandings, setEspnStandings] = useState([]);
@@ -180,7 +174,7 @@ export default function DfsFanduelNba(props) {
 
       // console.log('fetchfanduel slate lists - response - ', response.data);
 
-      let selectedSlate = null;
+      let selectedSlate = 'main';
       // Find the first slate with "main" in slate_type
       const mainSlate = response.data.data.find((slate) => slate.slate_type.toLowerCase().includes("main"));
       if (mainSlate) {
@@ -216,6 +210,8 @@ export default function DfsFanduelNba(props) {
 
 
   const fetchDailyFantasyFuelPlayerProjections = async (selectedSlateParam) => {
+    console.log('selectedSlateParam', selectedSlateParam);
+    // console.log(`${baseUrl}/dfs-projections/nba/fd/slate-playerlist/${selectedSlateParam.url}`)
 
     try {
 
@@ -724,6 +720,10 @@ export default function DfsFanduelNba(props) {
       };
     });
 
+    const enabledGroups = groups.filter(group => group.enabled);
+    const enabledTeamGroups = teamGroups.filter(group => group.enabled);
+    const enabledTeamGameGroups = teamGameGroups.filter(group => group.enabled);
+
     let myargs = {
       numLineups: parseInt(numLineups, 10),
       site: 'FANDUEL',
@@ -744,9 +744,9 @@ export default function DfsFanduelNba(props) {
           minFromTeam: globalMinFromTeam,
           maxExposure: globalMaxExposure,
         },
-        ...groups,
-        ...teamGroups,
-        ...teamGameGroups,
+        ...enabledGroups,
+        ...enabledTeamGroups,
+        ...enabledTeamGameGroups,
       ].filter(Boolean)
     };
     const headers = {
@@ -1052,6 +1052,7 @@ export default function DfsFanduelNba(props) {
               filteredPlayers={filteredPlayers}
               playerGroups={playerGroups}
               setPlayerGroups={setPlayerGroups}
+              baseUrl={baseUrl}
             />
           )}
 
@@ -1064,6 +1065,7 @@ export default function DfsFanduelNba(props) {
               filteredPlayers={filteredPlayers}
               playerGroups={playerGroups}
               setPlayerGroups={setPlayerGroups}
+              baseUrl={baseUrl}
             />
           }
           {tabValue === 2 && <TeamGameStacksNba
@@ -1074,6 +1076,7 @@ export default function DfsFanduelNba(props) {
             filteredPlayers={filteredPlayers}
             playerGroups={playerGroups}
             setPlayerGroups={setPlayerGroups}
+            baseUrl={baseUrl}
           />}
           {tabValue === 3 && <UploadProjectionsNba
             positions={SPORT_POSITIONS}
@@ -1085,6 +1088,7 @@ export default function DfsFanduelNba(props) {
             playerGroups={playerGroups}
             data={data}
             setPlayerGroups={setPlayerGroups}
+            baseUrl={baseUrl}
 
             successUploadOwnProjections={successUploadOwnProjections}
             successUploadOwnProjectionsLoading={successUploadOwnProjectionsLoading}
@@ -1112,13 +1116,13 @@ export default function DfsFanduelNba(props) {
         selectedSlate={selectedSlate}
         handleGameSlateChange={handleGameSlateChange}
         fdSlates={fdSlates}
-        excludeOpposingDefense={excludeOpposingDefense}
+        // // excludeOpposingDefense={excludeOpposingDefense}
         handleCheckboxChange={handleCheckboxChange}
-        setExcludeOpposingDefense={setExcludeOpposingDefense}
-        pairQbWithWrOrTe={pairQbWithWrOrTe}
-        setPairQbWithWrOrTe={setPairQbWithWrOrTe}
-        excludeQbANdRb={excludeQbANdRb}
-        setExcludeQbANdRb={setExcludeQbANdRb}
+        // // setExcludeOpposingDefense={setExcludeOpposingDefense}
+        // // pairQbWithWrOrTe={pairQbWithWrOrTe}
+        // // setPairQbWithWrOrTe={setPairQbWithWrOrTe}
+        // // excludeQbANdRb={excludeQbANdRb}
+        // // setExcludeQbANdRb={setExcludeQbANdRb}
         // restrict2TEsSameTeam={restrict2TEsSameTeam}
         // setRestrict2TEsSameTeam={setRestrict2TEsSameTeam}
         restrict2CsSameTeam={restrict2CsSameTeam}

@@ -1,8 +1,26 @@
 import React, { useState } from 'react';
-import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import {
+    Button,
+    Checkbox,
+    TextField,
+    Select,
+    MenuItem,
+    InputLabel,
+    FormControl,
+    Snackbar,
+    Alert,
+} from '@mui/material';
+import axios from 'axios';
 
 function TeamStacksNba(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
+
+
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState('success'); // can be 'error', 'info', 'success', or 'warning'
+
+
     const generateUniqueId = () => {
         return new Date().getTime() + "-" + Math.floor(Math.random() * 1000);
     };
@@ -67,12 +85,59 @@ function TeamStacksNba(props) {
         ]);
     };
 
+    const saveToBackend = (data) => {
+        console.log("Saving to backend:", data[0]);
+
+        axios.post(
+            `${props.baseUrl}/saveNbaPlayerGroups`,
+            { data: data[0] },
+            {
+                // headers,
+                // timeout: 600000  // 10 minutes in milliseconds
+            }
+        )
+            .then((response) => {
+                setSnackbarMessage('Team Stacks saved successfully!');
+                setSnackbarSeverity('success');
+                setSnackbarOpen(true);
+            })
+            .catch((error) => {
+                console.error(error);
+                setSnackbarMessage('Error saving NBA Team Stacks.');
+                setSnackbarSeverity('error');
+                setSnackbarOpen(true);
+            });
+    };
+
+
+    const handleToggleGroupEnabled = (id) => {
+        const index = props.groups.findIndex(group => group.id === id);
+        if (index === -1) return;
+
+        props.setGroups(prev => [
+            ...prev.slice(0, index),
+            { ...prev[index], enabled: !prev[index].enabled },
+            ...prev.slice(index + 1),
+        ]);
+    };
+
     return (
         <div style={{
             display: 'flex',
             height: '90%',
             flexDirection: 'row',
         }}>
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={3000}
+                onClose={() => setSnackbarOpen(false)}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                style={{ zIndex: 2000 }}  // this is the added line
+            >
+                <Alert onClose={() => setSnackbarOpen(false)} severity={snackbarSeverity}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
             <div
                 className="playerGroupLeftSideWrapper"
                 style={{
@@ -84,29 +149,55 @@ function TeamStacksNba(props) {
                     marginRight: 8,
                 }}>
                 <Button onClick={handleCreateGroup}
-                    style={{ backgroundColor: '#00203d' }}
+                    style={{ backgroundColor: '#00203d', marginBottom: '16px' }}
                     variant="contained">Create Team Stack</Button>
                 <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
                     {props.groups.map((group) => (
                         <div
                             key={group.id}
-                            style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
+                            style={{ display: 'flex', cursor: 'pointer', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
                             <div
                                 style={{
                                     display: 'flex',
                                     flexDirection: 'row',
-                                    alignItems: 'center'
+                                    alignItems: 'center',
+                                    flexGrow: 1
                                 }}
                                 onClick={() => handleSelectGroup(group.id)}>
-                                <h1>{group.name}</h1>
+                                <Checkbox
+                                    color="primary"
+                                    checked={group.enabled || false}
+                                    onChange={() => handleToggleGroupEnabled(group.id)}
+                                />
+                                <h1 style={{ flexGrow: 1, margin: 0 }}>{group.name}</h1>
                                 <Button
                                     size="small"
-                                    style={{ color: 'red', fontSize: '32px' }}
-                                    onClick={() => handleDeleteGroup(group.id)}>
+                                    color="error"
+                                    variant="outlined"
+                                    onClick={(e) => { e.stopPropagation(); handleDeleteGroup(group.id); }}>
                                     X
                                 </Button>
                             </div>
                         </div>
+                        // <div
+                        //     key={group.id}
+                        //     style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
+                        //     <div
+                        //         style={{
+                        //             display: 'flex',
+                        //             flexDirection: 'row',
+                        //             alignItems: 'center'
+                        //         }}
+                        //         onClick={() => handleSelectGroup(group.id)}>
+                        //         <h1>{group.name}</h1>
+                        //         <Button
+                        //             size="small"
+                        //             style={{ color: 'red', fontSize: '32px' }}
+                        //             onClick={() => handleDeleteGroup(group.id)}>
+                        //             X
+                        //         </Button>
+                        //     </div>
+                        // </div>
                     ))}
                 </div>
             </div>
@@ -120,7 +211,28 @@ function TeamStacksNba(props) {
                         marginTop: 16,
                         padding: 16,
                     }}>
-                    <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        marginBottom: '12px',
+                    }}>
+
+                        <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Team Stacks</h4>
+                        <div >
+                            {/* <div style={{ width: '100%', marginTop: 16 }}> */}
+                            <Button
+                                style={{ backgroundColor: '#00203d' }}
+                                variant="contained"
+                                color="primary"
+                                onClick={() => {
+                                    saveToBackend(props.groups)
+                                }}>Save for later</Button>
+
+                        </div>
+                    </div>
                     <TextField
                         style={{ margin: '24px 0px' }}
                         label="Group Name"
@@ -257,7 +369,16 @@ function TeamStacksNba(props) {
                         </TextField>
                     </div>
 
+                    {/* <div style={{ width: '100%', marginTop: 16 }}>
+                        <Button
+                            style={{ backgroundColor: '#00203d' }}
+                            variant="contained"
+                            color="primary"
+                            onClick={() => {
+                                saveToBackend(props.groups)
+                            }}>Save for later</Button>
 
+                    </div> */}
                 </div>
             )}
         </div>

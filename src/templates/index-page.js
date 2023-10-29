@@ -53,6 +53,19 @@ import dalle_full2 from "../img/dalle/dalle_full2.png";
 import dalle_full3 from "../img/dalle/dalle_full3.png";
 import dalle_full4 from "../img/dalle/dalle_full4.png";
 import dalle_full5 from "../img/dalle/dalle_full5.png";
+import landingPageImg1 from "../img/landing_page_imgs/1.jpg";
+import landingPageImg3 from "../img/landing_page_imgs/3.png";
+import landingPageImg4 from "../img/landing_page_imgs/4.jpg";
+import landingPageImg5 from "../img/landing_page_imgs/5.jpg";
+import landingPageImg6 from "../img/landing_page_imgs/6.jpg";
+import landingPageImg7 from "../img/landing_page_imgs/7.jpg";
+import landingPageImg8 from "../img/landing_page_imgs/8.jpg";
+import landingPageImg9 from "../img/landing_page_imgs/9.jpg";
+import landingPageImg10 from "../img/landing_page_imgs/10.jpg";
+import landingPageImg11 from "../img/landing_page_imgs/11.jpg";
+import landingPageImg12 from "../img/landing_page_imgs/12.jpg";
+import landingPageImg13 from "../img/landing_page_imgs/13.jpg";
+import landingPageImg14 from "../img/landing_page_imgs/14.jpg";
 
 const TextImageRowSection = (props) => {
   return (
@@ -95,7 +108,17 @@ const TextImageRowSection = (props) => {
         {/* right side */}
         <div>
           {/* <img src="https://picsum.photos/600/300" alt="Graph" style={{ width: '100%', borderRadius: 4 }} /> */}
-          <img src={props.imageSrc} alt="Graph" style={{ width: '600px', borderRadius: 4 }} />
+          {/* <img src={props.imageSrc} alt="Graph" style={{ width: '600px', borderRadius: 4 }} /> */}
+          <img
+            src={props.imageSrc}
+            alt="Graph"
+            style={{
+              width: '600px',
+              borderRadius: 4,
+              boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', // added drop shadow
+
+            }}
+          />
         </div>
 
       </div>
@@ -143,7 +166,13 @@ const TextImageRow = (props) => {
 
         {/* right side */}
         <div>
-          <img src={props.imgSrc} alt="Graph" style={{ width: 500, borderRadius: 4 }} />
+          <img src={props.imgSrc}
+            alt="Graph"
+            style={{
+              width: 500,
+              borderRadius: 4,
+              boxShadow: '0px 4px 10px rgba(0,0,0,0.2)',
+            }} />
         </div>
 
       </div>
@@ -154,7 +183,7 @@ const TextImageRow = (props) => {
 const FulLWidthImgCustom = (props) => {
   return (
     <div style={{ margin: '-20px' }}>
-      <img src={props.src} alt="Graph" style={{ width: '100%', height: '400px', borderRadius: 4 }} />
+      <img src={props.src} alt="Graph" style={{ width: '100%', height: '400px', boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', borderRadius: 4 }} />
     </div>
   )
 }
@@ -204,7 +233,7 @@ const HeaderComponent = (props) => {
         </div>
         {/* right side */}
         <div>
-          <img src={dalle1} alt="BSW_Header" style={{ width: '600px', borderRadius: 4 }} />
+          <img src={landingPageImg8} alt="BSW_Header" style={{ width: '600px', borderRadius: 4, boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', }} />
           {/* <img src="https://picsum.photos/600/300" alt="Graph" style={{ width: '100%', borderRadius: 4 }} /> */}
 
         </div>
@@ -227,7 +256,7 @@ const ServiceSection = (props) => {
         alignItems: 'center',
         padding: '64px 25px 25px 25px',
         // paddingTop:32,
-        marginBottom:48,
+        marginBottom: 48,
       }}
       >
         <h1 style={{
@@ -247,16 +276,16 @@ const ServiceSection = (props) => {
       </div>
 
 
-      <div style={{marginBottom:64}}>
+      <div style={{ marginBottom: 64 }}>
         <TextImageRow
           // sectionBgColor={}
           textDirection={'row'}
           sectionTitle={'Elite Analytics Dashboard'}
           sectionDescription={'Get a glimpse of the most detailed statistics, charts, and predictions curated by our top analysts. Enhance your betting game by understanding the nuances of every match, player, and team.'}
-          imgSrc={dalle11}
+          imgSrc={landingPageImg13}
         // actionWrapper={ }
         />
-        <div style={{marginBottom:64}}>
+        <div style={{ marginBottom: 64 }}>
         </div>
         <TextImageRow
           // sectionBgColor={}
@@ -268,13 +297,13 @@ const ServiceSection = (props) => {
         />
       </div>
 
-      <div style={{marginBottom:64}}>
+      <div style={{ marginBottom: 64 }}>
         <TextImageRow
           // sectionBgColor={}
           textDirection={"row"}
           sectionTitle={"Community & Expert Forums"}
           sectionDescription={"Join our community of avid sports enthusiasts and betting experts. Engage in discussions, share insights, ask questions, and learn from the best in the industry."}
-          imgSrc={dalle9}
+          imgSrc={landingPageImg11}
         // actionWrapper={ }
         />
       </div>
@@ -315,7 +344,7 @@ const ServiceSection = (props) => {
         </div>
         {/* right side */}
         <div>
-          <img src={dalle12} alt="Graph" style={{ width: '500px', borderRadius: 4 }} />
+          <img src={landingPageImg14} alt="Graph" style={{ boxShadow: '0px 4px 10px rgba(0,0,0,0.2)', width: '500px', borderRadius: 4 }} />
         </div>
 
       </div>
@@ -364,7 +393,7 @@ export const IndexPageTemplate = ({
             <li><strong>Community at Heart:</strong> BetSweatWin is not just a platform; it's a community. We listen, engage, and grow with our users. Your feedback and success stories are our driving force.</li>
           </ul>
         </div>}
-        imageSrc={dalle2}
+        imageSrc={landingPageImg3}
       />
 
       {/* <FullWidthImage img={heroImage} /> */}
@@ -385,14 +414,42 @@ export const IndexPageTemplate = ({
       {/* dalle_full1
 dalle_full2
 dalle_full3 */}
-      <TextImageRowSection
+
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '64px 25px 25px 25px',
+        marginBottom: 48,
+      }}>
+        <h1 style={{
+          textAlign: 'center',
+          fontSize: 32,
+        }}>
+          Why BetSweatWin Analytics
+        </h1>
+        <p style={{
+          maxWidth: '1000px',
+          width: '100%',
+          wordWrap: 'break-word',
+          overflowWrap: 'break-word', // added for better wrapping control
+          textAlign: 'center',
+          marginTop: 16,
+          fontSize: 24,
+        }}>
+          At BetSweatWin, innovation is in our DNA. We're constantly pushing boundaries to offer the most advanced analytics in the industry. Our platform is built with you, the community, at its heart—taking advice and feedback from our valued users to continually refine our services. Reliability is not just a promise; it's our ethos. We pride ourselves on nurturing strong partnerships, ensuring that every aspect of our service exceeds expectations. Dive into a realm where data meets passion and where you, our community, guide the future.
+        </p>
+      </div>
+
+
+      {/* <TextImageRowSection
         sectionBgColor={'#eff3fc'}
         textDirection={'row'}
         sectionTitle={'Why BetSweatWin Analytics'}
 
         sectionDescription={"At BetSweatWin, innovation is in our DNA. We're constantly pushing boundaries to offer the most advanced analytics in the industry. Our platform is built with you, the community, at its heart—taking advice and feedback from our valued users to continually refine our services. Reliability is not just a promise; it's our ethos. We pride ourselves on nurturing strong partnerships, ensuring that every aspect of our service exceeds expectations. Dive into a realm where data meets passion and where you, our community, guide the future."}
         imageSrc={dalle3}
-      />
+      /> */}
 
     </>
   );

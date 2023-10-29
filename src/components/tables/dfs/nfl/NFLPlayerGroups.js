@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
 import {
+    Button,
+    TextField,
     Table,
     TableBody,
     TableCell,
@@ -8,12 +9,19 @@ import {
     TableHead,
     TableRow,
     Paper,
-} from '@material-ui/core';
+    Checkbox,
+    Snackbar,
+    Alert,
+} from '@mui/material';
+import axios from 'axios';
 
 function NFLPlayerGroups(props) {
     const [activeGroupId, setActiveGroupId] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
     const [groupSearchTerm, setGroupSearchTerm] = useState("");
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState('success'); // can be 'error', 'info', 'success', or 'warning'
 
     const generateUniqueId = () => {
         return new Date().getTime() + "-" + Math.floor(Math.random() * 1000);
@@ -61,6 +69,8 @@ function NFLPlayerGroups(props) {
         });
     };
 
+
+
     const handleDeleteGroup = (id) => {
         const index = props.groups.findIndex(group => group.id === id);
         if (index === -1) return;
@@ -71,6 +81,42 @@ function NFLPlayerGroups(props) {
 
         props.setGroups(prev => [
             ...prev.slice(0, index),
+            ...prev.slice(index + 1),
+        ]);
+    };
+
+    const saveToBackend = (data) => {
+        console.log("Saving to backend:", data[0]);
+
+        axios.post(
+            `${props.baseUrl}/saveNbaPlayerGroups`,
+            { data: data[0] },
+            {
+                // headers,
+                // timeout: 600000  // 10 minutes in milliseconds
+            }
+        )
+            .then((response) => {
+                setSnackbarMessage('Player Groups saved successfully!');
+                setSnackbarSeverity('success');
+                setSnackbarOpen(true);
+            })
+            .catch((error) => {
+                console.error(error);
+                setSnackbarMessage('Error saving NFL Player Groups.');
+                setSnackbarSeverity('error');
+                setSnackbarOpen(true);
+            });
+    };
+
+
+    const handleToggleGroupEnabled = (id) => {
+        const index = props.groups.findIndex(group => group.id === id);
+        if (index === -1) return;
+
+        props.setGroups(prev => [
+            ...prev.slice(0, index),
+            { ...prev[index], enabled: !prev[index].enabled },
             ...prev.slice(index + 1),
         ]);
     };
@@ -87,6 +133,17 @@ function NFLPlayerGroups(props) {
             height: '90%',
             flexDirection: 'row',
         }}>
+               <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={3000}
+                onClose={() => setSnackbarOpen(false)}
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                style={{ zIndex: 2000 }}  // this is the added line
+            >
+                <Alert onClose={() => setSnackbarOpen(false)} severity={snackbarSeverity}>
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
             <div
                 className="playerGroupLeftSideWrapper"
                 style={{
@@ -100,14 +157,44 @@ function NFLPlayerGroups(props) {
 
                 }}>
                 <Button onClick={handleCreateGroup}
-                    style={{ backgroundColor: '#00203d' }}
+                    style={{ backgroundColor: '#00203d', marginBottom: '16px' }}
                     variant="contained">Create Player Group</Button>
                 <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
                     {props.groups.map((group) => (
                         <div
                             key={group.id}
                             style={{ display: 'flex', cursor: 'pointer', justifyContent: 'flex-start' }}>
-                            <div
+                            <div style={{ height: 'calc(90% - 36px)', overflowY: 'auto' }}>
+                                {props.groups.map((group) => (
+                                    <div
+                                        key={group.id}
+                                        style={{ display: 'flex', cursor: 'pointer', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                                        <div
+                                            style={{
+                                                display: 'flex',
+                                                flexDirection: 'row',
+                                                alignItems: 'center',
+                                                flexGrow: 1
+                                            }}
+                                            onClick={() => handleSelectGroup(group.id)}>
+                                            <Checkbox
+                                                color="primary"
+                                                checked={group.enabled || false}
+                                                onChange={() => handleToggleGroupEnabled(group.id)}
+                                            />
+                                            <h1 style={{ flexGrow: 1, margin: 0 }}>{group.name}</h1>
+                                            <Button
+                                                size="small"
+                                                color="error"
+                                                variant="outlined"
+                                                onClick={(e) => { e.stopPropagation(); handleDeleteGroup(group.id); }}>
+                                                X
+                                            </Button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            {/* <div
                                 style={{
                                     display: 'flex',
                                     flexDirection: 'row',
@@ -115,13 +202,21 @@ function NFLPlayerGroups(props) {
                                 }}
                                 onClick={() => handleSelectGroup(group.id)}>
                                 <h1>{group.name}</h1>
+
+                                <input
+                                    type="checkbox"
+                                    checked={group.enabled || false}
+                                    onChange={() => handleToggleGroupEnabled(group.id)}
+                                />
+
+
                                 <Button
                                     size="small"
                                     style={{ color: 'red', fontSize: '32px' }}
                                     onClick={() => handleDeleteGroup(group.id)}>
                                     X
                                 </Button>
-                            </div>
+                            </div> */}
                         </div>
                     ))}
                 </div>
@@ -139,7 +234,27 @@ function NFLPlayerGroups(props) {
                         // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
 
                     }}>
-                    <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        alignItems: 'center',
+                        marginBottom: '12px',
+                    }}>
+                        <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
+                        <div>
+                            {/* <div style={{ width: '100%', marginTop: 16 }}> */}
+                            <Button
+                                style={{ backgroundColor: '#00203d' }}
+                                variant="contained"
+                                color="primary"
+                                onClick={() => {
+                                    saveToBackend(props.groups)
+                                }}>Save for later</Button>
+
+                        </div>
+                    </div>
                     <TextField
                         style={{ margin: 4 }}
                         label="Group Name"
@@ -196,7 +311,18 @@ function NFLPlayerGroups(props) {
                         }}
                     />
 
-                    <div style={{ display: 'flex', height: '500px', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <div style={{ width: '100%', marginTop: 16 }}>
+                        <Button
+                            style={{ backgroundColor: '#00203d' }}
+                            variant="contained"
+                            color="primary"
+                            onClick={() => {
+                                saveToBackend(props.groups)
+                            }}>Save for later</Button>
+
+                    </div>
+
+                    <div style={{ display: 'flex', height: '300px', flexDirection: 'row', justifyContent: 'space-between' }}>
                         <div style={{ width: '48%' }}>
                             <h4 style={{ marginTop: 24, marginBottom: 8 }}>Add Players to Group</h4>
                             <TextField
@@ -267,7 +393,10 @@ function NFLPlayerGroups(props) {
                                 </Table>
                             </TableContainer>
                         </div>
+
+
                     </div>
+
 
                 </div>
             )}
