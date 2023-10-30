@@ -5,6 +5,7 @@ import {
   Card,
   Button,
   Table,
+  TextField,
   TableBody,
   TableCell,
   TableContainer,
@@ -27,6 +28,8 @@ export default function DfsNbaFdLineups(props) {
     bottom: false,
     right: false,
   });
+  const [searchTerm, setSearchTerm] = useState("");
+
   const [startLine, setStartLine] = useState(null);
   const [endLine, setEndLine] = useState(null);
 
@@ -35,6 +38,7 @@ export default function DfsNbaFdLineups(props) {
   const initialSavedLineups = props.lineups.lineups;
   const [savedLineups, setSaveLineups] = useState([]);
   const [deletedLineups, setDeletedLineups] = useState([]);
+  const [sortTopPlayers, setSortTopPlayers] = useState(props.topPlayers);
   const [selectedTab, setSelectedTab] = useState(0);
   useEffect(() => {
     setSaveLineups(initialSavedLineups)
@@ -149,6 +153,27 @@ export default function DfsNbaFdLineups(props) {
     return [headers, ...csvData];
   };
 
+  console.log('fprops', props.topPlayers)
+
+  const handleFilterPlayers = (text) => {
+    console.log('text',text.target.value);
+    setSearchTerm(text.target.value.toLowerCase())
+    let searchTextLowerCase = text.target.value.toLowerCase();
+    const filterName = props.topPlayers.filter((player) => {
+      let newPlayerName = player.playerName.toLowerCase();
+      if (newPlayerName.includes(searchTextLowerCase)) {
+        return player;
+      }
+    });
+    if (filterName.length !== 0) {
+      setSortTopPlayers(filterName);
+    } else {
+      setSortTopPlayers(props.topPlayers);
+    }
+  };
+  
+
+
 
   return (
     <div>
@@ -237,7 +262,15 @@ export default function DfsNbaFdLineups(props) {
                   height: '350px',
                   overflowY: 'auto'
                 }}>
-                  {props.topPlayers
+                  <TextField
+                    style={{ marginBottom: 16 }}
+                    label="Search Players"
+                    variant="outlined"
+                    value={searchTerm}
+                    onChange={handleFilterPlayers}
+                    fullWidth
+                  />
+                  {sortTopPlayers
                     .sort((a, b) => b.totalAmt - a.totalAmt)
                     .map((topPlayer) => (
                       <div

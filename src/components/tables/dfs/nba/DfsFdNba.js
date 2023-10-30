@@ -136,9 +136,9 @@ export default function DfsFanduelNba(props) {
   const [teamGroups, setTeamGroups] = useState([]);
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
-  const [numLineups, setNumLineups] = useState(300);
-  const [totalMaxExp, setTotalMaxExp] = useState(70);
-  const [randomStd, setrandomStd] = useState(35);
+  const [numLineups, setNumLineups] = useState(5);
+  const [totalMaxExp, setTotalMaxExp] = useState(50);
+  const [randomStd, setrandomStd] = useState(30);
   const [currentPosition, setCurrentPosition] = useState('All');
   const [restrict2CsSameTeam, setRestrict2CsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
@@ -757,7 +757,6 @@ export default function DfsFanduelNba(props) {
     axios
       .post(
         // `${baseUrl}/optimizer`,
-        // "https://bsw-be-api.onrender.com/optimizer",
         "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         { data: myargs },
         {

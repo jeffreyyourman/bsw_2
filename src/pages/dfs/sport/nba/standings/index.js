@@ -22,7 +22,8 @@ const StandingsPage = () => {
   const [espnDivisionStandings, setEspnDivisionStandings] = useState(null)
   const [espnStandingsLoading, setEspnStandingsLoading] = useState(false)
   const [espnConfStandings, setEspnConfStandings] = useState(null)
-  const getEspnStandings = (abbr) => `/mockJson/nfl/2023-espn-standings.json`;
+  //  const getStandings = (abbr) => `/mockJson/nba/nba-standings.json`;
+  const getStandingsJson = (abbr) => `/mockJson/nfl/2023-espn-standings.json`;
 
   useEffect(() => {
     fetchEspnStandings();
@@ -35,10 +36,10 @@ const StandingsPage = () => {
 
   const fetchEspnStandings = async () => {
     setEspnStandingsLoading(true)
-    const getEspnStandingsRes = getEspnStandings()
+    const getStandings = getStandingsJson()
 
     try {
-      const response = await axios.get(getEspnStandingsRes);
+      const response = await axios.get(getStandings);
       console.log('response', response);
 
       if (Object.keys(response.data).length === 0) {
