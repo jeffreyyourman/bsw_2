@@ -1035,19 +1035,9 @@ export default function DfsFanduelNba(props) {
         selectedSlate={selectedSlate}
         handleGameSlateChange={handleGameSlateChange}
         fdSlates={fdSlates}
-        // // excludeOpposingDefense={excludeOpposingDefense}
         handleCheckboxChange={handleCheckboxChange}
-        // // setExcludeOpposingDefense={setExcludeOpposingDefense}
-        // // pairQbWithWrOrTe={pairQbWithWrOrTe}
-        // // setPairQbWithWrOrTe={setPairQbWithWrOrTe}
-        // // excludeQbANdRb={excludeQbANdRb}
-        // // setExcludeQbANdRb={setExcludeQbANdRb}
-        // restrict2TEsSameTeam={restrict2TEsSameTeam}
-        // setRestrict2TEsSameTeam={setRestrict2TEsSameTeam}
         restrict2CsSameTeam={restrict2CsSameTeam}
         setRestrict2CsSameTeam={setRestrict2CsSameTeam}
-        // restrict2RBsSameTeam={restrict2RBsSameTeam}
-        // setRestrict2RBsSameTeam={setRestrict2RBsSameTeam}
         includeGlobalGameStack={includeGlobalGameStack}
         setIncludeGlobalGameStack={setIncludeGlobalGameStack}
         globalNumPlayers={globalNumPlayers}
@@ -1067,7 +1057,6 @@ export default function DfsFanduelNba(props) {
 
             <div style={{ marginBottom: '24px' }}>
               <GameMatchupsCarousel
-                // games={gameMatchups}
                 games={espnScoreBoardMatchups}
                 handleExcludeTeams={handleExcludeTeams}
                 excludedTeams={excludedTeams}
@@ -1169,12 +1158,7 @@ export default function DfsFanduelNba(props) {
 
 
 
-              <div
-                className="table-tab-container"
-                style={{
-                  // overflowX: 'auto', // this enables horizontal scrolling
-                  // whiteSpace: 'nowrap', // this ensures the content doesn't wrap
-                }}>
+              <div className="table-tab-container">
 
 
                 <Tabs
