@@ -35,7 +35,6 @@ function TeamGameStacksNba(props) {
             id: generateUniqueId(),
             name: "New Game Stack",
             stackType: 'singleGameStack',
-            // numPlayers: 3,
             forGame: '',
             forPositions: [],
             minFromGroup: 1,

@@ -8,6 +8,7 @@ import {
   Button,
   Snackbar
 } from '@mui/material';
+import Papa from 'papaparse';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
@@ -248,20 +249,6 @@ export default function DfsFanduelNba(props) {
     }
   };
 
-  // const fetchEspnScoreboard = async () => {
-  //   const getEspnScoreboardRes = getEspnScoreboard()
-  //   try {
-  //     const response = await axios.get(getEspnScoreboardRes);
-
-  //     if (Object.keys(response.data).length === 0) {
-  //       setEspnScoreboard([]);
-  //     } else {
-  //       setEspnScoreboard(response.data);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching the JSON data:", error);
-  //   }
-  // };
   const fetchEspnStandings = async () => {
     const getEspnStandingsRes = getEspnStandings()
 
@@ -426,7 +413,7 @@ export default function DfsFanduelNba(props) {
         'opp_rank',
         "opp_rank_bucket",
         "Projected Minutes",
-
+        'days_rest'
       ];
 
 
@@ -455,6 +442,7 @@ export default function DfsFanduelNba(props) {
           return player; // Return the player immediately without further checks
         }
 
+        // projections to match will soon be our own projections
         if (projectionsToMatch && projectionsToMatch.length !== 0) {
           const isPlayerInProjections = projectionsToMatch.some((projection) => {
             const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
@@ -463,13 +451,16 @@ export default function DfsFanduelNba(props) {
 
           if (isPlayerInProjections) {
             // Player is in projectionsToMatch, update properties as needed
+
             projectionsToMatch.forEach((projection) => {
+              // console.log('projection', projection)
               const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
               if (playerName === projectionsToMatchName) {
                 // Update player properties based on projection data
-                player.FPPG = projection.ppg;
-                player.Value = projection.value;
+                // player.FPPG = projection.ppg;
+                // player.Value = projection.value;
                 player.opp_rank = projection.opp_rank;
+                player.days_rest = projection.days_rest;
                 player.opp_rank_bucket = projection.opp_rank_bucket;
                 player.projected_team_score = projection.projected_team_score;
                 // Add more properties as needed
@@ -484,6 +475,7 @@ export default function DfsFanduelNba(props) {
 
       // Check if player is in projectionsToMatch based on name
       console.log('dataSet', dataSet);
+      console.log('enhancedDataSet', enhancedDataSet);
       // Set the default headers to state directly without any overriding logic.
       const injuredPlayers = enhancedDataSet.filter(player => player['Injury Indicator'] !== '');
 
@@ -544,31 +536,81 @@ export default function DfsFanduelNba(props) {
     setSelectedSlate(slateType)
   };
 
+  // const slateTypeToDirectory = (slateType) => {
+  //   return slateType.toLowerCase().replace(/[^a-z0-9]/g, '-');
+  // };
+
+
+  // const getSlateFullDirectory = (abbr) => `/mockJson/nba/slates/${abbr}-slate/nbaPlayerList.json`;
+
+  // const fetchPlayerSlateDataSet = async (slateType, additionalProjections) => {
+  //   const directoryName = slateTypeToDirectory(slateType);
+  //   const slateData1 = getSlateFullDirectory(directoryName)
+  //   try {
+  //     const response = await axios.get(slateData1);
+
+  //     if (Object.keys(response.data).length === 0) {
+  //       // fetchPlayerSlateDataSet('Main')
+  //       console.log('no data found')
+  //     } else {
+
+  //       fetchPlayerDataSet(response.data, additionalProjections);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching the JSON data:", error);
+  //   }
+  // };
+
   const slateTypeToDirectory = (slateType) => {
     return slateType.toLowerCase().replace(/[^a-z0-9]/g, '-');
   };
 
-
-  const getSlateFullDirectory = (abbr) => `/mockJson/nba/slates/${abbr}-slate/nbaPlayerList.json`;
+  const getSlateFullDirectory = (abbr) => `/mockJson/nba/slates/${abbr}-slate/nbaPlayerList.csv`;  // Change extension to .csv
 
   const fetchPlayerSlateDataSet = async (slateType, additionalProjections) => {
     const directoryName = slateTypeToDirectory(slateType);
-    const slateData1 = getSlateFullDirectory(directoryName)
+    const slateData1 = getSlateFullDirectory(directoryName);
+
     try {
       const response = await axios.get(slateData1);
 
-      if (Object.keys(response.data).length === 0) {
-        // fetchPlayerSlateDataSet('Main')
-        console.log('no data found')
-      } else {
+      // Convert fetched CSV data to JSON format
+      const csvData = response.data;
+      const parsedData = Papa.parse(csvData, {
+        header: true, // Convert rows to objects
+        dynamicTyping: true, // Convert strings to numbers or booleans when appropriate
+        skipEmptyLines: true
+      });
+      console.log('parsedData', parsedData);
 
-        fetchPlayerDataSet(response.data, additionalProjections);
+      let formattedData = parsedData.data.filter(obj => obj.Id !== null && obj.Id !== '');
+
+      // Convert fantasy points per game to numbers (if this is still needed) and remove unwanted keys
+      formattedData = formattedData.map(row => {
+
+        // Delete the unwanted property
+        if (row[""] !== undefined) {
+          delete row[""];
+        }
+
+        if (row["_1"] !== undefined) {
+          delete row["_1"];
+        }
+
+        return row;
+      });
+      console.log('formattedData', formattedData);
+      // At this point, formattedData has the converted CSV-to-JSON data
+      if (formattedData.length === 0) {
+        console.log('no data found');
+      } else {
+        fetchPlayerDataSet(formattedData, additionalProjections);
       }
+
     } catch (error) {
-      console.error("Error fetching the JSON data:", error);
+      console.error("Error fetching the CSV data:", error);
     }
   };
-
 
   const handleSearchOnChange = (text) => {
     if (currentPosition !== 'All') setCurrentPosition('All')
@@ -698,24 +740,8 @@ export default function DfsFanduelNba(props) {
         Tier: player.Tier,
         playerStats: {
           fppg: player.FPPG,
-          fanduel_fp: player.fanduel_fp,
-          fanduel_value: player.fanduel_value,
-          opp_rank: player.opp_rank,
-          opp_team: player.opp_team,
-          ovr_rank: player.ovr_rank,
-          pass_comp_att: player.pass_comp_att,
-          pass_interceptions: player.pass_interceptions,
-          pass_tds: player.pass_tds,
-          pass_yards: player.pass_yards,
-          pos_rank: player.pos_rank,
-          rec_att: player.rec_att,
-          rec_tds: player.rec_tds,
-          rec_tgts: player.rec_tgts,
-          rec_yds: player.rec_yds,
-          receptions: player.receptions,
-          rush_att: player.rush_att,
-          rush_tds: player.rush_tds,
-          rush_yds: player.rush_yds
+          'Projected Minutes': player['Projected Minutes'],
+
         }
       };
     });
@@ -774,74 +800,24 @@ export default function DfsFanduelNba(props) {
         const fetchedLineups = response.data[response.data[0].error ? 1 : 0].lineups;
         const manipulatedLineups = fetchedLineups.map(lineup => {
           let totalfppg = 0;
-          let totalRushAtt = 0;
-          let totalRushTds = 0;
-          let totalRushYds = 0;
-          let totalReceptions = 0;
-          let totalRecYds = 0;
-          let totalRecTgts = 0;
-          let totalRecTds = 0;
-          let totalPassTds = 0
-          let totalPassInterceptions = 0
-          let totalPassYards = 0
+          let projMins = 0;
 
           lineup.players.forEach(player => {
             const stats = player.playerStats;
-            stats.rush_att = Number(stats.rush_att);
+            console.log('new - stats - ', stats);
             stats.fppg = Number(stats.fppg);
-            stats.rush_tds = Number(stats.rush_tds);
-            stats.rush_yds = Number(stats.rush_yds);
-            stats.receptions = Number(stats.receptions);
-            stats.rec_yds = Number(stats.rec_yds);
-            stats.rec_tgts = Number(stats.rec_tgts);
-            stats.rec_tds = Number(stats.rec_tds);
-            stats.pass_tds = Number(stats.pass_tds);
-            stats.pass_interceptions = Number(stats.pass_interceptions);
-            stats.pass_yards = Number(stats.pass_yards);
-
-
-            totalPassTds += stats.pass_tds
-            totalPassInterceptions += stats.pass_interceptions
-            totalPassYards += stats.pass_yards
-
+            stats.projMins = Number(stats['Projected Minutes']);
 
             totalfppg += stats.fppg;
-            totalRushAtt += stats.rush_att;
-            totalRushTds += stats.rush_tds;
-            totalRushYds += stats.rush_yds;
-            totalReceptions += stats.receptions;
-            totalRecYds += stats.rec_yds;
-            totalRecTgts += stats.rec_tgts;
-            totalRecTds += stats.rec_tds;
+            projMins += stats.projMins;
           });
 
 
           return {
             ...lineup,
             totalfppg,
-            totalPassTds,
-            totalPassInterceptions,
-            totalPassYards,
-            totalRushAtt,
-            totalRushTds,
-            totalRushYds,
-            totalReceptions,
-            totalRecYds,
-            totalRecTgts,
-            totalRecTds,
-            totalTds: totalRushTds + totalRecTds + totalPassTds,
-            totalEverything:
-              totalfppg +
-              totalPassTds -
-              totalPassInterceptions +
-              totalPassYards +
-              totalRushAtt +
-              totalRushTds +
-              totalRushYds +
-              totalReceptions +
-              totalRecYds +
-              totalRecTgts +
-              totalRecTds
+            projMins,
+
           };
 
 
@@ -900,59 +876,6 @@ export default function DfsFanduelNba(props) {
 
     return { topPlayers, topTeams };
   };
-
-  const exportLineupsToUpload = () => {
-    const csvData = lineups.lineups.map(lineup => {
-      return [
-        lineup.totalfppg.toFixed(2),
-        lineup.totalPassTds.toFixed(2),
-        lineup.totalPassInterceptions.toFixed(2),
-        lineup.totalPassYards.toFixed(2),
-        lineup.totalRushAtt.toFixed(2),
-        lineup.totalRushTds.toFixed(2),
-        lineup.totalRushYds.toFixed(2),
-        lineup.totalReceptions.toFixed(2),
-        lineup.totalRecYds.toFixed(2),
-        lineup.totalRecTgts.toFixed(2),
-        lineup.totalRecTds.toFixed(2),
-        lineup.totalTds.toFixed(2),
-        lineup.totalEverything.toFixed(2),
-        ...lineup.players.map(player => player.playerId)
-      ];
-    });
-
-    const headers = [
-      'totalfppg',
-      'totalPassTds',
-      'totalPassInterceptions',
-      'totalPassYards',
-      'totalRushAtt',
-      'totalRushTds',
-      'totalRushYds',
-      'totalReceptions',
-      'totalRecYds',
-      'totalRecTgts',
-      'totalRecTds',
-      'totalTds',
-      'totalEverything',
-      "QB",
-      "RB",
-      "RB",
-      "WR",
-      "WR",
-      "WR",
-      "TE",
-      "FLEX",
-      "DEF"];
-
-    // Since csvData already contains arrays structured the way we want, 
-    // we can just spread it into the return array after the headers.
-    return [headers, ...csvData];
-  };
-
-  const toggleAllAndExcludedPlayers = () => {
-    setIsShowingExcludePlayers(!isShowingExcludePlayers);
-  }
 
   const toggleOptimizerBuildStackPropertiesDrawer = () => {
     setOpen(!open);
@@ -1170,7 +1093,7 @@ export default function DfsFanduelNba(props) {
                     players={data}
                     pos={SPORT_POSITIONS}
                     selectedPosition={currentPosition}
-                    // filterPlayersByPosition={filterPlayersByPosition}
+
                     onPositionChange={setCurrentPosition}
                   />
                 </div>}
@@ -1190,15 +1113,7 @@ export default function DfsFanduelNba(props) {
 
                 }
               </div>
-              {/* <div className="dfs-optimizer-filter-wrapper">
-                <Button
-                  onClick={toggleAllAndExcludedPlayers}
-                  className="bsw-primary-btns"
-                  variant="contained"
-                >
-                  {isShowingExcludePlayers ? 'Back to all' : `View ${excludePlayerLines.length} excluded player(s)`}
-                </Button>
-              </div> */}
+
               {!isShowingExcludePlayers && <>
                 <div className="dfs-optimizer-filter-wrapper">
                   <Button
@@ -1360,7 +1275,7 @@ export default function DfsFanduelNba(props) {
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
                   { key: 'Value', order: 14 },
-                  // { key: 'fanduel_value', order: 13 },
+
                   { key: 'Projected Minutes', order: 13 },
 
                 ]}
@@ -1386,7 +1301,7 @@ export default function DfsFanduelNba(props) {
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
                 sport={'nba'}
-              // filterPlayersByPosition={filterPlayersByPosition}
+
               />
 
               }
@@ -1401,7 +1316,7 @@ export default function DfsFanduelNba(props) {
                   { key: 'FPPG', order: 12 },
                   { key: 'Value', order: 14 },
                   { key: 'Projected Minutes', order: 13 },
-                  // { key: 'fanduel_value', order: 13 },
+
 
                 ]}
                 columns={columns}
@@ -1426,7 +1341,7 @@ export default function DfsFanduelNba(props) {
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
                 sport={'nba'}
-              // filterPlayersByPosition={filterPlayersByPosition}
+
 
               />
 
@@ -1442,7 +1357,7 @@ export default function DfsFanduelNba(props) {
                   { key: 'FPPG', order: 12 },
                   { key: 'Value', order: 14 },
                   { key: 'Projected Minutes', order: 13 },
-                  // { key: 'fanduel_value', order: 13 },
+
 
                 ]}
                 columns={excludeColumns}
@@ -1469,7 +1384,7 @@ export default function DfsFanduelNba(props) {
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
                 sport={'nba'}
-              // filterPlayersByPosition={filterPlayersByPosition}
+
 
               />
 
@@ -1485,7 +1400,7 @@ export default function DfsFanduelNba(props) {
                   { key: 'isLocked', order: 4 },
                   { key: 'FPPG', order: 12 },
                   { key: 'Value', order: 14 },
-                  // { key: 'fanduel_value', order: 13 },
+
                   { key: 'Projected Minutes', order: 13 },
 
                 ]}
@@ -1513,14 +1428,14 @@ export default function DfsFanduelNba(props) {
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
                 sport={'nba'}
-              // filterPlayersByPosition={filterPlayersByPosition}
+
               />
 
               }
 
 
               {tableTabValue === 4 && <DfsNbaFdLineups
-                exportLineupsToUpload={exportLineupsToUpload}
+
                 toggleAndSortData={toggleAndSortData}
                 sortDataByAsc={sortDataByAsc}
                 sortDataByDec={sortDataByDec}
@@ -1532,6 +1447,7 @@ export default function DfsFanduelNba(props) {
                 generateTopPlayersAndTeams={generateTopPlayersAndTeams}
                 setLineups={setLineups}
                 lineups={lineups}
+                baseUrl={baseUrl}
               />
               }
 
