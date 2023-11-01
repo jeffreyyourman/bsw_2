@@ -161,7 +161,7 @@ export default function DfsFanduelNba(props) {
   const [getLineupsErr, setGetLineupsErr] = useState('');
   const getEspnScoreboard = (abbr) => `/mockJson/nba/2023-espn-scoreboard.json`;
   const getEspnStandings = (abbr) => `/mockJson/nba/2023-espn-standings.json`;
-
+  const [searchText, setSearchText] = useState('');
 
 
 
@@ -409,7 +409,7 @@ export default function DfsFanduelNba(props) {
         "Roster Position",
         'opp_rank',
         "opp_rank_bucket",
-        "Projected Minutes",
+        "projMins",
         'days_rest'
       ];
 
@@ -612,37 +612,39 @@ export default function DfsFanduelNba(props) {
   const handleSearchOnChange = (text) => {
     if (currentPosition !== 'All') setCurrentPosition('All')
     if (excludedTeams.length !== 0) setExcludedTeams([])
-
     let searchTextLowerCase = text.toLowerCase();
-    const filterName = ogfilteredPlayers.filter((player) => {
-      let newPlayerName = player.Nickname.toLowerCase();
-      if (newPlayerName.includes(searchTextLowerCase)) {
-        return player;
-      }
-    });
-    if (filterName.length !== 0) {
-      setFilteredPlayers(filterName);
-    } else {
-      setFilteredPlayers(ogfilteredPlayers);
-    }
+    setSearchText(searchTextLowerCase);
+    // let searchTextLowerCase = text.toLowerCase();
+    // const filterName = ogfilteredPlayers.filter((player) => {
+    //   let newPlayerName = player.Nickname.toLowerCase();
+    //   if (newPlayerName.includes(searchTextLowerCase)) {
+    //     return player;
+    //   }
+    // });
+    // if (filterName.length !== 0) {
+    //   setFilteredPlayers(filterName);
+    // } else {
+    //   setFilteredPlayers(ogfilteredPlayers);
+    // }
   };
   const handleSearchExcludedPlayersOnChange = (text) => {
     if (currentPosition !== 'All') setCurrentPosition('All')
     if (excludedTeams.length !== 0) setExcludedTeams([])
-
     let searchTextLowerCase = text.toLowerCase();
-    const filterName = ogExcludePlayerLines.filter((player) => {
-      let newPlayerName = player.Nickname.toLowerCase();
-      if (newPlayerName.includes(searchTextLowerCase)) {
-        return player;
-      }
-    });
-    // console.log('filtername;, fil', filterName)
-    if (filterName.length !== 0) {
-      setExcludePlayerLines(filterName);
-    } else {
-      setExcludePlayerLines(ogExcludePlayerLines);
-    }
+    setSearchText(searchTextLowerCase);
+    // let searchTextLowerCase = text.toLowerCase();
+    // const filterName = ogExcludePlayerLines.filter((player) => {
+    //   let newPlayerName = player.Nickname.toLowerCase();
+    //   if (newPlayerName.includes(searchTextLowerCase)) {
+    //     return player;
+    //   }
+    // });
+    // // console.log('filtername;, fil', filterName)
+    // if (filterName.length !== 0) {
+    //   setExcludePlayerLines(filterName);
+    // } else {
+    //   setExcludePlayerLines(ogExcludePlayerLines);
+    // }
   };
 
   const handleExcludeTeams = (teamAbbr) => {
@@ -1089,12 +1091,14 @@ export default function DfsFanduelNba(props) {
                     data={excludePlayerLines}
                     onSearch={handleSearchExcludedPlayersOnChange}
                     isShowingExcludePlayers={isShowingExcludePlayers}
+                    searchText={searchText}
                   />
                   :
                   <PlayerSearchNba
                     data={filteredPlayers}
                     onSearch={handleSearchOnChange}
                     isShowingExcludePlayers={isShowingExcludePlayers}
+                    searchText={searchText}
                   />
 
                 }
@@ -1282,6 +1286,7 @@ export default function DfsFanduelNba(props) {
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
                 sport={'nba'}
+                searchText={searchText}
 
               />
 
@@ -1322,6 +1327,7 @@ export default function DfsFanduelNba(props) {
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
                 sport={'nba'}
+                searchText={searchText}
 
 
               />
@@ -1365,6 +1371,7 @@ export default function DfsFanduelNba(props) {
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
                 sport={'nba'}
+                searchText={searchText}
 
 
               />
@@ -1409,6 +1416,7 @@ export default function DfsFanduelNba(props) {
                 selectedPosition={currentPosition}
                 everyonePlays={everyonePlays}
                 sport={'nba'}
+                searchText={searchText}
 
               />
 

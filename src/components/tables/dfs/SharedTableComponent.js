@@ -53,39 +53,67 @@ export default function TableComponent(props) {
     }
   };
 
-
   const sortedPlayers = useMemo(() => {
-    let playersToSort = [...data];  // start with all players
+    // First, filter by search text if it's not empty
+    let playersToFilter = props.searchText
+      ? data.filter(player =>
+        player.Nickname.toLowerCase().includes(props.searchText.toLowerCase()))
+      : [...data]; // or [...data] if data is not the full list
 
-    // Filter by position if the props.selectedPosition is not 'All'
+    // Second, filter by selected position if not 'All'
     if (props.selectedPosition !== 'All') {
-      playersToSort = playersToSort.filter(player => player.Position.includes(props.selectedPosition));
+      playersToFilter = playersToFilter.filter(player => player.Position.includes(props.selectedPosition));
     }
 
-    // If the order is 'default', return the original players list
-    if (order === 'default') {
-      return playersToSort;
-    }
-
-    // Sort players based on the order and orderBy values
-    return playersToSort.sort((a, b) => {
-      // Handle numeric sorting explicitly for fields like FPPG
+    // Then sort the resulting array
+    return playersToFilter.sort((a, b) => {
+      // Your existing sorting logic here
       if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
+        return order === 'asc'
+          ? parseFloat(a[orderBy]) - parseFloat(b[orderBy])
+          : parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
+      } else {
         if (order === 'asc') {
-          return parseFloat(a[orderBy]) - parseFloat(b[orderBy]);
+          return a[orderBy] < b[orderBy] ? -1 : 1;
         } else {
-          return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
+          return a[orderBy] > b[orderBy] ? -1 : 1;
         }
       }
-
-      // Handle textual sorting (default)
-      if (order === 'asc') {
-        return a[orderBy] < b[orderBy] ? -1 : 1;
-      } else {
-        return a[orderBy] > b[orderBy] ? -1 : 1;
-      }
     });
-  }, [data, props.selectedPosition, order, orderBy]);
+  }, [data, props.selectedPosition, order, orderBy, props.searchText]);
+
+  // const sortedPlayers = useMemo(() => {
+  //   let playersToSort = [...data];  // start with all players
+
+  //   // Filter by position if the props.selectedPosition is not 'All'
+  //   if (props.selectedPosition !== 'All') {
+  //     playersToSort = playersToSort.filter(player => player.Position.includes(props.selectedPosition));
+  //   }
+
+  //   // If the order is 'default', return the original players list
+  //   if (order === 'default') {
+  //     return playersToSort;
+  //   }
+
+  //   // Sort players based on the order and orderBy values
+  //   return playersToSort.sort((a, b) => {
+  //     // Handle numeric sorting explicitly for fields like FPPG
+  //     if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
+  //       if (order === 'asc') {
+  //         return parseFloat(a[orderBy]) - parseFloat(b[orderBy]);
+  //       } else {
+  //         return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
+  //       }
+  //     }
+
+  //     // Handle textual sorting (default)
+  //     if (order === 'asc') {
+  //       return a[orderBy] < b[orderBy] ? -1 : 1;
+  //     } else {
+  //       return a[orderBy] > b[orderBy] ? -1 : 1;
+  //     }
+  //   });
+  // }, [data, props.selectedPosition, order, orderBy]);
 
   const handleLock = (isLocked, rowIndex) => {
     let updatedPlayers = [...props.submittedPlayersForOptimizer]; // Clone the array
@@ -145,12 +173,12 @@ export default function TableComponent(props) {
   const calculateValueForNBA = (projectedPoints, salary) => {
     let salaryInThousands = salary / 1000;
     return projectedPoints / salaryInThousands;
-  } 
+  }
 
   const calculateValueForNFL = (projectedPoints, salary) => {
     let salaryInThousands = salary / 1000;
     return projectedPoints / (salaryInThousands * 4);
-  } 
+  }
 
   const calculateValue = (projectedPoints, salary, sport) => {
     // console.log('projectedPoints, salary', projectedPoints, salary);
@@ -352,6 +380,49 @@ export default function TableComponent(props) {
           <TableHead>
             <TableRow>
               {finalColumnConfig.map((col, index) => (
+                <TableCell style={{ verticalAlign: 'bottom', textAlign: 'center' }}
+                  key={`${col.key}_${index}`} >
+                  <TableSortLabel
+                    align="left"
+                    active={orderBy === col.key}
+                    direction={order}
+                    onClick={() => handleSortRequest(col.key)}
+                    style={{ flexDirection: 'column-reverse', padding: 10, textAlign: 'center', verticalAlign: 'bottom' }}
+                  >
+                    {col.label}
+                  </TableSortLabel>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedPlayers.length > 0 ? (
+              sortedPlayers.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((player, rowIndex) => (
+                <TableRow key={rowIndex}>
+                  {finalColumnConfig.map((col, innerIndex) => (
+                    <TableCell
+                      style={{ padding: 12, textAlign: 'center' }}
+                      key={`${col.key}_${innerIndex}`}>
+                      {col.renderer ? col.renderer(player, rowIndex, col.key) : player[col.key]}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={finalColumnConfig.length} style={{ textAlign: 'left' }}>
+                  No players found in this search.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {/* <TableContainer component={Paper} style={{ width: '100%', height: '90%', overflowY: 'auto' }}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              {finalColumnConfig.map((col, index) => (
                 <TableCell style={{
                   verticalAlign: 'bottom',
                   textAlign: 'center',
@@ -385,7 +456,7 @@ export default function TableComponent(props) {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer> */}
       <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
         <div>
           Rows per page:
