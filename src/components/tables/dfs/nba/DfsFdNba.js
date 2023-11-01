@@ -1,7 +1,4 @@
-
-
 import React, { useState, useEffect } from "react";
-
 import { useColumns, useExcludeColumns } from "./DfsNbaTableColumns";
 import axios from "axios";
 import {
@@ -740,7 +737,7 @@ export default function DfsFanduelNba(props) {
         Tier: player.Tier,
         playerStats: {
           fppg: player.FPPG,
-          'Projected Minutes': player['Projected Minutes'],
+          'projMins': player['Projected Minutes'],
 
         }
       };
