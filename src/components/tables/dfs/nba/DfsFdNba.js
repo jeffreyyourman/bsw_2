@@ -627,25 +627,7 @@ export default function DfsFanduelNba(props) {
     //   setFilteredPlayers(ogfilteredPlayers);
     // }
   };
-  const handleSearchExcludedPlayersOnChange = (text) => {
-    if (currentPosition !== 'All') setCurrentPosition('All')
-    if (excludedTeams.length !== 0) setExcludedTeams([])
-    let searchTextLowerCase = text.toLowerCase();
-    setSearchText(searchTextLowerCase);
-    // let searchTextLowerCase = text.toLowerCase();
-    // const filterName = ogExcludePlayerLines.filter((player) => {
-    //   let newPlayerName = player.Nickname.toLowerCase();
-    //   if (newPlayerName.includes(searchTextLowerCase)) {
-    //     return player;
-    //   }
-    // });
-    // // console.log('filtername;, fil', filterName)
-    // if (filterName.length !== 0) {
-    //   setExcludePlayerLines(filterName);
-    // } else {
-    //   setExcludePlayerLines(ogExcludePlayerLines);
-    // }
-  };
+
 
   const handleExcludeTeams = (teamAbbr) => {
     if (excludedTeams.includes(teamAbbr)) {
@@ -1089,7 +1071,7 @@ export default function DfsFanduelNba(props) {
                 {isShowingExcludePlayers ?
                   <PlayerSearchNba
                     data={excludePlayerLines}
-                    onSearch={handleSearchExcludedPlayersOnChange}
+                    onSearch={handleSearchOnChange}
                     isShowingExcludePlayers={isShowingExcludePlayers}
                     searchText={searchText}
                   />
