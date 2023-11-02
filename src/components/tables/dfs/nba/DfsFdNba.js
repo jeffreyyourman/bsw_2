@@ -536,30 +536,6 @@ export default function DfsFanduelNba(props) {
     setSelectedSlate(slateType)
   };
 
-  // const slateTypeToDirectory = (slateType) => {
-  //   return slateType.toLowerCase().replace(/[^a-z0-9]/g, '-');
-  // };
-
-
-  // const getSlateFullDirectory = (abbr) => `/mockJson/nba/slates/${abbr}-slate/nbaPlayerList.json`;
-
-  // const fetchPlayerSlateDataSet = async (slateType, additionalProjections) => {
-  //   const directoryName = slateTypeToDirectory(slateType);
-  //   const slateData1 = getSlateFullDirectory(directoryName)
-  //   try {
-  //     const response = await axios.get(slateData1);
-
-  //     if (Object.keys(response.data).length === 0) {
-  //       // fetchPlayerSlateDataSet('Main')
-  //       console.log('no data found')
-  //     } else {
-
-  //       fetchPlayerDataSet(response.data, additionalProjections);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching the JSON data:", error);
-  //   }
-  // };
 
   const slateTypeToDirectory = (slateType) => {
     return slateType.toLowerCase().replace(/[^a-z0-9]/g, '-');
@@ -617,18 +593,7 @@ export default function DfsFanduelNba(props) {
     if (excludedTeams.length !== 0) setExcludedTeams([])
     let searchTextLowerCase = text.toLowerCase();
     setSearchText(searchTextLowerCase);
-    // let searchTextLowerCase = text.toLowerCase();
-    // const filterName = ogfilteredPlayers.filter((player) => {
-    //   let newPlayerName = player.Nickname.toLowerCase();
-    //   if (newPlayerName.includes(searchTextLowerCase)) {
-    //     return player;
-    //   }
-    // });
-    // if (filterName.length !== 0) {
-    //   setFilteredPlayers(filterName);
-    // } else {
-    //   setFilteredPlayers(ogfilteredPlayers);
-    // }
+
   };
 
 
