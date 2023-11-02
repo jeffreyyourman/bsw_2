@@ -381,7 +381,7 @@ export default function TableComponent(props) {
             <TableRow>
               {finalColumnConfig.map((col, index) => (
                 <TableCell style={{ verticalAlign: 'bottom', textAlign: 'center' }}
-                  key={`${col.key}_${index}`} >
+                  key={`${col.label}_${col.key}_${index}`} >
                   <TableSortLabel
                     align="left"
                     active={orderBy === col.key}
@@ -402,7 +402,7 @@ export default function TableComponent(props) {
                   {finalColumnConfig.map((col, innerIndex) => (
                     <TableCell
                       style={{ padding: 12, textAlign: 'center' }}
-                      key={`${col.key}_${innerIndex}`}>
+                      key={`${player.Id}_${col.key}_${innerIndex}`}>
                       {col.renderer ? col.renderer(player, rowIndex, col.key) : player[col.key]}
                     </TableCell>
                   ))}

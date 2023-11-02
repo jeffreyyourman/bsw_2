@@ -409,8 +409,9 @@ export default function DfsFanduelNba(props) {
         "Roster Position",
         'opp_rank',
         "opp_rank_bucket",
-        "projMins",
-        'days_rest'
+        // "projMins",
+        'days_rest',
+        'lineupUsg'
       ];
 
 
@@ -439,6 +440,7 @@ export default function DfsFanduelNba(props) {
           return player; // Return the player immediately without further checks
         }
 
+        console.log('projectionsToMatch', projectionsToMatch);
         // projections to match will soon be our own projections
         if (projectionsToMatch && projectionsToMatch.length !== 0) {
           const isPlayerInProjections = projectionsToMatch.some((projection) => {
@@ -478,6 +480,7 @@ export default function DfsFanduelNba(props) {
 
       let excludedPlayers;
       let remainingPlayers;
+
 
 
 
@@ -781,23 +784,23 @@ export default function DfsFanduelNba(props) {
         const fetchedLineups = response.data[response.data[0].error ? 1 : 0].lineups;
         const manipulatedLineups = fetchedLineups.map(lineup => {
           let totalfppg = 0;
-          let projMins = 0;
+          let totalProjMins = 0;
 
           lineup.players.forEach(player => {
             const stats = player.playerStats;
             console.log('new - stats - ', stats);
             stats.fppg = Number(stats.fppg);
-            stats.projMins = Number(stats['Projected Minutes']);
+            stats.projMins = Number(stats['projMins']);
 
             totalfppg += stats.fppg;
-            projMins += stats.projMins;
+            totalProjMins += stats.projMins;
           });
-
+          console.log('total projMins', totalProjMins);
 
           return {
             ...lineup,
             totalfppg,
-            projMins,
+            totalProjMins,
 
           };
 
@@ -805,7 +808,60 @@ export default function DfsFanduelNba(props) {
         });
         const sortedLineupsDes = sortByMetricDescending(manipulatedLineups, 'lineup_points')
 
+
+        // based off the top players i want to divide that up by numLineups total amount of players divide by numLineups
+        // add an extra column in the table submittedPlayersForOptimizernow with lineup usage which is playerCount / numLineups
+        // Array of topPlayers looks like this. [{playerName: "Royce O'Neale", totalAmt: 125}]
+
+
         const { topPlayers, topTeams } = generateTopPlayersAndTeams(sortedLineupsDes);
+        // Assuming your `topPlayers` and `submittedPlayersForOptimizer` have been fetched/set already
+        // const updatedSubmittedPlayers = submittedPlayersForOptimizer.map(player => {
+        //   const topPlayer = topPlayers.find(top => top.playerName === player.Nickname);
+        //   const lineupUsg = topPlayer ? topPlayer.totalAmt / numLineups : 0;
+
+        //   const updatedPlayer = { ...player, lineupUsg };
+        //   // Debugging output to make sure the mapping is correct
+        //   console.log(`Updating player ${player.Nickname}: `, updatedPlayer);
+        //   return updatedPlayer;
+        // });
+        const updatedSubmittedPlayers = submittedPlayersForOptimizer.map(player => {
+          const topPlayer = topPlayers.find(top => top.playerName === player.Nickname);
+
+          // Convert the decimal to a percent by multiplying by 100 and limit to 2 decimal places if not empty
+          const lineupUsg = topPlayer
+            ? `${(topPlayer.totalAmt / numLineups * 100).toFixed(2)}%`
+            : ''; // This will either set lineupUsg to a percentage string or an empty string
+
+          const updatedPlayer = { ...player, lineupUsg }; // No need to append '%' here as it's already included in lineupUsg if applicable
+          // Debugging output to make sure the mapping is correct
+          console.log(`Updating player ${player.Nickname}: `, updatedPlayer);
+          return updatedPlayer;
+        });
+        console.log('updatedSubmittedPlayers', updatedSubmittedPlayers);
+        // const updatedSubmittedPlayers = submittedPlayersForOptimizer.map(player => {
+        //   // Find the top player that matches the current player
+        //   const topPlayer = topPlayers.find(top => top.playerName === player.Nickname);
+
+        //   // If found, calculate lineup usage, otherwise set to 0
+        //   const lineupUsg = topPlayer ? topPlayer.totalAmt / numLineups : 0;
+
+        //   // Return the new player object with the lineupUsg property
+        //   return {
+        //     ...player,
+        //     lineupUsg: lineupUsg
+        //   };
+        // });
+
+
+
+
+        // setData(enhancedDataSet)
+
+        setFilteredPlayers(updatedSubmittedPlayers);
+        // setSubmittedPlayersForOptimizer(updatedSubmittedPlayers);
+        // setOgFilteredPlayers(updatedSubmittedPlayers);
+
         setTopPlayers(topPlayers);
         setTopTeams(topTeams);
 
