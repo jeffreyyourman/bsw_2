@@ -1,4 +1,5 @@
-export const baseUrl = () => {
+export const formatBaseUrl = () => {
+    const useLocal = true
     let baseUrl;
     if (process.env.NODE_ENV === 'development') {
         if (useLocal) {

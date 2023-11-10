@@ -26,7 +26,8 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 // import { useAuth } from '../../../../context/AuthContext';
 import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
 import useMediaQuery from '@mui/material/useMediaQuery';
-// import TableComponent from "./TableComponent.js";
+import {formatBaseUrl} from "../../../../utils/format_base_url";
+
 const useStyles = makeStyles((theme) => ({
   helperText: {
     whiteSpace: "normal",
@@ -66,20 +67,8 @@ const SPORT_POSITIONS = ['PG', 'SG', 'SF', 'PF', 'C'];
 
 
 export default function DfsFanduelNba(props) {
-  const useLocal = true
-  const useOptimizerUrl = true
+  const baseUrl = formatBaseUrl()
 
-  let baseUrl;
-  if (process.env.NODE_ENV === 'development') {
-    if (useLocal) {
-      baseUrl = 'http://localhost:3000'
-    } else {
-
-      baseUrl = 'https://bsw-be-api.onrender.com'
-    }
-  } else {
-    baseUrl = 'https://bsw-be-api.onrender.com';
-  }
   const classes = useStyles();
   const columns = useColumns();
   const clerk = useClerk();

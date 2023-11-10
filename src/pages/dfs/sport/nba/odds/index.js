@@ -2,19 +2,10 @@ import * as React from "react";
 import NbaDfsLayout from "../../../../../components/layouts/NbaDfsLayout";
 import axios from 'axios'
 import './oddsStyles.css';
-const OddsPage = () => {
-  const useLocal = true
-  let baseUrl;
-  if (process.env.NODE_ENV === 'development') {
-    if (useLocal) {
-      baseUrl = 'http://localhost:3000'
-    } else {
+import {formatBaseUrl} from "../../../../../utils/format_base_url";
 
-      baseUrl = 'https://bsw-be-api.onrender.com'
-    }
-  } else {
-    baseUrl = 'https://bsw-be-api.onrender.com';
-  }
+const OddsPage = () => {
+  const baseUrl = formatBaseUrl()
 
 
   const [gameMatchups, setGameMatchups] = React.useState([]);

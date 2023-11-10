@@ -2,22 +2,12 @@ import * as React from "react";
 import NbaDfsLayout from "../../../../../components/layouts/NbaDfsLayout";
 import axios from 'axios'
 import { Card, CardContent, Typography, IconButton } from '@mui/material';
+import {formatBaseUrl} from "../../../../../utils/format_base_url";
 
 const MatchupsPage = () => {
 
 
-  const useLocal = true
-  let baseUrl;
-  if (process.env.NODE_ENV === 'development') {
-    if (useLocal) {
-      baseUrl = 'http://localhost:3000'
-    } else {
-
-      baseUrl = 'https://bsw-be-api.onrender.com'
-    }
-  } else {
-    baseUrl = 'https://bsw-be-api.onrender.com';
-  }
+  const baseUrl = formatBaseUrl()
 
 
   const [gameMatchups, setGameMatchups] = React.useState([]);
