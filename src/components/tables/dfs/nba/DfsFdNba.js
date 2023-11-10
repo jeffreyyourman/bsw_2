@@ -228,6 +228,7 @@ export default function DfsFanduelNba(props) {
       console.error("Error fetching the JSON data:", error);
     }
   };
+  
   const fetchGameMatchups = async () => {
     setEspnScoreBoardMatchupsLoading(true)
     try {
@@ -440,7 +441,7 @@ export default function DfsFanduelNba(props) {
           return player; // Return the player immediately without further checks
         }
 
-        console.log('projectionsToMatch', projectionsToMatch);
+        // console.log('projectionsToMatch', projectionsToMatch);
         // projections to match will soon be our own projections
         if (projectionsToMatch && projectionsToMatch.length !== 0) {
           const isPlayerInProjections = projectionsToMatch.some((projection) => {
@@ -734,14 +735,14 @@ export default function DfsFanduelNba(props) {
 
           lineup.players.forEach(player => {
             const stats = player.playerStats;
-            console.log('new - stats - ', stats);
+            // console.log('new - stats - ', stats);
             stats.fppg = Number(stats.fppg);
             stats.projMins = Number(stats['projMins']);
 
             totalfppg += stats.fppg;
             totalProjMins += stats.projMins;
           });
-          console.log('total projMins', totalProjMins);
+          // console.log('total projMins', totalProjMins);
 
           return {
             ...lineup,
@@ -767,10 +768,10 @@ export default function DfsFanduelNba(props) {
 
           const updatedPlayer = { ...player, lineupUsg };
 
-          console.log(`Updating player ${player.Nickname}: `, updatedPlayer);
+          // console.log(`Updating player ${player.Nickname}: `, updatedPlayer);
           return updatedPlayer;
         });
-        console.log('updatedSubmittedPlayers', updatedSubmittedPlayers);
+        // console.log('updatedSubmittedPlayers', updatedSubmittedPlayers);
 
         // setData(enhancedDataSet)
 

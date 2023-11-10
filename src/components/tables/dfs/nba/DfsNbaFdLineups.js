@@ -120,7 +120,7 @@ export default function DfsNbaFdLineups(props) {
 
 
   const exportLineupsToUpload = () => {
-    console.log('savedLineups', savedLineups);
+    // console.log('savedLineups', savedLineups);
     const csvData = savedLineups.map(lineup => {
       return [
         lineup.lineup_points.toFixed(2),
@@ -408,7 +408,7 @@ export default function DfsNbaFdLineups(props) {
                 </TableHead>
                 <TableBody>
                   {sortedLineups.map((lineup, index) => {
-                    console.log('lineup',lineup);
+                    // console.log('lineup',lineup);
                     return <TableRow key={index}>
                       <TableCell style={{ position: 'sticky', left: 0, zIndex: 2, background: '#fff' }}>
                         <input

@@ -36,7 +36,8 @@ export default function TableComponent(props) {
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('');
   const [page, setPage] = useState(0); // current page
-  const [rowsPerPage, setRowsPerPage] = useState(data.length); // rows per page
+  const [rowsPerPage, setRowsPerPage] = useState(30); // rows per page
+  // const [rowsPerPage, setRowsPerPage] = useState(data.length); // rows per page
 
   const handleSortRequest = (property) => {
     let isAsc = orderBy === property && order === 'asc';
@@ -153,7 +154,27 @@ export default function TableComponent(props) {
     setSubmittedPlayersForOptimizer(playersFilteredCopy);
     setExcludePlayerLines(excludedCopy);
   };
+  const removeUnder24Mins = () => {
+    let playersCopy = [...props.submittedPlayersForOptimizer]; // Clone the array of players
+    console.log('playersCopy', playersCopy);
+    console.log('playersCopy', playersCopy);
 
+    // Filter out players with projMins less than 24 and add to existing excluded players
+    let newlyExcludedPlayers = playersCopy.filter(player => player['Projected Minutes'] < 24);
+    let updatedExcludedCopy = [...props.excludePlayerLines, ...newlyExcludedPlayers];
+
+    // Filter for players with projMins 24 or more and add to existing filtered players
+    let newlyFilteredPlayers = playersCopy.filter(player => player['Projected Minutes'] >= 24);
+    // let updatedFilteredCopy = [...props.filteredPlayers, ...newlyFilteredPlayers];
+
+    console.log('updatedExcludedCopy', updatedExcludedCopy);
+    // console.log('updatedFilteredCopy', updatedFilteredCopy);
+
+    // Update the state with the combined filtered and excluded lists of players
+    setFilteredPlayers(newlyFilteredPlayers);
+    setSubmittedPlayersForOptimizer(newlyFilteredPlayers);
+    setExcludePlayerLines(updatedExcludedCopy);
+  };
 
   const handleMinExposureChange = (playerData, value) => {
     const updatedPlayers = [...props.submittedPlayersForOptimizer];
@@ -490,12 +511,23 @@ export default function TableComponent(props) {
             Reset Max Exposure Values
           </Button>
 
-          {clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com' && <Button
-            // variant="contained"
-            // color="primary"
-            onClick={props.everyonePlays}>
-            Everyone Plays
-          </Button>}
+          {clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com' && <>
+
+            <Button
+              // variant="contained"
+              // color="primary"
+              onClick={props.everyonePlays}>
+              Everyone Plays
+            </Button>
+
+            <Button
+              // variant="contained"
+              // color="primary"
+              onClick={removeUnder24Mins}>
+              remove under 24 mins
+            </Button>
+
+          </>}
 
 
         </div>

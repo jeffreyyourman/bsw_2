@@ -49,14 +49,14 @@ const NbaSubNavbar = () => {
               Lineup Optimizer
             </Link>
           </li>
-          <li className="navbar-item" style={{ padding: "0px" }}>
+          {/* <li className="navbar-item" style={{ padding: "0px" }}>
             <Link
               activeClassName="active-link"
               className="navbar-item"
               to="/dfs/sport/nba/mylineups">
               My Saved Lines
             </Link>
-          </li>
+          </li> */}
           <li className="navbar-item" style={{ padding: "0px" }}>
             <Link
               activeClassName="active-link"

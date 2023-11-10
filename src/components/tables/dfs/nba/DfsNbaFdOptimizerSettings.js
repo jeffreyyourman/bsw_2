@@ -92,6 +92,7 @@ export default function DfsNbaFdOptimizerSettings(props) {
             {/* <MenuItem value={500}>500</MenuItem> */}
             <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={300}>300 - Upgrade to use</MenuItem>
             <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={303}>303 - Upgrade to use</MenuItem>
+            <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={400}>400 - Upgrade to use</MenuItem>
             <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={500}>500 - Upgrade to use</MenuItem>
             <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={1000}>1000 - Upgrade to use</MenuItem>
           </Select>
