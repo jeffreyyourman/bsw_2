@@ -1,0 +1,39 @@
+.playerGroupLeftSideWrapper {
+    max-width: 100%;
+    overflow-x: auto; /* Ensures table is responsive */
+  }
+  
+  .styledTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+  }
+  
+  .styledTable th,
+  .styledTable td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd; /* Horizontal divider for clarity */
+  }
+  
+  .styledTable th {
+    background-color: #f4f4f4; /* Light grey header */
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .evenRow {
+    background-color: #f9f9f9; /* Slightly darker row for even rows */
+  }
+  
+  .oddRow {
+    background-color: #ffffff; /* White for odd rows */
+  }
+  
+  /* Responsive styling for smaller screens */
+  @media (max-width: 768px) {
+    .styledTable th,
+    .styledTable td {
+      padding: 8px; /* Smaller padding for smaller screens */
+    }
+  }

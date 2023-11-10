@@ -29,6 +29,8 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 import { useAuth } from '../../../../context/AuthContext';
 import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
 import useMediaQuery from '@mui/material/useMediaQuery';
+import {formatBaseUrl} from "../../../../utils/format_base_url";
+
 // import TableComponent from "./TableComponent.js";
 const useStyles = makeStyles((theme) => ({
   helperText: {
@@ -70,20 +72,8 @@ const SPORT_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'D'];
 
 
 export default function NFLFanduelDFS(props) {
-  const useLocal = true
-  const useOptimizerUrl = true
+  const baseUrl = formatBaseUrl()
 
-  let baseUrl;
-  if (process.env.NODE_ENV === 'development') {
-    if (useLocal) {
-      baseUrl = 'http://localhost:3000'
-    } else {
-
-      baseUrl = 'https://bsw-be-api.onrender.com'
-    }
-  } else {
-    baseUrl = 'https://bsw-be-api.onrender.com';
-  }
   const classes = useStyles();
   const columns = useColumns();
   const clerk = useClerk();
@@ -169,7 +159,7 @@ export default function NFLFanduelDFS(props) {
   // const getFdSlates = (abbr) => `/mockJson/nfl/slates/fd_slates.json`;
   const getEspnScoreboard = (abbr) => `/mockJson/nfl/2023-espn-scoreboard.json`;
   const getEspnStandings = (abbr) => `/mockJson/nfl/2023-espn-standings.json`;
-
+  const [searchText, setSearchText] = useState('');
 
 
 
@@ -561,36 +551,20 @@ export default function NFLFanduelDFS(props) {
     if (excludedTeams.length !== 0) setExcludedTeams([])
 
     let searchTextLowerCase = text.toLowerCase();
-    const filterName = ogfilteredPlayers.filter((player) => {
-      let newPlayerName = player.Nickname.toLowerCase();
-      if (newPlayerName.includes(searchTextLowerCase)) {
-        return player;
-      }
-    });
-    if (filterName.length !== 0) {
-      setFilteredPlayers(filterName);
-    } else {
-      setFilteredPlayers(ogfilteredPlayers);
-    }
+    setSearchText(searchTextLowerCase);
+    // const filterName = ogfilteredPlayers.filter((player) => {
+    //   let newPlayerName = player.Nickname.toLowerCase();
+    //   if (newPlayerName.includes(searchTextLowerCase)) {
+    //     return player;
+    //   }
+    // });
+    // if (filterName.length !== 0) {
+    //   setFilteredPlayers(filterName);
+    // } else {
+    //   setFilteredPlayers(ogfilteredPlayers);
+    // }
   };
-  const handleSearchExcludedPlayersOnChange = (text) => {
-    if (currentPosition !== 'All') setCurrentPosition('All')
-    if (excludedTeams.length !== 0) setExcludedTeams([])
 
-    let searchTextLowerCase = text.toLowerCase();
-    const filterName = ogExcludePlayerLines.filter((player) => {
-      let newPlayerName = player.Nickname.toLowerCase();
-      if (newPlayerName.includes(searchTextLowerCase)) {
-        return player;
-      }
-    });
-    // console.log('filtername;, fil', filterName)
-    if (filterName.length !== 0) {
-      setExcludePlayerLines(filterName);
-    } else {
-      setExcludePlayerLines(ogExcludePlayerLines);
-    }
-  };
 
   const filterPlayersByPosition = (positionParam) => {
     setCurrentPosition(positionParam)
@@ -1185,14 +1159,16 @@ export default function NFLFanduelDFS(props) {
                 {isShowingExcludePlayers ?
                   <NFLPlayerSearch
                     data={excludePlayerLines}
-                    onSearch={handleSearchExcludedPlayersOnChange}
+                    onSearch={handleSearchOnChange}
                     isShowingExcludePlayers={isShowingExcludePlayers}
+                    searchText={searchText}
                   />
                   :
                   <NFLPlayerSearch
                     data={filteredPlayers}
                     onSearch={handleSearchOnChange}
                     isShowingExcludePlayers={isShowingExcludePlayers}
+                    searchText={searchText}
                   />
 
                 }
@@ -1390,6 +1366,7 @@ export default function NFLFanduelDFS(props) {
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
                 filterPlayersByPosition={filterPlayersByPosition}
+                searchText={searchText}
               />
 
               }
@@ -1426,6 +1403,7 @@ export default function NFLFanduelDFS(props) {
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
                 filterPlayersByPosition={filterPlayersByPosition}
+                searchText={searchText}
 
               />
 
@@ -1465,6 +1443,7 @@ export default function NFLFanduelDFS(props) {
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
                 filterPlayersByPosition={filterPlayersByPosition}
+                searchText={searchText}
 
               />
 
@@ -1505,6 +1484,7 @@ export default function NFLFanduelDFS(props) {
                 resetMaxExposureValues={resetMaxExposureValues}
                 selectedPosition={currentPosition}
                 filterPlayersByPosition={filterPlayersByPosition}
+                searchText={searchText}
               />
 
               }

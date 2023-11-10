@@ -1,0 +1,1041 @@
+Id,Position,First Name,Nickname,Last Name,OG_FPPG,Salary,Game,Team,Opponent,Injury Indicator,Injury Details,Tier,,,Roster Position,FPPG,Value,Projected Minutes
+95924-49111,C,Joel,Joel Embiid,Embiid,58.81428746,12200,PHI@DET,PHI,DET,,,,,,C,53.50,4.39,34.70
+95924-84669,PG,Luka,Luka Doncic,Doncic,56.84999847,12000,LAC@DAL,DAL,LAC,,,,,,PG,54.10,4.51,36.29
+95924-15755,PF/C,Anthony,Anthony Davis,Davis,54.61428397,11600,LAL@PHO,LAL,PHO,GTD,Groin,,,,PF/C,48.20,4.15,35.58
+95924-84680,PG,Shai,Shai Gilgeous-Alexander,Gilgeous-Alexander,52.18571254,11000,OKC@SAC,OKC,SAC,,,,,,PG,48.20,4.38,36.01
+95924-80808,PF/SF,Jayson,Jayson Tatum,Tatum,47.58571516,10300,BKN@BOS,BOS,BKN,,,,,,SF/PF,48.30,4.69,35.27
+95924-9646,SF/PF,Kevin,Kevin Durant,Durant,46.63750076,10200,LAL@PHO,PHO,LAL,,,,,,SF/PF,46.20,4.53,35.10
+95924-58460,SG,Devin,Devin Booker,Booker,52.25,10000,LAL@PHO,PHO,LAL,O,Calf,,,,SG,0.00,0.00,0.00
+95924-59358,C/PF,Domantas,Domantas Sabonis,Sabonis,43.78571429,9900,OKC@SAC,SAC,OKC,,,,,,PF/C,48.00,4.85,34.98
+95924-9488,SF/PF,LeBron,LeBron James,James,45.1875,9800,LAL@PHO,LAL,PHO,,,,,,SF/PF,43.30,4.42,32.62
+95924-80810,PG,De'Aaron,De'Aaron Fox,Fox,48.8666687,9200,OKC@SAC,SAC,OKC,O,Ankle,,,,PG,0.00,0.00,0.00
+95924-145485,PG,LaMelo,LaMelo Ball,Ball,40.21428571,9100,CHA@WAS,CHA,WAS,,,,,,PG,50.10,5.51,35.71
+95924-145321,SG/SF,Anthony,Anthony Edwards,Edwards,43.87142944,9000,MIN@SA,MIN,SA,,,,,,SG/SF,44.40,4.93,35.14
+95924-145331,PG,Tyrese,Tyrese Maxey,Maxey,45.67143032,8800,PHI@DET,PHI,DET,,,,,,PG,38.80,4.41,37.14
+95924-145334,SG/SF,Desmond,Desmond Bane,Bane,42.6875,8700,UTA@MEM,MEM,UTA,,,,,,SG/SF,44.00,5.05,35.80
+95924-84683,PF/C,Jaren,Jaren Jackson,Jackson,40.42499924,8600,UTA@MEM,MEM,UTA,,,,,,PF/C,45.00,5.23,35.51
+95924-14498,PG/SG,Kyrie,Kyrie Irving,Irving,40.10000102,8500,LAC@DAL,DAL,LAC,,,,,,PG/SG,41.70,4.90,36.23
+95924-188414,PF/C,Victor,Victor Wembanyama,Wembanyama,38.57500076,8500,MIN@SA,SA,MIN,,,,,,PF/C,39.60,4.65,33.33
+95924-80812,PF/SF,Lauri,Lauri Markkanen,Markkanen,39.81110975,8400,UTA@MEM,UTA,MEM,,,,,,SF/PF,40.40,4.81,34.43
+95924-66048,SF,Brandon,Brandon Ingram,Ingram,33.33999939,8300,NO@HOU,NO,HOU,,,,,,SF,39.10,4.72,35.49
+95924-157908,C,Alperen,Alperen Sengun,Sengun,39.37142944,8300,NO@HOU,HOU,NO,GTD,Ankle,,,,C,39.50,4.76,32.45
+95924-12341,SG/SF,Paul,Paul George,George,42.37142944,8200,LAC@DAL,LAC,DAL,,,,,,SG/SF,40.20,4.90,36.29
+95924-63122,PF/C,Kristaps,Kristaps Porzingis,Porzingis,36.55714199,8200,BKN@BOS,BOS,BKN,,,,,,PF/C,39.90,4.86,33.78
+95924-14513,SF/PF,Kawhi,Kawhi Leonard,Leonard,38.48571341,8100,LAC@DAL,LAC,DAL,,,,,,SF/PF,41.00,5.06,36.58
+95924-171759,C,Chet,Chet Holmgren,Holmgren,38.63750076,8100,OKC@SAC,OKC,SAC,,,,,,C,34.80,4.30,31.36
+95924-157808,PG/SG,Cade,Cade Cunningham,Cunningham,36.28888957,8000,PHI@DET,DET,PHI,,,,,,PG/SG,39.90,4.99,35.36
+95924-110310,PF,Zion,Zion Williamson,Williamson,37.73333232,8000,NO@HOU,NO,HOU,,,,,,PF,40.30,5.04,32.92
+95924-58462,PF/C,Karl-Anthony,Karl-Anthony Towns,Towns,33.08571516,7900,MIN@SA,MIN,SA,,,,,,PF/C,40.20,5.09,34.64
+95924-24247,PG,Fred,Fred VanVleet,VanVleet,33.52857099,7900,NO@HOU,HOU,NO,,,,,,PG,37.80,4.78,33.59
+95924-58377,SF/PF,Kyle,Kyle Kuzma,Kuzma,38.15714373,7800,CHA@WAS,WAS,CHA,,,,,,SF/PF,38.70,4.97,30.50
+95924-19067,PG/SG,CJ,CJ McCollum,McCollum,41.63333384,7800,NO@HOU,NO,HOU,O,Chest,,,,PG/SG,0.00,0.00,0.00
+95924-84670,SG/SF,Mikal,Mikal Bridges,Bridges,36.875,7700,BKN@BOS,BKN,BOS,,,,,,SG/SF,37.00,4.80,33.94
+95924-40203,C,Rudy,Rudy Gobert,Gobert,37.35714286,7700,MIN@SA,MIN,SA,,,,,,C,32.50,4.22,30.89
+95924-9644,SG/PG,James,James Harden,Harden,30.35000038,7700,LAC@DAL,LAC,DAL,,,,,,PG/SG,40.60,5.27,35.78
+95924-9642,PG,Russell,Russell Westbrook,Westbrook,36.35714286,7600,LAC@DAL,LAC,DAL,,,,,,PG,33.10,4.35,29.72
+95924-67026,SF/SG,Jaylen,Jaylen Brown,Brown,34.47142901,7600,BKN@BOS,BOS,BKN,,,,,,SG/SF,36.80,4.85,35.75
+95924-157838,SG/SF,Cam,Cam Thomas,Thomas,37.8125,7500,BKN@BOS,BKN,BOS,O,Ankle,,,,SG/SF,0.00,0.00,0.00
+95924-15595,SG/PG,Bradley,Bradley Beal,Beal,24.79999924,7500,LAL@PHO,PHO,LAL,GTD,Back,,,,PG/SG,31.30,4.17,30.36
+95924-42677,SG/PG,Terry,Terry Rozier,Rozier,35.1,7400,CHA@WAS,CHA,WAS,O,Groin,,,,PG/SG,0.00,0.00,0.00
+95924-110347,PF/SF,Keldon,Keldon Johnson,Johnson,31.35000038,7300,MIN@SA,SA,MIN,,,,,,SF/PF,30.30,4.15,34.34
+95924-55057,C,Jusuf,Jusuf Nurkic,Nurkic,34.25,7300,LAL@PHO,PHO,LAL,,,,,,C,30.30,4.15,26.76
+95924-66115,PG/PF,Ben,Ben Simmons,Simmons,31,7200,BKN@BOS,BKN,BOS,O,Hip,,,,PG/PF,0.00,0.00,0.00
+95924-12366,SF/SG,Gordon,Gordon Hayward,Hayward,36.88571603,7100,CHA@WAS,CHA,WAS,GTD,Hamstring,,,,SG/SF,33.10,4.66,33.75
+95924-110354,C,Nic,Nic Claxton,Claxton,30.39999962,7100,BKN@BOS,BKN,BOS,O,Ankle,,,,C,0.00,0.00,0.00
+95924-9663,PG,Jrue,Jrue Holiday,Holiday,32.95714242,7100,BKN@BOS,BOS,BKN,,,,,,PG,33.60,4.73,33.52
+95924-14518,PF/SF,Tobias,Tobias Harris,Harris,33.92857143,7000,PHI@DET,PHI,DET,,,,,,SF/PF,31.90,4.55,37.53
+95924-171779,C,Jalen,Jalen Duren,Duren,35.31428528,7000,PHI@DET,DET,PHI,,,,,,C,30.80,4.41,30.28
+95924-188426,SG,Ausar,Ausar Thompson,Thompson,35.65555488,6900,PHI@DET,DET,PHI,,,,,,SG,33.50,4.86,31.66
+95924-171760,SF/SG,Jalen,Jalen Williams,Williams,29.08749962,6800,OKC@SAC,OKC,SAC,,,,,,SG/SF,30.60,4.50,34.03
+95924-58312,PG/SG,D'Angelo,D'Angelo Russell,Russell,32.4375,6800,LAL@PHO,LAL,PHO,,,,,,PG/SG,29.90,4.40,34.96
+95924-15542,SG/PG,Spencer,Spencer Dinwiddie,Dinwiddie,20.85714286,6700,BKN@BOS,BKN,BOS,,,,,,PG/SG,27.80,4.14,32.32
+95924-110322,PG/SG,Jordan,Jordan Poole,Poole,28.01428659,6700,CHA@WAS,WAS,CHA,,,,,,PG/SG,31.20,4.65,29.40
+95924-80815,PF/C,Zach,Zach Collins,Collins,30.88750076,6700,MIN@SA,SA,MIN,,,,,,PF/C,31.40,4.69,33.49
+95924-157905,SG/PG,Josh,Josh Giddey,Giddey,26.17499924,6600,OKC@SAC,OKC,SAC,,,,,,PG/SG,31.00,4.70,29.02
+95924-157907,SG/PG,Jalen,Jalen Green,Green,29.42857143,6500,NO@HOU,HOU,NO,,,,,,PG/SG,31.60,4.87,32.59
+95924-171786,C,Mark,Mark Williams,Williams,29.71428571,6500,CHA@WAS,CHA,WAS,,,,,,C,33.20,5.10,29.45
+95924-20640,PG/SG,Jordan,Jordan Clarkson,Clarkson,25.76666599,6400,UTA@MEM,UTA,MEM,,,,,,PG/SG,30.90,4.82,32.21
+95924-14503,C,Jonas,Jonas Valanciunas,Valanciunas,26.63750076,6400,NO@HOU,NO,HOU,,,,,,C,24.60,3.84,22.54
+95924-171787,SF/PF,Keegan,Keegan Murray,Murray,28.15714373,6400,OKC@SAC,SAC,OKC,,,,,,SF/PF,27.60,4.31,33.04
+95924-145324,SG,Devin,Devin Vassell,Vassell,25.38333384,6400,MIN@SA,SA,MIN,,,,,,SG,23.90,3.73,24.86
+95924-49675,PG/SG,Derrick,Derrick White,White,33.8,6300,BKN@BOS,BOS,BKN,,,,,,PG/SG,30.40,4.82,34.21
+95924-70827,C,Ivica,Ivica Zubac,Zubac,25.34285627,6300,LAC@DAL,LAC,DAL,,,,,,C,29.30,4.65,30.38
+95924-171767,PF,Jabari,Jabari Smith,Smith,26.68571472,6300,NO@HOU,HOU,NO,,,,,,PF,27.50,4.37,31.05
+95924-110352,PF/C,P.J.,PJ Washington,Washington,29.2714277,6200,CHA@WAS,CHA,WAS,,,,,,PF/C,31.90,5.15,34.33
+95924-23670,PG,Marcus,Marcus Smart,Smart,30.11249924,6100,UTA@MEM,MEM,UTA,,,,,,PG,32.00,5.25,34.30
+95924-66236,PF/C,John,John Collins,Collins,28.32222154,6100,UTA@MEM,UTA,MEM,,,,,,PF/C,28.60,4.70,31.11
+95924-58153,SF/SG,Kelly,Kelly Oubre,Oubre,28.08571516,6100,PHI@DET,PHI,DET,,,,,,SG/SF,24.60,4.03,26.67
+95924-171749,PG/PF,Jeremy,Jeremy Sochan,Sochan,24.11249924,6000,MIN@SA,SA,MIN,,,,,,PG/PF,25.80,4.31,26.85
+95924-158136,SF/SG,Austin,Austin Reaves,Reaves,26.625,6000,LAL@PHO,LAL,PHO,,,,,,SG/SF,26.60,4.43,32.76
+95924-188425,C,Dereck,Dereck Lively,Lively,24.11428615,5900,LAC@DAL,DAL,LAC,GTD,Illness,,,,C,22.80,3.86,23.69
+95924-111273,SF/SG,Luguentz,Luguentz Dort,Dort,27.89999962,5900,OKC@SAC,OKC,SAC,,,,,,SG/SF,23.80,4.03,32.02
+95924-80816,SG/PG,Malik,Malik Monk,Monk,26.87142944,5900,OKC@SAC,SAC,OKC,,,,,,PG/SG,27.80,4.72,25.31
+95924-188427,PG,Marcus,Marcus Sasser,Sasser,20.77777778,5800,PHI@DET,DET,PHI,,,,,,PG,30.30,5.23,30.26
+95924-145539,SF/PF,Deni,Deni Avdija,Avdija,27.41428484,5800,CHA@WAS,WAS,CHA,,,,,,SF/PF,27.70,4.77,28.38
+95924-110316,SF/PF,Cameron,Cameron Johnson,Johnson,26.5,5700,BKN@BOS,BKN,BOS,,,,,,SF/PF,25.50,4.47,26.74
+95924-110337,SG/SF,Talen,Talen Horton-Tucker,Horton-Tucker,24.08888923,5700,UTA@MEM,UTA,MEM,,,,,,SG/SF,21.90,3.84,20.13
+95924-110995,C/PF,Naz,Naz Reid,Reid,23.74285671,5700,MIN@SA,MIN,SA,,,,,,PF/C,25.30,4.44,22.92
+95924-145323,PG,Tre,Tre Jones,Jones,24,5700,MIN@SA,SA,MIN,,,,,,PG,26.50,4.65,27.27
+95924-145489,PG,Killian,Killian Hayes,Hayes,25.67777846,5600,PHI@DET,DET,PHI,,,,,,PG,24.00,4.28,32.03
+95924-157848,SG/SF,Herbert,Herbert Jones,Jones,25.34285627,5600,NO@HOU,NO,HOU,GTD,Lower leg,,,,SG/SF,24.90,4.45,32.55
+95924-23716,SF/PF,Kyle,Kyle Anderson,Anderson,23.52857099,5600,MIN@SA,MIN,SA,,,,,,SF/PF,23.00,4.10,24.91
+95924-171777,C,Walker,Walker Kessler,Kessler,23.45000076,5600,UTA@MEM,UTA,MEM,O,Elbow,,,,C,0.00,0.00,0.00
+95924-84702,SG/SF,Lonnie,Lonnie Walker,Walker,24.94285801,5500,BKN@BOS,BKN,BOS,,,,,,SG/SF,24.60,4.47,29.72
+95924-58081,PG,Tyus,Tyus Jones,Jones,23.65714373,5500,CHA@WAS,WAS,CHA,,,,,,PG,25.40,4.63,28.38
+95924-60233,SG/SF,Dillon,Dillon Brooks,Brooks,24.48571341,5500,NO@HOU,HOU,NO,,,,,,SG/SF,22.50,4.09,33.12
+95924-145307,C/PF,Isaiah,Isaiah Stewart,Stewart,23.84444512,5500,PHI@DET,DET,PHI,,,,,,PF/C,25.30,4.59,33.96
+95924-16376,SF/PF,Dorian,Dorian Finney-Smith,Finney-Smith,25.76250076,5500,BKN@BOS,BKN,BOS,,,,,,SF/PF,23.00,4.19,32.31
+95924-42202,PF/C,Christian,Christian Wood,Wood,19.08749962,5400,LAL@PHO,LAL,PHO,,,,,,PF/C,22.80,4.22,21.66
+95924-84704,SG/SF,Kevin,Kevin Huerter,Huerter,21.35714286,5400,OKC@SAC,SAC,OKC,,,,,,SG/SF,27.20,5.04,28.66
+95924-145336,C,Xavier,Xavier Tillman,Tillman,27.58333333,5400,UTA@MEM,MEM,UTA,O,Knee,,,,C,0.00,0.00,0.00
+95924-188419,SF,Brandon,Brandon Miller,Miller,22.7714277,5300,CHA@WAS,CHA,WAS,,,,,,SF,26.00,4.91,33.86
+95924-110318,PF,Grant,Grant Williams,Williams,22.38750076,5300,LAC@DAL,DAL,LAC,,,,,,PF,21.70,4.10,30.24
+95924-110325,C,Daniel,Daniel Gafford,Gafford,23.01999969,5300,CHA@WAS,WAS,CHA,,,,,,C,28.50,5.38,26.35
+95924-9575,PG,Mike,Mike Conley,Conley,24.19999913,5300,MIN@SA,MIN,SA,,,,,,PG,25.90,4.88,29.28
+95924-14505,C,Bismack,Bismack Biyombo,Biyombo,19.06666692,5200,UTA@MEM,MEM,UTA,,,,,,C,26.60,5.11,25.87
+95924-84703,PG/SG,De'Anthony,De'Anthony Melton,Melton,21.58571516,5200,PHI@DET,PHI,DET,,,,,,PG/SG,23.00,4.43,27.65
+95924-9556,SG,Eric,Eric Gordon,Gordon,23.26250076,5200,LAL@PHO,PHO,LAL,,,,,,SG,22.90,4.41,32.41
+95924-18338,SF/PF,Royce,Royce O'Neale,O'Neale,25.47500038,5200,BKN@BOS,BKN,BOS,,,,,,SF/PF,23.70,4.55,29.37
+95924-15846,SG/SF,Tim,Tim Hardaway,Hardaway,24.58749962,5200,LAC@DAL,DAL,LAC,,,,,,SG/SF,23.20,4.46,29.78
+95924-9453,C,Al,Al Horford,Horford,18.44285801,5100,BKN@BOS,BOS,BKN,O,Knee,,,,C,0.00,0.00,0.00
+95924-171784,PG,Dyson,Dyson Daniels,Daniels,20.92499924,5100,NO@HOU,NO,HOU,,,,,,PG,17.50,3.44,23.08
+95924-16293,SF/SG,Norman,Norman Powell,Powell,21.17142814,5100,LAC@DAL,LAC,DAL,,,,,,SG/SF,18.40,3.61,21.03
+95924-84679,PF/C,Marvin,Marvin Bagley,Bagley,18.84444512,5000,PHI@DET,DET,PHI,,,,,,PF/C,19.90,3.98,20.17
+95924-84711,SG/SF,Grayson,Grayson Allen,Allen,23.95000076,5000,LAL@PHO,PHO,LAL,,,,,,SG/SF,22.90,4.58,29.10
+95924-157844,PF/C,Santi,Santi Aldama,Aldama,22.54999924,4900,UTA@MEM,MEM,UTA,,,,,,PF/C,27.30,5.57,29.82
+95924-40830,PG,Delon,Delon Wright,Wright,19.44285801,4900,CHA@WAS,WAS,CHA,,,,,,PG,19.20,3.91,18.50
+95924-15946,SF/PF,Harrison,Harrison Barnes,Barnes,19.75714329,4800,OKC@SAC,SAC,OKC,,,,,,SF/PF,23.10,4.81,32.38
+95924-14510,PG/SG,Alec,Alec Burks,Burks,25.27499962,4800,PHI@DET,DET,PHI,O,Forearm,,,,PG/SG,0.00,0.00,0.00
+95924-97263,C/PF,Drew,Drew Eubanks,Eubanks,21.64999962,4800,LAL@PHO,PHO,LAL,,,,,,PF/C,19.40,4.04,20.89
+95924-188421,SG,Jordan,Jordan Hawkins,Hawkins,20.78750038,4700,NO@HOU,NO,HOU,,,,,,SG,26.20,5.57,34.09
+95924-15590,C,Mason,Mason Plumlee,Plumlee,14.76666641,4700,LAC@DAL,LAC,DAL,O,Knee,,,,C,0.00,0.00,0.00
+95924-110349,PF/SF,Rui,Rui Hachimura,Hachimura,21.72500038,4700,LAL@PHO,LAL,PHO,,,,,,SF/PF,15.30,3.26,19.69
+95924-171780,SG,Jaden,Jaden Ivey,Ivey,20.25,4600,PHI@DET,DET,PHI,O,Illness,,,,SG,0.00,0.00,0.00
+95924-145318,C,Nick,Nick Richards,Richards,19.81428528,4600,CHA@WAS,CHA,WAS,,,,,,C,21.50,4.68,19.48
+95924-145319,SF/PF,Jaden,Jaden McDaniels,McDaniels,18.86000061,4600,MIN@SA,MIN,SA,,,,,,SF/PF,22.70,4.93,29.90
+95924-160174,PG,Jordan,Jordan Goodwin,Goodwin,18.29999924,4600,LAL@PHO,PHO,LAL,,,,,,PG,17.50,3.81,18.00
+95924-157812,PG,Davion,Davion Mitchell,Mitchell,14.55714308,4500,OKC@SAC,SAC,OKC,,,,,,PG,18.40,4.09,24.44
+95924-157839,C,Day'Ron,Day'Ron Sharpe,Sharpe,15.88749981,4500,BKN@BOS,BKN,BOS,,,,,,C,23.10,5.13,18.82
+95924-157843,SF,Ziaire,Ziaire Williams,Williams,19.47500038,4500,UTA@MEM,MEM,UTA,GTD,Hip,,,,SF,20.60,4.58,27.81
+95924-84689,SF/SG,Josh,Josh Okogie,Okogie,17.67499924,4500,LAL@PHO,PHO,LAL,,,,,,SG/SF,19.80,4.40,24.00
+95924-22541,C/PF,Kelly,Kelly Olynyk,Olynyk,20.79999966,4400,UTA@MEM,UTA,MEM,,,,,,PF/C,26.50,6.02,26.17
+95924-23572,SF/PF,Taurean,Taurean Prince,Prince,15.91666667,4400,LAL@PHO,LAL,PHO,,,,,,SF/PF,18.20,4.13,27.59
+95924-157819,SF,Corey,Corey Kispert,Kispert,13.13333384,4400,CHA@WAS,WAS,CHA,,,,,,SF,14.00,3.18,20.27
+95924-158373,PG,Jose,Jose Alvarado,Alvarado,18.82295002,4400,NO@HOU,NO,HOU,O,Ankle,,,,PG,0.00,0.00,0.00
+95924-84667,SG,Collin,Collin Sexton,Sexton,16.92222256,4400,UTA@MEM,UTA,MEM,,,,,,SG,14.50,3.29,16.11
+95924-171748,SF/SG,Malaki,Malaki Branham,Branham,13.92500019,4400,MIN@SA,SA,MIN,,,,,,SG/SF,7.10,1.62,9.94
+95924-66968,SF,Derrick,Derrick Jones,Jones,15.52499962,4400,LAC@DAL,DAL,LAC,,,,,,SF,20.40,4.64,26.08
+95924-84688,PF,Keita,Keita Bates-Diop,Bates-Diop,16.98000031,4300,LAL@PHO,PHO,LAL,,,,,,PF,13.00,3.01,16.02
+95924-188415,PG/SG,Cason,Cason Wallace,Wallace,15.875,4300,OKC@SAC,OKC,SAC,,,,,,PG/SG,17.90,4.16,23.02
+95924-188412,SG,Keyonte,Keyonte George,George,15.5,4300,UTA@MEM,UTA,MEM,,,,,,SG,23.20,5.40,30.20
+95924-188416,SF,Bilal,Bilal Coulibaly,Coulibaly,15.38571385,4200,CHA@WAS,WAS,CHA,,,,,,SF,17.10,4.08,20.27
+95924-110315,PG/SG,Terance,Terance Mann,Mann,4.300000191,4200,LAC@DAL,LAC,DAL,,,,,,PG/SG,15.30,3.65,20.59
+95924-171758,PF/C,Jaylin,Jaylin Williams,Williams,13.83333333,4200,OKC@SAC,OKC,SAC,,,,,,PF/C,11.20,2.66,13.01
+95924-145325,SG,Josh,Josh Green,Green,16.5625,4200,LAC@DAL,DAL,LAC,,,,,,SG,14.60,3.48,22.07
+95924-158854,SF,Sam,Sam Hauser,Hauser,16.0142855,4100,BKN@BOS,BOS,BKN,,,,,,SF,16.90,4.13,22.40
+95924-157834,PG,Bones,Bones Hyland,Hyland,16.32857186,4100,LAC@DAL,LAC,DAL,,,,,,PG,0.00,0.00,0.00
+95924-84724,SG,Landry,Landry Shamet,Shamet,14.86666616,4100,CHA@WAS,WAS,CHA,,,,,,SG,12.40,3.01,14.19
+95924-171769,SF,Tari,Tari Eason,Eason,23.79999924,4100,NO@HOU,HOU,NO,,,,,,SF,23.50,5.74,23.00
+95924-9637,SF/PF,Danilo,Danilo Gallinari,Gallinari,13.79999978,4100,CHA@WAS,WAS,CHA,,,,,,SF/PF,13.10,3.19,13.18
+95924-145330,PG,Isaiah,Isaiah Joe,Joe,14.92500019,4100,OKC@SAC,OKC,SAC,,,,,,PG,16.30,3.96,20.02
+95924-145329,C,Paul,Paul Reed,Reed,13.40000044,4100,PHI@DET,PHI,DET,,,,,,C,12.70,3.09,11.85
+95924-66046,SG/SF,Luke,Luke Kennard,Kennard,17.41999969,4100,UTA@MEM,MEM,UTA,,,,,,SG/SF,20.10,4.90,26.00
+95924-20491,PF/SF,Robert,Robert Covington,Covington,14.35714286,4000,PHI@DET,PHI,DET,,,,,,SF/PF,17.00,4.26,18.33
+95924-58461,PF,Trey,Trey Lyles,Lyles,15.25308642,4000,OKC@SAC,SAC,OKC,O,Calf,,,,PF,0.00,0.00,0.00
+95924-145536,PG,Theo,Theo Maledon,Maledon,12.22857121,4000,CHA@WAS,CHA,WAS,,,,,,PG,19.40,4.85,21.46
+95924-157830,C/PF,Jeremiah,Jeremiah Robinson-Earl,Robinson-Earl,21.29999924,4000,NO@HOU,NO,HOU,,,,,,PF/C,0.00,0.00,0.00
+95924-158856,PF,Trendon,Trendon Watford,Watford,17.40000025,4000,BKN@BOS,BKN,BOS,,,,,,PF,0.00,0.00,0.07
+95924-63126,SF/PF,Cedi,Cedi Osman,Osman,15.86250019,4000,MIN@SA,SA,MIN,,,,,,SF/PF,13.20,3.29,17.90
+95924-145576,SF/PF,Jae'Sean,Jae'Sean Tate,Tate,18.35714286,4000,NO@HOU,HOU,NO,,,,,,SF/PF,16.10,4.04,18.21
+95924-171755,SF/PF,David,David Roddy,Roddy,15.53750038,4000,UTA@MEM,MEM,UTA,,,,,,SF/PF,5.10,1.28,6.68
+95924-110339,SG/SF,Cam,Cam Reddish,Reddish,12,4000,LAL@PHO,LAL,PHO,,,,,,SG/SF,11.30,2.83,17.73
+95924-171791,SG,Jaden,Jaden Hardy,Hardy,11.83333333,4000,LAC@DAL,DAL,LAC,,,,,,SG,9.90,2.48,11.09
+95924-80814,PG,Dennis,Dennis Smith,Smith,11.20000022,4000,BKN@BOS,BKN,BOS,,,,,,PG,23.70,5.92,24.76
+95924-145335,PG,Payton,Payton Pritchard,Pritchard,11.71428571,4000,BKN@BOS,BOS,BKN,,,,,,PG,11.30,2.82,15.24
+95924-20992,PF/C,Larry,Larry Nance,Nance,12.71249962,3900,NO@HOU,NO,HOU,,,,,,PF/C,16.00,4.11,18.42
+95924-9809,SF/PF,Nicolas,Nicolas Batum,Batum,14.91999969,3900,PHI@DET,PHI,DET,GTD,Finger,,,,SF/PF,15.20,3.88,20.63
+95924-162411,SF,Matt,Matt Ryan,Ryan,14.48750019,3900,NO@HOU,NO,HOU,,,,,,SF,17.30,4.43,25.62
+95924-157813,SG/PG,Joshua,Joshua Primo,Primo,17.14999962,3900,LAC@DAL,LAC,DAL,,,,,,PG/SG,0.00,0.00,0.00
+95924-14512,PF/SF,Marcus,Marcus Morris,Morris,7.199999809,3900,PHI@DET,PHI,DET,,,,,,SF/PF,0.00,0.00,0.00
+95924-12474,PG,Patrick,Patrick Beverley,Beverley,13.9857145,3900,PHI@DET,PHI,DET,,,,,,PG,10.50,2.69,14.81
+95924-84691,PG,Shake,Shake Milton,Milton,11.41428593,3900,MIN@SA,MIN,SA,,,,,,PG,10.50,2.68,13.95
+95924-81621,PF/C,Maxi,Maxi Kleber,Kleber,11.84000015,3900,LAC@DAL,DAL,LAC,GTD,Toe,,,,PF/C,0.00,0.00,0.00
+95924-171766,SG,Johnny,Johnny Davis,Davis,9.980000305,3900,CHA@WAS,WAS,CHA,,,,,,SG,8.90,2.27,10.26
+95924-9475,PG/SG,Derrick,Derrick Rose,Rose,15.27499962,3900,UTA@MEM,MEM,UTA,O,Knee,,,,PG/SG,0.00,0.00,0.00
+95924-171781,SG,Ochai,Ochai Agbaji,Agbaji,7.855555216,3900,UTA@MEM,UTA,MEM,,,,,,SG,16.50,4.22,24.16
+95924-111376,SF,John,John Konchar,Konchar,16.68000031,3900,UTA@MEM,MEM,UTA,GTD,Hip,,,,SF,0.00,0.00,0.03
+95924-110356,SG/SF,Nickeil,Nickeil Alexander-Walker,Alexander-Walker,14.14285714,3900,MIN@SA,MIN,SA,,,,,,SG/SF,14.70,3.76,17.94
+95924-158137,C,Jock,Jock Landale,Landale,9.780000305,3900,NO@HOU,HOU,NO,,,,,,C,9.70,2.50,9.59
+95924-188405,PG/SG,Amen,Amen Thompson,Thompson,12.55000019,3900,NO@HOU,HOU,NO,O,Ankle,,,,PG/SG,0.00,0.00,0.00
+95924-157805,SG,Brandon,Brandon Boston,Boston,9.695652174,3800,LAC@DAL,LAC,DAL,O,Quadriceps,,,,SG,0.00,0.00,0.00
+95924-157815,PF,JT,JT Thor,Thor,12,3800,CHA@WAS,CHA,WAS,,,,,,PF,10.30,2.71,14.89
+95924-41083,PF,Luke,Luke Kornet,Kornet,7.983333588,3800,BKN@BOS,BOS,BKN,,,,,,PF,8.20,2.15,9.16
+95924-145533,SF/PF,Kenyon,Kenyon Martin,Martin,4.759999847,3800,PHI@DET,PHI,DET,,,,,,SF/PF,0.00,0.00,0.01
+95924-157828,SG/SF,Chris,Chris Duarte,Duarte,10.81428528,3800,OKC@SAC,SAC,OKC,,,,,,SG/SF,15.00,3.93,18.53
+95924-157829,SG,Aaron,Aaron Wiggins,Wiggins,6.785714286,3800,OKC@SAC,OKC,SAC,,,,,,SG,7.70,2.02,11.01
+95924-171677,PF,Kenneth,Kenneth Lofton,Lofton,8.980000305,3800,UTA@MEM,MEM,UTA,,,,,,PF,6.30,1.66,5.72
+95924-171756,SG,Vince,Vince Williams,Williams,10.93333308,3800,UTA@MEM,MEM,UTA,,,,,,SG,0.00,0.00,0.07
+95924-85238,SG/SF,Yuta,Yuta Watanabe,Watanabe,12.11250019,3800,LAL@PHO,PHO,LAL,,,,,,SG/SF,7.50,1.97,10.04
+95924-23802,PG/SG,Kris,Kris Dunn,Dunn,11.19999981,3800,UTA@MEM,UTA,MEM,,,,,,PG/SG,11.80,3.10,10.17
+95924-16196,C,Dwight,Dwight Powell,Powell,15.27142879,3800,LAC@DAL,DAL,LAC,,,,,,C,18.40,4.85,24.00
+95924-111492,SF/SG,Amir,Amir Coffey,Coffey,1.049999952,3800,LAC@DAL,LAC,DAL,,,,,,SG/SF,0.00,0.00,0.04
+95924-80829,PF,Sasha,Sasha Vezenkov,Vezenkov,10.93333308,3800,OKC@SAC,SAC,OKC,,,,,,PF,0.00,0.00,0.00
+95924-15814,C,Alex,Alex Len,Len,9.25,3800,OKC@SAC,SAC,OKC,,,,,,C,13.30,3.49,10.93
+95924-159702,SF,Eugene,Eugene Omoruyi,Omoruyi,11,3800,CHA@WAS,WAS,CHA,,,,,,SF,0.00,0.00,0.07
+95924-17894,C,Mike,Mike Muscala,Muscala,7.240000153,3800,CHA@WAS,WAS,CHA,,,,,,C,0.00,0.00,0.04
+95924-188418,PF,Kobe,Kobe Brown,Brown,5.479999924,3700,LAC@DAL,LAC,DAL,,,,,,PF,0.00,0.00,0.04
+95924-9739,C,JaVale,JaVale McGee,McGee,13.08333333,3700,OKC@SAC,SAC,OKC,,,,,,C,0.10,0.03,0.10
+95924-117291,SG,Armoni,Armoni Brooks,Brooks,9.699999809,3700,BKN@BOS,BKN,BOS,,,,,,SG,11.90,3.21,11.89
+95924-157842,C,Charles,Charles Bassey,Bassey,12.58749962,3700,MIN@SA,SA,MIN,,,,,,C,14.20,3.85,12.93
+95924-157840,PG,Jaden,Jaden Springer,Springer,6.819999695,3700,PHI@DET,PHI,DET,,,,,,PG,0.60,0.15,0.81
+95924-70826,SF,Furkan,Furkan Korkmaz,Korkmaz,7.940000153,3700,PHI@DET,PHI,DET,,,,,,SF,7.00,1.90,9.76
+95924-173747,SF,Simone,Simone Fontecchio,Fontecchio,7.899999891,3700,UTA@MEM,UTA,MEM,,,,,,SF,10.80,2.91,14.19
+95924-84668,SF,Troy,Troy Brown,Brown,5,3700,MIN@SA,MIN,SA,,,,,,SF,0.00,0.00,0.10
+95924-15583,PG/SG,Seth,Seth Curry,Curry,5.640000153,3700,LAC@DAL,DAL,LAC,,,,,,PG/SG,0.10,0.03,0.20
+95924-12511,PG,Ish,Ish Smith,Smith,0.6000000238,3700,CHA@WAS,CHA,WAS,,,,,,PG,4.70,1.27,5.01
+95924-180477,PG,Jacob,Jacob Gilyard,Gilyard,7.819999695,3700,UTA@MEM,MEM,UTA,,,,,,PG,9.00,2.43,9.86
+95924-110351,SG/PG,Cody,Cody Martin,Martin,13.32857186,3700,CHA@WAS,CHA,WAS,O,Knee,,,,PG/SG,0.00,0.00,0.00
+95924-171795,PF/SF,Ousmane,Ousmane Dieng,Dieng,8.725000381,3700,OKC@SAC,OKC,SAC,,,,,,SF/PF,7.70,2.07,10.01
+95924-15684,SG,Victor,Victor Oladipo,Oladipo,21.94444444,3700,NO@HOU,HOU,NO,O,Knee,,,,SG,0.00,0.00,0.00
+95924-15691,C,Cody,Cody Zeller,Zeller,5.240000153,3700,NO@HOU,NO,HOU,,,,,,C,0.00,0.00,0.09
+95924-18256,PF/SF,Doug,Doug McDermott,McDermott,12.5625,3700,MIN@SA,SA,MIN,,,,,,SF/PF,13.80,3.72,18.89
+95924-23407,PF,P.J.,P.J. Tucker,Tucker,11.44999949,3700,LAC@DAL,LAC,DAL,,,,,,PF,0.00,0.00,0.00
+95924-145316,PG,Kira,Kira Lewis,Lewis,8.475000381,3700,NO@HOU,NO,HOU,,,,,,PG,12.40,3.35,15.07
+95924-188445,SF,Jordan,Jordan Miller,Miller,2.5,3600,LAC@DAL,LAC,DAL,,,,,,SF,0.00,0.00,0.02
+95924-188448,SG,Colby,Colby Jones,Jones,7.880000305,3600,OKC@SAC,SAC,OKC,,,,,,SG,0.00,0.00,0.06
+95924-117283,SF,Oshae,Oshae Brissett,Brissett,8.550000191,3600,BKN@BOS,BOS,BKN,,,,,,SF,14.60,4.05,20.36
+95924-188452,SF/PF,Leonard,Leonard Miller,Miller,1.200000048,3600,MIN@SA,MIN,SA,,,,,,SF/PF,0.00,0.00,0.02
+95924-15947,SG/SF,Reggie,Reggie Bullock,Bullock,4.579999924,3600,NO@HOU,HOU,NO,,,,,,SG/SF,4.00,1.11,6.82
+95924-85597,PG,Jordan,Jordan McLaughlin,McLaughlin,3.7,3600,MIN@SA,MIN,SA,O,Knee,,,,PG,0.00,0.00,0.00
+95924-157821,PG,Dalano,Dalano Banton,Banton,12,3600,BKN@BOS,BOS,BKN,,,,,,PG,0.00,0.00,0.05
+95924-145538,PF/C,Aleksej,Aleksej Pokusevski,Pokusevski,1.533333302,3600,OKC@SAC,OKC,SAC,,,,,,PF/C,0.00,0.00,0.07
+95924-157831,PG,Tre,Tre Mann,Mann,6.266666412,3600,OKC@SAC,OKC,SAC,,,,,,PG,0.00,0.00,0.02
+95924-160963,PG,Daishen,Daishen Nix,Nix,1.666666667,3600,MIN@SA,MIN,SA,,,,,,PG,0.00,0.00,0.00
+95924-84674,SF/PF,Kevin,Kevin Knox,Knox,11.66507975,3600,PHI@DET,DET,PHI,,,,,,SF/PF,0.40,0.12,0.63
+95924-84701,C,Chimezie,Chimezie Metu,Metu,3.299999873,3600,LAL@PHO,PHO,LAL,,,,,,C,0.00,0.00,0.09
+95924-84706,PG,Devonte',Devonte' Graham,Graham,13.69999981,3600,MIN@SA,SA,MIN,,,,,,PG,0.00,0.00,0.00
+95924-171751,SG,Max,Max Christie,Christie,9.680000305,3600,LAL@PHO,LAL,PHO,,,,,,SG,6.20,1.72,9.93
+95924-110313,C,Bol,Bol Bol,Bol,1.399999936,3600,LAL@PHO,PHO,LAL,,,,,,C,0.00,0.00,0.05
+95924-171757,PF,Jake,Jake LaRavia,LaRavia,6.120000076,3600,UTA@MEM,MEM,UTA,GTD,Toe,,,,PF,0.00,0.00,0.00
+95924-171772,SG,Ryan,Ryan Rollins,Rollins,13.33333333,3600,CHA@WAS,WAS,CHA,,,,,,SG,0.00,0.00,0.09
+95924-23294,SF,Danuel,Danuel House,House,5.933333079,3600,PHI@DET,PHI,DET,,,,,,SF,0.00,0.00,0.05
+95924-110340,PF/C,Jaxson,Jaxson Hayes,Hayes,4.833333333,3600,LAL@PHO,LAL,PHO,GTD,Ankle,,,,PF/C,5.60,1.56,7.19
+95924-110343,SF,Nassir,Nassir Little,Little,8.980000305,3600,LAL@PHO,PHO,LAL,,,,,,SF,0.00,0.00,0.09
+95924-171785,SG,Bryce,Bryce McGowens,McGowens,7.25,3600,CHA@WAS,CHA,WAS,,,,,,SG,7.90,2.19,11.91
+95924-55055,PG,Dante,Dante Exum,Exum,6.228571211,3600,LAC@DAL,DAL,LAC,,,,,,PG,0.00,0.00,0.09
+95924-85305,SF,Kenrich,Kenrich Williams,Williams,19.63584814,3600,OKC@SAC,OKC,SAC,O,Back,,,,SF,0.00,0.00,0.00
+95924-145309,C,Udoka,Udoka Azubuike,Azubuike,3.400000095,3600,LAL@PHO,PHO,LAL,,,,,,C,0.00,0.00,0.06
+95924-9648,PF/SF,Jeff,Jeff Green,Green,11.17142814,3600,NO@HOU,HOU,NO,,,,,,SF/PF,0.00,0.00,0.06
+95924-145351,C,Omer,Omer Yurtseven,Yurtseven,5.950000127,3600,UTA@MEM,UTA,MEM,,,,,,C,0.90,0.25,1.00
+95924-163280,C,Olivier,Olivier Sarr,Sarr,10.52499962,3600,OKC@SAC,OKC,SAC,,,,,,C,0.00,0.00,0.10
+95924-16363,SG/SF,Joe,Joe Harris,Harris,6.342857361,3600,PHI@DET,DET,PHI,O,Shoulder,,,,SG/SF,0.00,0.00,0.00
+95924-188411,PF,Taylor,Taylor Hendricks,Hendricks,2.200000048,3600,UTA@MEM,UTA,MEM,,,,,,PF,0.00,0.00,0.02
+95924-180737,SG,Jeenathan,Jeenathan Williams,Williams,6.75,3500,NO@HOU,HOU,NO,,,,,,SG,0.00,0.00,0.00
+95924-188420,SG,Nick,Nick Smith,Smith,4.099999905,3500,CHA@WAS,CHA,WAS,,,,,,SG,0.00,0.00,0.07
+95924-188424,PF,Olivier-Maxence,Olivier-Maxence Prosper,Prosper,0,3500,LAC@DAL,DAL,LAC,,,,,,PF,0.00,0.00,0.09
+95924-101387,PG/SG,Gabe,Gabe Vincent,Vincent,15.69999981,3500,LAL@PHO,LAL,PHO,O,Knee,,,,PG/SG,0.00,0.00,0.00
+95924-188430,SF,Dariq,Dariq Whitehead,Whitehead,,3500,BKN@BOS,BKN,BOS,,,,,,SF,0.00,0.00,0.00
+95924-188431,PF,Noah,Noah Clowney,Clowney,,3500,BKN@BOS,BKN,BOS,,,,,,PF,0.00,0.00,0.06
+95924-189456,SG,Malcolm,Malcolm Cazalon,Cazalon,0,3500,PHI@DET,DET,PHI,,,,,,SG,0.20,0.06,0.32
+95924-188432,SG,Jalen,Jalen Hood-Schifino,Hood-Schifino,,3500,LAL@PHO,LAL,PHO,O,Knee,,,,SG,0.00,0.00,0.00
+95924-188442,PF,Jalen,Jalen Wilson,Wilson,2.099999905,3500,BKN@BOS,BKN,BOS,,,,,,PF,0.00,0.00,0.00
+95924-188446,SF,Sidy,Sidy Cissoko,Cissoko,,3500,MIN@SA,SA,MIN,,,,,,SF,0.00,0.00,0.02
+95924-189468,C/PF,Colin,Colin Castleton,Castleton,5.300000191,3500,LAL@PHO,LAL,PHO,,,,,,PF/C,0.00,0.00,0.06
+95924-188444,PF,GG,GG Jackson,Jackson,0,3500,UTA@MEM,MEM,UTA,,,,,,PF,0.00,0.00,0.00
+95924-189469,SG,D'Moi,D'Moi Hodge,Hodge,3.25,3500,LAL@PHO,LAL,PHO,,,,,,SG,0.00,0.00,0.10
+95924-188449,SF,Jalen,Jalen Slawson,Slawson,,3500,OKC@SAC,SAC,OKC,,,,,,SF,0.00,0.00,0.00
+95924-188453,SG,Jaylen,Jaylen Clark,Clark,,3500,MIN@SA,MIN,SA,O,Achilles,,,,SG,0.00,0.00,0.00
+95924-175653,SG,Jared,Jared Rhoden,Rhoden,4.074999809,3500,PHI@DET,DET,PHI,,,,,,SG,10.00,2.85,13.16
+95924-188457,SF,Jordan,Jordan Walsh,Walsh,,3500,BKN@BOS,BOS,BKN,,,,,,SF,0.00,0.00,0.01
+95924-188466,PG,Amari,Amari Bailey,Bailey,,3500,CHA@WAS,CHA,WAS,,,,,,PG,0.00,0.00,0.07
+95924-110640,PF,Luka,Luka Samanic,Samanic,5.574999809,3500,UTA@MEM,UTA,MEM,,,,,,PF,0.00,0.00,0.05
+95924-188470,PG,Terquavion,Terquavion Smith,Smith,,3500,PHI@DET,PHI,DET,,,,,,PG,0.00,0.00,0.00
+95924-188471,SG,Ricky,Ricky Council,Council,,3500,PHI@DET,PHI,DET,,,,,,SG,0.00,0.00,0.00
+95924-188468,SF,Keyontae,Keyontae Johnson,Johnson,0,3500,OKC@SAC,OKC,SAC,,,,,,SF,0.00,0.00,0.09
+95924-188469,SF,Maxwell,Maxwell Lewis,Lewis,0.06666666766,3500,LAL@PHO,LAL,PHO,,,,,,SF,0.00,0.00,0.04
+95924-180793,SF,Jermaine,Jermaine Samuels,Samuels,4.200000127,3500,NO@HOU,HOU,NO,,,,,,SF,0.30,0.09,0.42
+95924-188478,PG,Sir'Jabari,Sir'Jabari Rice,Rice,,3500,MIN@SA,SA,MIN,,,,,,PG,0.00,0.00,0.00
+95924-172098,SF,Julian,Julian Champagnie,Champagnie,4.559999847,3500,MIN@SA,SA,MIN,,,,,,SF,0.00,0.00,0.09
+95924-145491,PF,Nathan,Nathan Knight,Knight,6.214285714,3500,BKN@BOS,BOS,BKN,,,,,,PF,0.00,0.00,0.00
+95924-157803,SG,Josh,Josh Christopher,Christopher,10.16718769,3500,UTA@MEM,UTA,MEM,,,,,,SG,0.00,0.00,0.01
+95924-157801,SG,Jared,Jared Butler,Butler,1.75,3500,CHA@WAS,WAS,CHA,,,,,,SG,0.00,0.00,0.00
+95924-157807,C,Luka,Luka Garza,Garza,5.300000191,3500,MIN@SA,MIN,SA,,,,,,C,0.10,0.03,0.09
+95924-157804,SG,Keon,Keon Johnson,Johnson,9.057499695,3500,BKN@BOS,BKN,BOS,,,,,,SG,0.00,0.00,0.00
+95924-157810,PF,Isaiah,Isaiah Livers,Livers,13.79038415,3500,PHI@DET,DET,PHI,O,Ankle,,,,PF,0.00,0.00,0.00
+95924-157811,C,Neemias,Neemias Queta,Queta,6.340000153,3500,BKN@BOS,BOS,BKN,O,Foot,,,,C,0.00,0.00,0.00
+95924-157818,SG,James,James Bouknight,Bouknight,10.702941,3500,CHA@WAS,CHA,WAS,O,Knee,,,,SG,0.00,0.00,0.00
+95924-157823,PF,Greg,Greg Brown,Brown,4.768750191,3500,LAC@DAL,DAL,LAC,,,,,,PF,0.00,0.00,0.00
+95924-23169,C,Steven,Steven Adams,Adams,29.89285714,3500,UTA@MEM,MEM,UTA,O,Knee,,,,C,0.00,0.00,0.00
+95924-171658,SF,Johnny,Johnny Juzang,Juzang,9.10000017,3500,UTA@MEM,UTA,MEM,,,,,,SF,0.00,0.00,0.00
+95924-157835,SF,Kessler,Kessler Edwards,Edwards,3.9,3500,OKC@SAC,SAC,OKC,,,,,,SF,8.50,2.44,10.81
+95924-190094,SF,Leaky,Leaky Black,Black,4.5,3500,CHA@WAS,CHA,WAS,,,,,,SF,0.00,0.00,0.00
+95924-163983,SG,Xavier,Xavier Moon,Moon,4.275000095,3500,LAC@DAL,LAC,DAL,,,,,,SG,0.00,0.00,0.00
+95924-145548,PF,Anthony,Anthony Gill,Gill,8.180000305,3500,CHA@WAS,WAS,CHA,,,,,,PF,0.00,0.00,0.00
+95924-157841,C,Filip,Filip Petrusev,Petrusev,1.200000048,3500,OKC@SAC,SAC,OKC,,,,,,C,0.00,0.00,0.00
+95924-171670,SG,Dereon,Dereon Seabron,Seabron,8.800000191,3500,NO@HOU,NO,HOU,,,,,,SG,0.00,0.00,0.10
+95924-157846,PF/C,Sandro,Sandro Mamukelashvili,Mamukelashvili,5.96666654,3500,MIN@SA,SA,MIN,,,,,,PF/C,0.00,0.00,0.07
+95924-157847,SF,Trey,Trey Murphy,Murphy,25.2375,3500,NO@HOU,NO,HOU,O,Knee,,,,SF,0.00,0.00,0.00
+95924-171669,SG,Keon,Keon Ellis,Ellis,10.17500019,3500,OKC@SAC,SAC,OKC,,,,,,SG,17.60,5.03,19.82
+95924-14511,PF/SF,Markieff,Markieff Morris,Morris,8.220000349,3500,LAC@DAL,DAL,LAC,,,,,,SF/PF,0.00,0.00,0.05
+95924-84675,C,Mo,Mo Bamba,Bamba,3.049999952,3500,PHI@DET,PHI,DET,,,,,,C,0.00,0.00,0.00
+95924-14530,SF/PF,Bojan,Bojan Bogdanovic,Bogdanovic,29.8237284,3500,PHI@DET,DET,PHI,O,Calf,,,,SF/PF,0.00,0.00,0.00
+95924-84678,SF,Miles,Miles Bridges,Bridges,,3500,CHA@WAS,CHA,WAS,O,Suspension,,,,SF,0.00,0.00,0.00
+95924-14543,SF,Davis,Davis Bertans,Bertans,7.349999905,3500,OKC@SAC,OKC,SAC,,,,,,SF,0.00,0.00,0.03
+95924-171750,SG,Blake,Blake Wesley,Wesley,5.299999873,3500,MIN@SA,SA,MIN,,,,,,SG,0.00,0.00,0.02
+95924-195815,C,Charles,Charles Bediako,Bediako,,3500,MIN@SA,SA,MIN,,,,,,C,0.00,0.00,0.00
+95924-84713,SG,Svi,Svi Mykhailiuk,Mykhailiuk,5.366666794,3500,BKN@BOS,BOS,BKN,,,,,,SG,0.00,0.00,0.00
+95924-84719,PG,Aaron,Aaron Holiday,Holiday,8.659999847,3500,NO@HOU,HOU,NO,,,,,,PG,13.60,3.87,18.21
+95924-171762,PG,JD,JD Davison,Davison,4.524999936,3500,BKN@BOS,BOS,BKN,,,,,,PG,0.00,0.00,0.10
+95924-84721,PF,Jarred,Jarred Vanderbilt,Vanderbilt,21.47978697,3500,LAL@PHO,LAL,PHO,O,Heel,,,,PF,0.00,0.00,0.00
+95924-171765,PF,Moussa,Moussa Diabate,Diabate,5.400000095,3500,LAC@DAL,LAC,DAL,,,,,,PF,3.30,0.94,4.07
+95924-171773,SF,Patrick,Patrick Baldwin,Baldwin,0.75,3500,CHA@WAS,WAS,CHA,,,,,,SF,0.00,0.00,0.09
+95924-171778,SG,Wendell,Wendell Moore,Moore,3.890322531,3500,MIN@SA,MIN,SA,,,,,,SG,0.00,0.00,0.05
+95924-171776,SF,Josh,Josh Minott,Minott,2.5,3500,MIN@SA,MIN,SA,,,,,,SF,0.00,0.00,0.09
+95924-171783,PF,E.J.,E.J. Liddell,Liddell,2.799999873,3500,NO@HOU,NO,HOU,,,,,,PF,0.00,0.00,0.00
+95924-180484,SG,Stanley,Stanley Umude,Umude,3.714285714,3500,PHI@DET,DET,PHI,,,,,,SG,10.50,2.99,12.09
+95924-180485,PF,John,John Butler,Butler,6.784210205,3500,CHA@WAS,WAS,CHA,,,,,,PF,0.00,0.00,0.00
+95924-110344,PG,Ja,Ja Morant,Morant,45.5268664,3500,UTA@MEM,MEM,UTA,O,Suspension,,,,PG,0.00,0.00,0.00
+95924-161551,PG,Javonte,Javonte Smart,Smart,,3500,PHI@DET,PHI,DET,,,,,,PG,0.00,0.00,0.00
+95924-110353,PF/C,Brandon,Brandon Clarke,Clarke,21.35714286,3500,UTA@MEM,MEM,UTA,O,Achilles,,,,PF/C,0.00,0.00,0.00
+95924-161552,PF,Micah,Micah Potter,Potter,7.17142868,3500,UTA@MEM,UTA,MEM,,,,,,PF,0.00,0.00,0.05
+95924-160022,SG,A.J.,A.J. Lawson,Lawson,5.81333313,3500,LAC@DAL,DAL,LAC,,,,,,SG,0.00,0.00,0.00
+95924-55065,PG,Vasilije,Vasilije Micic,Micic,5.900000254,3500,OKC@SAC,OKC,SAC,,,,,,PG,0.00,0.00,0.10
+95924-145738,SG,Nate,Nate Hinton,Hinton,3,3500,NO@HOU,HOU,NO,,,,,,SG,0.00,0.00,0.00
+95924-192339,SG,Dexter,Dexter Dennis,Dennis,,3500,LAC@DAL,DAL,LAC,,,,,,SG,0.00,0.00,0.00
+95924-63826,C,Boban,Boban Marjanovic,Marjanovic,9.03333346,3500,NO@HOU,HOU,NO,,,,,,C,0.70,0.19,0.64
+95924-171925,SF,Dominick,Dominick Barlow,Barlow,2.399999936,3500,MIN@SA,SA,MIN,,,,,,SF,0.00,0.00,0.00
+95924-23447,C,Richaun,Richaun Holmes,Holmes,6.099999905,3500,LAC@DAL,DAL,LAC,,,,,,C,0.00,0.00,0.07
+95924-145819,SF,Naji,Naji Marshall,Marshall,18.28846154,3500,NO@HOU,NO,HOU,GTD,Knee,,,,SF,0.00,0.00,0.00
+95924-145310,PG,Saben,Saben Lee,Lee,5.700000127,3500,LAL@PHO,PHO,LAL,,,,,,PG,0.00,0.00,0.03
+95924-145824,PG,Jordan,Jordan Ford,Ford,3.23333327,3500,OKC@SAC,SAC,OKC,,,,,,PG,0.00,0.00,0.00
+95924-80813,PG,Frank,Frank Ntilikina,Ntilikina,7.157446679,3500,CHA@WAS,CHA,WAS,O,Lower leg,,,,PG,0.00,0.00,0.00
+95924-80819,PF/C,Harry,Harry Giles,Giles,,3500,BKN@BOS,BKN,BOS,,,,,,PF/C,0.00,0.00,0.00
+95924-145347,C,James,James Wiseman,Wiseman,5.25,3500,PHI@DET,DET,PHI,,,,,,C,0.00,0.00,0.09
+95924-193991,SF/PF,Alex,Alex Fudge,Fudge,0,3500,LAL@PHO,LAL,PHO,,,,,,SF/PF,0.00,0.00,0.10
+95924-18376,SG,Damion,Damion Lee,Lee,13.39268233,3500,LAL@PHO,PHO,LAL,O,Knee,,,,SG,0.00,0.00,0.00
+95924-40396,PG,Monte,Monte Morris,Morris,23.9516129,3500,PHI@DET,DET,PHI,O,Quadriceps,,,,PG,0.00,0.00,0.00
+95924-145357,PF,Lamar,Lamar Stevens,Stevens,6,3500,BKN@BOS,BOS,BKN,,,,,,PF,0.00,0.00,0.10
+95924-165854,SG,Lindy,Lindy Waters,Waters,0,3500,OKC@SAC,OKC,SAC,,,,,,SG,0.00,0.00,0.08
+95924-188406,SF,Cam,Cam Whitmore,Whitmore,4.366666794,3500,NO@HOU,HOU,NO,,,,,,SF,0.00,0.00,0.08
+95924-188413,SF,Brice,Brice Sensabaugh,Sensabaugh,2.400000095,3500,UTA@MEM,UTA,MEM,,,,,,SF,0.00,0.00,0.02
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00
+,,,,,,,,,,,,,,,,0.00,0.00,0.00

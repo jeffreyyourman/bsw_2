@@ -14,7 +14,8 @@ import {
   TableSortLabel,
   Tabs,
   Tab,
-  Box
+  Box,
+  TextField,
 } from '@mui/material';
 import { CSVLink } from "react-csv";
 
@@ -27,15 +28,19 @@ export default function NFLFanduelDfsLineups(props) {
     bottom: false,
     right: false,
   });
+  const [searchTerm, setSearchTerm] = useState("");
+
   const [startLine, setStartLine] = useState(null);
   const [endLine, setEndLine] = useState(null);
-
   const [order, setOrder] = useState('desc');
   const [orderBy, setOrderBy] = useState('totalfppg');
   const initialSavedLineups = props.lineups.lineups;
   const [savedLineups, setSaveLineups] = useState([]);
   const [deletedLineups, setDeletedLineups] = useState([]);
   const [selectedTab, setSelectedTab] = useState(0);
+
+  const [sortTopPlayers, setSortTopPlayers] = useState(props.topPlayers);
+  
   useEffect(() => {
     setSaveLineups(initialSavedLineups)
   }, [initialSavedLineups])
@@ -161,6 +166,27 @@ export default function NFLFanduelDfsLineups(props) {
   };
 
 
+  const handleFilterPlayers = (text) => {
+    console.log('text',text.target.value);
+    setSearchTerm(text.target.value.toLowerCase())
+    let searchTextLowerCase = text.target.value.toLowerCase();
+    const filterName = props.topPlayers.filter((player) => {
+      let newPlayerName = player.playerName.toLowerCase();
+      if (newPlayerName.includes(searchTextLowerCase)) {
+        return player;
+      }
+    });
+    if (filterName.length !== 0) {
+      setSortTopPlayers(filterName);
+    } else {
+      setSortTopPlayers(props.topPlayers);
+    }
+  };
+  
+
+
+  
+
   return (
     <div>
 
@@ -248,7 +274,15 @@ export default function NFLFanduelDfsLineups(props) {
                   height: '350px',
                   overflowY: 'auto'
                 }}>
-                  {props.topPlayers
+                    <TextField
+                    style={{ marginBottom: 16 }}
+                    label="Search Players"
+                    variant="outlined"
+                    value={searchTerm}
+                    onChange={handleFilterPlayers}
+                    fullWidth
+                  />
+                  {sortTopPlayers
                     .sort((a, b) => b.totalAmt - a.totalAmt)
                     .map((topPlayer) => (
                       <div
