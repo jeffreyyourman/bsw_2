@@ -18,28 +18,47 @@ import {
   Box
 } from '@mui/material';
 const StandingsPage = () => {
-  const [tabValue, setTabValue] = useState(0); // Default to "Division View"
-  const [espnDivisionStandings, setEspnDivisionStandings] = useState(null)
-  const [espnStandingsLoading, setEspnStandingsLoading] = useState(false)
-  const [espnConfStandings, setEspnConfStandings] = useState(null)
-  //  const getStandings = (abbr) => `/mockJson/nba/nba-standings.json`;
-  const getStandingsJson = (abbr) => `/mockJson/nfl/2023-espn-standings.json`;
+  const [espnDivisionStandings, setEspnDivisionStandings] = useState(null);
+  const [espnStandingsLoading, setEspnStandingsLoading] = useState(false);
+  const [orderDirection, setOrderDirection] = useState('asc');
+  const [orderBy, setOrderBy] = useState('team');
 
   useEffect(() => {
     fetchEspnStandings();
-  }, [])
+  }, []);
 
-  const handleTabChange = (event, newValue) => {
-    setTabValue(newValue);
+  // Sorting function
+  const handleRequestSort = (property) => {
+    const isAsc = orderBy === property && orderDirection === 'asc';
+    setOrderDirection(isAsc ? 'desc' : 'asc');
+    setOrderBy(property);
   };
-
+  // Function to sort data
+  const sortData = (array) => {
+    return array.sort((a, b) => {
+      console.log('array', array);
+      if (orderBy === 'team') {
+        return orderDirection === 'asc'
+          ? a.team.displayName.localeCompare(b.team.displayName)
+          : b.team.displayName.localeCompare(a.team.displayName);
+      } else {
+        // Since the stats are strings, convert them to numbers for comparison
+        const aStat = a.stats.find(stat => stat.name === orderBy);
+        const bStat = b.stats.find(stat => stat.name === orderBy);
+        const valA = aStat ? parseInt(aStat.value) : 0;
+        const valB = bStat ? parseInt(bStat.value) : 0;
+        return orderDirection === 'asc' ? valA - valB : valB - valA;
+      }
+    });
+  };
 
   const fetchEspnStandings = async () => {
     setEspnStandingsLoading(true)
-    const getStandings = getStandingsJson()
+    // const getStandings = getStandingsJson()
 
     try {
-      const response = await axios.get(getStandings);
+      const response = await axios.get('https://site.web.api.espn.com/apis/v2/sports/basketball/nba/standings?region=us&lang=en&contentorigin=espn&type=0&level=1&sort=winpercent%3Adesc%2Cwins%3Adesc%2Cgamesbehind%3Aasc');
+      // const response = await axios.get(getStandings);
       console.log('response', response);
 
       if (Object.keys(response.data).length === 0) {
@@ -47,14 +66,7 @@ const StandingsPage = () => {
         setEspnDivisionStandings([]);
       } else {
         setEspnDivisionStandings(response.data);
-        let conferenceView = response.data.children.map(conference => {
-          return {
-            name: conference.name,
-            teams: conference.children.flatMap(division => division.standings.entries)
-          };
-        });
 
-        setEspnConfStandings(conferenceView);
       }
       setEspnStandingsLoading(false)
     } catch (error) {
@@ -79,139 +91,121 @@ const StandingsPage = () => {
   console.log('espnDivisionStandings', espnDivisionStandings)
   return (
     <NbaDfsLayout>
-      <div>
+      <div
+        className="playerGroupLeftSideWrapper"
+        style={{
+          margin: 16,
+          padding: 16,
+          backgroundColor: 'white',
+          borderRadius: '8px', // optional: adds rounded corners
+          boxShadow: '0 2px 8px rgba(26, 24, 27, 0.1)', // subtle shadow
+        }}
+      >
 
-        <Tabs value={tabValue} onChange={handleTabChange}>
-          <Tab label="Division View" />
-          <Tab label="Conference View" />
-        </Tabs>
+        <table className="styledTable">
+          <thead>
+            <tr>
+              <th>
+                <TableSortLabel
+                  active={orderBy === 'team'}
+                  direction={orderBy === 'team' ? orderDirection : 'asc'}
+                  onClick={() => handleRequestSort('team')}
+                >
+                  Team
+                </TableSortLabel>
+              </th>
+              <th>
+                <TableSortLabel
+                  active={orderBy === 'wins'}
+                  direction={orderBy === 'wins' ? orderDirection : 'asc'}
+                  onClick={() => handleRequestSort('wins')}
+                >
+                  W
+                </TableSortLabel>
+              </th>
+              <th>
+                <TableSortLabel
+                  active={orderBy === 'losses'}
+                  direction={orderBy === 'losses' ? orderDirection : 'asc'}
+                  onClick={() => handleRequestSort('losses')}
+                >
+                  L
+                </TableSortLabel>
+              </th>
+              <th>
+                <TableSortLabel
+                  active={orderBy === 'pct'}
+                  direction={orderBy === 'pct' ? orderDirection : 'asc'}
+                  onClick={() => handleRequestSort('pct')}
+                >
+                  PCT
+                </TableSortLabel>
+              </th>
+              <th>
+                <TableSortLabel
+                  active={orderBy === 'gb'}
+                  direction={orderBy === 'gb' ? orderDirection : 'asc'}
+                  onClick={() => handleRequestSort('gb')}
+                >
+                  GB
+                </TableSortLabel>
+              </th>
+              <th>Home</th>
+              <th>Away</th>
+              <th>Div</th>
+              <th>Conf</th>
+              <th>
+                <TableSortLabel
+                  active={orderBy === 'avgPointsFor'}
+                  direction={orderBy === 'avgPointsFor' ? orderDirection : 'asc'}
+                  onClick={() => handleRequestSort('avgPointsFor')}
+                >
+                  PPG
+                </TableSortLabel>
+              </th>
+              <th>OPP PPG</th>
+              <th>DIFF</th>
+              <th>Streak</th>
+              <th>
+                <TableSortLabel
+                  active={orderBy === 'l10'}
+                  direction={orderBy === 'l10' ? orderDirection : 'asc'}
+                  onClick={() => handleRequestSort('l10')}
+                >
+                  L10
+                </TableSortLabel>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortData(espnDivisionStandings.standings.entries).map((team, index) => {
+              // {espnDivisionStandings.standings.entries.map((team, index) => {
+              console.log('team logos', team.team.logos)
+              return <React.Fragment key={team.key}>
+                <tr className={index % 2 === 0 ? "evenRow" : "oddRow"}>
+                  <td style={{ display: 'flex', alignItems: 'center' }}>
+                    <img style={{ width: '50px', marginRight: '8px' }} src={team.team.logos[0].href} />
+                    {team.team.displayName}
+                  </td>
+                  <td>{team.stats[11].displayValue}</td>
+                  <td>{team.stats[6].displayValue}</td>
+                  <td>{team.stats[10].displayValue}</td>
+                  <td>{team.stats[4].displayValue}</td>
+                  <td>{team.stats[13].displayValue}</td>
+                  <td>{team.stats[14].displayValue}</td>
+                  <td>{team.stats[15].displayValue}</td>
+                  <td>{team.stats[16].displayValue}</td>
+                  <td>{team.stats[1].displayValue}</td>
+                  <td>{team.stats[0].displayValue}</td>
+                  <td>{team.stats[2].displayValue}</td>
+                  <td>{team.stats[9].displayValue}</td>
+                  <td>{team.stats[17].displayValue}</td>
+                </tr>
+              </React.Fragment>
+            })}
+          </tbody>
+        </table>
 
-        {tabValue === 0 && (
-          // Division View
-          <div>
-            <h1>{espnDivisionStandings.name} Standings Season</h1>
-            {espnDivisionStandings.children.map(conference => (
-              <div key={conference.id}>
-                <h1 style={{
-                  fontWeight: 'bold',
-                  marginTop: '24px',
-                  // marginBottom: '16px',
-                }}>{conference.name}</h1>
-                {conference.children.map(division => (
-                  <div key={division.id}>
-                    <h3 style={{
-                      fontWeight: 'bold',
-                      marginTop: '8px',
-                      marginBottom: '16px',
-                    }}>{division.name} Standings:</h3>
-                    <div style={{ overflowX: 'auto', width: '100%' }}>
-                      <TableContainer component={Paper} style={{ height: '520px', overflowY: 'auto' }}>
-                        <Table stickyHeader>
-                          <TableHead>
-                            <TableRow>
-                              <TableCell style={{ position: 'sticky', left: 0, zIndex: 20, background: '#fff' }}>
-                                Team Logo
-                              </TableCell>
-                              <TableCell>Team Name</TableCell>
-                              <TableCell>W</TableCell>
-                              <TableCell>L</TableCell>
-                              <TableCell>T</TableCell>
-                              <TableCell>PCT</TableCell>
-                              <TableCell>GB</TableCell>
-                              <TableCell>Point Diff</TableCell>
-                              <TableCell>Playoff Seed</TableCell>
-                              <TableCell>Division Record</TableCell>
-                            </TableRow>
-                          </TableHead>
-                          <TableBody>
-                            {division.standings.entries.map(team => (
-                              <TableRow key={team.team.id}>
-                                <TableCell style={{ position: 'sticky', left: 0, zIndex: 2, background: '#fff' }}>
-                                  <img src={team.team.logos[0].href} alt={team.team.shortDisplayName} width="50" height="50" />
-                                </TableCell>
-                                <TableCell>{team.team.displayName}</TableCell>
-                                <TableCell>{team.stats.find(stat => stat.name === 'wins').displayValue}</TableCell>
-                                <TableCell>{team.stats.find(stat => stat.name === 'losses').displayValue}</TableCell>
-                                <TableCell>{team.stats.find(stat => stat.name === 'ties').displayValue}</TableCell>
-                                <TableCell>{team.stats.find(stat => stat.name === 'winPercent').displayValue}</TableCell>
-                                <TableCell>{team.stats.find(stat => stat.name === 'gamesBehind').displayValue}</TableCell>
-                                <TableCell>{team.stats.find(stat => stat.name === 'pointDifferential').displayValue}</TableCell>
-                                <TableCell>{team.stats.find(stat => stat.name === 'playoffSeed').displayValue}</TableCell>
-                                <TableCell>{team.stats.find(stat => stat.name === 'divisionRecord').displayValue}</TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </TableContainer>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        )}
-
-        {tabValue === 1 && (
-          // Conference View
-          <div style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-evenly'
-
-          }}>
-            {espnConfStandings.map(conference => (
-              <div key={conference.name} style={{ marginRight: '4px' }}>
-                <h2
-                  style={{
-                    fontWeight: 'bold',
-                    marginTop: '24px',
-                    marginBottom: '16px',
-                  }}
-                >{conference.name}</h2>
-                <div style={{ overflowX: 'auto', width: '100%' }}>
-                  <TableContainer component={Paper} style={{ height: '520px', overflowY: 'auto' }}>
-                    <Table stickyHeader>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell style={{ position: 'sticky', left: 0, zIndex: 20, background: '#fff' }}>
-                            Team Logo
-                          </TableCell>
-                          <TableCell>Team Name</TableCell>
-                          <TableCell>W</TableCell>
-                          <TableCell>L</TableCell>
-                          <TableCell>T</TableCell>
-                          <TableCell>PCT</TableCell>
-                          {/* <TableCell>GB</TableCell> */}
-                          {/* <TableCell>Point Diff</TableCell> */}
-                          <TableCell>Playoff Seed</TableCell>
-                          <TableCell>Division Record</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {conference.teams.map(team => (
-                          <TableRow key={team.team.id}>
-                            <TableCell style={{ position: 'sticky', left: 0, zIndex: 2, background: '#fff' }}>
-                              <img src={team.team.logos[0].href} alt={team.team.shortDisplayName} width="50" height="50" />
-                            </TableCell>
-                            <TableCell>{team.team.displayName}</TableCell>
-                            <TableCell>{team.stats.find(stat => stat.name === 'wins').displayValue}</TableCell>
-                            <TableCell>{team.stats.find(stat => stat.name === 'losses').displayValue}</TableCell>
-                            <TableCell>{team.stats.find(stat => stat.name === 'ties').displayValue}</TableCell>
-                            <TableCell>{team.stats.find(stat => stat.name === 'winPercent').displayValue}</TableCell>
-                            {/* <TableCell>{team.stats.find(stat => stat.name === 'gamesBehind').displayValue}</TableCell> */}
-                            {/* <TableCell>{team.stats.find(stat => stat.name === 'pointDifferential').displayValue}</TableCell> */}
-                            <TableCell>{team.stats.find(stat => stat.name === 'playoffSeed').displayValue}</TableCell>
-                            <TableCell>{team.stats.find(stat => stat.name === 'divisionRecord').displayValue}</TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
 
 
       </div>
