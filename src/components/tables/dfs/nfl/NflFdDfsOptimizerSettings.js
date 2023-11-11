@@ -86,6 +86,50 @@ export default function NflFdDfsOptimizerSettings(props) {
             onChange={(e) => props.setNumLineups(e.target.value)}
             label="Optimize Lineups"
             fullWidth
+          >
+            {/* Free tier */}
+            <MenuItem value={1}>1 (Free tier)</MenuItem>
+            <MenuItem value={2}>2 (Free tier)</MenuItem>
+            <MenuItem value={3}>3 (Free tier)</MenuItem>
+            <MenuItem value={4}>4 (Free tier)</MenuItem>
+            <MenuItem value={5}>5 (Free tier)</MenuItem>
+
+            {/* Tier 1 */}
+            <MenuItem value={10}>10 (Tier 1)</MenuItem>
+            <MenuItem value={25}>25 (Tier 1)</MenuItem>
+            <MenuItem value={50}>50 (Tier 1)</MenuItem>
+
+            {/* Tier 2 */}
+            <MenuItem value={75}>75 (Tier 2)</MenuItem>
+            <MenuItem value={100}>100 (Tier 2)</MenuItem>
+            <MenuItem value={125}>125 (Tier 2)</MenuItem>
+            <MenuItem value={150}>150 (Tier 2)</MenuItem>
+
+            {/* Tier 3 */}
+            <MenuItem value={175}>175 (Tier 3)</MenuItem>
+            <MenuItem value={200}>200 (Tier 3)</MenuItem>
+            <MenuItem value={250}>250 (Tier 3)</MenuItem>
+            <MenuItem value={300}>300 (Tier 3)</MenuItem>
+            <MenuItem value={400}>400 (Tier 3)</MenuItem>
+            <MenuItem value={500}>500 (Tier 3)</MenuItem>
+            {/* <MenuItem value={750}>750 (Tier 3)</MenuItem> */}
+            {/* <MenuItem value={1000}>1000 (Tier 3)</MenuItem> */}
+          </Select>
+          <FormHelperText className={props.classes.helperText}>
+            {props.numLineups > 150 && `You are using Tier 3, which allows for more than 150 lineups.`}
+            {props.numLineups > 50 && props.numLineups <= 150 && `You are using Tier 2, which allows up to 150 lineups.`}
+            {props.numLineups > 5 && props.numLineups <= 50 && `You are using Tier 1, which allows up to 50 lineups.`}
+            {props.numLineups <= 5 && `You are using the Free tier, which allows up to 5 lineups.`}
+          </FormHelperText>
+        </FormControl>
+        {/* <FormControl margin="normal" fullWidth variant="outlined">
+          <InputLabel id="numLineups-label">Optimize Lineups</InputLabel>
+          <Select
+            labelId="numLineups-label"
+            value={props.numLineups}
+            onChange={(e) => props.setNumLineups(e.target.value)}
+            label="Optimize Lineups"
+            fullWidth
           // helperText={Variable && `Values are from 0 to 100`}
           >
             <MenuItem value={1}>1</MenuItem>
@@ -95,8 +139,6 @@ export default function NflFdDfsOptimizerSettings(props) {
             <MenuItem value={50}>50</MenuItem>
             <MenuItem value={100}>100</MenuItem>
             <MenuItem value={150}>150</MenuItem>
-            {/* <MenuItem value={300}>300</MenuItem> */}
-            {/* <MenuItem value={500}>500</MenuItem> */}
             <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={300}>300 - Upgrade to use</MenuItem>
             <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={303}>303 - Upgrade to use</MenuItem>
             <MenuItem disabled={process.env.NODE_ENV !== 'development'} value={500}>500 - Upgrade to use</MenuItem>
@@ -105,7 +147,7 @@ export default function NflFdDfsOptimizerSettings(props) {
           <FormHelperText className={props.classes.helperText}>
             {!false && `Not Paid account - sign up for the ability to optimize more lines like a shark`}
           </FormHelperText>
-        </FormControl>
+        </FormControl> */}
 
         <FormControl margin="normal" fullWidth variant="outlined">
           <InputLabel id="gameSelector-label">Select Game Slate</InputLabel>
