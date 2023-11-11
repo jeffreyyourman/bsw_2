@@ -228,17 +228,7 @@ function TeamGameStacksNba(props) {
                     }}>
 
                         <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Game Stacks</h4>
-                        <div >
-                            {/* <div style={{ width: '100%', marginTop: 16 }}> */}
-                            <Button
-                                style={{ backgroundColor: '#00203d' }}
-                                variant="contained"
-                                color="primary"
-                                onClick={() => {
-                                    saveToBackend(props.groups)
-                                }}>Save for later</Button>
-
-                        </div>
+             
                     </div>
 
                     <TextField

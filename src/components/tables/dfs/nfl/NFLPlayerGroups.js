@@ -243,17 +243,7 @@ function NFLPlayerGroups(props) {
                         marginBottom: '12px',
                     }}>
                         <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Group Settings</h4>
-                        <div>
-                            {/* <div style={{ width: '100%', marginTop: 16 }}> */}
-                            <Button
-                                style={{ backgroundColor: '#00203d' }}
-                                variant="contained"
-                                color="primary"
-                                onClick={() => {
-                                    saveToBackend(props.groups)
-                                }}>Save for later</Button>
-
-                        </div>
+                     
                     </div>
                     <TextField
                         style={{ margin: 4 }}
@@ -310,17 +300,6 @@ function NFLPlayerGroups(props) {
                             ]);
                         }}
                     />
-
-                    <div style={{ width: '100%', marginTop: 16 }}>
-                        <Button
-                            style={{ backgroundColor: '#00203d' }}
-                            variant="contained"
-                            color="primary"
-                            onClick={() => {
-                                saveToBackend(props.groups)
-                            }}>Save for later</Button>
-
-                    </div>
 
                     <div style={{ display: 'flex', height: '300px', flexDirection: 'row', justifyContent: 'space-between' }}>
                         <div style={{ width: '48%' }}>
