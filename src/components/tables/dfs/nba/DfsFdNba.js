@@ -17,6 +17,7 @@ import TeamGameStacksNba from './TeamGameStacksNba.js';
 import UploadProjectionsNba from './UploadProjectionsNba.js';
 import TableComponent from '../SharedTableComponent';
 import DfsNbaFdOptimizerSettings from './DfsNbaFdOptimizerSettings.js';
+import BottomDrawerLineups from '../../../drawers/BottomDrawerLineups';
 
 import GameMatchupsCarousel from '../../../carousels/GameMatchupCarousel'
 import PlayerPosFilterNba from "./PlayerPosFilterNba";
@@ -26,7 +27,13 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 // import { useAuth } from '../../../../context/AuthContext';
 import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import {formatBaseUrl} from "../../../../utils/format_base_url";
+import { formatBaseUrl } from "../../../../utils/format_base_url";
+let exPlayerList = [{
+  provider: 'bsw',
+  date: '11/3/23',
+  playerlist: [],
+
+}]
 
 const useStyles = makeStyles((theme) => ({
   helperText: {
@@ -117,7 +124,9 @@ export default function DfsFanduelNba(props) {
   const [excludedTeams, setExcludedTeams] = useState([]);
   const [ogExcludePlayerLines, setOgExcludePlayerLines] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [showLineups, setShowLineups] = useState(false);
   const [open, setOpen] = React.useState(false);
+  const [lineupsOpen, setLineupsOpen] = React.useState(false);
   const [groups, setGroups] = useState([]);
   const [teamGameGroups, setTeamGameGroups] = useState([]);
   const [teamGroups, setTeamGroups] = useState([]);
@@ -217,7 +226,7 @@ export default function DfsFanduelNba(props) {
       console.error("Error fetching the JSON data:", error);
     }
   };
-  
+
   const fetchGameMatchups = async () => {
     setEspnScoreBoardMatchupsLoading(true)
     try {
@@ -633,6 +642,8 @@ export default function DfsFanduelNba(props) {
 
 
   let handleSubmitPlayers = () => {
+
+    setShowLineups(false)
     setLoading(true)
     setGetLineupsErr('');
 
@@ -775,7 +786,8 @@ export default function DfsFanduelNba(props) {
         setLineups({ lineups: sortedLineupsDes });
 
         setLoading(false)
-        setTableTabValue(4);
+        // setTableTabValue(4);
+        setShowLineups(true)
       })
       .catch((error) => {
         setLoading(false)
@@ -822,6 +834,9 @@ export default function DfsFanduelNba(props) {
 
   const toggleOptimizerBuildStackPropertiesDrawer = () => {
     setOpen(!open);
+  }
+  const toggleLineupDrawer = () => {
+    setLineupsOpen(!lineupsOpen);
   }
 
   const toggleAndSortData = (lineupData, metric) => {
@@ -904,10 +919,10 @@ export default function DfsFanduelNba(props) {
           style={{ backgroundColor: '#efefef' }}
           className={classes.dialogContent}>
           <Tabs value={tabValue} onChange={handleTabChange}>
-            <Tab label="Player Groups" />
-            <Tab label="Team Stacks" />
-            <Tab label="Game Stacks" />
-            <Tab label="Upload Own Projections" />
+            <Tab label="Player Groups (tier 2)" />
+            <Tab label="Team Stacks (tier 2)" />
+            <Tab label="Game Stacks (tier 2)" />
+            <Tab label="Upload Own Projections (tier 3)" />
           </Tabs>
 
           {tabValue === 0 && (
@@ -960,6 +975,10 @@ export default function DfsFanduelNba(props) {
           />}
         </DialogContent>
       </Dialog>
+
+
+
+
       <DfsNbaFdOptimizerSettings
         open={open}
         anchor={'right'}
@@ -992,8 +1011,6 @@ export default function DfsFanduelNba(props) {
         setGlobalMinFromTeam={setGlobalMinFromTeam}
         globalMaxExposure={globalMaxExposure}
         setGlobalMaxExposure={setGlobalMaxExposure}
-
-
       />
 
 
@@ -1082,6 +1099,29 @@ export default function DfsFanduelNba(props) {
                   </Button>
 
                 </div>
+
+                <div className="dfs-optimizer-filter-wrapper">
+
+                  {showLineups &&
+                    <BottomDrawerLineups
+                      children={
+                        <DfsNbaFdLineups
+                          toggleAndSortData={toggleAndSortData}
+                          sortDataByAsc={sortDataByAsc}
+                          sortDataByDec={sortDataByDec}
+                          exportPlayerLines={exportPlayerLines}
+                          topPlayers={topPlayers}
+                          topTeams={topTeams}
+                          setTopPlayers={setTopPlayers}
+                          setTopTeams={setTopTeams}
+                          generateTopPlayersAndTeams={generateTopPlayersAndTeams}
+                          setLineups={setLineups}
+                          lineups={lineups}
+                          baseUrl={baseUrl}
+                        />
+                      }
+                    />}
+                </div>
               </>
               }
 
@@ -1098,11 +1138,14 @@ export default function DfsFanduelNba(props) {
               flexWrap: 'wrap',
               alignItems: 'flex-end'
             }}>
-
+              {/* 
               {tableTabValue === 4 ?
                 <p style={{ fontSize: 24 }}>{'Optimized lineups'}</p> :
                 <p style={{ fontSize: 24 }}>{selectedSlate} Slate</p>
-              }
+              } */}
+
+              <p style={{ fontSize: 24 }}>{selectedSlate} Slate</p>
+
 
 
 
@@ -1167,7 +1210,7 @@ export default function DfsFanduelNba(props) {
                     </span>} />
 
 
-                  {lineups.length !== 0 && (
+                  {/* {lineups.length !== 0 && (
                     <Tab style={{
                       paddingBottom: '0px'
                     }}
@@ -1183,7 +1226,7 @@ export default function DfsFanduelNba(props) {
                       </span>} />
 
 
-                  )}
+                  )} */}
 
 
 
@@ -1367,7 +1410,7 @@ export default function DfsFanduelNba(props) {
               }
 
 
-              {tableTabValue === 4 && <DfsNbaFdLineups
+              {/* {tableTabValue === 4 && <DfsNbaFdLineups
 
                 toggleAndSortData={toggleAndSortData}
                 sortDataByAsc={sortDataByAsc}
@@ -1382,7 +1425,7 @@ export default function DfsFanduelNba(props) {
                 lineups={lineups}
                 baseUrl={baseUrl}
               />
-              }
+              } */}
 
             </div>
           </div>

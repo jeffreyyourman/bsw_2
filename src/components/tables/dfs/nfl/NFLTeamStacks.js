@@ -218,17 +218,7 @@ function NFLTeamStacks(props) {
                     }}>
 
                         <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Team Stacks</h4>
-                        <div >
-                            {/* <div style={{ width: '100%', marginTop: 16 }}> */}
-                            <Button
-                                style={{ backgroundColor: '#00203d' }}
-                                variant="contained"
-                                color="primary"
-                                onClick={() => {
-                                    saveToBackend(props.groups)
-                                }}>Save for later</Button>
-
-                        </div>
+                 
                     </div>                    <TextField
                         style={{ margin: '24px 0px' }}
                         label="Group Name"
@@ -367,16 +357,6 @@ function NFLTeamStacks(props) {
                         </TextField>
                     </div>
 
-                    <div style={{ width: '100%', marginTop: 16 }}>
-                        <Button
-                            style={{ backgroundColor: '#00203d' }}
-                            variant="contained"
-                            color="primary"
-                            onClick={() => {
-                                saveToBackend(props.groups)
-                            }}>Save for later</Button>
-
-                    </div>
 
                 </div>
             )}

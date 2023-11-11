@@ -1025,10 +1025,10 @@ export default function NFLFanduelDFS(props) {
           style={{ backgroundColor: '#efefef' }}
           className={classes.dialogContent}>
           <Tabs value={tabValue} onChange={handleTabChange}>
-            <Tab label="Player Groups" />
-            <Tab label="Team Stacks" />
-            <Tab label="Game Stacks" />
-            <Tab label="Upload Own Projections" />
+            <Tab label="Player Groups (tier 2)" />
+            <Tab label="Team Stacks (tier 2)" />
+            <Tab label="Game Stacks (tier 2)" />
+            <Tab label="Upload Own Projections (tier 3)" />
           </Tabs>
 
           {tabValue === 0 && (
