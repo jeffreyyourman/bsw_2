@@ -2,7 +2,7 @@ import * as React from "react";
 import NbaDfsLayout from "../../../../../components/layouts/NbaDfsLayout";
 import axios from 'axios'
 import './oddsStyles.css';
-import {formatBaseUrl} from "../../../../../utils/format_base_url";
+import { formatBaseUrl } from "../../../../../utils/format_base_url";
 
 const OddsPage = () => {
   const baseUrl = formatBaseUrl()
@@ -39,7 +39,7 @@ const OddsPage = () => {
     return <p>Loading...</p>
   }
 
-  console.log('gameMatchups', gameMatchups);
+  console.log('gameMatchups', gameMatchups[0]);
 
   return (
     <NbaDfsLayout>
@@ -67,14 +67,20 @@ const OddsPage = () => {
             {gameMatchups.map((game, index) => (
               <React.Fragment key={game.key}>
                 <tr className={index % 2 === 0 ? "evenRow" : "oddRow"}>
-                  <td>{game.odds.awayTeamOdds.team.abbreviation}</td>
+                  <td style={{display:'flex', alignItems:'center', justifyContent:'center' }}>
+                    <img style={{width:'50px', marginRight:'8px'}} src={game.competitors[0].logo} />
+                    {game.odds.awayTeamOdds.team.abbreviation}
+                  </td>
                   <td>{game.competitors[0].record}</td>
                   <td>{game.odds.awayTeamOdds.moneyLine}</td>
                   <td>{game.odds.awayTeamOdds.spreadOdds}</td>
                   <td rowSpan="2">{game.odds.overUnder}</td>
                 </tr>
                 <tr className={index % 2 === 0 ? "evenRow" : "oddRow"}>
-                  <td>{game.odds.homeTeamOdds.team.abbreviation}</td>
+                  <td style={{display:'flex', alignItems:'center', justifyContent:'center' }}>
+                    <img style={{width:'50px', marginRight:'8px'}} src={game.competitors[1].logo} />
+                    {game.odds.homeTeamOdds.team.abbreviation}
+                  </td>
                   <td>{game.competitors[1].record}</td>
                   <td>{game.odds.homeTeamOdds.moneyLine}</td>
                   <td>{game.odds.homeTeamOdds.spreadOdds}</td>

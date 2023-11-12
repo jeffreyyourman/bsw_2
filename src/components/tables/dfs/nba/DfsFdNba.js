@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useColumns, useExcludeColumns } from "./DfsNbaTableColumns";
 import axios from "axios";
 import {
@@ -28,6 +28,7 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { formatBaseUrl } from "../../../../utils/format_base_url";
+
 let exPlayerList = [{
   provider: 'bsw',
   date: '11/3/23',
@@ -75,7 +76,7 @@ const SPORT_POSITIONS = ['PG', 'SG', 'SF', 'PF', 'C'];
 
 export default function DfsFanduelNba(props) {
   const baseUrl = formatBaseUrl()
-
+  const cancelTokenRef = useRef(null);
   const classes = useStyles();
   const columns = useColumns();
   const clerk = useClerk();
@@ -149,6 +150,7 @@ export default function DfsFanduelNba(props) {
 
   const [headers, setHeaders] = useState([]);
   const [gameAndPlayerMatchups, setGameAndPlayerMatchups] = useState([]);
+  const [allPlayerTeams, setAllPlayerTeams] = useState([]);
   const [espnScoreBoardMatchups, setEspnScoreBoardMatchups] = useState([]);
   const [espnScoreBoardMatchupsLoading, setEspnScoreBoardMatchupsLoading] = useState(false);
   const [fdSlates, setFdSlates] = useState([]);
@@ -387,7 +389,8 @@ export default function DfsFanduelNba(props) {
       const updateGameMatchups = Object.values(games);
       setGameAndPlayerMatchups(updateGameMatchups)
 
-
+      const allTeams = Array.from(new Set(updateGameMatchups.flatMap(game => [game.homeTeam.teamAbb, game.awayTeam.teamAbb]))).sort();
+      setAllPlayerTeams(allTeams);
       const requiredHeaders = [
         "Id",
         "Position",
@@ -641,6 +644,7 @@ export default function DfsFanduelNba(props) {
   };
 
 
+
   let handleSubmitPlayers = () => {
 
     setShowLineups(false)
@@ -711,12 +715,17 @@ export default function DfsFanduelNba(props) {
       // Authorization: "Bearer yourTokenHere",
     };
 
+    cancelTokenRef.current = axios.CancelToken.source();
+
+
     axios
       .post(
         // `${baseUrl}/optimizer`,
         "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         { data: myargs },
         {
+          cancelToken: cancelTokenRef.current.token, // Pass the cancel token to your request
+          // ... your other config
           // headers,
           // timeout: 600000  // 10 minutes in milliseconds
         }
@@ -791,10 +800,19 @@ export default function DfsFanduelNba(props) {
       })
       .catch((error) => {
         setLoading(false)
-        setGetLineupsErr('Error getting lineups, please try again!');
+        console.log('error', error.message);
+        setGetLineupsErr(error?.message === 'Request Cancelled' ? "" : 'Error getting lineups, please try again!');
         console.error(error);
       });
   };
+
+  const handleCancelRequest = () => {
+    if (cancelTokenRef.current) {
+      cancelTokenRef.current.cancel('Request Cancelled');
+      setLoading(false);
+    }
+  };
+
 
   const generateTopPlayersAndTeams = (lineups) => {
     const playerCount = {};
@@ -1020,7 +1038,9 @@ export default function DfsFanduelNba(props) {
 
             <div style={{ marginBottom: '24px' }}>
               <GameMatchupsCarousel
-                games={espnScoreBoardMatchups}
+              allPlayerTeams={allPlayerTeams}
+                games={espnScoreBoardMatchups} //allPlayerTeams
+                gameAndPlayerMatchups={gameAndPlayerMatchups}
                 handleExcludeTeams={handleExcludeTeams}
                 excludedTeams={excludedTeams}
                 setExcludedTeams={setExcludedTeams}
@@ -1087,9 +1107,10 @@ export default function DfsFanduelNba(props) {
 
                 <div className="dfs-optimizer-filter-wrapper">
 
+
                   <Button
-                    disabled={loading}
-                    onClick={handleSubmitPlayers}
+                    // disabled={loading}
+                    onClick={loading ? handleCancelRequest : handleSubmitPlayers}
                     className="bsw-primary-btns"
                     variant="contained"
                     fullWidth
@@ -1097,7 +1118,7 @@ export default function DfsFanduelNba(props) {
                   >
                     {loading ? "Loading..." : 'Optimize'}
                   </Button>
-
+                  {loading && <p>Note: click again to cancel</p>}
                 </div>
 
                 <div className="dfs-optimizer-filter-wrapper">
