@@ -102,7 +102,7 @@ const Navbar = () => {
             <li className="navbar-item" style={{ padding: "0px" }}>
               {!isSignedIn ?
                 <button className="sign-up-btn" onClick={() => clerk.openSignUp({})}>
-                  Sign up
+                  Login / Register
                 </button> :
                 <button className="sign-up-btn" onClick={() => clerk.signOut({})}>
                   Sign out

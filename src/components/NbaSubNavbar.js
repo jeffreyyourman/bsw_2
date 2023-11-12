@@ -57,14 +57,14 @@ const NbaSubNavbar = () => {
               My Saved Lines
             </Link>
           </li> */}
-          <li className="navbar-item" style={{ padding: "0px" }}>
+          {/* <li className="navbar-item" style={{ padding: "0px" }}>
             <Link
               activeClassName="active-link"
               className="navbar-item"
               to="/dfs/sport/nba/projections">
               Projections
             </Link>
-          </li>
+          </li> */}
           <li className="navbar-item" style={{ padding: "0px" }}>
             <Link
               activeClassName="active-link"
@@ -81,14 +81,14 @@ const NbaSubNavbar = () => {
               Odds
             </Link>
           </li>
-          <li className="navbar-item" style={{ padding: "0px" }}>
+          {/* <li className="navbar-item" style={{ padding: "0px" }}>
             <Link
               activeClassName="active-link"
               className="navbar-item"
               to="/dfs/sport/nba/injuries">
               Injuries
             </Link>
-          </li>
+          </li> */}
           <li className="navbar-item" style={{ padding: "0px" }}>
             <Link
               activeClassName="active-link"

@@ -6,7 +6,10 @@ import { formatDate, formatTime } from '../../utils/date_format';
 
 
 
-function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExcludedTeams }) {
+function GameMatchupsCarousel({ games, allPlayerTeams, gameAndPlayerMatchups, handleExcludeTeams, excludedTeams, setExcludedTeams }) {
+
+  console.log('gameAndPlayerMatchups', gameAndPlayerMatchups);
+  console.log('games', games);
   const [scoresDataLoading, setScoresDataLoading] = useState(null);
   const displayGameDetails = (game) => {
     const { competitors, odds, date, fullStatus } = game;
@@ -93,6 +96,7 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
   }
 
 
+  // console.log('allPlayerTeams', allPlayerTeams)
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>

@@ -1,6 +1,6 @@
 
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { useColumns, useExcludeColumns } from "./NflDfsTableColumns";
 // import { NflPlayerList } from '../../../../mockJson/nfl/nflPlayerList'
@@ -29,7 +29,7 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 import { useAuth } from '../../../../context/AuthContext';
 import { SignedIn, SignedOut, UserButton, useClerk } from "@clerk/clerk-react";
 import useMediaQuery from '@mui/material/useMediaQuery';
-import {formatBaseUrl} from "../../../../utils/format_base_url";
+import { formatBaseUrl } from "../../../../utils/format_base_url";
 
 // import TableComponent from "./TableComponent.js";
 const useStyles = makeStyles((theme) => ({
@@ -73,6 +73,7 @@ const SPORT_POSITIONS = ['QB', 'RB', 'WR', 'TE', 'D'];
 
 export default function NFLFanduelDFS(props) {
   const baseUrl = formatBaseUrl()
+  const cancelTokenRef = useRef(null);
 
   const classes = useStyles();
   const columns = useColumns();
@@ -740,6 +741,8 @@ export default function NFLFanduelDFS(props) {
       // Authorization: "Bearer yourTokenHere",
     };
 
+    cancelTokenRef.current = axios.CancelToken.source();
+
     axios
       .post(
         // `${baseUrl}/optimizer`,
@@ -747,6 +750,8 @@ export default function NFLFanduelDFS(props) {
         "https://testingoptimizer.azurewebsites.net/api/httptrigger1",
         { data: myargs },
         {
+          cancelToken: cancelTokenRef.current.token, // Pass the cancel token to your request
+
           // headers,
           // timeout: 600000  // 10 minutes in milliseconds
         }
@@ -847,10 +852,18 @@ export default function NFLFanduelDFS(props) {
       })
       .catch((error) => {
         setLoading(false)
-        setGetLineupsErr('Error getting lineups, please try again!');
+        setGetLineupsErr(error?.message === 'Request Cancelled' ? "" : 'Error getting lineups, please try again!');
         console.error(error);
       });
   };
+
+  const handleCancelRequest = () => {
+    if (cancelTokenRef.current) {
+      cancelTokenRef.current.cancel('Request Cancelled');
+      setLoading(false);
+    }
+  };
+
 
   const generateTopPlayersAndTeams = (lineups) => {
     const playerCount = {};
@@ -1202,7 +1215,7 @@ export default function NFLFanduelDFS(props) {
                   </Button>
                 </div>
 
-                <div className="dfs-optimizer-filter-wrapper">
+                {/* <div className="dfs-optimizer-filter-wrapper">
 
                   <Button
                     disabled={loading}
@@ -1215,7 +1228,23 @@ export default function NFLFanduelDFS(props) {
                     {loading ? "Loading..." : 'Optimize'}
                   </Button>
 
+                </div> */}
+                <div className="dfs-optimizer-filter-wrapper">
+
+
+                  <Button
+                    // disabled={loading}
+                    onClick={loading ? handleCancelRequest : handleSubmitPlayers}
+                    className="bsw-primary-btns"
+                    variant="contained"
+                    fullWidth
+                    style={{ width: 165 }}
+                  >
+                    {loading ? "Loading..." : 'Optimize'}
+                  </Button>
+                  {loading && <p>Note: click again to cancel</p>}
                 </div>
+
               </>
               }
 
