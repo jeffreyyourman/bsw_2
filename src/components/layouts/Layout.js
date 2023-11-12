@@ -5,12 +5,15 @@ import Navbar from "../Navbar";
 import "../../style/bulma-style.sass";
 import "../../style/custom-style.sass";
 import useSiteMetadata from "../SiteMetadata";
-import { withPrefix } from "gatsby";
+import { withPrefix, Script } from "gatsby";
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata();
   return (
     <div>
+
+<Script async src="https://js.stripe.com/v3/pricing-table.js" 
+        />
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
@@ -48,6 +51,7 @@ const TemplateWrapper = ({ children }) => {
           property="og:image"
           content={`${withPrefix("/")}img/header-bg-sports.PNG`}
         />
+
       </Helmet>
       <Navbar />
       <div>{children}</div>

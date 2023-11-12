@@ -5,13 +5,16 @@ import { getImage } from "gatsby-plugin-image";
 import Layout from "../components/layouts/Layout";
 import Pricing from "../components/Pricing";
 import FullWidthImage from "../components/FullWidthImage";
+import AuthenticatedRoute from "../components/authedRoute";
 
+import { useClerk } from '@clerk/clerk-react'
 // eslint-disable-next-line
 export const PricingPageTemplate = ({
   image,
   title,
   fullImage,
   pricing,
+  user
 }) => {
   const heroImage = getImage(image) || image;
 
@@ -25,9 +28,17 @@ export const PricingPageTemplate = ({
             {pricing.heading}
           </h2>
           <p
-
             className="is-size-5">{pricing.description}</p>
-          <Pricing data={pricing.plans} />
+          {/* <Pricing data={pricing.plans} /> */}
+        </div>
+
+        <div>
+          <stripe-pricing-table
+            pricing-table-id="prctbl_1OB0zeJ6I6yFEnMEAVG3L6Bb"
+            publishable-key="pk_test_51O9tuqJ6I6yFEnMEx9WQL8YbCvQUtIGL9g3ONiND19VNdRZZzEbQ24rAcBeiPgwacGzbT4i77hsqSflo3ISAbLsm009qTBwfrG"
+            client-reference-id={user}
+
+          />
         </div>
       </section>
 
@@ -61,20 +72,24 @@ PricingPageTemplate.propTypes = {
 
 const PricingPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
+  const { user } = useClerk();
 
   return (
     <Layout>
-      <PricingPageTemplate
-        image={frontmatter.image}
-        title={frontmatter.title}
-        heading={frontmatter.heading}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
-        main={frontmatter.main}
-        testimonials={frontmatter.testimonials}
-        fullImage={frontmatter.full_image}
-        pricing={frontmatter.pricing}
-      />
+      <AuthenticatedRoute>
+        <PricingPageTemplate
+          image={frontmatter.image}
+          title={frontmatter.title}
+          heading={frontmatter.heading}
+          description={frontmatter.description}
+          intro={frontmatter.intro}
+          main={frontmatter.main}
+          testimonials={frontmatter.testimonials}
+          fullImage={frontmatter.full_image}
+          pricing={frontmatter.pricing}
+          user={user ? user.primaryEmailAddressId : ""}
+        />
+      </AuthenticatedRoute>
     </Layout>
   );
 };
