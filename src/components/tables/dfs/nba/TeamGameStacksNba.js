@@ -35,7 +35,6 @@ function TeamGameStacksNba(props) {
             id: generateUniqueId(),
             name: "New Game Stack",
             stackType: 'singleGameStack',
-            // numPlayers: 3,
             forGame: '',
             forPositions: [],
             minFromGroup: 1,
@@ -229,17 +228,7 @@ function TeamGameStacksNba(props) {
                     }}>
 
                         <h4 style={{ marginBottom: 16, marginTop: 24 }}>Edit Game Stacks</h4>
-                        <div >
-                            {/* <div style={{ width: '100%', marginTop: 16 }}> */}
-                            <Button
-                                style={{ backgroundColor: '#00203d' }}
-                                variant="contained"
-                                color="primary"
-                                onClick={() => {
-                                    saveToBackend(props.groups)
-                                }}>Save for later</Button>
-
-                        </div>
+             
                     </div>
 
                     <TextField

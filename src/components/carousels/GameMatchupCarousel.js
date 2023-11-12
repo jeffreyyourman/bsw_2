@@ -4,142 +4,6 @@ import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import axios from 'axios';
 import { formatDate, formatTime } from '../../utils/date_format';
 
-const exampleMatchups = [{
-  "id": "401547457",
-  "uid": "s:20~l:28~e:401547457~c:401547457",
-  "date": "2023-10-06T00:15:00Z",
-  "timeValid": true,
-  "recent": false,
-  "name": "Chicago Bears at Washington Commanders",
-  "shortName": "CHI @ WSH",
-  "gamecastAvailable": true,
-  "playByPlayAvailable": true,
-  "commentaryAvailable": false,
-  "onWatch": false,
-  "competitionId": "401547457",
-  "location": "FedExField",
-  "season": 2023,
-  "seasonStartDate": "2023-08-01T07:00:00Z",
-  "seasonEndDate": "2024-01-13T07:59:00Z",
-  "seasonType": "2",
-  "seasonTypeHasGroups": false,
-  "group": {
-    "groupId": "2",
-    "name": "Regular Season",
-    "abbreviation": "reg",
-    "shortName": "reg"
-  },
-  "week": 5,
-  "weekText": "Week 5",
-  "link": "https://www.espn.com/nfl/game/_/gameId/401547457",
-  "status": "post",
-  "summary": "Final",
-  "period": 4,
-  "clock": "0:00",
-  "broadcasts": [
-    {
-      "typeId": 4,
-      "priority": 1,
-      "type": "Web",
-      "isNational": true,
-    }
-  ],
-  "broadcast": "PRIME VIDEO",
-  "odds": {
-    "details": "WSH -6.0",
-    "overUnder": 45,
-    "spread": -6,
-    "overOdds": -110,
-    "underOdds": -110,
-    "provider": {
-      "id": "45",
-      "name": "Caesars Sportsbook (New Jersey)",
-      "priority": 1
-    },
-    "home": {
-      "moneyLine": -267
-    },
-    "away": {
-      "moneyLine": 215
-    },
-    "awayTeamOdds": {
-      "favorite": false,
-      "underdog": true,
-      "moneyLine": 215,
-      "spreadOdds": -110,
-      "team": {
-        "id": "3",
-        "abbreviation": "CHI"
-      }
-    },
-    "homeTeamOdds": {
-      "favorite": true,
-      "underdog": false,
-      "moneyLine": -267,
-      "spreadOdds": -110,
-      "team": {
-        "id": "28",
-        "abbreviation": "WSH"
-      }
-    },
-    "links": []
-  },
-  "fullStatus": {
-    "clock": 0,
-    "displayClock": "0:00",
-    "period": 4,
-    "type": {
-      "id": "3",
-      "name": "STATUS_FINAL",
-      "state": "post",
-      "completed": true,
-      "description": "Final",
-      "detail": "Final",
-      "shortDetail": "Final"
-    }
-  },
-  "competitors": [
-    {
-      "id": "3",
-      "uid": "s:20~l:28~t:3",
-      "type": "team",
-      "order": 1,
-      "homeAway": "away",
-      "winner": true,
-      "displayName": "Chicago Bears",
-      "name": "Bears",
-      "abbreviation": "CHI",
-      "location": "Chicago",
-      "color": "0b1c3a",
-      "alternateColor": "e64100",
-      "score": "40",
-      "group": "10",
-      "record": "1-4",
-      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/chi.png",
-      "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/chi.png"
-    },
-    {
-      "id": "28",
-      "uid": "s:20~l:28~t:28",
-      "type": "team",
-      "order": 0,
-      "homeAway": "home",
-      "winner": false,
-      "displayName": "Washington Commanders",
-      "name": "Commanders",
-      "abbreviation": "WSH",
-      "location": "Washington",
-      "color": "5a1414",
-      "alternateColor": "ffb612",
-      "score": "20",
-      "group": "1",
-      "record": "2-3",
-      "logo": "https://a.espncdn.com/i/teamlogos/nfl/500/scoreboard/wsh.png",
-      "logoDark": "https://a.espncdn.com/i/teamlogos/nfl/500-dark/scoreboard/wsh.png"
-    }
-  ],
-
-}]
 
 
 function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExcludedTeams }) {
@@ -187,7 +51,7 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
       <>
         <div style={{
           borderBottom: '1px solid black',
-         
+
         }}>
           {/* <div>{fullStatus.type.detail !== "Final" && formatDate(fullStatus.type.detail)}</div> */}
 
@@ -199,8 +63,9 @@ function GameMatchupsCarousel({ games, handleExcludeTeams, excludedTeams, setExc
           }}>{displayGameStatus(fullStatus)}</div>}
         </div>
         <CardContent style={{ paddingBottom: '8px' }}>
-          <TeamCard team={competitors[0]} score={competitors[0].score} odds={odds && odds.awayTeamOdds && odds.awayTeamOdds.moneyLine} />
-          <TeamCard team={competitors[1]} score={competitors[1].score} odds={odds && odds.homeTeamOdds && odds.homeTeamOdds.moneyLine} />
+          <TeamCard team={competitors[0]} score={competitors[0].score} odds={odds && odds.awayTeamOdds && odds.awayTeamOdds.moneyLine} total={odds.overUnder} />
+          <TeamCard team={competitors[1]} score={competitors[1].score} odds={odds && odds.homeTeamOdds && odds.homeTeamOdds.moneyLine} total={odds.overUnder} />
+          <p>Game Total: {odds.overUnder}</p>
         </CardContent>
       </>
     );

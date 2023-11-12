@@ -5,6 +5,7 @@ import {
   Card,
   Button,
   Table,
+  TextField,
   TableBody,
   TableCell,
   TableContainer,
@@ -17,7 +18,7 @@ import {
   Box
 } from '@mui/material';
 import { CSVLink } from "react-csv";
-
+import axios from 'axios';
 import lodashOrderBy from 'lodash/orderBy';
 
 export default function DfsNbaFdLineups(props) {
@@ -27,17 +28,21 @@ export default function DfsNbaFdLineups(props) {
     bottom: false,
     right: false,
   });
+  const [searchTerm, setSearchTerm] = useState("");
+
   const [startLine, setStartLine] = useState(null);
   const [endLine, setEndLine] = useState(null);
 
   const [order, setOrder] = useState('desc');
   const [orderBy, setOrderBy] = useState('totalfppg');
   const initialSavedLineups = props.lineups.lineups;
-  const [savedLineups, setSaveLineups] = useState([]);
+  const [savedLineups, setSavedLineups] = useState([]);
   const [deletedLineups, setDeletedLineups] = useState([]);
+  const [sortTopPlayers, setSortTopPlayers] = useState(props.topPlayers);
+  const [sortTopTeams, setSortTopTeams] = useState(props.topTeams);
   const [selectedTab, setSelectedTab] = useState(0);
   useEffect(() => {
-    setSaveLineups(initialSavedLineups)
+    setSavedLineups(initialSavedLineups)
   }, [initialSavedLineups])
   const handleChangeTab = (newValue) => {
     setSelectedTab(newValue);
@@ -54,13 +59,15 @@ export default function DfsNbaFdLineups(props) {
       newSaveLineups = savedLineups.filter(item => item !== lineup);
     }
 
-    setSaveLineups(newSaveLineups);
+    setSavedLineups(newSaveLineups);
     setDeletedLineups(newDeletedLineups);
 
     // Combine both saved and deleted lineups to get the current set of lineups
     const currentLineups = [...newSaveLineups, ...newDeletedLineups];
 
     const { topPlayers, topTeams } = props.generateTopPlayersAndTeams(newSaveLineups);
+    setSortTopPlayers(topPlayers);
+    setSortTopTeams(topTeams);
     props.setTopPlayers(topPlayers);
     props.setTopTeams(topTeams);
   };
@@ -80,6 +87,8 @@ export default function DfsNbaFdLineups(props) {
 
     // Recalculate top players and teams based on the new set of lineups
     const { topPlayers, topTeams } = props.generateTopPlayersAndTeams(newLineups);
+    setSortTopPlayers(topPlayers);
+    setSortTopTeams(topTeams);
     props.setTopPlayers(topPlayers);
     props.setTopTeams(topTeams);
   };
@@ -111,29 +120,19 @@ export default function DfsNbaFdLineups(props) {
 
 
   const exportLineupsToUpload = () => {
-
+    // console.log('savedLineups', savedLineups);
     const csvData = savedLineups.map(lineup => {
       return [
         lineup.lineup_points.toFixed(2),
-        // lineup.totalfppg.toFixed(2),
-        // lineup.totalPassTds.toFixed(2),
-        // lineup.totalPassInterceptions.toFixed(2),
-        // lineup.totalPassYards.toFixed(2),
-        // lineup.totalRushAtt.toFixed(2),
-        // lineup.totalRushTds.toFixed(2),
-        // lineup.totalRushYds.toFixed(2),
-        // lineup.totalReceptions.toFixed(2),
-        // lineup.totalRecYds.toFixed(2),
-        // lineup.totalRecTgts.toFixed(2),
-        // lineup.totalRecTds.toFixed(2),
-        // lineup.totalTds.toFixed(2),
-        // lineup.totalEverything.toFixed(2),
+        // lineup.projMins.toFixed(2),
+
         ...lineup.players.map(player => player.playerId)
       ];
     });
 
     const headers = [
       'lineup_points',
+      // 'projMins',
       "PG",
       "PG",
       "SG",
@@ -148,6 +147,50 @@ export default function DfsNbaFdLineups(props) {
     // we can just spread it into the return array after the headers.
     return [headers, ...csvData];
   };
+
+
+  const handleFilterPlayers = (text) => {
+    setSearchTerm(text.target.value.toLowerCase())
+    let searchTextLowerCase = text.target.value.toLowerCase();
+    const filterName = props.topPlayers.filter((player) => {
+      let newPlayerName = player.playerName.toLowerCase();
+      if (newPlayerName.includes(searchTextLowerCase)) {
+        return player;
+      }
+    });
+    if (filterName.length !== 0) {
+      setSortTopPlayers(filterName);
+    } else {
+      setSortTopPlayers(props.topPlayers);
+    }
+  };
+
+
+
+  const saveThisLineup = (lineup, index) => {
+    console.log("Saving to backend:", lineup);
+
+    //   axios.post(
+    //     `${props.baseUrl}/saveNbaPlayerGroups`,
+    //     { data: data[0] },
+    //     {
+    //       // headers,
+    //       // timeout: 600000  // 10 minutes in milliseconds
+    //     }
+    //   )
+    //     .then((response) => {
+    //       console.log('response', response);
+    //       // setSnackbarMessage('Player Groups saved successfully!');
+    //       // setSnackbarSeverity('success');
+    //       // setSnackbarOpen(true);
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //       // setSnackbarMessage('Error saving NBA Player Groups.');
+    //       // setSnackbarSeverity('error');
+    //       // setSnackbarOpen(true);
+    //     });
+  }
 
 
   return (
@@ -232,12 +275,20 @@ export default function DfsNbaFdLineups(props) {
 
             {selectedTab === 0 && (
               <div>
-                <p style={{ marginTop: 8, marginBottom: 16 }}>{props.topPlayers.length} Player(s) used</p>
+                <p style={{ marginTop: 8, marginBottom: 16 }}>{sortTopPlayers.length} Player(s) used</p>
                 <div style={{
                   height: '350px',
                   overflowY: 'auto'
                 }}>
-                  {props.topPlayers
+                  <TextField
+                    style={{ marginBottom: 16 }}
+                    label="Search Players"
+                    variant="outlined"
+                    value={searchTerm}
+                    onChange={handleFilterPlayers}
+                    fullWidth
+                  />
+                  {sortTopPlayers
                     .sort((a, b) => b.totalAmt - a.totalAmt)
                     .map((topPlayer) => (
                       <div
@@ -261,7 +312,7 @@ export default function DfsNbaFdLineups(props) {
                   height: '350px',
                   overflowY: 'auto'
                 }}>
-                  {props.topTeams
+                  {sortTopTeams
                     .sort((a, b) => b.totalAmt - a.totalAmt)
                     .map((topTeam) => (
                       <div
@@ -287,6 +338,9 @@ export default function DfsNbaFdLineups(props) {
                       Use
                     </TableCell>
                     <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
+                      Save
+                    </TableCell>
+                    <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
                       <TableSortLabel
                         active={orderBy === 'totalfppg'}
                         direction={order}
@@ -304,6 +358,19 @@ export default function DfsNbaFdLineups(props) {
                         onClick={() => handleSortRequest('lineup_salary')}
                       >
                         Total Salary
+
+
+                      </TableSortLabel>
+                    </TableCell>
+                    <TableCell style={{ position: 'sticky', top: 0, zIndex: 10, background: '#fff' }}>
+
+
+                      <TableSortLabel
+                        active={orderBy === 'projMins'}
+                        direction={order}
+                        onClick={() => handleSortRequest('projMins')}
+                      >
+                        Total Mins
 
 
                       </TableSortLabel>
@@ -341,6 +408,7 @@ export default function DfsNbaFdLineups(props) {
                 </TableHead>
                 <TableBody>
                   {sortedLineups.map((lineup, index) => {
+                    // console.log('lineup',lineup);
                     return <TableRow key={index}>
                       <TableCell style={{ position: 'sticky', left: 0, zIndex: 2, background: '#fff' }}>
                         <input
@@ -349,14 +417,22 @@ export default function DfsNbaFdLineups(props) {
                           onChange={(e) => handleCheckboxChange(lineup, e.target.checked)}
                         />
                       </TableCell>
+                      <TableCell style={{ position: 'sticky', left: 0, zIndex: 2, background: '#fff' }}>
+                        <div
+                          onClick={() => {
+                            saveThisLineup(lineup, index)
+                          }}
+                          style={{
+                            cursor: 'pointer',
+
+                          }}>Save</div>
+                      </TableCell>
                       <TableCell>{lineup.lineup_points}</TableCell>
                       <TableCell>{lineup.lineup_salary}</TableCell>
-                      {/* <TableCell>{lineup.totalTds.toFixed(2)}</TableCell>
-                      <TableCell>{lineup.totalEverything.toFixed(2)}</TableCell>
-                      <TableCell>{lineup.totalRecTds.toFixed(2)}</TableCell> */}
-                      {lineup.players.map((player, playerIndex) => (
-                        <TableCell key={playerIndex}>{player.playerName}</TableCell>
-                      ))}
+                      <TableCell>{lineup.totalProjMins.toFixed(2)}</TableCell>
+                      {lineup.players.map((player, playerIndex) => {
+                        return <TableCell key={playerIndex}>{player.playerName}</TableCell>
+                      })}
                     </TableRow>
                   })}
                 </TableBody>

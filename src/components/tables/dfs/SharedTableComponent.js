@@ -37,6 +37,7 @@ export default function TableComponent(props) {
   const [orderBy, setOrderBy] = useState('');
   const [page, setPage] = useState(0); // current page
   const [rowsPerPage, setRowsPerPage] = useState(30); // rows per page
+  // const [rowsPerPage, setRowsPerPage] = useState(data.length); // rows per page
 
   const handleSortRequest = (property) => {
     let isAsc = orderBy === property && order === 'asc';
@@ -53,39 +54,67 @@ export default function TableComponent(props) {
     }
   };
 
-
   const sortedPlayers = useMemo(() => {
-    let playersToSort = [...data];  // start with all players
+    // First, filter by search text if it's not empty
+    let playersToFilter = props.searchText
+      ? data.filter(player =>
+        player.Nickname.toLowerCase().includes(props.searchText.toLowerCase()))
+      : [...data]; // or [...data] if data is not the full list
 
-    // Filter by position if the props.selectedPosition is not 'All'
+    // Second, filter by selected position if not 'All'
     if (props.selectedPosition !== 'All') {
-      playersToSort = playersToSort.filter(player => player.Position.includes(props.selectedPosition));
+      playersToFilter = playersToFilter.filter(player => player.Position.includes(props.selectedPosition));
     }
 
-    // If the order is 'default', return the original players list
-    if (order === 'default') {
-      return playersToSort;
-    }
-
-    // Sort players based on the order and orderBy values
-    return playersToSort.sort((a, b) => {
-      // Handle numeric sorting explicitly for fields like FPPG
+    // Then sort the resulting array
+    return playersToFilter.sort((a, b) => {
+      // Your existing sorting logic here
       if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
+        return order === 'asc'
+          ? parseFloat(a[orderBy]) - parseFloat(b[orderBy])
+          : parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
+      } else {
         if (order === 'asc') {
-          return parseFloat(a[orderBy]) - parseFloat(b[orderBy]);
+          return a[orderBy] < b[orderBy] ? -1 : 1;
         } else {
-          return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
+          return a[orderBy] > b[orderBy] ? -1 : 1;
         }
       }
-
-      // Handle textual sorting (default)
-      if (order === 'asc') {
-        return a[orderBy] < b[orderBy] ? -1 : 1;
-      } else {
-        return a[orderBy] > b[orderBy] ? -1 : 1;
-      }
     });
-  }, [data, props.selectedPosition, order, orderBy]);
+  }, [data, props.selectedPosition, order, orderBy, props.searchText]);
+
+  // const sortedPlayers = useMemo(() => {
+  //   let playersToSort = [...data];  // start with all players
+
+  //   // Filter by position if the props.selectedPosition is not 'All'
+  //   if (props.selectedPosition !== 'All') {
+  //     playersToSort = playersToSort.filter(player => player.Position.includes(props.selectedPosition));
+  //   }
+
+  //   // If the order is 'default', return the original players list
+  //   if (order === 'default') {
+  //     return playersToSort;
+  //   }
+
+  //   // Sort players based on the order and orderBy values
+  //   return playersToSort.sort((a, b) => {
+  //     // Handle numeric sorting explicitly for fields like FPPG
+  //     if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
+  //       if (order === 'asc') {
+  //         return parseFloat(a[orderBy]) - parseFloat(b[orderBy]);
+  //       } else {
+  //         return parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
+  //       }
+  //     }
+
+  //     // Handle textual sorting (default)
+  //     if (order === 'asc') {
+  //       return a[orderBy] < b[orderBy] ? -1 : 1;
+  //     } else {
+  //       return a[orderBy] > b[orderBy] ? -1 : 1;
+  //     }
+  //   });
+  // }, [data, props.selectedPosition, order, orderBy]);
 
   const handleLock = (isLocked, rowIndex) => {
     let updatedPlayers = [...props.submittedPlayersForOptimizer]; // Clone the array
@@ -125,7 +154,27 @@ export default function TableComponent(props) {
     setSubmittedPlayersForOptimizer(playersFilteredCopy);
     setExcludePlayerLines(excludedCopy);
   };
+  const removeUnder24Mins = () => {
+    let playersCopy = [...props.submittedPlayersForOptimizer]; // Clone the array of players
+    console.log('playersCopy', playersCopy);
+    console.log('playersCopy', playersCopy);
 
+    // Filter out players with projMins less than 24 and add to existing excluded players
+    let newlyExcludedPlayers = playersCopy.filter(player => player['Projected Minutes'] < 24);
+    let updatedExcludedCopy = [...props.excludePlayerLines, ...newlyExcludedPlayers];
+
+    // Filter for players with projMins 24 or more and add to existing filtered players
+    let newlyFilteredPlayers = playersCopy.filter(player => player['Projected Minutes'] >= 24);
+    // let updatedFilteredCopy = [...props.filteredPlayers, ...newlyFilteredPlayers];
+
+    console.log('updatedExcludedCopy', updatedExcludedCopy);
+    // console.log('updatedFilteredCopy', updatedFilteredCopy);
+
+    // Update the state with the combined filtered and excluded lists of players
+    setFilteredPlayers(newlyFilteredPlayers);
+    setSubmittedPlayersForOptimizer(newlyFilteredPlayers);
+    setExcludePlayerLines(updatedExcludedCopy);
+  };
 
   const handleMinExposureChange = (playerData, value) => {
     const updatedPlayers = [...props.submittedPlayersForOptimizer];
@@ -145,12 +194,12 @@ export default function TableComponent(props) {
   const calculateValueForNBA = (projectedPoints, salary) => {
     let salaryInThousands = salary / 1000;
     return projectedPoints / salaryInThousands;
-  } 
+  }
 
   const calculateValueForNFL = (projectedPoints, salary) => {
     let salaryInThousands = salary / 1000;
     return projectedPoints / (salaryInThousands * 4);
-  } 
+  }
 
   const calculateValue = (projectedPoints, salary, sport) => {
     // console.log('projectedPoints, salary', projectedPoints, salary);
@@ -352,6 +401,49 @@ export default function TableComponent(props) {
           <TableHead>
             <TableRow>
               {finalColumnConfig.map((col, index) => (
+                <TableCell style={{ verticalAlign: 'bottom', textAlign: 'center' }}
+                  key={`${col.label}_${col.key}_${index}`} >
+                  <TableSortLabel
+                    align="left"
+                    active={orderBy === col.key}
+                    direction={order}
+                    onClick={() => handleSortRequest(col.key)}
+                    style={{ flexDirection: 'column-reverse', padding: 10, textAlign: 'center', verticalAlign: 'bottom' }}
+                  >
+                    {col.label}
+                  </TableSortLabel>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {sortedPlayers.length > 0 ? (
+              sortedPlayers.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((player, rowIndex) => (
+                <TableRow key={rowIndex}>
+                  {finalColumnConfig.map((col, innerIndex) => (
+                    <TableCell
+                      style={{ padding: 12, textAlign: 'center' }}
+                      key={`${player.Id}_${col.key}_${innerIndex}`}>
+                      {col.renderer ? col.renderer(player, rowIndex, col.key) : player[col.key]}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={finalColumnConfig.length} style={{ textAlign: 'left' }}>
+                  No players found in this search.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {/* <TableContainer component={Paper} style={{ width: '100%', height: '90%', overflowY: 'auto' }}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              {finalColumnConfig.map((col, index) => (
                 <TableCell style={{
                   verticalAlign: 'bottom',
                   textAlign: 'center',
@@ -385,7 +477,7 @@ export default function TableComponent(props) {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer> */}
       <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
         <div>
           Rows per page:
@@ -419,12 +511,23 @@ export default function TableComponent(props) {
             Reset Max Exposure Values
           </Button>
 
-          {clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com' && <Button
-            // variant="contained"
-            // color="primary"
-            onClick={props.everyonePlays}>
-            Everyone Plays
-          </Button>}
+          {clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com' && <>
+
+            <Button
+              // variant="contained"
+              // color="primary"
+              onClick={props.everyonePlays}>
+              Everyone Plays
+            </Button>
+
+            <Button
+              // variant="contained"
+              // color="primary"
+              onClick={removeUnder24Mins}>
+              remove under 24 mins
+            </Button>
+
+          </>}
 
 
         </div>

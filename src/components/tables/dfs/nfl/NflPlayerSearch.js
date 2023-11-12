@@ -7,11 +7,11 @@ import {
 
 
 function NFLPlayerSearch(props) {
-    const [searchText, setSearchText] = useState('');
+    // const [searchText, setSearchText] = useState('');
 
     const handleSearch = (event) => {
         const searchTerm = event.target.value;
-        setSearchText(searchTerm);
+        // setSearchText(searchTerm);
         props.onSearch(searchTerm);  // Notify the parent component
     };
 
@@ -21,7 +21,7 @@ function NFLPlayerSearch(props) {
                 label={props.isShowingExcludePlayers ? 'Search Exluded Players/Teams' : "Search Player/Team"}
                 variant="outlined"
                 fullWidth
-                value={searchText}
+                value={props.searchText}
                 onChange={handleSearch}
                 InputProps={{
                     startAdornment: (
