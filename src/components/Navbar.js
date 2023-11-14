@@ -7,7 +7,7 @@ import { useClerk, useAuth } from "@clerk/clerk-react";
 
 const Navbar = () => {
   const clerk = useClerk();
-  // console.log('clerk', clerk)
+  console.log('clerk?.user?', clerk?.user?.imageUrl)
   const { isSignedIn, sessionId, userId } = useAuth();
   // console.log('isSignedIn', isSignedIn)
   const [isActive, setIsActive] = useState(false);
@@ -99,7 +99,7 @@ const Navbar = () => {
                 </MenuItem>
               </Menu>
             </li> */}
-            <li className="navbar-item" style={{ padding: "0px" }}>
+            {/* <li className="navbar-end has-text-centered" style={{ padding: "0px" }}>
               {!isSignedIn ?
                 <button className="sign-up-btn" onClick={() => clerk.openSignUp({})}>
                   Login / Register
@@ -108,6 +108,31 @@ const Navbar = () => {
                   Sign out
                 </button>
               }
+            </li> */}
+            <li className="navbar-end has-text-centered" style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+
+            }}>
+              <div style={{ marginRight: '8px' }}>
+
+                {!isSignedIn ?
+                  <button className="sign-up-btn" onClick={() => clerk.openSignIn({})}>
+                    Login / Register
+                  </button> :
+                  <button className="sign-up-btn" onClick={() => clerk.signOut({})}>
+                    Sign out
+                  </button>
+                }
+              </div>
+              
+
+                <span className="icon">
+                  <img src={clerk?.user?.imageUrl} />
+                  {/* <img src={'https://yt3.ggpht.com/a/AATXAJwEZHtxb25nQA1ck-oAlBbysOTv42PKdLRInw=s900-c-k-c0xffffffff-no-rj-mo'} alt="Github" /> */}
+                </span>
+              
             </li>
           </ul>
           {/* <ul id="navMenu" className={` navbar-start has-text-centered navbar-menu ${isActive && "is-active"}`}>
