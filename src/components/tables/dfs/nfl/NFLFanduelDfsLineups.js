@@ -270,18 +270,18 @@ export default function NFLFanduelDfsLineups(props) {
             {selectedTab === 0 && (
               <div>
                 <p style={{ marginTop: 8, marginBottom: 16 }}>{props.topPlayers.length} Player(s) used</p>
+                <TextField
+                style={{ marginBottom: 16 }}
+                label="Search Players"
+                variant="outlined"
+                value={searchTerm}
+                onChange={handleFilterPlayers}
+                fullWidth
+              />
                 <div style={{
                   height: '350px',
                   overflowY: 'auto'
                 }}>
-                    <TextField
-                    style={{ marginBottom: 16 }}
-                    label="Search Players"
-                    variant="outlined"
-                    value={searchTerm}
-                    onChange={handleFilterPlayers}
-                    fullWidth
-                  />
                   {sortTopPlayers
                     .sort((a, b) => b.totalAmt - a.totalAmt)
                     .map((topPlayer) => (

@@ -8,8 +8,9 @@ import { formatDate, formatTime } from '../../utils/date_format';
 
 function GameMatchupsCarousel({ games, allPlayerTeams, gameAndPlayerMatchups, handleExcludeTeams, excludedTeams, setExcludedTeams }) {
 
-  console.log('gameAndPlayerMatchups', gameAndPlayerMatchups);
-  console.log('games', games);
+  // console.log('gameAndPlayerMatchups', gameAndPlayerMatchups);
+  // console.log('games[0]', games[0].competitors[0].abbreviation);
+  // console.log('games[1]', games[0].competitors[1].abbreviation);
   const [scoresDataLoading, setScoresDataLoading] = useState(null);
   const displayGameDetails = (game) => {
     const { competitors, odds, date, fullStatus } = game;
@@ -105,25 +106,29 @@ function GameMatchupsCarousel({ games, allPlayerTeams, gameAndPlayerMatchups, ha
         </IconButton>
         <div ref={carouselRef} style={{ overflow: 'hidden', display: 'flex', width: '100%' }}>
           <div style={{ display: 'flex', transform: `translateX(-${currentIndex * 260}px)` }}>
-            {games.map((game, index) => {
-
-              return <div key={`${index}_${game.gameKey}`} style={{ width: '250px', margin: '0 5px' }}>
-                <Card
-                  className="nfl-game-matchup-item"
-                  style={{
-
-                    display: 'flex',
-                    flexDirection: 'column',
-                    borderRadius: '16px',
-                    border: '1px solid #ededed',
-                  }}>
-                  <CardContent>
-                    {displayGameDetails(game)}
-                  </CardContent>
-
-                </Card>
-              </div>
-            })}
+            {
+              games
+                .filter(game =>
+                  allPlayerTeams.includes(game.competitors[0].abbreviation) ||
+                  allPlayerTeams.includes(game.competitors[1].abbreviation)
+                )
+                .map((game, index) => (
+                  <div key={`${index}_${game.gameKey}`} style={{ width: '250px', margin: '0 5px' }}>
+                    <Card
+                      className="nfl-game-matchup-item"
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        borderRadius: '16px',
+                        border: '1px solid #ededed',
+                      }}>
+                      <CardContent>
+                        {displayGameDetails(game)}
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))
+            }
           </div>
         </div>
         <IconButton onClick={handleNext}>

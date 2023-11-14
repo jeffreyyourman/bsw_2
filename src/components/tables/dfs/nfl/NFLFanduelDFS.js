@@ -148,6 +148,8 @@ export default function NFLFanduelDFS(props) {
 
   const [headers, setHeaders] = useState([]);
   const [gameAndPlayerMatchups, setGameAndPlayerMatchups] = useState([]);
+  const [allPlayerTeams, setAllPlayerTeams] = useState([]);
+
   const [espnScoreBoardMatchups, setEspnScoreBoardMatchups] = useState([]);
   const [espnScoreBoardMatchupsLoading, setEspnScoreBoardMatchupsLoading] = useState(false);
   const [gameMatchupsJson, setGameMatchupsJson] = useState([]);
@@ -399,7 +401,8 @@ export default function NFLFanduelDFS(props) {
       const updateGameMatchups = Object.values(games);
       setGameAndPlayerMatchups(updateGameMatchups)
 
-
+      const allTeams = Array.from(new Set(updateGameMatchups.flatMap(game => [game.homeTeam.teamAbb, game.awayTeam.teamAbb]))).sort();
+      setAllPlayerTeams(allTeams);
       const requiredHeaders = [
         "Id",
         "Position",
@@ -1141,7 +1144,7 @@ export default function NFLFanduelDFS(props) {
 
             <div style={{ marginBottom: '24px' }}>
               <GameMatchupsCarousel
-                // games={gameMatchups}
+                allPlayerTeams={allPlayerTeams}
                 games={espnScoreBoardMatchups}
                 handleExcludeTeams={handleExcludeTeams}
                 excludedTeams={excludedTeams}
