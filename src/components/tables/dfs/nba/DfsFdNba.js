@@ -230,9 +230,10 @@ export default function DfsFanduelNba(props) {
       // console.log('fetchfanduel player projections list daily fantasy - response - ', response.data);
       if (Object.keys(response.data).length === 0) {
 
-        setDailyFantasyFuelPlayerProjs([]);
+        // setDailyFantasyFuelPlayerProjs([]);
       } else {
-        setDailyFantasyFuelPlayerProjs(response.data.data);
+        // setDailyFantasyFuelPlayerProjs(response.data.data);
+        console.log('response.data.data',response.data.data);
         fetchPlayerSlateDataSet(selectedSlate, response.data.data);
       }
     } catch (error) {
@@ -531,7 +532,7 @@ export default function DfsFanduelNba(props) {
         const playerName = `${player["First Name"]} ${player["Last Name"]}`;
 
         player.FPPG = parseFloat(player.FPPG);
-        player.Value = parseFloat(player.Value);
+        // player.Value = parseFloat(player.Value);
         player["Projected Minutes"] = parseFloat(player["Projected Minutes"]);
 
         if (player['Injury Indicator'] === 'O' || player['Injury Indicator'] === 'D' || player['Injury Indicator'] === 'IR') {
@@ -548,6 +549,30 @@ export default function DfsFanduelNba(props) {
             return playerName === projectionsToMatchName;
           });
 
+          const calculateValueForNBA = (projectedPoints, salary) => {
+            let salaryInThousands = salary / 1000;
+            return projectedPoints / salaryInThousands;
+          }
+        
+          const calculateValueForNFL = (projectedPoints, salary) => {
+            let salaryInThousands = salary / 1000;
+            return projectedPoints / (salaryInThousands * 4);
+          }
+        
+          const calculateValue = (projectedPoints, salary, sport) => {
+            // console.log('projectedPoints, salary', projectedPoints, salary);
+            switch (sport) {
+              case "nba":
+                return calculateValueForNBA(projectedPoints, salary);
+              case "nfl":
+                return calculateValueForNFL(projectedPoints, salary);
+              // You can add more cases for other sports
+              default:
+                return 0; // Default value, adjust as needed
+            }
+          }
+
+
           if (isPlayerInProjections) {
             // Player is in projectionsToMatch, update properties as needed
 
@@ -555,9 +580,11 @@ export default function DfsFanduelNba(props) {
               // console.log('projection', projection)
               const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
               if (playerName === projectionsToMatchName) {
+                console.log("player['FPPG']",player['FPPG'])
+                console.log("player['Salary']",player['Salary'])
                 // Update player properties based on projection data
                 player.FPPG = projection.ppg;
-                // player.Value = projection.value;
+                player.Value = calculateValue(player['FPPG'], player['Salary'], 'nba');
                 player.opp_rank = projection.opp_rank;
                 player.days_rest = projection.days_rest;
                 player.opp_rank_bucket = projection.opp_rank_bucket;

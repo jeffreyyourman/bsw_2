@@ -104,30 +104,6 @@ const Navbar = () => {
                 }
               </div>
 
-
-
-
-              {/* <li className="navbar-item" style={{ padding: "0px" }}>
-                <Menu
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleMenuClose}
-                >
-                  <MenuItem onClick={handleMenuClose}>
-                    <Link to="/dfs/sport/nba">NBA</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleMenuClose}>
-                    <Link to="/dfs/sport/nfl"></Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleMenuClose}>
-                    <Link to="/dfs/sport/nba"></Link>
-                  </MenuItem>
-                </Menu>
-              </li> */}
-
-
-
               {isSignedIn && <span className="icon">
                 <ProfileModal open={profileModalOpen} logout={() => clerk.signOut({})} handleClose={handleCloseProfileModal} />
 
@@ -141,7 +117,6 @@ const Navbar = () => {
                 >
                   <MenuItem onClick={handleMenuClose}>
                     <span onClick={handleOpenProfileModal}>Profile</span>
-                    {/* <Link to="/dfs/sport/nba">Profile</Link> */}
                   </MenuItem>
 
                 </Menu>

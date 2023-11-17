@@ -26,6 +26,7 @@ export default function TableComponent(props) {
     headers,
     data,
     excludedKeys,
+    filteredPlayers,
     setFilteredPlayers,
     setSubmittedPlayersForOptimizer,
     excludePlayerLines,
@@ -33,8 +34,8 @@ export default function TableComponent(props) {
     usingExcludePlayers,
     overrides,
   } = props;
-  const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('');
+  const [order, setOrder] = useState('desc');
+  const [orderBy, setOrderBy] = useState('Value');
   const [page, setPage] = useState(0); // current page
   const [rowsPerPage, setRowsPerPage] = useState(30); // rows per page
   // const [rowsPerPage, setRowsPerPage] = useState(data.length); // rows per page
@@ -53,13 +54,31 @@ export default function TableComponent(props) {
       setOrderBy(property);
     }
   };
-
   const sortedPlayers = useMemo(() => {
+    // Function to check if a value is numeric
+    const isNumeric = (value) => !isNaN(value) && !isNaN(parseFloat(value));
+
+    const customSort = (a, b) => {
+      const aValue = a[orderBy];
+      const bValue = b[orderBy];
+
+      if (isNumeric(aValue) && isNumeric(bValue)) {
+        const numA = parseFloat(aValue);
+        const numB = parseFloat(bValue);
+        return order === 'asc' ? numA - numB : numB - numA;
+      } else {
+        const strA = String(aValue).trim();
+        const strB = String(bValue).trim();
+        return order === 'asc' ? strA.localeCompare(strB) : strB.localeCompare(strA);
+      }
+    };
+
+
     // First, filter by search text if it's not empty
     let playersToFilter = props.searchText
       ? data.filter(player =>
         player.Nickname.toLowerCase().includes(props.searchText.toLowerCase()))
-      : [...data]; // or [...data] if data is not the full list
+      : [...data];
 
     // Second, filter by selected position if not 'All'
     if (props.selectedPosition !== 'All') {
@@ -67,21 +86,42 @@ export default function TableComponent(props) {
     }
 
     // Then sort the resulting array
-    return playersToFilter.sort((a, b) => {
-      // Your existing sorting logic here
-      if (['FPPG', 'OG_FPPG'].includes(orderBy)) {
-        return order === 'asc'
-          ? parseFloat(a[orderBy]) - parseFloat(b[orderBy])
-          : parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
-      } else {
-        if (order === 'asc') {
-          return a[orderBy] < b[orderBy] ? -1 : 1;
-        } else {
-          return a[orderBy] > b[orderBy] ? -1 : 1;
-        }
-      }
-    });
+    console.log('playersToFilter', playersToFilter);
+    console.log('orderBy', orderBy);
+    return orderBy ? playersToFilter.sort(customSort) : playersToFilter;
   }, [data, props.selectedPosition, order, orderBy, props.searchText]);
+
+
+
+  // const sortedPlayers = useMemo(() => {
+  //   // First, filter by search text if it's not empty
+  //   let playersToFilter = props.searchText
+  //     ? data.filter(player =>
+  //       player.Nickname.toLowerCase().includes(props.searchText.toLowerCase()))
+  //     : [...data]; // or [...data] if data is not the full list
+
+  //   // Second, filter by selected position if not 'All'
+  //   if (props.selectedPosition !== 'All') {
+  //     playersToFilter = playersToFilter.filter(player => player.Position.includes(props.selectedPosition));
+  //   }
+
+  //   // Then sort the resulting array
+  //   console.log('playersToFilter',playersToFilter);
+  //   return playersToFilter.sort((a, b) => {
+  //     // Your existing sorting logic here
+  //     if (['FPPG', 'OG_FPPG', 'Value', 'Projected Minutes'].includes(orderBy)) {
+  //       return order === 'asc'
+  //         ? parseFloat(a[orderBy]) - parseFloat(b[orderBy])
+  //         : parseFloat(b[orderBy]) - parseFloat(a[orderBy]);
+  //     } else {
+  //       if (order === 'asc') {
+  //         return a[orderBy] < b[orderBy] ? -1 : 1;
+  //       } else {
+  //         return a[orderBy] > b[orderBy] ? -1 : 1;
+  //       }
+  //     }
+  //   });
+  // }, [data, props.selectedPosition, order, orderBy, props.searchText]);
 
   // const sortedPlayers = useMemo(() => {
   //   let playersToSort = [...data];  // start with all players
@@ -221,8 +261,10 @@ export default function TableComponent(props) {
 
     if (playerIndex !== -1) {
       updatedPlayers[playerIndex].FPPG = parseFloat(value); // Convert the input value to a float
+      updatedPlayers[playerIndex].Value = calculateValue(parseFloat(value), updatedPlayers[playerIndex].Salary, props.sport);; // Convert the input value to a float
 
       setSubmittedPlayersForOptimizer(updatedPlayers);
+      setFilteredPlayers(updatedPlayers);
     }
   };
 
@@ -375,8 +417,9 @@ export default function TableComponent(props) {
       key: 'Value',
       label: 'Value',
       renderer: (rowData) => {
-        const playerValue = calculateValue(rowData['FPPG'], rowData['Salary'], props.sport);
-        return <span>{playerValue.toFixed(2)}</span>;
+        // const playerValue = calculateValue(rowData['FPPG'], rowData['Salary'], props.sport);
+        return <span>{rowData['Value'].toFixed(2) || ''}</span>;
+        // return <span>{playerValue.toFixed(2)}</span>;
       },
     },
   ]);
@@ -393,6 +436,8 @@ export default function TableComponent(props) {
   columnConfig.sort((a, b) => (a.order || Infinity) - (b.order || Infinity));
   const finalColumnConfig = columnConfig.filter(col => !excludedKeys.includes(col.key));
 
+  console.log('filteredPlayers', filteredPlayers);
+  console.log('sortedPlayers', sortedPlayers);
 
   return (
     <div>
@@ -439,45 +484,7 @@ export default function TableComponent(props) {
           </TableBody>
         </Table>
       </TableContainer>
-      {/* <TableContainer component={Paper} style={{ width: '100%', height: '90%', overflowY: 'auto' }}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              {finalColumnConfig.map((col, index) => (
-                <TableCell style={{
-                  verticalAlign: 'bottom',
-                  textAlign: 'center',
-                }}
 
-                  key={`${col.key}_${index}`} >
-                  <TableSortLabel
-                    align="left"
-                    active={orderBy === col.key}
-                    direction={order}
-                    onClick={() => handleSortRequest(col.key)}
-                    style={{ flexDirection: 'column-reverse', padding: 10, textAlign: 'center', verticalAlign: 'bottom' }}
-                  >
-                    {col.label}
-                  </TableSortLabel>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {sortedPlayers.slice(page * rowsPerPage, (page + 1) * rowsPerPage).map((player, rowIndex) => (
-              <TableRow key={rowIndex}>
-                {finalColumnConfig.map((col, innerIndex) => (
-                  <TableCell
-                    style={{ padding: 12, textAlign: 'center' }}
-                    key={innerIndex}>
-                    {col.renderer ? col.renderer(player, rowIndex, col.key) : player[col.key]}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer> */}
       <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
         <div>
           Rows per page:
