@@ -3,29 +3,37 @@ import { Link } from "gatsby";
 import logo from "../img/BetSweatWinText.png";
 import '@mui/material/styles';
 import { useClerk, useAuth } from "@clerk/clerk-react";
-
-
+import ProfileModal from '../components/modals/ProfileModal';
+import { MenuItem, Menu } from '@mui/material'
 const Navbar = () => {
   const clerk = useClerk();
   console.log('clerk?.user?', clerk?.user?.imageUrl)
   const { isSignedIn, sessionId, userId } = useAuth();
   // console.log('isSignedIn', isSignedIn)
   const [isActive, setIsActive] = useState(false);
-  // const [anchorEl, setAnchorEl] = useState(null);  // for the dropdown
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);  // for the dropdown
 
-  // const handleMenuClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-  // const handleMenuClose = () => {
-  //   setAnchorEl(null);
-  // };
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
 
 
+  const handleOpenProfileModal = () => {
+    setProfileModalOpen(true)
+  }
+  const handleCloseProfileModal = () => {
+    setProfileModalOpen(false)
+  }
 
 
   return (
     <>
+
       <nav
         className="navbar is-transparent"
         role="navigation"
@@ -77,38 +85,7 @@ const Navbar = () => {
                 NBA
               </Link>
             </li>
-            {/* <li className="navbar-item" style={{ padding: "0px" }}>
-              <div className="navbar-item" style={{ cursor: 'pointer' }} onClick={handleMenuClick}>
-                DFS
-              </div>
 
-              <Menu
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleMenuClose}
-              >
-                <MenuItem onClick={handleMenuClose}>
-                  <Link to="/dfs/sport/nba">NBA</Link>
-                </MenuItem>
-                <MenuItem onClick={handleMenuClose}>
-                  <Link to="/dfs/sport/nfl"></Link>
-                </MenuItem>
-                <MenuItem onClick={handleMenuClose}>
-                  <Link to="/dfs/sport/nba"></Link>
-                </MenuItem>
-              </Menu>
-            </li> */}
-            {/* <li className="navbar-end has-text-centered" style={{ padding: "0px" }}>
-              {!isSignedIn ?
-                <button className="sign-up-btn" onClick={() => clerk.openSignUp({})}>
-                  Login / Register
-                </button> :
-                <button className="sign-up-btn" onClick={() => clerk.signOut({})}>
-                  Sign out
-                </button>
-              }
-            </li> */}
             <li className="navbar-end has-text-centered" style={{
               display: 'flex',
               flexWrap: 'wrap',
@@ -126,37 +103,54 @@ const Navbar = () => {
                   </button>
                 }
               </div>
-              
 
-                <span className="icon">
-                  <img src={clerk?.user?.imageUrl} />
-                  {/* <img src={'https://yt3.ggpht.com/a/AATXAJwEZHtxb25nQA1ck-oAlBbysOTv42PKdLRInw=s900-c-k-c0xffffffff-no-rj-mo'} alt="Github" /> */}
-                </span>
-              
+
+
+
+              {/* <li className="navbar-item" style={{ padding: "0px" }}>
+                <Menu
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}
+                >
+                  <MenuItem onClick={handleMenuClose}>
+                    <Link to="/dfs/sport/nba">NBA</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose}>
+                    <Link to="/dfs/sport/nfl"></Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleMenuClose}>
+                    <Link to="/dfs/sport/nba"></Link>
+                  </MenuItem>
+                </Menu>
+              </li> */}
+
+
+
+              {isSignedIn && <span className="icon">
+                <ProfileModal open={profileModalOpen} logout={() => clerk.signOut({})} handleClose={handleCloseProfileModal} />
+
+                <img src={clerk?.user?.imageUrl} onClick={handleMenuClick} />
+
+                <Menu
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleMenuClose}
+                >
+                  <MenuItem onClick={handleMenuClose}>
+                    <span onClick={handleOpenProfileModal}>Profile</span>
+                    {/* <Link to="/dfs/sport/nba">Profile</Link> */}
+                  </MenuItem>
+
+                </Menu>
+
+              </span>}
             </li>
           </ul>
-          {/* <ul id="navMenu" className={` navbar-start has-text-centered navbar-menu ${isActive && "is-active"}`}>
-          <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/about">
-              About
-            </Link>
-          </li>
-          <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/blog">
-              Blog
-            </Link>
-          </li>
-          <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/contact">
-              Contact
-            </Link>
-          </li>
-          <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/dfs">
-              DFS
-            </Link>
-          </li>
-        </ul> */}
+
+
         </div >
       </nav >
       {/* <SignIn /> */}
@@ -165,3 +159,31 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+
+
+  //         {/* <ul id="navMenu" className={` navbar-start has-text-centered navbar-menu ${isActive && "is-active"}`}>
+  //         <li className="navbar-item" style={{ padding: "0px" }}>
+  //           <Link className="navbar-item" to="/about">
+  //             About
+  //           </Link>
+  //         </li>
+  //         <li className="navbar-item" style={{ padding: "0px" }}>
+  //           <Link className="navbar-item" to="/blog">
+  //             Blog
+  //           </Link>
+  //         </li>
+  //         <li className="navbar-item" style={{ padding: "0px" }}>
+  //           <Link className="navbar-item" to="/contact">
+  //             Contact
+  //           </Link>
+  //         </li>
+  //         <li className="navbar-item" style={{ padding: "0px" }}>
+  //           <Link className="navbar-item" to="/dfs">
+  //             DFS
+  //           </Link>
+  //         </li>
+  //       </ul> */}

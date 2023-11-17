@@ -136,8 +136,8 @@ export default function DfsFanduelNba(props) {
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
   const [numLineups, setNumLineups] = useState(5);
-  const [totalMaxExp, setTotalMaxExp] = useState(50);
-  const [randomStd, setrandomStd] = useState(20);
+  const [totalMaxExp, setTotalMaxExp] = useState(90);
+  const [randomStd, setrandomStd] = useState(25);
   const [currentPosition, setCurrentPosition] = useState('All');
   const [restrict2CsSameTeam, setRestrict2CsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
@@ -147,7 +147,6 @@ export default function DfsFanduelNba(props) {
     (date.getDate() + '').padStart(2, '0') + '/' +
     date.getFullYear().toString().substr(-2);
 
-  console.log(formattedDate);
   const [chooseDateForPlayerList, setChooseDateForPlayerList] = useState(formattedDate);
   const [selectedSlateData, setSelectedSlateData] = useState(null);
   const [dailyFantasyFuelPlayerProjs, setDailyFantasyFuelPlayerProjs] = useState(null);
@@ -512,7 +511,7 @@ export default function DfsFanduelNba(props) {
         "opp_rank_bucket",
         // "projMins",
         'days_rest',
-        // 'lineupUsg'
+        'lineupUsg'
       ];
 
 
@@ -557,7 +556,7 @@ export default function DfsFanduelNba(props) {
               const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
               if (playerName === projectionsToMatchName) {
                 // Update player properties based on projection data
-                // player.FPPG = projection.ppg;
+                player.FPPG = projection.ppg;
                 // player.Value = projection.value;
                 player.opp_rank = projection.opp_rank;
                 player.days_rest = projection.days_rest;
@@ -867,25 +866,25 @@ export default function DfsFanduelNba(props) {
 
         const { topPlayers, topTeams } = generateTopPlayersAndTeams(sortedLineupsDes);
 
-        // const updatedSubmittedPlayers = submittedPlayersForOptimizer.map(player => {
-        //   const topPlayer = topPlayers.find(top => top.playerName === player.Nickname);
+        const updatedSubmittedPlayers = submittedPlayersForOptimizer.map(player => {
+          const topPlayer = topPlayers.find(top => top.playerName === player.Nickname);
 
-        //   // const lineupUsg = topPlayer
-        //   //   ? `${(topPlayer.totalAmt / numLineups * 100).toFixed(2)}%`
-        //   //   : '';
+          const lineupUsg = topPlayer
+            ? `${(topPlayer.totalAmt / numLineups * 100).toFixed(2)}%`
+            : '';
 
-        //   const updatedPlayer = { ...player };
+          const updatedPlayer = { ...player, lineupUsg };
 
-        //   // console.log(`Updating player ${player.Nickname}: `, updatedPlayer);
-        //   return updatedPlayer;
-        // });
-        // // console.log('updatedSubmittedPlayers', updatedSubmittedPlayers);
+          // console.log(`Updating player ${player.Nickname}: `, updatedPlayer);
+          return updatedPlayer;
+        });
 
-        // // setData(enhancedDataSet)
 
-        // setFilteredPlayers(updatedSubmittedPlayers);
-        // setSubmittedPlayersForOptimizer(updatedSubmittedPlayers);
-        // setOgFilteredPlayers(updatedSubmittedPlayers);
+        // setData(enhancedDataSet)
+
+        setFilteredPlayers(updatedSubmittedPlayers);
+        setSubmittedPlayersForOptimizer(updatedSubmittedPlayers);
+        setOgFilteredPlayers(updatedSubmittedPlayers);
 
         setTopPlayers(topPlayers);
         setTopTeams(topTeams);
