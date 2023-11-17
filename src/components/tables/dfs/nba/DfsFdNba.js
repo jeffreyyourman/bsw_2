@@ -3,7 +3,9 @@ import { useColumns, useExcludeColumns } from "./DfsNbaTableColumns";
 import axios from "axios";
 import {
   Button,
-  Snackbar
+  Snackbar,
+  TextField,
+  FormControl
 } from '@mui/material';
 import Papa from 'papaparse';
 import Dialog from '@mui/material/Dialog';
@@ -28,7 +30,7 @@ import { createTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles
 import { SignedIn, SignedOut, UserButton, useClerk, useAuth } from "@clerk/clerk-react";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { formatBaseUrl } from "../../../../utils/format_base_url";
-
+import { uploadPlayerList } from "../../../../utils/upload_playerlists";
 let exPlayerList = [{
   provider: 'bsw',
   date: '11/3/23',
@@ -134,12 +136,18 @@ export default function DfsFanduelNba(props) {
 
   const [isShowingExcludePlayers, setIsShowingExcludePlayers] = useState(false);
   const [numLineups, setNumLineups] = useState(5);
-  const [totalMaxExp, setTotalMaxExp] = useState(50);
-  const [randomStd, setrandomStd] = useState(30);
+  const [totalMaxExp, setTotalMaxExp] = useState(90);
+  const [randomStd, setrandomStd] = useState(25);
   const [currentPosition, setCurrentPosition] = useState('All');
   const [restrict2CsSameTeam, setRestrict2CsSameTeam] = useState(false);
   const [maxFromSameTeam, setMaxFromSameTeam] = useState(3);
   const [selectedSlate, setSelectedSlate] = useState('Main');
+  const date = new Date();
+  const formattedDate = ((date.getMonth() + 1) + '').padStart(2, '0') + '/' +
+    (date.getDate() + '').padStart(2, '0') + '/' +
+    date.getFullYear().toString().substr(-2);
+
+  const [chooseDateForPlayerList, setChooseDateForPlayerList] = useState(formattedDate);
   const [selectedSlateData, setSelectedSlateData] = useState(null);
   const [dailyFantasyFuelPlayerProjs, setDailyFantasyFuelPlayerProjs] = useState(null);
 
@@ -158,6 +166,9 @@ export default function DfsFanduelNba(props) {
   const [espnStandings, setEspnStandings] = useState([]);
   const [successUploadOwnProjections, setSuccessUploadOwnProjections] = useState(false);
   const [successUploadOwnProjectionsLoading, setSuccessUploadOwnProjectionsLoading] = useState(false);
+  const [uploadingPlayerListLoading, setUploadingPlayerListLoading] = useState(false);
+  const [successfullyUploadedPlayerList, setSuccessfullyUploadedPlayerList] = useState(false);
+  const [uploadingPlayerListErr, setUploadingPlayerListErr] = useState('');
   const [getLineupsErr, setGetLineupsErr] = useState('');
   const getEspnScoreboard = (abbr) => `/mockJson/nba/2023-espn-scoreboard.json`;
   const getEspnStandings = (abbr) => `/mockJson/nba/2023-espn-standings.json`;
@@ -274,44 +285,58 @@ export default function DfsFanduelNba(props) {
 
   }, [selectedSlate]);
 
-  const handleFileUpload = (e) => {
+  const handleFileUpload = async (e) => {
     setSuccessUploadOwnProjectionsLoading(true)
-    const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const csvData = event.target.result;
-      const parsedData = csvData.split("\n").map((row) => {
-        // Trim each cell to remove spaces and control characters
-        return row.split(",").map(cell => cell.trim());
-      });
-      // Clean up headers (keys for your objects)
-      const headers = parsedData[0].map(header => header.trim().replace(/\r$/, ''));
+    // const file = e.target.files[0];
+    // const reader = new FileReader();
+    // reader.onload = (event) => {
+    //   const csvData = event.target.result;
+    //   const parsedData = csvData.split("\n").map((row) => {
+    //     // Trim each cell to remove spaces and control characters
+    //     return row.split(",").map(cell => cell.trim());
+    //   });
+    //   // Clean up headers (keys for your objects)
+    //   const headers = parsedData[0].map(header => header.trim().replace(/\r$/, ''));
 
-      const rows = parsedData.slice(1);
-      const formattedData = rows.map((row) => {
-        // Convert fantasy points per game to numbers
-        row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
-        row[5] = isNaN(row[5]) ? 0 : row[5];
+    //   const rows = parsedData.slice(1);
+    //   const formattedData = rows.map((row) => {
+    //     // Convert fantasy points per game to numbers
+    //     row[5] = parseFloat(parseFloat(row[5]).toFixed(2));
+    //     row[5] = isNaN(row[5]) ? 0 : row[5];
 
 
-        const formattedRow = headers.reduce((acc, header, index) => {
-          if (header === "Roster Position" && row[index] === "DEF") {
-            acc[header] = "D";
-          } else {
-            acc[header] = row[index];
-          }
-          return acc;
-        }, {});
+    //     const formattedRow = headers.reduce((acc, header, index) => {
+    //       if (header === "Roster Position" && row[index] === "DEF") {
+    //         acc[header] = "D";
+    //       } else {
+    //         acc[header] = row[index];
+    //       }
+    //       return acc;
+    //     }, {});
 
-        // Delete property with empty string key
-        if (formattedRow[""] !== undefined) {
-          delete formattedRow[""];
-        }
+    //     // Delete property with empty string key
+    //     if (formattedRow[""] !== undefined) {
+    //       delete formattedRow[""];
+    //     }
 
-        return formattedRow;
-      }).filter(obj => obj.Id !== '');  // This line filters out objects with an empty Id
+    //     return formattedRow;
+    //   }).filter(obj => obj.Id !== '');  // This line filters out objects with an empty Id
 
-      const mergedData = formattedData.map(uploadedPlayer => {
+    //   const mergedData = formattedData.map(uploadedPlayer => {
+    //     const existingPlayer = data.find(player => player.Id === uploadedPlayer.Id);
+    //     if (existingPlayer) {
+    //       // If the uploaded player exists in the current dataset, merge them
+    //       return { ...existingPlayer, ...uploadedPlayer };
+    //     }
+    //     return uploadedPlayer;
+    //   });
+
+    try {
+      const playerListUtilData = await uploadPlayerList(e);
+      console.log('playerListUtilData', playerListUtilData);
+
+
+      const mergedData = playerListUtilData.map(uploadedPlayer => {
         const existingPlayer = data.find(player => player.Id === uploadedPlayer.Id);
         if (existingPlayer) {
           // If the uploaded player exists in the current dataset, merge them
@@ -320,15 +345,88 @@ export default function DfsFanduelNba(props) {
         return uploadedPlayer;
       });
 
-      console.log('formattedData', formattedData);
 
+
+      // ... rest of your code that processes playerListUtilData ...
+
+      console.log('playerListUtilData', mergedData);
       fetchPlayerDataSet(mergedData);
       setOpen(false);
       setSuccessUploadOwnProjections(true)
       setSuccessUploadOwnProjectionsLoading(false)
-
+    } catch (error) {
+      console.error('Error reading file:', error);
+      // Handle the error accordingly
     }
-    reader.readAsText(file);
+
+
+
+
+    //   console.log('formattedData', formattedData);
+    // const playerListUtilData = uploadPlayerList(e)
+    // console.log('playerListUtilData', playerListUtilData);
+    // const mergedData = playerListUtilData.map(uploadedPlayer => {
+    //   const existingPlayer = data.find(player => player.Id === uploadedPlayer.Id);
+    //   if (existingPlayer) {
+    //     // If the uploaded player exists in the current dataset, merge them
+    //     return { ...existingPlayer, ...uploadedPlayer };
+    //   }
+    //   return uploadedPlayer;
+    // });
+
+    // console.log('move to file upload formattedData', formattedData);
+    // return mergedData;
+    // return returnMergedData = mergedData
+
+
+
+
+    // }
+    // reader.readAsText(file);
+  };
+  const handlePlayerListUpload = async (e) => {
+    setUploadingPlayerListLoading(true);
+    setSuccessfullyUploadedPlayerList(false);
+    setUploadingPlayerListErr('')
+    try {
+      const playerListUtilData = await uploadPlayerList(e);
+      console.log('playerListUtilData', playerListUtilData);
+
+      // Construct the payload
+      const payload = {
+        provider: "bsw",
+        email: "",
+        sport: "nba",
+        site: "fanduel",
+        slate: "main",
+        playerList: playerListUtilData, // Assuming this is the array of players
+        lastModified: new Date().toISOString(), // Current timestamp in ISO format
+        dateForPlayerList: chooseDateForPlayerList // Static date as per your example
+      };
+
+      console.log('payload', payload);
+      // Perform the POST request to your API endpoint
+      const response = await axios.post(`${baseUrl}/upload/playerlist/`, payload);
+      // const response = await axios.post('http://localhost:3000/upload/playerlist/', payload);
+
+      // Handle the response accordingly
+      console.log('Upload Response:', response.data);
+
+      // If successful, update state
+      setSuccessfullyUploadedPlayerList(true);
+      setUploadingPlayerListLoading(false);
+      setTimeout(() => {
+        setUploadingPlayerListLoading(false);
+        setSuccessfullyUploadedPlayerList(false);
+        setUploadingPlayerListErr('')
+      }, 3000);
+    } catch (error) {
+      console.error('Error uploading player list:', error);
+      // Handle the error accordingly
+      // Update state to reflect the error
+      // setUploadingPlayerListErr('Error Uploading Playerlist');
+      setUploadingPlayerListLoading(false);
+    }
   };
 
 
@@ -458,7 +556,7 @@ export default function DfsFanduelNba(props) {
               const projectionsToMatchName = `${projection.first_name} ${projection.last_name}`;
               if (playerName === projectionsToMatchName) {
                 // Update player properties based on projection data
-                // player.FPPG = projection.ppg;
+                player.FPPG = projection.ppg;
                 // player.Value = projection.value;
                 player.opp_rank = projection.opp_rank;
                 player.days_rest = projection.days_rest;
@@ -780,13 +878,13 @@ export default function DfsFanduelNba(props) {
           // console.log(`Updating player ${player.Nickname}: `, updatedPlayer);
           return updatedPlayer;
         });
-        // console.log('updatedSubmittedPlayers', updatedSubmittedPlayers);
+
 
         // setData(enhancedDataSet)
 
         setFilteredPlayers(updatedSubmittedPlayers);
-        // setSubmittedPlayersForOptimizer(updatedSubmittedPlayers);
-        // setOgFilteredPlayers(updatedSubmittedPlayers);
+        setSubmittedPlayersForOptimizer(updatedSubmittedPlayers);
+        setOgFilteredPlayers(updatedSubmittedPlayers);
 
         setTopPlayers(topPlayers);
         setTopTeams(topTeams);
@@ -941,6 +1039,7 @@ export default function DfsFanduelNba(props) {
             <Tab label="Team Stacks (tier 2)" />
             <Tab label="Game Stacks (tier 2)" />
             <Tab label="Upload Own Projections (tier 3)" />
+            {/* <Tab label="Upload Your PlayerList" /> */}
           </Tabs>
 
           {tabValue === 0 && (
@@ -990,6 +1089,41 @@ export default function DfsFanduelNba(props) {
 
             successUploadOwnProjections={successUploadOwnProjections}
             successUploadOwnProjectionsLoading={successUploadOwnProjectionsLoading}
+            children={
+              <div>
+                {
+                  clerk?.user?.primaryEmailAddress?.emailAddress === 'jeffreyyourman@gmail.com' && (
+                    <div style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      width: '300px',
+                      marginBottom: '12px'
+                    }}>
+                      <label>Upload your playerlist for the day</label>
+                      <FormControl margin="normal">
+                        <TextField
+                          label="Date Format (MM/DD/YY)"
+                          type="text"
+                          // defaultValue={''}
+                          onChange={(e) => {
+                            setChooseDateForPlayerList(e.target.value);
+                          }}
+                          // fullWidth
+                          value={chooseDateForPlayerList}
+                          helperText="Values are from 0 to 100"
+                        />
+                      </FormControl>
+                      <input type="file" onChange={handlePlayerListUpload} />
+
+                      {uploadingPlayerListLoading && <label>Loading...</label>}
+                      {uploadingPlayerListErr && <label>Failed to upload</label>}
+                      {successfullyUploadedPlayerList && <label>Successfully uploaded</label>}
+
+                    </div>
+                  )
+                }
+              </div>
+            }
           />}
         </DialogContent>
       </Dialog>
@@ -1038,7 +1172,7 @@ export default function DfsFanduelNba(props) {
 
             <div style={{ marginBottom: '24px' }}>
               <GameMatchupsCarousel
-              allPlayerTeams={allPlayerTeams}
+                allPlayerTeams={allPlayerTeams}
                 games={espnScoreBoardMatchups} //allPlayerTeams
                 gameAndPlayerMatchups={gameAndPlayerMatchups}
                 handleExcludeTeams={handleExcludeTeams}

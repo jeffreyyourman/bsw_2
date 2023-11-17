@@ -64,33 +64,38 @@ function UploadProjectionsNba(props) {
                     padding: 16,
                     overflowY: 'hidden',
                     marginRight: 8,
+                    display:'flex',
+                    flexWrap: 'wrap',
                     // boxShadow: '0 2px 8px rgba(26, 24, 27, 0.06)',
 
                 }}>
-                <p>Please make sure you use the same headers as this downloadable example template. </p>
-                <p>You may add additional columns as long as they don't conflict with what's already in the headers </p>
-                <p>Must have these exact headers. You may add additional but these are a must </p>
                 <div>
+                    <p>Please make sure you use the same headers as this downloadable example template. </p>
+                    <p>You may add additional columns as long as they don't conflict with what's already in the headers </p>
+                    <p>Must have these exact headers. You may add additional but these are a must </p>
+                    <div>
 
-                    <CSVLink
-                        asyncOnClick={true}
-                        data={exportLineupsToUpload()}
+                        <CSVLink
+                            asyncOnClick={true}
+                            data={exportLineupsToUpload()}
 
-                    >
-                        Download example template
-                    </CSVLink>
+                        >
+                            Download example template
+                        </CSVLink>
 
+                    </div>
+                    <input type="file" onChange={props.handleFileUpload} />
+                    {props.successUploadOwnProjectionsLoading ? <p>loading...</p>
+                        :
+                        props.successUploadOwnProjections &&
+                        <>
+                            <p>successful</p>
+                            <p>close this popup to continue optimizing lines!</p>
+                        </>
+
+                    }
                 </div>
-                <input type="file" onChange={props.handleFileUpload} />
-                {props.successUploadOwnProjectionsLoading ? <p>loading...</p>
-                    :
-                    props.successUploadOwnProjections &&
-                    <>
-                        <p>successful</p>
-                        <p>close this popup to continue optimizing lines!</p>
-                    </>
-
-                }
+                {props.children}
             </div>
 
         </div>
